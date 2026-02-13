@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeNVR - Modern Video Surveillance</title>
+    <meta name="description"
+        content="Simple, privacy-respecting local NVR — fast setup, flexible recording, no cloud required.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="VibeNVR Logo" style="height: 32px;">
+                <span>VibeNVR</span>
+            </a>
+            <nav class="nav-links" style="display: flex; gap: 2rem; align-items: center;">
+                <a href="#features">Features</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#install">Install</a>
+                <a href="https://github.com/spupuz/VibeNVR" target="_blank" class="btn btn-primary">
+                    <ion-icon name="logo-github" style="margin-right: 0.5rem;"></ion-icon> GitHub
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="position: relative; padding: 6rem 0; overflow: hidden;">
+        <!-- Simulated Dashboard Background -->
+        <div
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.03; background-image: radial-gradient(var(--primary) 1px, transparent 1px); background-size: 24px 24px;">
+        </div>
+
+        <div class="container text-center" style="position: relative;">
+            <!-- Glow Effect -->
+            <div
+                style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%); z-index: -1; pointer-events: none;">
+            </div>
+
+            <img src="assets/logo.png" alt="VibeNVR Logo"
+                style="height: 200px; margin-bottom: 2rem; position: relative; z-index: 1;">
+            <h1 style="max-width: 800px; margin: 0 auto 1.5rem;">
+                Modern Video Surveillance.<br>
+                <span class="text-primary">No Cloud. No Compromise.</span>
+            </h1>
+            <p style="font-size: 1.25rem; max-width: 600px; margin: 0 auto 3rem;">
+                Simple, privacy-respecting local NVR. Fast setup, flexible recording, and a unified event timeline.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; align-items: center;">
+                <a href="#install" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    Get Started
+                </a>
+                <!-- GitHub Stats -->
+                <div style="display: flex; gap: 0.5rem;">
+                    <a href="https://github.com/spupuz/VibeNVR/stargazers" target="_blank">
+                        <img src="https://img.shields.io/github/stars/spupuz/VibeNVR?style=for-the-badge&color=2563EB"
+                            alt="GitHub Stars">
+                    </a>
+                    <a href="https://github.com/spupuz/VibeNVR/network/members" target="_blank">
+                        <img src="https://img.shields.io/github/forks/spupuz/VibeNVR?style=for-the-badge&color=2563EB"
+                            alt="GitHub Forks">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Dashboard Screenshot -->
+            <div style="position: relative; max-width: 1000px; margin: 0 auto;">
+                <div
+                    style="background: white; border-radius: var(--radius); padding: 0.5rem; box-shadow: var(--shadow-lg);">
+                    <img src="assets/vibenvr_video.webp" alt="VibeNVR Demo Video"
+                        style="width: 100%; height: auto; border-radius: calc(var(--radius) - 0.5rem); display: block;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="container py-20" style="background-color: #F8FAFC;">
+        <div class="section-title">
+            <h2>Experience VibeNVR</h2>
+            <p>See it in action.</p>
+        </div>
+        <div class="gallery-wrapper">
+            <div class="gallery-scroll">
+                <!-- Dashboard -->
+                <div class="gallery-item" onclick="openLightbox('assets/dashboard_v2.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/dashboard_v2.png" alt="Dashboard">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">System Dashboard
+                    </p>
+                </div>
+
+                <!-- Live View -->
+                <div class="gallery-item" onclick="openLightbox('assets/live_view.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/live_view.png" alt="Live View">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">Live Camera Feed
+                    </p>
+                </div>
+
+                <!-- Timeline -->
+                <div class="gallery-item" onclick="openLightbox('assets/recordings.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/recordings.png" alt="Recordings Timeline">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">Events Timeline</p>
+                </div>
+
+                <!-- Cameras -->
+                <div class="gallery-item" onclick="openLightbox('assets/cameras.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/cameras.png" alt="Camera Management">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">Camera Management
+                    </p>
+                </div>
+
+                <!-- System Settings -->
+                <div class="gallery-item" onclick="openLightbox('assets/settings_system.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/settings_system.png" alt="System Settings">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">System Settings</p>
+                </div>
+
+                <!-- Storage Settings -->
+                <div class="gallery-item" onclick="openLightbox('assets/settings_storage.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/settings_storage.png" alt="Storage Settings">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">Storage Management
+                    </p>
+                </div>
+
+                <!-- User Settings -->
+                <div class="gallery-item" onclick="openLightbox('assets/settings_users.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/settings_users.png" alt="User Management">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">User Management</p>
+                </div>
+
+                <!-- Logs -->
+                <div class="gallery-item" onclick="openLightbox('assets/logs.webp')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/logs.webp" alt="System Logs">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">System Logs</p>
+                </div>
+
+                <!-- Login -->
+                <div class="gallery-item" onclick="openLightbox('assets/login.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/login.png" alt="Login Page">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">Secure Login</p>
+                </div>
+
+                <!-- About -->
+                <div class="gallery-item" onclick="openLightbox('assets/about.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/about.png" alt="About VibeNVR">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">About VibeNVR</p>
+                </div>
+            </div>
+
+            <button class="gallery-nav prev" onclick="scrollGallery(-1)" aria-label="Previous">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </button>
+            <button class="gallery-nav next" onclick="scrollGallery(1)" aria-label="Next">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+            </button>
+        </div>
+
+        <script>
+            function scrollGallery(direction) {
+                const container = document.querySelector('.gallery-scroll');
+                const scrollAmount = 350 + 32; // item width + gap
+                container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+            }
+        </script>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="container py-20">
+        <div class="section-title">
+            <h2>Why VibeNVR?</h2>
+            <p>Built for efficiency, privacy, and modern standards.</p>
+        </div>
+
+        <div class="grid grid-cols-3">
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                </div>
+                <h3>Privacy First</h3>
+                <p>Your data stays on your local network. No cloud subscriptions, no external tracking. You own your
+                    footage.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="flash-outline"></ion-icon>
+                </div>
+                <h3>VibeEngine</h3>
+                <p>Custom high-performance video engine built with OpenCV for efficient motion detection and recording.
+                </p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="browsers-outline"></ion-icon>
+                </div>
+                <h3>Modern UI</h3>
+                <p>A sleek, reactive interface built with React. Responsive design that works great on desktop and
+                    mobile.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                </div>
+                <h3>Secure by Default</h3>
+                <p>Authenticated media access. Internal services bind to localhost. Designed to sit safely behind a
+                    reverse proxy.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="hardware-chip-outline"></ion-icon>
+                </div>
+                <h3>Hardware Accel</h3>
+                <p>Supports NVIDIA, Intel QSV, and AMD VAAPI for efficient video processing on compatible hardware.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="cube-outline"></ion-icon>
+                </div>
+                <h3>Containerized</h3>
+                <p>Runs everywhere Docker runs. Modular architecture ensuring stability and easy updates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture"
+        style="background-color: white; padding: 5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Built Solid</h2>
+                <p>A microservices architecture designed for reliability.</p>
+            </div>
+
+            <div class="grid grid-cols-2" style="align-items: center;">
+                <div>
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4>Frontend</h4>
+                            <p>React-based SPA providing a sleek, responsive dashboard.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4>Backend</h4>
+                            <p>FastAPI server handling logic, secure database access, and authenticated media relay.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4>VibeEngine</h4>
+                            <p>Custom processing engine for motion detection, recording, and overlays.</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div>
+                            <h4>Database</h4>
+                            <p>PostgreSQL for persistent storage of camera configs and events.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="background: #F8FAFC; border: 1px dashed var(--border); box-shadow: none;">
+                    <div style="text-align: center; padding: 2rem;">
+                        <ion-icon name="layers-outline"
+                            style="font-size: 8rem; color: var(--muted-foreground); opacity: 0.2;"></ion-icon>
+                        <p style="margin-top: 1rem;">Modular & Scalable</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="container py-20" style="background-color: #F8FAFC;">
+        <div class="section-title">
+            <h2>Documentation & Support</h2>
+            <p>Everything you need to know to get the most out of VibeNVR.</p>
+        </div>
+
+        <div class="grid grid-cols-2" style="gap: 2rem;">
+            <a href="https://github.com/spupuz/VibeNVR/wiki/Installation" target="_blank" class="card"
+                style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                <h4 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <ion-icon name="book-outline" class="text-primary"></ion-icon> Installation Guide
+                </h4>
+                <p style="color: var(--muted-foreground);">Step-by-step instructions for Docker Compose deployment and
+                    environment configuration.</p>
+            </a>
+
+            <a href="https://github.com/spupuz/VibeNVR/wiki/Configuration" target="_blank" class="card"
+                style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                <h4 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <ion-icon name="settings-outline" class="text-primary"></ion-icon> Configuration
+                </h4>
+                <p style="color: var(--muted-foreground);">Detailed references for configuration, camera setup, and
+                    storage management.</p>
+            </a>
+
+            <a href="https://github.com/spupuz/VibeNVR/wiki/Network" target="_blank" class="card"
+                style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                <h4 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <ion-icon name="git-network-outline" class="text-primary"></ion-icon> Network Setup
+                </h4>
+                <p style="color: var(--muted-foreground);">Port forwarding, reverse proxy examples (Nginx, Traefik), and
+                    secure remote access.</p>
+            </a>
+
+            <a href="https://github.com/spupuz/VibeNVR/issues" target="_blank" class="card"
+                style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                <h4 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <ion-icon name="help-buoy-outline" class="text-primary"></ion-icon> Troubleshooting
+                </h4>
+                <p style="color: var(--muted-foreground);">Common issues, logs analysis, and community support on
+                    GitHub.</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="install" class="container py-20">
+        <div class="section-title">
+            <h2>Get Started in Minutes</h2>
+            <p>Deploy with Docker Compose.</p>
+        </div>
+
+        <div class="code-window">
+            <div class="line comment"># 1. Download the compose file</div>
+            <div class="line">
+                <span class="cmd">curl</span> <span class="arg">-O
+                    https://raw.githubusercontent.com/spupuz/VibeNVR/main/docker-compose.prod.yml</span>
+            </div>
+            <br>
+            <div class="line comment"># 2. Configure variables (optional)</div>
+            <div class="line">
+                <span class="cmd">touch</span> <span class="arg">.env</span>
+            </div>
+            <br>
+            <div class="line comment"># 3. Start VibeNVR</div>
+            <div class="line">
+                <span class="cmd">docker</span> <span class="arg">compose -f docker-compose.prod.yml up -d</span>
+            </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="https://github.com/spupuz/VibeNVR" target="_blank" class="btn btn-secondary">
+                View Full Documentation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem;">
+                <div>
+                    <h4 style="display: flex; align-items: center; gap: 0.5rem;">
+                        <ion-icon name="videocam"></ion-icon> VibeNVR
+                    </h4>
+                    <p style="font-size: 0.9rem; max-width: 300px;">
+                        Modern, modular, and containerized video surveillance system.
+                    </p>
+                </div>
+                <div>
+                    <h4
+                        style="font-size: 0.9rem; text-transform: uppercase; color: var(--muted-foreground); margin-bottom: 1rem;">
+                        Links</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="https://github.com/spupuz/VibeNVR">GitHub</a>
+                        <a href="https://github.com/spupuz/VibeNVR/issues">Issues</a>
+                        <a href="https://github.com/spupuz/VibeNVR/discussions">Discussions</a>
+                    </div>
+                </div>
+                <div>
+                    <h4
+                        style="font-size: 0.9rem; text-transform: uppercase; color: var(--muted-foreground); margin-bottom: 1rem;">
+                        Legal</h4>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <a href="https://github.com/spupuz/VibeNVR/blob/main/LICENSE">License (MIT)</a>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; font-size: 0.875rem; text-align: center;">
+                &copy; 2024 Alessandro Belloni / VibeNVR Project. Open Source Software.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+
+        // Auto-Scroll Gallery
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryScroll = document.querySelector('.gallery-scroll');
+            let isPaused = false;
+            let scrollInterval;
+
+            // Pause on hover
+            galleryScroll.addEventListener('mouseenter', () => isPaused = true);
+            galleryScroll.addEventListener('mouseleave', () => isPaused = false);
+
+            function startAutoScroll() {
+                scrollInterval = setInterval(() => {
+                    if (!isPaused) {
+                        const itemWidth = galleryScroll.querySelector('.gallery-item').clientWidth;
+                        const gap = 32; // 2rem gap
+                        const scrollAmount = itemWidth + gap;
+
+                        // Check if we reached the end
+                        // Use a small buffer (10px) to account for floating point inaccuracies
+                        if (galleryScroll.scrollLeft + galleryScroll.clientWidth >= galleryScroll.scrollWidth - 10) {
+                            galleryScroll.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            galleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        }
+                    }
+                }, 3000); // Scroll every 3 seconds
+            }
+
+            startAutoScroll();
+        });
+    </script>
+</body>
+
+</html>
