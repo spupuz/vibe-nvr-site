@@ -574,3 +574,28 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Support Section */
+#support .support-btn {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#support .support-btn:hover {
+    transform: scale(1.05);
+}
+
+#support a[href*="star-history.com"]:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 640px) {
+    #support .section-title h2 {
+        font-size: 1.75rem;
+    }
+    
+    #support .support-btn img {
+        height: 50px !important;
+        width: auto !important;
+    }
+}
