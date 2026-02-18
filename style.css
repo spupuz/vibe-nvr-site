@@ -400,6 +400,18 @@ header {
     color: #A5B4FC;
 }
 
+.code-window .indent {
+    padding-left: 1.5rem;
+}
+
+.code-window .double-indent {
+    padding-left: 3rem;
+}
+
+.code-window .triple-indent {
+    padding-left: 4.5rem;
+}
+
 /* Installation Steps */
 .step-item {
     display: flex;
