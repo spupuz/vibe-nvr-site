@@ -725,10 +725,35 @@
             startAutoScroll();
         });
     </script>
-    <!-- Scarf Tracking -->
-    <img referrerpolicy="no-referrer-when-downgrade"
-        src="https://static.scarf.sh/a.png?x-pxid=8d165a8c-e061-4140-8843-77718939840d"
-        style="position:absolute; width:1px; height:1px; opacity:0;" />
+    <!-- Site Telemetry -->
+    <script>
+        (function () {
+            try {
+                // Generate or retrieve a persistent anonymous visitor ID
+                let vid = localStorage.getItem('viben_vid');
+                if (!vid) {
+                    vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+                    localStorage.setItem('viben_vid', vid);
+                }
+
+                // Ping the telemetry worker
+                const url = new URL('https://vibenvr-telemetry.spupuz.workers.dev/site-telemetry.png');
+                url.searchParams.set('visitor_id', vid);
+                url.searchParams.set('path', window.location.pathname);
+
+                const img = new Image();
+                img.referrerPolicy = 'no-referrer-when-downgrade';
+                img.style.position = 'absolute';
+                img.style.width = '1px';
+                img.style.height = '1px';
+                img.style.opacity = '0';
+                img.src = url.toString();
+                document.body.appendChild(img);
+            } catch (e) {
+                // Ignore tracking errors to prevent breaking the main page
+            }
+        })();
+    </script>
 </body>
 
 </html>
