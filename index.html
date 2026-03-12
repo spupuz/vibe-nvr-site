@@ -29,6 +29,7 @@
                 <a href="#architecture">Architecture</a>
                 <a href="#install">Install</a>
                 <a href="#telemetry">Telemetry</a>
+                <a href="#roadmap">Roadmap</a>
                 <a href="https://github.com/spupuz/VibeNVR" target="_blank" class="btn btn-primary">
                     <ion-icon name="logo-github" style="margin-right: 0.5rem;"></ion-icon> GitHub
                 </a>
@@ -249,6 +250,20 @@
         <div class="grid grid-cols-3">
             <div class="card">
                 <div class="card-icon">
+                    <ion-icon name="server-outline"></ion-icon>
+                </div>
+                <h3>Storage Profiles</h3>
+                <p>Support for multiple storage profiles with independent quotas, paths, and retention policies. SSD for speed, HDD for depth.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="search-outline"></ion-icon>
+                </div>
+                <h3>Device Discovery</h3>
+                <p>Built-in ONVIF and WS-Discovery scanner automatically finds cameras on your network and extracts RTSP feeds.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
                     <ion-icon name="lock-closed-outline"></ion-icon>
                 </div>
                 <h3>Privacy First</h3>
@@ -344,6 +359,56 @@
                         <p style="margin-top: 1rem;">Modular & Scalable</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="container py-20" style="background-color: #F8FAFC;">
+        <div class="section-title">
+            <h2>Enterprise Roadmap</h2>
+            <p>What's coming next to VibeNVR.</p>
+        </div>
+
+        <div class="grid grid-cols-2" style="gap: 2rem;">
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="game-controller-outline"></ion-icon>
+                </div>
+                <h4>Advanced ONVIF</h4>
+                <p>Full PTZ control and audio back-channel support for professional-grade camera management directly from the UI.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="git-branch-outline"></ion-icon>
+                </div>
+                <h4>Dual-Stream Support</h4>
+                <p>Native handling of Main + Sub streams to optimize bandwidth for live grid views while preserving high-quality recordings.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="color-filter-outline"></ion-icon>
+                </div>
+                <h4>Privacy Masking</h4>
+                <p>In-engine logic to apply masks over sensitive areas before recording or streaming to ensure GDPR compliance.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </div>
+                <h4>AI Inference</h4>
+                <p>Semantic event filtering (Person, Vehicle, Animal) using YOLO or MediaPipe to reduce false motion alerts.</p>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1;">
+                <div class="card-icon">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                </div>
+                <h4>Developer Documentation</h4>
+                <p>A comprehensive <strong>mkdocs</strong> site to help the community build plugins, integrations, and contribute to the core architecture.</p>
             </div>
         </div>
     </section>
