@@ -7,7 +7,7 @@
     <title>VibeNVR - Modern Video Surveillance</title>
     <meta name="description"
         content="Simple, privacy-respecting local NVR — fast setup, flexible recording, no cloud required.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=1.0.1">
     <link rel="icon" href="assets/logo.png" type="image/png">
     <!-- Ionicons for icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -34,6 +34,9 @@
                     <ion-icon name="logo-github" style="margin-right: 0.5rem;"></ion-icon> GitHub
                 </a>
             </nav>
+            <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+                <ion-icon name="menu-outline" id="menu-icon"></ion-icon>
+            </button>
         </div>
     </header>
 
@@ -861,6 +864,38 @@
                 // Ignore tracking errors to prevent breaking the main page
             }
         })();
+    </script>
+    <div class="nav-overlay" onclick="toggleMenu()"></div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector(".nav-links");
+            const overlay = document.querySelector(".nav-overlay");
+            const icon = document.getElementById("menu-icon");
+            
+            nav.classList.toggle("active");
+            overlay.classList.toggle("active");
+            
+            if (nav.classList.contains("active")) {
+                icon.setAttribute("name", "close-outline");
+            } else {
+                icon.setAttribute("name", "menu-outline");
+            }
+        }
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                const nav = document.querySelector(".nav-links");
+                const overlay = document.querySelector(".nav-overlay");
+                const icon = document.getElementById("menu-icon");
+                if(nav.classList.contains("active")) {
+                    nav.classList.remove("active");
+                    overlay.classList.remove("active");
+                    icon.setAttribute("name", "menu-outline");
+                }
+            });
+        });
     </script>
 </body>
 
