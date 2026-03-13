@@ -1,0 +1,55 @@
+/* Custom styles to match VibeNVR main site - V4 FORCE */
+
+/* Logo size increase */
+.md-header__button.md-logo img {
+  height: 48px !important; /* Increased from 40px */
+  width: auto !important;
+}
+
+.md-header__button.md-logo {
+  height: 48px !important;
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+/* Header colors - Light Mode */
+[data-md-color-scheme="default"] .md-header {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+[data-md-color-scheme="default"] .md-header__title {
+  color: #0F172A !important;
+}
+
+[data-md-color-scheme="default"] .md-tabs {
+  background-color: #F8FAFC !important;
+}
+
+[data-md-color-scheme="default"] .md-tabs__link {
+  color: #64748B !important;
+}
+
+[data-md-color-scheme="default"] .md-tabs__link--active {
+  color: #3B82F6 !important;
+}
+
+/* Header colors - Dark Mode */
+[data-md-color-scheme="slate"] .md-header {
+  background-color: #0F172A !important;
+  color: #F8FAFC !important;
+}
+
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: #0F172A !important;
+}
+
+/* Search bar adjustment */
+.md-search__input {
+  border-radius: 0.5rem !important;
+}
+
+/* Nav bar spacing */
+.md-header__inner {
+  height: 64px !important;
+}

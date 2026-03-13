@@ -1,0 +1,56 @@
+site_name: VibeNVR Documentation
+docs_dir: markdown_docs
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: white
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.footer
+    - content.code.copy
+
+extra_css:
+  - extra.css
+
+nav:
+  - Overview: index.md
+  - Installation: Installation.md
+  - Configuration: Configuration.md
+  - Network Setup: Network.md
+  - WebCodecs Streaming: WebCodecs-Streaming.md
+  - Storage Profiles: Storage-Profiles.md
+  - API Reference: API.md
+  - Access Recovery: Access-Recovery.md
+  - System Architecture: Architecture.md
+  - Troubleshooting: Troubleshooting.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/spupuz/VibeNVR
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
