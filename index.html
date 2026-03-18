@@ -200,6 +200,22 @@
                     <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">About VibeNVR</p>
                 </div>
 
+                <!-- Privacy Masking -->
+                <div class="gallery-item" onclick="openLightbox('assets/privacy_mask.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/privacy_mask.png" alt="Privacy Masking">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">Privacy Masking</p>
+                </div>
+
+                <!-- Motion Zones -->
+                <div class="gallery-item" onclick="openLightbox('assets/motion_zones.png')">
+                    <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="assets/motion_zones.png" alt="Motion Zones">
+                    </div>
+                    <p class="text-center" style="margin-top: 1rem; color: var(--muted-foreground);">Motion Zones</p>
+                </div>
+
                 <!-- Still Images Config -->
                 <div class="gallery-item" onclick="openLightbox('assets/camera_config_still_images.png')">
                     <div class="card" style="padding: 0; overflow: hidden; box-shadow: var(--shadow-lg);">
@@ -301,6 +317,20 @@
             </div>
             <div class="card">
                 <div class="card-icon">
+                    <ion-icon name="eye-off-outline"></ion-icon>
+                </div>
+                <h3>Privacy Masking</h3>
+                <p>Permanent black-out zones burned into recordings at the engine level to ensure absolute privacy and GDPR compliance.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
+                    <ion-icon name="scan-outline"></ion-icon>
+                </div>
+                <h3>Motion Zones</h3>
+                <p>Define custom exclusion zones to ignore areas with constant motion, drastically reducing false alerts from trees or traffic.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">
                     <ion-icon name="hardware-chip-outline"></ion-icon>
                 </div>
                 <h3>Hardware Accel</h3>
@@ -395,8 +425,8 @@
                 <div class="card-icon">
                     <ion-icon name="color-filter-outline"></ion-icon>
                 </div>
-                <h4>Privacy Masking</h4>
-                <p>In-engine logic to apply masks over sensitive areas before recording or streaming to ensure GDPR compliance.</p>
+                <h4>Object Tracking</h4>
+                <p>Real-time bounding boxes and path analysis for moving objects to provide better context during playback.</p>
             </div>
 
             <div class="card">
@@ -510,6 +540,14 @@
                     storage management.</p>
             </a>
 
+            <a href="docs/Privacy-Masking/" target="_blank" class="card"
+                style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                <h4 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <ion-icon name="eye-off-outline" class="text-primary"></ion-icon> Privacy & Zones
+                </h4>
+                <p style="color: var(--muted-foreground);">Guide to configuring privacy masks and motion exclusion zones for your cameras.</p>
+            </a>
+
             <a href="docs/Network/" target="_blank" class="card"
                 style="text-decoration: none; color: inherit; transition: transform 0.2s;">
                 <h4 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
@@ -517,6 +555,14 @@
                 </h4>
                 <p style="color: var(--muted-foreground);">Port forwarding, reverse proxy examples (Nginx, Traefik), and
                     secure remote access.</p>
+            </a>
+
+            <a href="docs/API/" target="_blank" class="card"
+                style="text-decoration: none; color: inherit; transition: transform 0.2s;">
+                <h4 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <ion-icon name="code-slash-outline" class="text-primary"></ion-icon> API Reference
+                </h4>
+                <p style="color: var(--muted-foreground);">Detailed reference for integrating with the VibeNVR backend via REST API.</p>
             </a>
 
             <a href="https://github.com/spupuz/VibeNVR/issues" target="_blank" class="card"

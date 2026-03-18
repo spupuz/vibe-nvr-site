@@ -1,5 +1,6 @@
 site_name: VibeNVR Documentation
 docs_dir: markdown_docs
+site_dir: docs
 theme:
   name: material
   logo: assets/logo.png
@@ -41,6 +42,7 @@ nav:
   - Storage Profiles: Storage-Profiles.md
   - API Reference: API.md
   - Access Recovery: Access-Recovery.md
+  - Privacy Masking: Privacy-Masking.md
   - System Architecture: Architecture.md
   - Troubleshooting: Troubleshooting.md
 

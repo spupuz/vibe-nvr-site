@@ -347,6 +347,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="../Privacy-Masking/" class="md-tabs__link">
+        
+  
+    
+  
+  Privacy Masking
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../Architecture/" class="md-tabs__link">
         
   
@@ -878,6 +895,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#get-settingsenginedebug-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /settings/engine/debug-status
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -950,6 +976,27 @@
   
   <span class="md-ellipsis">
     Access Recovery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Privacy-Masking/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Privacy Masking
     
   </span>
   
@@ -1317,6 +1364,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#get-settingsenginedebug-status" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /settings/engine/debug-status
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1454,12 +1510,16 @@
 <span class="w">    </span><span class="nt">&quot;is_active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;resolution_width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;resolution_height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;recording_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Motion Triggered&quot;</span>
+<span class="w">    </span><span class="nt">&quot;recording_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Motion Triggered&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;privacy_masks&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[{\&quot;points\&quot;:[...]}]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;motion_masks&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[]&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div></p>
 <h4 id="get-camerascamera_idframe"><strong>GET</strong> <code>/cameras/{camera_id}/frame</code></h4>
 <p>Download a live JPEG frame from the camera.
+- <strong>Query Params</strong>:
+  - <code>raw</code>: (Optional, Admin only) Set to <code>true</code> to get the unmasked frame for editing.
 - <strong>Auth Required</strong>: Admin privileges or valid <code>media_token</code> cookie.</p>
 <h4 id="post-camerascamera_idsnapshot"><strong>POST</strong> <code>/cameras/{camera_id}/snapshot</code></h4>
 <p>Trigger a manual snapshot.
@@ -1535,6 +1595,10 @@
 <h4 id="put-settingskey"><strong>PUT</strong> <code>/settings/{key}</code></h4>
 <p>Update a specific system setting.
 - <strong>Example Payload</strong>: <code>"value": "30"</code></p>
+<h4 id="get-settingsenginedebug-status"><strong>GET</strong> <code>/settings/engine/debug-status</code></h4>
+<p>Retrieve the real-time runtime status of the video engine (Admin only).
+- <strong>Usage</strong>: Diagnostic tool to verify mask synchronization and thread health.
+- <strong>Response</strong>: Map of camera IDs to their engine state.</p>
 <hr />
 <h2 id="integration-examples">🔗 Integration Examples</h2>
 <h3 id="python-using-bearer-token">Python (using Bearer Token)</h3>

@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../Architecture/">
+        <link rel="prev" href="../Access-Recovery/">
       
+      
+        <link rel="next" href="../Architecture/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Troubleshooting - VibeNVR Documentation</title>
+        <title>Privacy Masking - VibeNVR Documentation</title>
       
     
     
@@ -72,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting-guide" class="md-skip">
+        <a href="#privacy-masking-motion-zones" class="md-skip">
           Skip to content
         </a>
       
@@ -105,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Privacy Masking
             
           </span>
         </div>
@@ -341,9 +343,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Privacy-Masking/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -375,11 +379,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../Troubleshooting/" class="md-tabs__link">
         
   
     
@@ -595,10 +597,31 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Privacy-Masking/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Privacy Masking
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -608,6 +631,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#privacy-masks" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Privacy Masks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motion-zones-exclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Motion Zones (Exclusion)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-configure" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Configure
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -637,31 +707,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Troubleshooting
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -671,95 +720,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 Common Issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔧 Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#permission-errors-on-proxmox-synology-qnap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Permission errors on Proxmox / Synology / QNAP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#backend-fails-to-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      Backend fails to start
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cameras-not-connecting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cameras not connecting
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#live-view-shows-authentication-error-401" class="md-nav__link">
-    <span class="md-ellipsis">
-      Live View shows "Authentication Error" / 401
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-webcodecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚡ Troubleshooting WebCodecs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reporting-bugs" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐛 Reporting Bugs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -791,71 +751,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
+  <a href="#privacy-masks" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 Common Issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔧 Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#permission-errors-on-proxmox-synology-qnap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Permission errors on Proxmox / Synology / QNAP
+      🔒 Privacy Masks
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#backend-fails-to-start" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#motion-zones-exclusion" class="md-nav__link">
     <span class="md-ellipsis">
-      Backend fails to start
+      🛡️ Motion Zones (Exclusion)
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#cameras-not-connecting" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#how-to-configure" class="md-nav__link">
     <span class="md-ellipsis">
-      Cameras not connecting
+      How to Configure
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#live-view-shows-authentication-error-401" class="md-nav__link">
-    <span class="md-ellipsis">
-      Live View shows "Authentication Error" / 401
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-webcodecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚡ Troubleshooting WebCodecs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reporting-bugs" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐛 Reporting Bugs
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -875,46 +793,31 @@
 
 
 
-<h1 id="troubleshooting-guide">Troubleshooting Guide</h1>
-<p>This guide addresses common issues and provides steps for diagnostics and support.</p>
-<hr />
-<h2 id="common-issues">🔧 Common Issues</h2>
-<h3 id="permission-errors-on-proxmox-synology-qnap">Permission errors on Proxmox / Synology / QNAP</h3>
-<p>If you see <code>PermissionError: [Errno 13]</code> or <code>could not create Unix socket</code>, try uncommenting in <code>docker-compose.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">security_opt</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">seccomp:unconfined</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apparmor:unconfined</span>
-</code></pre></div>
-<p>As a last resort, use <code>privileged: true</code> on the affected service.</p>
-<h3 id="backend-fails-to-start">Backend fails to start</h3>
-<p>If the backend fails to start with a <code>SystemExit: 1</code>, check that <code>SECRET_KEY</code> is not set to one of the default values and is at least 32 characters long.</p>
-<p>In production (<code>ENVIRONMENT=production</code>), the app will strictly enforce this. To bypass it for troubleshooting, you can set <code>ALLOW_WEAK_SECRET=true</code> in your <code>.env</code> file.</p>
-<h3 id="cameras-not-connecting">Cameras not connecting</h3>
-<p>Verify the RTSP URL is reachable from inside the Docker container. The <code>localhost</code> addresses are blocked for security reasons — use the camera's actual LAN IP.</p>
-<blockquote>
-<p>💡 <strong>Note on URL format</strong>: VibeNVR supports raw RTSP paths including double slashes (e.g., <code>rtsp://ip:port//stream2</code>).</p>
-</blockquote>
-<hr />
-<h3 id="live-view-shows-authentication-error-401">Live View shows "Authentication Error" / 401</h3>
-<p>If you see an "AUTH ERROR" overlay, it might be a race condition during token load.</p>
-<p><strong>Solution:</strong>
-1. Update to <strong>v1.20.4 or later</strong>.
-2. Check camera credentials in <strong>Settings → Cameras</strong>.
-3. VibeNVR automatically enters a <strong>5-minute backoff period</strong> on persistent 401 errors to prevent IP bans.</p>
-<hr />
-<h3 id="troubleshooting-webcodecs">⚡ Troubleshooting WebCodecs</h3>
-<p>If you experience "black screens":
-1. Ensure your browser supports <strong>WebCodecs API</strong> (Chrome/Edge 94+).
-2. Check for <strong>Secure Context</strong> (HTTPS or localhost).
-3. If the stream stalls, the frontend jitter buffer should smooth it out automatically.</p>
-<hr />
-<h3 id="reporting-bugs">🐛 Reporting Bugs</h3>
-<p>If you encounter a bug, please open an issue on GitHub.
-Include a <strong>Diagnostic Bundle</strong>:
-1. Log in as <strong>Admin</strong>.
-2. Go to <strong>System Logs</strong>.
-3. Click <strong>"Download Report"</strong>.
-4. Attach the <code>.zip</code> file to your GitHub issue.</p>
+<h1 id="privacy-masking-motion-zones">Privacy Masking &amp; Motion Zones</h1>
+<p>VibeNVR supports drawing custom polygons to obscure sensitive areas or exclude regions from motion detection.</p>
+<h2 id="privacy-masks">🔒 Privacy Masks</h2>
+<p>Privacy Masks are used to permanently black out specific areas of the camera feed. </p>
+<ul>
+<li><strong>Permanent</strong>: Masks are "burned" into the video frames at the engine level.</li>
+<li><strong>Security</strong>: When a Privacy Mask is active, <strong>Passthrough Recording is automatically disabled</strong>. This ensures that the mask cannot be bypassed by recording the raw stream.</li>
+<li><strong>Affects Everything</strong>: The masked areas will appear black in Live View, Snapshots, and all Recordings.</li>
+<li><strong>Motion Detection</strong>: Privacy masks also prevent motion triggers in those areas.</li>
+</ul>
+<h2 id="motion-zones-exclusion">🛡️ Motion Zones (Exclusion)</h2>
+<p>Motion Zones allow you to define areas that the motion detection engine should ignore.</p>
+<ul>
+<li><strong>Exclusion Only</strong>: These zones do NOT obscure the video. The areas remain fully visible in recordings and live view.</li>
+<li><strong>False Trigger Reduction</strong>: Use this to ignore trees blowing in the wind, busy roads, or other areas with constant motion that you don't want to trigger alerts for.</li>
+</ul>
+<h2 id="how-to-configure">How to Configure</h2>
+<ol>
+<li>Go to <strong>Settings</strong> -&gt; <strong>Cameras</strong>.</li>
+<li>Edit the desired camera.</li>
+<li>Select the <strong>Privacy Mask</strong> or <strong>Motion Zones</strong> tab.</li>
+<li>Click on the snapshot to start drawing a polygon.</li>
+<li>Click back on the first point (green) to close the area.</li>
+<li>Click <strong>Save Changes</strong> at the bottom of the camera settings.</li>
+</ol>
 
 
 
@@ -950,7 +853,7 @@ Include a <strong>Diagnostic Bundle</strong>:
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: System Architecture">
+          <a href="../Access-Recovery/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Access Recovery">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -960,11 +863,27 @@ Include a <strong>Diagnostic Bundle</strong>:
                 Previous
               </span>
               <div class="md-ellipsis">
-                System Architecture
+                Access Recovery
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../Architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: System Architecture">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                System Architecture
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
