@@ -1,0 +1,33 @@
+<!-- Installation Section -->
+    <section id="install" class="container py-20">
+        <div class="section-title">
+            <h2>Get Started in Minutes</h2>
+            <p>Deploy with Docker Compose.</p>
+        </div>
+
+        <div class="code-window">
+            <div class="line comment"># 1. Download the compose file</div>
+            <div class="line">
+                <span class="cmd">curl</span> <span class="arg">-O
+                    https://raw.githubusercontent.com/spupuz/VibeNVR/main/docker-compose.prod.yml</span>
+            </div>
+            <br>
+            <div class="line comment"># 2. Configure variables (optional)</div>
+            <div class="line">
+                <span class="cmd">touch</span> <span class="arg">.env</span>
+            </div>
+            <br>
+            <div class="line comment"># 3. Start VibeNVR</div>
+            <div class="line">
+                <span class="cmd">docker</span> <span class="arg">compose -f docker-compose.prod.yml up -d</span>
+            </div>
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="docs/" target="_blank" class="btn btn-secondary">
+                View Full Documentation
+            </a>
+        </div>
+    </section>
+
+    

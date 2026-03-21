@@ -1,0 +1,123 @@
+<!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                closeLightbox();
+            }
+        });
+
+        // Auto-Scroll Gallery
+        setTimeout(() => {
+            const galleryScroll = document.querySelector('.gallery-scroll');
+            let isPaused = false;
+            let scrollInterval;
+
+            // Pause on hover
+            galleryScroll.addEventListener('mouseenter', () => isPaused = true);
+            galleryScroll.addEventListener('mouseleave', () => isPaused = false);
+
+            function startAutoScroll() {
+                scrollInterval = setInterval(() => {
+                    if (!isPaused) {
+                        const itemWidth = galleryScroll.querySelector('.gallery-item').clientWidth;
+                        const gap = 32; // 2rem gap
+                        const scrollAmount = itemWidth + gap;
+
+                        // Check if we reached the end
+                        // Use a small buffer (10px) to account for floating point inaccuracies
+                        if (galleryScroll.scrollLeft + galleryScroll.clientWidth >= galleryScroll.scrollWidth - 10) {
+                            galleryScroll.scrollTo({ left: 0, behavior: 'smooth' });
+                        } else {
+                            galleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                        }
+                    }
+                }, 3000); // Scroll every 3 seconds
+            }
+
+            startAutoScroll();
+        });
+    </script>
+    <!-- Site Telemetry -->
+    <script>
+        (function () {
+            try {
+                // Generate or retrieve a persistent anonymous visitor ID
+                let vid = localStorage.getItem('viben_vid');
+                if (!vid) {
+                    vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+                    localStorage.setItem('viben_vid', vid);
+                }
+
+                // Ping the telemetry worker
+                const url = new URL('https://vibenvr-telemetry.spupuz.workers.dev/site-telemetry.png');
+                url.searchParams.set('visitor_id', vid);
+                url.searchParams.set('path', window.location.pathname);
+
+                const img = new Image();
+                img.referrerPolicy = 'no-referrer-when-downgrade';
+                img.style.position = 'absolute';
+                img.style.width = '1px';
+                img.style.height = '1px';
+                img.style.opacity = '0';
+                img.src = url.toString();
+                document.body.appendChild(img);
+            } catch (e) {
+                // Ignore tracking errors to prevent breaking the main page
+            }
+        })();
+    </script>
+    <div class="nav-overlay" onclick="toggleMenu()"></div>
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector(".nav-links");
+            const overlay = document.querySelector(".nav-overlay");
+            const icon = document.getElementById("menu-icon");
+            
+            nav.classList.toggle("active");
+            overlay.classList.toggle("active");
+            
+            if (nav.classList.contains("active")) {
+                icon.setAttribute("name", "close-outline");
+            } else {
+                icon.setAttribute("name", "menu-outline");
+            }
+        }
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", () => {
+                const nav = document.querySelector(".nav-links");
+                const overlay = document.querySelector(".nav-overlay");
+                const icon = document.getElementById("menu-icon");
+                if(nav.classList.contains("active")) {
+                    nav.classList.remove("active");
+                    overlay.classList.remove("active");
+                    icon.setAttribute("name", "menu-outline");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!-- Telemetry Section -->
+    <section id="telemetry"
+        style="background-color: white; padding: 5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Anonymous Telemetry</h2>
+                <p>Aggregate, privacy-respecting usage stats from active VibeNVR installations.</p>
+            </div>
+
+            <!-- Live Stats Grid -->
+            <div id="telemetry-grid"
+                style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2.5rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <!-- Cards injected by JS -->
+                <div class="telemetry-card-skeleton"></div>
+                <div class="telemetry-card-skeleton"></div>
+                <div class="telemetry-card-skeleton"></div>
+                <div class="telemetry-card-skeleton"></div>
+                <div class="telemetry-card-skeleton"></div>
+                <div class="telemetry-card-skeleton"></div>
+            </div>
+
+
+
+            <!-- CTA -->
+            <div class="text-center">
+                <p style="color: var(--muted-foreground); margin-bottom: 1.5rem; font-size: 0.9rem;"
+                    id="telemetry-updated">Loading live data&hellip;</p>
+                <a href="https://vibenvr-telemetry.spupuz.workers.dev/" target="_blank" class="btn btn-secondary"
+                    style="display:inline-flex; align-items:center; gap:0.5rem;">
+                    <ion-icon name="bar-chart-outline"></ion-icon> Open Full Dashboard
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .telemetry-stat-card {
+            background: var(--card, #ffffff);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 0.5rem;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+
+        .telemetry-stat-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .telemetry-stat-card .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--foreground);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .telemetry-stat-card .stat-label ion-icon {
+            color: var(--primary, #2563EB);
+            font-size: 1.1rem;
+        }
+
+        .telemetry-stat-card .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--foreground);
+            line-height: 1.1;
+        }
+
+        .telemetry-stat-card .stat-sub {
+            font-size: 0.78rem;
+            color: var(--muted-foreground);
+        }
+
+        .telemetry-card-skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: var(--radius);
+            height: 100px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+
+    <script>
+        (function () {
+            const API = 'https://vibenvr-telemetry.spupuz.workers.dev/api/stats';
+
+            function escapeHTML(str) {
+                if (!str) return '';
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            function renderStat(icon, label, value, sub) {
+                return `<div class="telemetry-stat-card">
+                    <div class="stat-label"><ion-icon name="${icon}"></ion-icon> ${label}</div>
+                    <div class="stat-value">${value}</div>
+                    ${sub ? `<div class="stat-sub">${sub}</div>` : ''}
+                </div>`;
+            }
+
+            function renderBarChart(containerId, items, totalOverride) {
+                // Removed charts
+            }
+
+            async function loadTelemetry() {
+                try {
+                    const res = await fetch(API);
+                    if (!res.ok) throw new Error('Network error');
+                    const d = await res.json();
+
+                    const grid = document.getElementById('telemetry-grid');
+                    grid.innerHTML = [
+                        renderStat('pulse-outline', 'Active Installs', escapeHTML(d.active_installs?.toString() ?? '0'), 'Last 7 days'),
+                        renderStat('albums-outline', 'Total Installs', escapeHTML(d.total_installs ?? '0'), 'All time distinct'),
+                        renderStat('videocam-outline', 'Cameras', escapeHTML(d.total_cameras?.toString() ?? '0'), 'Managed across active'),
+                        renderStat('film-outline', 'Events', escapeHTML(d.total_events?.toString() ?? '0'), 'Recordings / Detections'),
+                    ].join('');
+
+                    const now = new Date();
+                    document.getElementById('telemetry-updated').textContent =
+                        `Live data · Last updated ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · Anonymous aggregate stats`;
+
+                } catch (e) {
+                    document.getElementById('telemetry-grid').innerHTML =
+                        '<p style="color:var(--muted-foreground);text-align:center;grid-column:1/-1;">Could not load telemetry data.</p>';
+                    document.getElementById('telemetry-updated').textContent = '';
+                }
+            }
+
+            loadTelemetry();
+        })();
+    </script>
+
+    
