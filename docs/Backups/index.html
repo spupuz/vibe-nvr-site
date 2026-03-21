@@ -16,7 +16,7 @@
     
     
       
-        <title>Welcome to the VibeNVR Wiki! 📹 - VibeNVR Documentation</title>
+        <title>💾 Configuration Backup & Restore - VibeNVR Documentation</title>
       
     
     
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-the-vibenvr-wiki" class="md-skip">
+        <a href="#configuration-backup-restore" class="md-skip">
           Skip to content
         </a>
       
@@ -103,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Welcome to the VibeNVR Wiki! 📹
+              💾 Configuration Backup &amp; Restore
             
           </span>
         </div>
@@ -677,18 +677,84 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#quick-links" class="md-nav__link">
+  <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
-      📖 Quick Links
+      ⚙️ How it Works
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ How it Works">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔄 Automated Backups
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual-backups" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 Manual Backups
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restoration-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 Restoration Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 Restoration Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-web-ui-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Web UI (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-manual-recovery-host-terminal" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Manual Recovery (Host Terminal)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storage-location" class="md-nav__link">
+    <span class="md-ellipsis">
+      📂 Storage Location
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#important-notes" class="md-nav__link">
+  <a href="#security-note" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚠️ Important Notes
+      🛡️ Security Note
     </span>
   </a>
   
@@ -710,31 +776,41 @@
 
 
 
-<h1 id="welcome-to-the-vibenvr-wiki">Welcome to the VibeNVR Wiki! 📹</h1>
-<p>VibeNVR is a modern, modular, and containerized video surveillance system designed to manage IP cameras, recordings, motion detection, and a unified event timeline. </p>
-<p>This Wiki serves as the extended documentation hub for advanced configurations, troubleshooting guides, maintenance procedures, and deep dives into the system's architecture.</p>
-<h2 id="quick-links">📖 Quick Links</h2>
-<ul>
-<li><strong><a href="../Installation/">Installation Guide</a></strong> - Step-by-step instructions for Docker-based deployment.</li>
-<li><strong><a href="../Configuration/">Configuration Reference</a></strong> - Complete <code>.env</code> variable reference and production checklist.</li>
-<li><strong><a href="../Network/">Network &amp; Proxy Setup</a></strong> - Port forwarding and reverse proxy configurations.</li>
-<li><strong><a href="../Troubleshooting/">Troubleshooting Guide</a></strong> - Solutions for common issues and bug reporting.</li>
-<li><strong><a href="../WebCodecs-Streaming/">WebCodecs Streaming</a></strong> - Low-latency streaming tech and secure context requirements.</li>
-<li><strong><a href="../API/">API Documentation</a></strong> - Detailed reference for integrating with the VibeNVR backend.</li>
-<li><strong><a href="../Access-Recovery/">Access Recovery Guide</a></strong> - Securely regaining account access from the host terminal.</li>
-<li><strong><a href="../Storage-Profiles/">Storage Profiles</a></strong> - Managing quotas and recording retention.</li>
-<li><strong><a href="../Architecture/">System Architecture</a></strong> - Deep dive into VibeEngine, PyAV/OpenCV, and microservices.</li>
-<li><strong><a href="../Privacy-Masking/">Privacy Masking</a></strong> - Configuring obscured areas and motion exclusion zones.</li>
-<li><strong><a href="../Backups/">Backup &amp; Restore</a></strong> - System snapshots and configuration management.</li>
-</ul>
-<h2 id="important-notes">⚠️ Important Notes</h2>
-<ul>
-<li><strong>Language Policy</strong>: English is the official and only supported language for all VibeNVR documentation, interfaces, issues, and code. </li>
-<li><strong>Security First</strong>: VibeNVR is designed to be secure by default. Always ensure your <code>.env</code> secrets are strong (especially <code>SECRET_KEY</code> and <code>WEBHOOK_SECRET</code>) and never expose internal container ports directly to the internet without a properly configured reverse proxy.</li>
-<li><strong>Contribute</strong>: Read our <a href="https://github.com/spupuz/VibeNVR/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> and <a href="https://github.com/spupuz/VibeNVR/blob/main/CODE_OF_CONDUCT.md">CODE_OF_CONDUCT.md</a> guidelines if you want to help improve VibeNVR.</li>
-</ul>
-<hr />
-<p><em>Use the sidebar on the right to navigate through the available Wiki pages.</em></p>
+<h1 id="configuration-backup-restore">💾 Configuration Backup &amp; Restore</h1>
+<p>VibeNVR includes a robust backup and restore system to protect your configuration. <strong>Every setting</strong> configurable via the UI or API is saved in the global backup, including:
+- <strong>Cameras</strong>: Full configuration, RTSP URLs, Schedules, Privacy Masks, and Motion Zones.
+- <strong>System Settings</strong>: Global options, notifications, storage limits, and optimization presets.
+- <strong>Users</strong>: User profiles, hashed passwords, roles, and 2FA secrets.
+- <strong>Groups</strong>: Camera groups and their associations.
+- <strong>Storage Profiles</strong>: All custom storage paths and size limits.
+- <strong>Security</strong>: API Tokens, 2FA Recovery Codes, and Trusted Device tokens.</p>
+<p>Backups are stored as JSON files in the <code>/data/backups/</code> directory.</p>
+<h2 id="how-it-works">⚙️ How it Works</h2>
+<h3 id="automated-backups">🔄 Automated Backups</h3>
+<p>You can enable automated backups in <strong>Settings &gt; Global Settings</strong>.
+- <strong>Frequency</strong>: Configurable in hours (e.g., every 24 hours).
+- <strong>Retention</strong>: Only the most recent $N$ automatic backups are kept (default 10). Older automatic backups are deleted to save space.
+- <strong>Startup Protection</strong>: On system startup, the background worker checks for any recent automatic backups. If a valid backup was created within the current frequency interval, it <strong>skips</strong> the startup backup to prevent redundant files if you restart the container frequently.</p>
+<h3 id="manual-backups">📝 Manual Backups</h3>
+<p>Manual backups can be triggered at any time from the UI or the API.
+- <strong>Retention</strong>: Manual backups are <strong>NEVER</strong> automatically deleted. They remain on the server until you manually delete them.
+- <strong>Naming</strong>: Manual backups are prefixed with <code>_manual_</code> for easy identification.</p>
+<h2 id="restoration-procedures">🛠 Restoration Procedures</h2>
+<h3 id="1-web-ui-recommended">1. Web UI (Recommended)</h3>
+<p>Navigate to <strong>Settings &gt; System Backups</strong> to see a list of available files.
+- <strong>Restore</strong>: Click the Restore icon. The system will apply all settings, cameras, and users from the file. A system reload is usually triggered automatically.
+- <strong>Import</strong>: You can upload a <code>.json</code> backup file from your computer using the "Import" button.</p>
+<h3 id="2-manual-recovery-host-terminal">2. Manual Recovery (Host Terminal)</h3>
+<p>If the UI is inaccessible, you can restore a configuration by placing a valid backup file in the <code>/data/backups/</code> folder and using the API or database directly. (Advanced users only).</p>
+<h2 id="storage-location">📂 Storage Location</h2>
+<p>By default, backups are saved in:
+<div class="highlight"><pre><span></span><code>./data/backups/
+</code></pre></div>
+<em>(Path may vary depending on your <code>docker-compose.yml</code> bind mounts).</em></p>
+<h2 id="security-note">🛡️ Security Note</h2>
+<p>Backups contain sensitive data, including <strong>hashed user passwords</strong> and <strong>RTSP URLs with credentials</strong>. 
+- Access to backup endpoints is restricted to users with the <code>admin</code> role.
+- Ensure the <code>/data/backups/</code> directory on the host is properly secured with file permissions.</p>
 
 
 

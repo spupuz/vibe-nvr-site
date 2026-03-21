@@ -868,6 +868,75 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#backup-restore-settingsbackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Backup &amp; Restore (/settings/backup)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💾 Backup & Restore (/settings/backup)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-settingsbackupexport" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /settings/backup/export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-settingsbackupimport" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/backup/import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-settingsbackuplist" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /settings/backup/list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-settingsbackuprun" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/backup/run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-settingsbackuprestore-filefilename" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/backup/restore-file/{filename}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-settingsbackupfilename" class="md-nav__link">
+    <span class="md-ellipsis">
+      DELETE /settings/backup/{filename}
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#settings-settings" class="md-nav__link">
     <span class="md-ellipsis">
       🛠 Settings (/settings)
@@ -1337,6 +1406,75 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#backup-restore-settingsbackup" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Backup &amp; Restore (/settings/backup)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💾 Backup & Restore (/settings/backup)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-settingsbackupexport" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /settings/backup/export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-settingsbackupimport" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/backup/import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-settingsbackuplist" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /settings/backup/list
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-settingsbackuprun" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/backup/run
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-settingsbackuprestore-filefilename" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/backup/restore-file/{filename}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-settingsbackupfilename" class="md-nav__link">
+    <span class="md-ellipsis">
+      DELETE /settings/backup/{filename}
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#settings-settings" class="md-nav__link">
     <span class="md-ellipsis">
       🛠 Settings (/settings)
@@ -1588,6 +1726,39 @@
 <h4 id="delete-storageprofilesid"><strong>DELETE</strong> <code>/storage/profiles/{id}</code></h4>
 <p>Delete a storage profile.
 - <strong>Note</strong>: Cameras using this profile will automatically revert to the default storage path.</p>
+<hr />
+<hr />
+<h3 id="backup-restore-settingsbackup">💾 Backup &amp; Restore (<code>/settings/backup</code>)</h3>
+<h4 id="get-settingsbackupexport"><strong>GET</strong> <code>/settings/backup/export</code></h4>
+<p>Export the entire system configuration (cameras, settings, users, etc.) as a JSON file.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Rate Limit</strong>: 5/minute.</p>
+<h4 id="post-settingsbackupimport"><strong>POST</strong> <code>/settings/backup/import</code></h4>
+<p>Import a configuration from a JSON file. Overwrites existing matching settings.
+- <strong>Payload</strong>: <code>multipart/form-data</code> with a <code>file</code> field.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Rate Limit</strong>: 5/minute.</p>
+<h4 id="get-settingsbackuplist"><strong>GET</strong> <code>/settings/backup/list</code></h4>
+<p>List all backup files available on the server in <code>/data/backups/</code>.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Response Example</strong>:
+<div class="highlight"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;vibenvr_backup_AUTO_20260221_120000.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15420</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;created_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-02-21T12:00:00&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></p>
+<h4 id="post-settingsbackuprun"><strong>POST</strong> <code>/settings/backup/run</code></h4>
+<p>Manually trigger a system backup. The file will be saved on the server with a <code>MANUAL</code> prefix.
+- <strong>Auth Required</strong>: Admin privileges.</p>
+<h4 id="post-settingsbackuprestore-filefilename"><strong>POST</strong> <code>/settings/backup/restore-file/{filename}</code></h4>
+<p>Restore the system configuration from a file already stored on the server.
+- <strong>Auth Required</strong>: Admin privileges.</p>
+<h4 id="delete-settingsbackupfilename"><strong>DELETE</strong> <code>/settings/backup/{filename}</code></h4>
+<p>Permanently delete a backup file from the server.
+- <strong>Auth Required</strong>: Admin privileges.</p>
 <hr />
 <h3 id="settings-settings">🛠 Settings (<code>/settings</code>)</h3>
 <h4 id="get-settings"><strong>GET</strong> <code>/settings</code></h4>
