@@ -393,6 +393,23 @@
   
 
       
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Backups/" class="md-tabs__link">
+        
+  
+    
+  
+  Backups and Restoration
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -714,6 +731,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#5-telemetry-worker-cloudflare-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Telemetry Worker (Cloudflare Edge)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -757,6 +783,27 @@
   
   <span class="md-ellipsis">
     Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Backups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backups and Restoration
     
   </span>
   
@@ -838,6 +885,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#5-telemetry-worker-cloudflare-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Telemetry Worker (Cloudflare Edge)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -897,6 +953,10 @@
 - <strong>Security</strong>: Communicates via internal Docker networks and requires a shared <code>WEBHOOK_SECRET</code> for backend interaction.</p>
 <h3 id="4-database-postgresql">4. Database (PostgreSQL)</h3>
 <p>Uses <strong>PostgreSQL 15</strong> for reliable storage of all persistent data, including camera configurations, user settings, and the event timeline.</p>
+<h3 id="5-telemetry-worker-cloudflare-edge">5. Telemetry Worker (Cloudflare Edge)</h3>
+<p>A highly modularized Cloudflare Worker repository (<code>vibenvr-telemetry-worker</code>) that handles global telemetry, metadata ingestion, and secure dashboarding.
+- <strong>Modularity</strong>: Split securely into dedicated ES modules (<code>security.js</code>, <code>api.js</code>, <code>assets.js</code>, etc.) to stay well below the 1000 LOC limits.
+- <strong>Edge Security</strong>: Provides native strict Content-Security-Policy (CSP) headers and input sanitization at the CDN edge before requests reach the VibeNVR origin.</p>
 <hr />
 <h2 id="security-model">🔒 Security Model</h2>
 <p>VibeNVR implements a "Security by Design" approach:
