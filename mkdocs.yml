@@ -45,6 +45,7 @@ nav:
   - Privacy Masking: Privacy-Masking.md
   - System Architecture: Architecture.md
   - Troubleshooting: Troubleshooting.md
+  - Backups and Restoration: Backups.md
 
 extra:
   social:
