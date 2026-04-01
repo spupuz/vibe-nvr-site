@@ -9,10 +9,8 @@
       
       
       
-        <link rel="prev" href="../Privacy-Masking/">
+        <link rel="prev" href="../Backups/">
       
-      
-        <link rel="next" href="../Troubleshooting/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -20,7 +18,7 @@
     
     
       
-        <title>System Architecture - VibeNVR Documentation</title>
+        <title>UniFi Integration - VibeNVR Documentation</title>
       
     
     
@@ -74,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#system-architecture" class="md-skip">
+        <a href="#unifi-protect-integration" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              System Architecture
+              UniFi Integration
             
           </span>
         </div>
@@ -360,11 +358,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../Architecture/" class="md-tabs__link">
         
   
     
@@ -413,9 +409,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../UniFi-Protect/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -652,31 +650,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    System Architecture
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -686,104 +663,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
-    <span class="md-ellipsis">
-      🏗️ Core Components
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🏗️ Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-frontend-react-spa" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Frontend (React SPA)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-backend-fastapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Backend (FastAPI)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-vibeengine-custom-python-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. VibeEngine (Custom Python Engine)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-database-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Database (PostgreSQL)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-telemetry-worker-cloudflare-edge" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Telemetry Worker (Cloudflare Edge)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Security Model
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#performance-optimization" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚡ Performance Optimization
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -834,10 +713,31 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../UniFi-Protect/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    UniFi Integration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -847,6 +747,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-protocols-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      📡 Supported Protocols &amp; Ports
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-add-unifi-cameras" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 How to Add UniFi Cameras
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-note-tls-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Security Note: TLS Verification
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -878,78 +825,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#supported-protocols-ports" class="md-nav__link">
     <span class="md-ellipsis">
-      🏗️ Core Components
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🏗️ Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-frontend-react-spa" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Frontend (React SPA)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-backend-fastapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Backend (FastAPI)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-vibeengine-custom-python-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. VibeEngine (Custom Python Engine)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-database-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Database (PostgreSQL)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-telemetry-worker-cloudflare-edge" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Telemetry Worker (Cloudflare Edge)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Security Model
+      📡 Supported Protocols &amp; Ports
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#performance-optimization" class="md-nav__link">
+  <a href="#how-to-add-unifi-cameras" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚡ Performance Optimization
+      🚀 How to Add UniFi Cameras
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-note-tls-verification" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Security Note: TLS Verification
     </span>
   </a>
   
@@ -971,42 +867,71 @@
 
 
 
-<h1 id="system-architecture">System Architecture</h1>
-<p>VibeNVR is designed as a modern, modular microservices ecosystem to ensure reliability, security, and high performance.</p>
-<hr />
-<h2 id="core-components">🏗️ Core Components</h2>
-<p>VibeNVR is split into four primary services, each running in its own Docker container:</p>
-<h3 id="1-frontend-react-spa">1. Frontend (React SPA)</h3>
-<p>A premium, responsive dashboard built with <strong>React</strong>, <strong>Vite</strong>, and <strong>TailwindCSS</strong>. It communicates with the backend via a REST API and handles low-latency video playback using the WebCodecs API.</p>
-<h3 id="2-backend-fastapi">2. Backend (FastAPI)</h3>
-<p>The central logic hub powered by <strong>FastAPI (Python)</strong>.
-- <strong>Authentication</strong>: Full JWT stack with 2FA support.
-- <strong>API</strong>: Handles configuration, user management, and event queries.
-- <strong>Media Relay</strong>: Manages secure, authenticated access to video streams via HttpOnly cookies.</p>
-<h3 id="3-vibeengine-custom-python-engine">3. VibeEngine (Custom Python Engine)</h3>
-<p>The dedicated video processing service. This is the "heavy lifter" of the system:
-- <strong>Stream Ingestion</strong>: Uses <strong>PyAV</strong> (native FFmpeg bindings) for robust RTSP connection management and packet demuxing.
-- <strong>Image Processing</strong>: Leverages <strong>OpenCV (cv2)</strong> for motion detection analysis, text overlays, and dynamic JPEG encoding for legacy previews.
-- <strong>Modular Design</strong>: The engine core is highly modularized (<code>stream_reader</code>, <code>motion_detector</code>, <code>recording_manager</code>, <code>mask_handler</code>, <code>overlay_handler</code>) for maximum stability.
-- <strong>Security</strong>: Communicates via internal Docker networks and requires a shared <code>WEBHOOK_SECRET</code> for backend interaction.</p>
-<h3 id="4-database-postgresql">4. Database (PostgreSQL)</h3>
-<p>Uses <strong>PostgreSQL 15</strong> for reliable storage of all persistent data, including camera configurations, user settings, and the event timeline.</p>
-<h3 id="5-telemetry-worker-cloudflare-edge">5. Telemetry Worker (Cloudflare Edge)</h3>
-<p>A highly modularized Cloudflare Worker repository (<code>vibenvr-telemetry-worker</code>) that handles global telemetry, metadata ingestion, and secure dashboarding.
-- <strong>Modularity</strong>: Split securely into dedicated ES modules (<code>security.js</code>, <code>api.js</code>, <code>assets.js</code>, etc.) to stay well below the 1000 LOC limits.
-- <strong>Edge Security</strong>: Provides native strict Content-Security-Policy (CSP) headers and input sanitization at the CDN edge before requests reach the VibeNVR origin.</p>
-<hr />
-<h2 id="security-model">🔒 Security Model</h2>
-<p>VibeNVR implements a "Security by Design" approach:
-- <strong>Internal API Protection</strong>: Sensitive internal APIs (like the Engine's control port) are not exposed to the host machine.
-- <strong>Token Scoping</strong>: API tokens can be created with specific TTLs and limited permissions.
-- <strong>Reverse Proxy Ready</strong>: Built to work seamlessly behind Nginx Proxy Manager or Traefik with full WebSocket support.</p>
-<hr />
-<h2 id="performance-optimization">⚡ Performance Optimization</h2>
+<h1 id="unifi-protect-integration">UniFi Protect Integration 🛡️</h1>
+<p>VibeNVR provides "first-class" support for UniFi Protect cameras, handling both secure (RSTSPS) and standard (RTSP) streams automatically.</p>
+<h2 id="supported-protocols-ports">📡 Supported Protocols &amp; Ports</h2>
+<p>UniFi Protect typically provides stream URLs in the following formats:</p>
+<table>
+<thead>
+<tr>
+<th>Protocol</th>
+<th>Port</th>
+<th>Description</th>
+<th>Recommendation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RSTSPS</strong></td>
+<td><code>7441</code></td>
+<td>Secure RTSP over TLS</td>
+<td><strong>Recommended</strong> for maximum security.</td>
+</tr>
+<tr>
+<td><strong>RTSPS</strong></td>
+<td><code>7441</code></td>
+<td>Standard Secure RTSP</td>
+<td>Supported as an alias to RSTSPS.</td>
+</tr>
+<tr>
+<td><strong>RTSP</strong></td>
+<td><code>7447</code></td>
+<td>Standard RTSP (Unencrypted)</td>
+<td>Use if hardware resources are very limited.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-add-unifi-cameras">🚀 How to Add UniFi Cameras</h2>
+<ol>
+<li><strong>Get the URL</strong>:</li>
+<li>Open your UniFi Protect dashboard.</li>
+<li>Select a camera -&gt; Settings -&gt; High Quality (or other) -&gt; <strong>RTSPS URL</strong>.</li>
+<li>
+<p>Copy the full URL (e.g., <code>rtsps://192.168.1.1:7441/abcd?token=...</code>).</p>
+</li>
+<li>
+<p><strong>Paste in VibeNVR</strong>:</p>
+</li>
+<li>Go to <strong>Cameras</strong> -&gt; <strong>Add Camera</strong>.</li>
+<li>Paste the full URL into the <strong>RTSP Host &amp; Path</strong> field.</li>
+<li>
+<p>VibeNVR will automatically:</p>
 <ul>
-<li><strong>Passthrough Recording</strong>: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.</li>
-<li><strong>Adaptive Streaming</strong>: Automatically switches between high-performance WebCodecs (H.264) and compatible JPEG polling based on browser support and connection quality.</li>
+<li>Detect the <code>rtsps</code> / <code>rstsps</code> protocol.</li>
+<li>Extract the credentials if present.</li>
+<li>Enable the <strong>Secure Connection</strong> mode (Blue Shield icon).</li>
+<li>Disable TLS certificate verification (to handle UniFi's self-signed certificates).</li>
 </ul>
+</li>
+<li>
+<p><strong>Scanner Discovery</strong>:</p>
+</li>
+<li>The <strong>Network Scanner</strong> in VibeNVR is pre-configured to look for ports <code>7441</code> and <code>7447</code>.</li>
+<li>If a UniFi camera is found, it will be labeled as <strong>RTSPS</strong> or <strong>RTSP</strong> with a quick-add button.</li>
+</ol>
+<hr />
+<h2 id="security-note-tls-verification">🔒 Security Note: TLS Verification</h2>
+<p>For <code>rstsps://</code> and <code>rtsps://</code> streams, VibeNVR intentionally disables TLS certificate verification (<code>tls_verify=0</code>). This is necessary because UniFi Protect controllers use self-signed certificates that browsers and standard tools would otherwise block. The stream remains <strong>encrypted</strong> and secure during transit.</p>
 
 
 
@@ -1042,7 +967,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Privacy-Masking/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Privacy Masking">
+          <a href="../Backups/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Backups and Restoration">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1052,27 +977,11 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Privacy Masking
+                Backups and Restoration
               </div>
             </div>
           </a>
         
-        
-          
-          <a href="../Troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="Next: Troubleshooting">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Troubleshooting
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

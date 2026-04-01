@@ -410,6 +410,23 @@
   
 
       
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../UniFi-Protect/" class="md-tabs__link">
+        
+  
+    
+  
+  UniFi Integration
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -795,6 +812,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#post-eventsbulk-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /events/bulk-delete
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1155,6 +1181,27 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../UniFi-Protect/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UniFi Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1349,6 +1396,15 @@
   <a href="#get-eventsevent_iddownload" class="md-nav__link">
     <span class="md-ellipsis">
       GET /events/{event_id}/download
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-eventsbulk-delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /events/bulk-delete
     </span>
   </a>
   
@@ -1721,6 +1777,20 @@
 <h4 id="get-eventsevent_iddownload"><strong>GET</strong> <code>/events/{event_id}/download</code></h4>
 <p>Download the media file associated with an event.
 - <strong>Auth Required</strong>: Valid <code>media_token</code> cookie or JWT.</p>
+<h4 id="post-eventsbulk-delete"><strong>POST</strong> <code>/events/bulk-delete</code></h4>
+<p>Delete multiple individual events and their associated media files in a single request.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Payload Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;event_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> </span><span class="mi">44</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+- <strong>Response Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;deleted_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <hr />
 <h3 id="system-stats-stats">📊 System &amp; Stats (<code>/stats</code>)</h3>
 <h4 id="get-stats"><strong>GET</strong> <code>/stats</code></h4>
