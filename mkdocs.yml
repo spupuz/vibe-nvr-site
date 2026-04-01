@@ -46,6 +46,7 @@ nav:
   - System Architecture: Architecture.md
   - Troubleshooting: Troubleshooting.md
   - Backups and Restoration: Backups.md
+  - UniFi Integration: UniFi-Protect.md
 
 extra:
   social:
