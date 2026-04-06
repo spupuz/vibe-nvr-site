@@ -821,6 +821,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#delete-eventsbulkall" class="md-nav__link">
+    <span class="md-ellipsis">
+      DELETE /events/bulk/all
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1410,6 +1419,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#delete-eventsbulkall" class="md-nav__link">
+    <span class="md-ellipsis">
+      DELETE /events/bulk/all
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1789,6 +1807,18 @@
   <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;deleted_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;errors&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="delete-eventsbulkall"><strong>DELETE</strong> <code>/events/bulk/all</code></h4>
+<p>Delete all events in the system, with optional filtering by type.
+- <strong>Query Params</strong>:
+  - <code>event_type</code>: (Optional) <code>video</code> or <code>picture</code>. If omitted, all events are deleted.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Response Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;deleted_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;deleted_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1240.5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all&quot;</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <hr />
