@@ -87,6 +87,8 @@ List all configured cameras.
     "resolution_width": 1920,
     "resolution_height": 1080,
     "recording_mode": "Motion Triggered",
+    "sub_rtsp_url": "rtsp://192.168.1.10:554/sub",
+    "sub_rtsp_transport": "udp",
     "privacy_masks": "[{\"points\":[...]}]",
     "motion_masks": "[]"
   }
@@ -99,9 +101,33 @@ Download a live JPEG frame from the camera.
   - `raw`: (Optional, Admin only) Set to `true` to get the unmasked frame for editing.
 - **Auth Required**: Admin privileges or valid `media_token` cookie.
 
+#### **POST** `/cameras`
+Create a new camera configuration.
+- **Auth Required**: Admin privileges.
+- **Payload Example**:
+  ```json
+  {
+    "name": "Entrance",
+    "rtsp_url": "rtsp://admin:pass@192.168.1.10:554/main",
+    "rtsp_transport": "tcp",
+    "sub_rtsp_url": "rtsp://admin:pass@192.168.1.10:554/sub",
+    "sub_rtsp_transport": "udp",
+    "is_active": true
+  }
+  ```
+
+#### **PUT** `/cameras/{camera_id}`
+Update an existing camera configuration. Fields are optional (only provided fields are updated).
+- **Auth Required**: Admin privileges.
+
+#### **DELETE** `/cameras/{camera_id}`
+Delete a camera and its associated configuration (recordings are kept unless manually deleted).
+- **Auth Required**: Admin privileges.
+
 #### **POST** `/cameras/{camera_id}/snapshot`
 Trigger a manual snapshot.
 - **Auth Required**: Admin privileges.
+
 
 ---
 
@@ -296,7 +322,7 @@ curl -X GET "http://localhost:8080/stats" \
 
 ### Using Shared URL (Media)
 Media access is now secured via cookies. Browser-based requests (like `<img>` tags) work automatically after login.
-*(Current Version: v1.23.0)*
+*(Current Version: v1.26.0)*
 ```html
 <img src="http://localhost:8080/media/Camera1/2026-02-21/snap.jpg" />
 ```

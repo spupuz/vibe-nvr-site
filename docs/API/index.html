@@ -771,6 +771,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-cameras" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /cameras
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-camerascamera_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      PUT /cameras/{camera_id}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-camerascamera_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      DELETE /cameras/{camera_id}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#post-camerascamera_idsnapshot" class="md-nav__link">
     <span class="md-ellipsis">
       POST /cameras/{camera_id}/snapshot
@@ -1369,6 +1396,33 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-cameras" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /cameras
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#put-camerascamera_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      PUT /cameras/{camera_id}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-camerascamera_id" class="md-nav__link">
+    <span class="md-ellipsis">
+      DELETE /cameras/{camera_id}
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#post-camerascamera_idsnapshot" class="md-nav__link">
     <span class="md-ellipsis">
       POST /cameras/{camera_id}/snapshot
@@ -1761,6 +1815,8 @@
 <span class="w">    </span><span class="nt">&quot;resolution_width&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1920</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;resolution_height&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1080</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;recording_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Motion Triggered&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub_rtsp_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rtsp://192.168.1.10:554/sub&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;sub_rtsp_transport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;udp&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;privacy_masks&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[{\&quot;points\&quot;:[...]}]&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;motion_masks&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[]&quot;</span>
 <span class="w">  </span><span class="p">}</span>
@@ -1771,6 +1827,25 @@
 - <strong>Query Params</strong>:
   - <code>raw</code>: (Optional, Admin only) Set to <code>true</code> to get the unmasked frame for editing.
 - <strong>Auth Required</strong>: Admin privileges or valid <code>media_token</code> cookie.</p>
+<h4 id="post-cameras"><strong>POST</strong> <code>/cameras</code></h4>
+<p>Create a new camera configuration.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Payload Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Entrance&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rtsp_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rtsp://admin:pass@192.168.1.10:554/main&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rtsp_transport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub_rtsp_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rtsp://admin:pass@192.168.1.10:554/sub&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sub_rtsp_transport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;udp&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;is_active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h4 id="put-camerascamera_id"><strong>PUT</strong> <code>/cameras/{camera_id}</code></h4>
+<p>Update an existing camera configuration. Fields are optional (only provided fields are updated).
+- <strong>Auth Required</strong>: Admin privileges.</p>
+<h4 id="delete-camerascamera_id"><strong>DELETE</strong> <code>/cameras/{camera_id}</code></h4>
+<p>Delete a camera and its associated configuration (recordings are kept unless manually deleted).
+- <strong>Auth Required</strong>: Admin privileges.</p>
 <h4 id="post-camerascamera_idsnapshot"><strong>POST</strong> <code>/cameras/{camera_id}/snapshot</code></h4>
 <p>Trigger a manual snapshot.
 - <strong>Auth Required</strong>: Admin privileges.</p>
@@ -1924,7 +1999,7 @@
 </code></pre></div>
 <h3 id="using-shared-url-media">Using Shared URL (Media)</h3>
 <p>Media access is now secured via cookies. Browser-based requests (like <code>&lt;img&gt;</code> tags) work automatically after login.
-<em>(Current Version: v1.23.0)</em>
+<em>(Current Version: v1.26.0)</em>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://localhost:8080/media/Camera1/2026-02-21/snap.jpg&quot;</span> <span class="p">/&gt;</span>
 </code></pre></div></p>
 <hr />

@@ -46,4 +46,5 @@ VibeNVR implements a "Security by Design" approach:
 ## ⚡ Performance Optimization
 
 - **Passthrough Recording**: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.
-- **Adaptive Streaming**: Automatically switches between high-performance WebCodecs (H.264) and compatible JPEG polling based on browser support and connection quality.
+- **Dual-Stream Handling**: The Engine initializes independent `StreamReader` instances for main and sub-streams. Sub-streams are prioritized for UI frame generation to reduce client-side bandwidth and CPU overhead in grid views.
+- **Adaptive Streaming**: Automatically switches between high-performance WebCodecs (H.264), optimized Sub-Streams, and compatible JPEG polling fallback.

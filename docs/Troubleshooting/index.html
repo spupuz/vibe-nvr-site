@@ -779,6 +779,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#high-cpu-usage-ui-lag-in-grid-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐢 High CPU Usage / UI Lag in Grid View
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#reporting-bugs" class="md-nav__link">
     <span class="md-ellipsis">
       🐛 Reporting Bugs
@@ -924,6 +933,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#high-cpu-usage-ui-lag-in-grid-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐢 High CPU Usage / UI Lag in Grid View
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#reporting-bugs" class="md-nav__link">
     <span class="md-ellipsis">
       🐛 Reporting Bugs
@@ -985,6 +1003,11 @@
 1. Ensure your browser supports <strong>WebCodecs API</strong> (Chrome/Edge 94+).
 2. Check for <strong>Secure Context</strong> (HTTPS or localhost).
 3. If the stream stalls, the frontend jitter buffer should smooth it out automatically.</p>
+<hr />
+<h3 id="high-cpu-usage-ui-lag-in-grid-view">🐢 High CPU Usage / UI Lag in Grid View</h3>
+<p>If the browser or host CPU spikes when viewing multiple cameras:
+1. <strong>Enable Dual-Stream</strong>: Configure a low-resolution sub-stream for your cameras. the UI grid will automatically prioritize the sub-stream, saving massive amounts of bandwidth and decoding power.
+2. <strong>Check FPS Throttle</strong>: Increase <code>opt_live_view_fps_throttle</code> in Global Settings to reduce the frequency of MJPEG fallback frames.</p>
 <hr />
 <h3 id="reporting-bugs">🐛 Reporting Bugs</h3>
 <p>If you encounter a bug, please open an issue on GitHub.

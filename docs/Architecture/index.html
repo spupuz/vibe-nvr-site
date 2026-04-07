@@ -1005,7 +1005,8 @@
 <h2 id="performance-optimization">⚡ Performance Optimization</h2>
 <ul>
 <li><strong>Passthrough Recording</strong>: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.</li>
-<li><strong>Adaptive Streaming</strong>: Automatically switches between high-performance WebCodecs (H.264) and compatible JPEG polling based on browser support and connection quality.</li>
+<li><strong>Dual-Stream Handling</strong>: The Engine initializes independent <code>StreamReader</code> instances for main and sub-streams. Sub-streams are prioritized for UI frame generation to reduce client-side bandwidth and CPU overhead in grid views.</li>
+<li><strong>Adaptive Streaming</strong>: Automatically switches between high-performance WebCodecs (H.264), optimized Sub-Streams, and compatible JPEG polling fallback.</li>
 </ul>
 
 
