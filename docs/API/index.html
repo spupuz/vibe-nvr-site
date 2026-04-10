@@ -1090,15 +1090,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#using-shared-url-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Shared URL (Media)
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1715,15 +1706,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#using-shared-url-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Shared URL (Media)
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1840,6 +1822,12 @@
 <span class="w">  </span><span class="nt">&quot;is_active&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </code></pre></div></p>
+<blockquote>
+<p>[!TIP]
+<strong>Optional Sub-Streaming</strong>: The <code>sub_rtsp_url</code> is completely optional. If left empty, the NVR will simply use the main <code>rtsp_url</code> for live previews and grid views. Configuring a sub-stream is recommended only for high-resolution cameras to optimize dashboard performance.</p>
+<p>[!NOTE]
+<strong>GUI Security</strong>: Starting from <strong>v1.25.3</strong>, the frontend automatically redacts passwords in the <code>rtsp_url</code> and <code>sub_rtsp_url</code> fields (displayed as <code>********</code>). Full URLs pasted into these fields are automatically parsed and their credentials moved to the separate Username/Password fields.</p>
+</blockquote>
 <h4 id="put-camerascamera_id"><strong>PUT</strong> <code>/cameras/{camera_id}</code></h4>
 <p>Update an existing camera configuration. Fields are optional (only provided fields are updated).
 - <strong>Auth Required</strong>: Admin privileges.</p>
@@ -1997,11 +1985,9 @@
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;http://localhost:8080/stats&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">     </span>-H<span class="w"> </span><span class="s2">&quot;X-API-Key: YOUR_VIBENVR_API_KEY&quot;</span>
 </code></pre></div>
-<h3 id="using-shared-url-media">Using Shared URL (Media)</h3>
-<p>Media access is now secured via cookies. Browser-based requests (like <code>&lt;img&gt;</code> tags) work automatically after login.
-<em>(Current Version: v1.26.0)</em>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://localhost:8080/media/Camera1/2026-02-21/snap.jpg&quot;</span> <span class="p">/&gt;</span>
-</code></pre></div></p>
+<p><img src="http://localhost:8080/media/Camera1/2026-02-21/snap.jpg" />
+```</p>
+<p><em>(Current Version: v1.25.3)</em></p>
 <hr />
 <blockquote>
 <p>[!TIP]

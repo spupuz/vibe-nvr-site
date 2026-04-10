@@ -116,6 +116,12 @@ Create a new camera configuration.
   }
   ```
 
+> [!TIP]
+> **Optional Sub-Streaming**: The `sub_rtsp_url` is completely optional. If left empty, the NVR will simply use the main `rtsp_url` for live previews and grid views. Configuring a sub-stream is recommended only for high-resolution cameras to optimize dashboard performance.
+
+> [!NOTE]
+> **GUI Security**: Starting from **v1.25.3**, the frontend automatically redacts passwords in the `rtsp_url` and `sub_rtsp_url` fields (displayed as `********`). Full URLs pasted into these fields are automatically parsed and their credentials moved to the separate Username/Password fields.
+
 #### **PUT** `/cameras/{camera_id}`
 Update an existing camera configuration. Fields are optional (only provided fields are updated).
 - **Auth Required**: Admin privileges.
@@ -320,12 +326,10 @@ curl -X GET "http://localhost:8080/stats" \
      -H "X-API-Key: YOUR_VIBENVR_API_KEY"
 ```
 
-### Using Shared URL (Media)
-Media access is now secured via cookies. Browser-based requests (like `<img>` tags) work automatically after login.
-*(Current Version: v1.26.0)*
-```html
 <img src="http://localhost:8080/media/Camera1/2026-02-21/snap.jpg" />
 ```
+
+*(Current Version: v1.25.3)*
 
 ---
 

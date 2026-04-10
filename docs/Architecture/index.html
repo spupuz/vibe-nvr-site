@@ -1006,6 +1006,7 @@
 <ul>
 <li><strong>Passthrough Recording</strong>: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.</li>
 <li><strong>Dual-Stream Handling</strong>: The Engine initializes independent <code>StreamReader</code> instances for main and sub-streams. Sub-streams are prioritized for UI frame generation to reduce client-side bandwidth and CPU overhead in grid views.</li>
+<li><strong>Fallback Logic</strong>: If a sub-stream is not configured (optional), the Engine automatically falls back to the main stream reader for all operations, including live UI frames.</li>
 <li><strong>Adaptive Streaming</strong>: Automatically switches between high-performance WebCodecs (H.264), optimized Sub-Streams, and compatible JPEG polling fallback.</li>
 </ul>
 
