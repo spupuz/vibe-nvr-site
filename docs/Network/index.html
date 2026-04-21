@@ -415,6 +415,57 @@
   
   
     <li class="md-tabs__item">
+      <a href="../ONVIF-Management/" class="md-tabs__link">
+        
+  
+    
+  
+  ONVIF Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Camera-Settings/" class="md-tabs__link">
+        
+  
+    
+  
+  Camera Settings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MFA-Trusted-Devices/" class="md-tabs__link">
+        
+  
+    
+  
+  MFA Trusted Devices
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../UniFi-Protect/" class="md-tabs__link">
         
   
@@ -603,6 +654,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#browser-security-headers-v1254" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Browser Security Headers (v1.25.4+)
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -786,6 +846,69 @@
   
   
     <li class="md-nav__item">
+      <a href="../ONVIF-Management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ONVIF Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Camera-Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camera Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MFA-Trusted-Devices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MFA Trusted Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../UniFi-Protect/" class="md-nav__link">
         
   
@@ -848,6 +971,15 @@
   <a href="#reverse-proxy-configuration-for-websockets" class="md-nav__link">
     <span class="md-ellipsis">
       🔄 Reverse Proxy Configuration for WebSockets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#browser-security-headers-v1254" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Browser Security Headers (v1.25.4+)
     </span>
   </a>
   
@@ -945,6 +1077,44 @@ COOKIE_SECURE=true
 <li><strong>Nginx Proxy Manager:</strong> Edit your Proxy Host, go to the <strong>Details</strong> tab, and toggle the <strong>"Websockets Support"</strong> switch to ON.</li>
 <li><strong>Caddy / Traefik:</strong> WebSockets are supported automatically by default.</li>
 </ul>
+<hr />
+<h2 id="browser-security-headers-v1254">🔒 Browser Security Headers (v1.25.4+)</h2>
+<p>Starting from version <strong>v1.25.4</strong>, VibeNVR includes standard browser security headers served by the internal Nginx frontend. These provide an extra layer of defense against common web vulnerabilities.</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Value</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>X-Frame-Options</strong></td>
+<td><code>SAMEORIGIN</code></td>
+<td>Prevents Clickjacking by restricting embedding.</td>
+</tr>
+<tr>
+<td><strong>X-Content-Type-Options</strong></td>
+<td><code>nosniff</code></td>
+<td>Prevents MIME-type sniffing.</td>
+</tr>
+<tr>
+<td><strong>Referrer-Policy</strong></td>
+<td><code>strict-origin-when-cross-origin</code></td>
+<td>Protects privacy when navigating to external links.</td>
+</tr>
+<tr>
+<td><strong>Content-Security-Policy-Report-Only</strong></td>
+<td><em>(Strict)</em></td>
+<td>Mitigates XSS. See <a href="SECURITY.md">SECURITY.md</a> for details.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!NOTE]
+<strong>Custom Proxies</strong>: If you are using an external reverse proxy (like Nginx Proxy Manager or Traefik), you do <strong>not</strong> need to manually add these headers to your proxy configuration, as they are already served by the internal VibeNVR frontend and passed through by your proxy.</p>
+</blockquote>
 
 
 

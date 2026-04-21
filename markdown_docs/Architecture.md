@@ -23,6 +23,7 @@ The dedicated video processing service. This is the "heavy lifter" of the system
 - **Image Processing**: Leverages **OpenCV (cv2)** for motion detection analysis, text overlays, and dynamic JPEG encoding for legacy previews.
 - **Modular Design**: The engine core is highly modularized (`stream_reader`, `motion_detector`, `recording_manager`, `mask_handler`, `overlay_handler`) for maximum stability.
 - **Security**: Communicates via internal Docker networks and requires a shared `WEBHOOK_SECRET` for backend interaction.
+- **Decoupled Detection**: Supports both server-side pixel analysis (OpenCV) and hardware-side edge event handling (ONVIF PullPoint). The detection engine is logically decoupled from the activation schedule (Always, Scheduled, Manual), allowing for hybrid configurations.
 
 ### 4. Database (PostgreSQL)
 Uses **PostgreSQL 15** for reliable storage of all persistent data, including camera configurations, user settings, and the event timeline.
@@ -43,9 +44,19 @@ VibeNVR implements a "Security by Design" approach:
 
 ---
 
+## 🧼 Development Hygiene & Build Isolation
+
+VibeNVR enforces strict isolation between development artifacts and production assets:
+- **Build Hygiene**: Every Docker context is isolated via rigorous `.dockerignore` files, ensuring no `venv`, `__pycache__`, or `node_modules` leak into the ultra-lean (~1GB) production images.
+- **Repository Integrity**: The project uses recursive `.gitignore` policies to ensure all local management scripts and temporary artifacts remain local-only and are never tracked by Git.
+- **Automated Assurance**: Every build is verified against a custom security and hygiene auditor to maintain these standards.
+
+---
+
 ## ⚡ Performance Optimization
 
 - **Passthrough Recording**: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.
 - **Dual-Stream Handling**: The Engine initializes independent `StreamReader` instances for main and sub-streams. Sub-streams are prioritized for UI frame generation to reduce client-side bandwidth and CPU overhead in grid views.
 - **Fallback Logic**: If a sub-stream is not configured (optional), the Engine automatically falls back to the main stream reader for all operations, including live UI frames.
 - **Adaptive Streaming**: Automatically switches between high-performance WebCodecs (H.264), optimized Sub-Streams, and compatible JPEG polling fallback.
+- **Live Audio**: Implements low-latency audio streaming using browser WebCodecs (PCM ALAW/ULAW). The Engine performs secure authentication and direct passthrough of G.711 streams to the client, minimizing backend CPU overhead and ensuring perfect AV synchronization.

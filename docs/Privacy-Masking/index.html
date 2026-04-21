@@ -415,6 +415,57 @@
   
   
     <li class="md-tabs__item">
+      <a href="../ONVIF-Management/" class="md-tabs__link">
+        
+  
+    
+  
+  ONVIF Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Camera-Settings/" class="md-tabs__link">
+        
+  
+    
+  
+  Camera Settings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MFA-Trusted-Devices/" class="md-tabs__link">
+        
+  
+    
+  
+  MFA Trusted Devices
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../UniFi-Protect/" class="md-tabs__link">
         
   
@@ -786,6 +837,69 @@
   
   
     <li class="md-nav__item">
+      <a href="../ONVIF-Management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ONVIF Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Camera-Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camera Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MFA-Trusted-Devices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MFA Trusted Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../UniFi-Protect/" class="md-nav__link">
         
   
@@ -875,7 +989,7 @@
 <p>Privacy Masks are used to permanently black out specific areas of the camera feed. </p>
 <ul>
 <li><strong>Permanent</strong>: Masks are "burned" into the video frames at the engine level.</li>
-<li><strong>Security</strong>: When a Privacy Mask is active, <strong>Passthrough Recording is automatically disabled</strong>. This ensures that the mask cannot be bypassed by recording the raw stream.</li>
+<li><strong>Security</strong>: When a Privacy Mask is active, <strong>Passthrough Recording is automatically disabled</strong> (both at the engine and UI level). This ensures that the mask cannot be bypassed by recording the raw stream and gives clear visual feedback in the configuration interface.</li>
 <li><strong>Affects Everything</strong>: The masked areas will appear black in Live View, Snapshots, and all Recordings.</li>
 <li><strong>Motion Detection</strong>: Privacy masks also prevent motion triggers in those areas.</li>
 </ul>
@@ -884,6 +998,7 @@
 <ul>
 <li><strong>Exclusion Only</strong>: These zones do NOT obscure the video. The areas remain fully visible in recordings and live view.</li>
 <li><strong>False Trigger Reduction</strong>: Use this to ignore trees blowing in the wind, busy roads, or other areas with constant motion that you don't want to trigger alerts for.</li>
+<li><strong>ONVIF Edge Note</strong>: If you select <strong>ONVIF Edge</strong> as your detection engine, the Motion Zones tab will be automatically hidden, as the camera's hardware handles exclusion logic natively on its sensor.</li>
 </ul>
 <h2 id="how-to-configure">How to Configure</h2>
 <ol>

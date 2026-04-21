@@ -415,6 +415,57 @@
   
   
     <li class="md-tabs__item">
+      <a href="../ONVIF-Management/" class="md-tabs__link">
+        
+  
+    
+  
+  ONVIF Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Camera-Settings/" class="md-tabs__link">
+        
+  
+    
+  
+  Camera Settings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MFA-Trusted-Devices/" class="md-tabs__link">
+        
+  
+    
+  
+  MFA Trusted Devices
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../UniFi-Protect/" class="md-tabs__link">
         
   
@@ -772,6 +823,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#development-hygiene-build-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧼 Development Hygiene &amp; Build Isolation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#performance-optimization" class="md-nav__link">
     <span class="md-ellipsis">
       ⚡ Performance Optimization
@@ -821,6 +881,69 @@
   
   <span class="md-ellipsis">
     Backups and Restoration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ONVIF-Management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ONVIF Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Camera-Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camera Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MFA-Trusted-Devices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MFA Trusted Devices
     
   </span>
   
@@ -947,6 +1070,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#development-hygiene-build-isolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧼 Development Hygiene &amp; Build Isolation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#performance-optimization" class="md-nav__link">
     <span class="md-ellipsis">
       ⚡ Performance Optimization
@@ -988,7 +1120,8 @@
 - <strong>Stream Ingestion</strong>: Uses <strong>PyAV</strong> (native FFmpeg bindings) for robust RTSP connection management and packet demuxing.
 - <strong>Image Processing</strong>: Leverages <strong>OpenCV (cv2)</strong> for motion detection analysis, text overlays, and dynamic JPEG encoding for legacy previews.
 - <strong>Modular Design</strong>: The engine core is highly modularized (<code>stream_reader</code>, <code>motion_detector</code>, <code>recording_manager</code>, <code>mask_handler</code>, <code>overlay_handler</code>) for maximum stability.
-- <strong>Security</strong>: Communicates via internal Docker networks and requires a shared <code>WEBHOOK_SECRET</code> for backend interaction.</p>
+- <strong>Security</strong>: Communicates via internal Docker networks and requires a shared <code>WEBHOOK_SECRET</code> for backend interaction.
+- <strong>Decoupled Detection</strong>: Supports both server-side pixel analysis (OpenCV) and hardware-side edge event handling (ONVIF PullPoint). The detection engine is logically decoupled from the activation schedule (Always, Scheduled, Manual), allowing for hybrid configurations.</p>
 <h3 id="4-database-postgresql">4. Database (PostgreSQL)</h3>
 <p>Uses <strong>PostgreSQL 15</strong> for reliable storage of all persistent data, including camera configurations, user settings, and the event timeline.</p>
 <h3 id="5-telemetry-worker-cloudflare-edge">5. Telemetry Worker (Cloudflare Edge)</h3>
@@ -1002,12 +1135,19 @@
 - <strong>Token Scoping</strong>: API tokens can be created with specific TTLs and limited permissions.
 - <strong>Reverse Proxy Ready</strong>: Built to work seamlessly behind Nginx Proxy Manager or Traefik with full WebSocket support.</p>
 <hr />
+<h2 id="development-hygiene-build-isolation">🧼 Development Hygiene &amp; Build Isolation</h2>
+<p>VibeNVR enforces strict isolation between development artifacts and production assets:
+- <strong>Build Hygiene</strong>: Every Docker context is isolated via rigorous <code>.dockerignore</code> files, ensuring no <code>venv</code>, <code>__pycache__</code>, or <code>node_modules</code> leak into the ultra-lean (~1GB) production images.
+- <strong>Repository Integrity</strong>: The project uses recursive <code>.gitignore</code> policies to ensure all local management scripts and temporary artifacts remain local-only and are never tracked by Git.
+- <strong>Automated Assurance</strong>: Every build is verified against a custom security and hygiene auditor to maintain these standards.</p>
+<hr />
 <h2 id="performance-optimization">⚡ Performance Optimization</h2>
 <ul>
 <li><strong>Passthrough Recording</strong>: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.</li>
 <li><strong>Dual-Stream Handling</strong>: The Engine initializes independent <code>StreamReader</code> instances for main and sub-streams. Sub-streams are prioritized for UI frame generation to reduce client-side bandwidth and CPU overhead in grid views.</li>
 <li><strong>Fallback Logic</strong>: If a sub-stream is not configured (optional), the Engine automatically falls back to the main stream reader for all operations, including live UI frames.</li>
 <li><strong>Adaptive Streaming</strong>: Automatically switches between high-performance WebCodecs (H.264), optimized Sub-Streams, and compatible JPEG polling fallback.</li>
+<li><strong>Live Audio</strong>: Implements low-latency audio streaming using browser WebCodecs (PCM ALAW/ULAW). The Engine performs secure authentication and direct passthrough of G.711 streams to the client, minimizing backend CPU overhead and ensuring perfect AV synchronization.</li>
 </ul>
 
 

@@ -88,9 +88,16 @@ List all configured cameras.
     "resolution_height": 1080,
     "recording_mode": "Motion Triggered",
     "sub_rtsp_url": "rtsp://192.168.1.10:554/sub",
+    "rtsp_transport": "tcp",
     "sub_rtsp_transport": "udp",
+    "live_view_mode": "webcodecs",
+    "detect_motion_mode": "ONVIF Edge",
     "privacy_masks": "[{\"points\":[...]}]",
-    "motion_masks": "[]"
+    "motion_masks": "[]",
+    "onvif_host": "192.168.1.10",
+    "onvif_port": 80,
+    "onvif_username": "admin",
+    "onvif_profile_token": "Profile_1"
   }
 ]
 ```
@@ -112,6 +119,8 @@ Create a new camera configuration.
     "rtsp_transport": "tcp",
     "sub_rtsp_url": "rtsp://admin:pass@192.168.1.10:554/sub",
     "sub_rtsp_transport": "udp",
+    "live_view_mode": "webcodecs",
+    "detect_motion_mode": "ONVIF Edge",
     "is_active": true
   }
   ```
@@ -134,7 +143,30 @@ Delete a camera and its associated configuration (recordings are kept unless man
 Trigger a manual snapshot.
 - **Auth Required**: Admin privileges.
 
+---
 
+### 🧠 Motion Detection Engines
+
+VibeNVR supports two primary motion detection engines, configurable per-camera:
+
+1.  **OpenCV (Server-side)**: Default. The VibeEngine decodes the video stream and performs pixel-based motion analysis. Use this for cameras without ONVIF support.
+2.  **ONVIF Edge (Camera-side)**: Recommended. Offloads motion analysis to the camera's hardware. VibeNVR subscribes to ONVIF PullPoint events and triggers recording only when the camera reports motion.
+    - **Note**: When `ONVIF Edge` is selected, server-side sensitivity settings (Threshold, Despeckle) and local Motion Exclusion Zones are bypassed in favor of the camera's internal configuration.
+ 
+---
+ 
+### ⚙️ Engine Synchronization
+VibeNVR v1.26.0+ features advanced, real-time configuration synchronization between the Backend and the Video Engine. This ensures that critical streaming parameters are applied without restarting processing threads.
+ 
+#### **Synchronized Fields**
+The following fields are transmitted to the engine in real-time upon camera update:
+- `rtsp_transport`: (tcp/udp) Main stream protocol.
+- `sub_rtsp_transport`: (tcp/udp) Sub-stream protocol.
+- `live_view_mode`: (webcodecs/mjpeg) UI rendering engine.
+- `detect_motion_mode`: (OpenCV/ONVIF Edge) Trigger source.
+- `audio_enabled`: (bool) Hardware audio support toggle.
+- `enable_audio`: (bool) Live audio transmission toggle.
+ 
 ---
 
 ### 🔔 Events (`/events`)
@@ -308,6 +340,68 @@ Retrieve the real-time runtime status of the video engine (Admin only).
 
 ---
 
+### 🎮 ONVIF & PTZ (`/onvif`)
+
+#### **POST** `/onvif/probe`
+Full probe of a specific device to retrieve manufacturer, model, and available RTSP profiles.
+- **Auth Required**: Admin privileges.
+- **Payload**:
+  ```json
+  {
+    "ip": "192.168.1.100",
+    "port": 80,
+    "user": "admin",
+    "password": "password123"
+  }
+  ```
+
+#### **POST** `/onvif/ptz/move/{camera_id}`
+Trigger continuous PTZ movement for a specific camera.
+- **Auth Required**: Admin privileges.
+- **Payload**:
+  ```json
+  {
+    "pan": 1.0,
+    "tilt": -0.5,
+    "zoom": 0.0
+  }
+  ```
+
+#### **POST** `/onvif/ptz/stop/{camera_id}`
+Stop all currently active PTZ movements for a specific camera.
+- **Auth Required**: Admin privileges.
+
+#### **POST /api/onvif/ptz/probe-features/{camera_id}**
+Manually trigger a deep capability discovery for a camera. This updates `ptz_can_pan_tilt`, `ptz_can_zoom`, and `ptz_can_home` flags in the database based on the camera's actual ONVIF space definitions and present presets.
+- **Usage**: Use this if PTZ buttons are missing or incorrectly displayed after a firmware update or camera replacement.
+- **Auth Required**: Admin privileges.
+
+#### **POST /api/onvif/ptz/goto-home/{camera_id}**
+Move the camera to its defined Home position.
+- **Resilience**: Automatically falls back to presets named "Home" or "1" if native ONVIF GotoHomePosition is rejected.
+- **Auth Required**: Admin privileges.
+
+#### **POST /api/onvif/ptz/set-home/{camera_id}**
+Save the current camera position as the Home position.
+- **Resilience**: 3-stage fallback: 1. Native SetHomePosition, 2. Update existing "Home"/"1" preset, 3. Create a new "Home" preset.
+- **Auth Required**: Admin privileges.
+
+#### **GET** `/onvif/ptz/presets/{camera_id}`
+Retrieve the list of hardware-defined PTZ presets from the camera.
+- **Auth Required**: Admin privileges.
+- **Response**: List of preset tokens and names.
+
+#### **GET** `/onvif/scan/stream`
+Securely scan a network range for ONVIF and RTSP devices. Returns a Server-Sent Events (SSE) stream.
+- **Query Params**:
+  - `ip_range`: CIDR (e.g., `192.168.1.0/24`) or Range (e.g., `192.168.1.1-50`).
+- **Headers**:
+  - `X-Scanner-User`: Base username to attempt during probe.
+  - `X-Scanner-Password`: Base password to attempt during probe.
+- **Auth Required**: Admin privileges.
+
+---
+
 ## 🔗 Integration Examples
 
 ### Python (using Bearer Token)
@@ -329,7 +423,7 @@ curl -X GET "http://localhost:8080/stats" \
 <img src="http://localhost:8080/media/Camera1/2026-02-21/snap.jpg" />
 ```
 
-*(Current Version: v1.25.3)*
+*(Current Version: v1.27.0)*
 
 ---
 

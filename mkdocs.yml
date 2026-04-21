@@ -46,6 +46,9 @@ nav:
   - System Architecture: Architecture.md
   - Troubleshooting: Troubleshooting.md
   - Backups and Restoration: Backups.md
+  - ONVIF Management: ONVIF-Management.md
+  - Camera Settings: Camera-Settings.md
+  - MFA Trusted Devices: MFA-Trusted-Devices.md
   - UniFi Integration: UniFi-Protect.md
 
 extra:

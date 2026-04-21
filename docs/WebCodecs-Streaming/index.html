@@ -415,6 +415,57 @@
   
   
     <li class="md-tabs__item">
+      <a href="../ONVIF-Management/" class="md-tabs__link">
+        
+  
+    
+  
+  ONVIF Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Camera-Settings/" class="md-tabs__link">
+        
+  
+    
+  
+  Camera Settings
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MFA-Trusted-Devices/" class="md-tabs__link">
+        
+  
+    
+  
+  MFA Trusted Devices
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../UniFi-Protect/" class="md-tabs__link">
         
   
@@ -633,6 +684,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#audio-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎙️ Audio Synchronization
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -795,6 +855,69 @@
   
   
     <li class="md-nav__item">
+      <a href="../ONVIF-Management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ONVIF Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Camera-Settings/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camera Settings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MFA-Trusted-Devices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MFA Trusted Devices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../UniFi-Protect/" class="md-nav__link">
         
   
@@ -866,6 +989,15 @@
   <a href="#streaming-mode-selection" class="md-nav__link">
     <span class="md-ellipsis">
       ⚙️ Streaming Mode Selection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-synchronization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎙️ Audio Synchronization
     </span>
   </a>
   
@@ -943,6 +1075,12 @@
     - <strong>Auto</strong>: Optimal performance with WebCodecs fallback.
     - <strong>Force WebCodecs</strong>: Explicit H.264.
     - <strong>Force JPEG Polling</strong>: Legacy approach for maximum compatibility.</p>
+<hr />
+<h2 id="audio-synchronization">🎙️ Audio Synchronization</h2>
+<p>VibeNVR muxes video and audio packets into a single WebSocket stream. To ensure a low-latency experience:
+- <strong>Auto-Sync</strong>: The player monitors the drift between video frames and audio playback.
+- <strong>Drift Correction</strong>: If the audio lag exceeds <strong>300ms</strong> (common after network spikes), the buffer is automatically reset to "jump" the audio back into perfect sync with the video.
+- <strong>A-law Support</strong>: Native G.711 A-law decoding is handled client-side for immediate playback without backend transcoding latency.</p>
 
 
 
