@@ -432,6 +432,40 @@
   
   
     <li class="md-tabs__item">
+      <a href="../AI-Detection/" class="md-tabs__link">
+        
+  
+    
+  
+  AI Detection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MQTT-Integration/" class="md-tabs__link">
+        
+  
+    
+  
+  MQTT Integration
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../Camera-Settings/" class="md-tabs__link">
         
   
@@ -1136,6 +1170,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#global-settings-keys-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Settings Keys (/settings)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1391,6 +1434,48 @@
   
   <span class="md-ellipsis">
     ONVIF Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI-Detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Detection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MQTT-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Integration
     
   </span>
   
@@ -1935,6 +2020,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#global-settings-keys-settings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global Settings Keys (/settings)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2355,6 +2449,16 @@
 <p>Retrieve the real-time runtime status of the video engine (Admin only).
 - <strong>Usage</strong>: Diagnostic tool to verify mask synchronization and thread health.
 - <strong>Response</strong>: Map of camera IDs to their engine state.</p>
+<h4 id="global-settings-keys-settings"><strong>Global Settings Keys (<code>/settings</code>)</strong></h4>
+<p>Commonly used keys for <code>/settings/{key}</code>:
+- <code>mqtt_enabled</code>: (<code>true</code>/<code>false</code>)
+- <code>mqtt_host</code>: Broker IP/Hostname
+- <code>mqtt_port</code>: Broker Port (Default: 1883)
+- <code>mqtt_username</code>: Auth Username
+- <code>mqtt_password</code>: Auth Password
+- <code>mqtt_topic_prefix</code>: Root topic (Default: <code>vibenvr</code>)
+- <code>telemetry_enabled</code>: (<code>true</code>/<code>false</code>)
+- <code>notify_webhook_url</code>: Global endpoint for notifications</p>
 <hr />
 <h3 id="onvif-ptz-onvif">🎮 ONVIF &amp; PTZ (<code>/onvif</code>)</h3>
 <h4 id="post-onvifprobe"><strong>POST</strong> <code>/onvif/probe</code></h4>

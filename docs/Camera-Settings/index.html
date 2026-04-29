@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../ONVIF-Management/">
+        <link rel="prev" href="../MQTT-Integration/">
       
       
         <link rel="next" href="../MFA-Trusted-Devices/">
@@ -428,6 +428,40 @@
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../AI-Detection/" class="md-tabs__link">
+        
+  
+    
+  
+  AI Detection
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../MQTT-Integration/" class="md-tabs__link">
+        
+  
+    
+  
+  MQTT Integration
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
     
   
   
@@ -787,6 +821,48 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../AI-Detection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AI Detection
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MQTT-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MQTT Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -922,9 +998,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#edge-motion-visual-feedback" class="md-nav__link">
+  <a href="#edge-motion-ai-motion-visual-feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      Edge Motion Visual Feedback
+      Edge Motion &amp; AI Motion Visual Feedback
     </span>
   </a>
   
@@ -1133,9 +1209,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#edge-motion-visual-feedback" class="md-nav__link">
+  <a href="#edge-motion-ai-motion-visual-feedback" class="md-nav__link">
     <span class="md-ellipsis">
-      Edge Motion Visual Feedback
+      Edge Motion &amp; AI Motion Visual Feedback
     </span>
   </a>
   
@@ -1257,12 +1333,42 @@
 <li><strong>Live View Mode</strong>: Global preference for WebCodecs (WebSocket/H.264) vs MJPEG fallback.</li>
 </ul>
 <p>These settings are applied in real-time when the camera configuration is saved.</p>
-<h2 id="edge-motion-visual-feedback">Edge Motion Visual Feedback</h2>
-<p>When a camera is configured for <strong>ONVIF Edge</strong> motion detection, the system provides specialized feedback in the <strong>Live View</strong>:</p>
+<h2 id="edge-motion-ai-motion-visual-feedback">Edge Motion &amp; AI Motion Visual Feedback</h2>
+<p>VibeNVR supports three detection engines, each with dedicated Live View feedback:</p>
+<table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>Badge Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenCV</strong></td>
+<td><code>MOTION</code></td>
+<td>Classical background subtraction (MOG2). Fast, no hardware required.</td>
+</tr>
+<tr>
+<td><strong>ONVIF Edge</strong></td>
+<td><code>EDGE MOTION</code></td>
+<td>Motion events triggered by the camera hardware via ONVIF protocol.</td>
+</tr>
+<tr>
+<td><strong>AI</strong></td>
+<td><code>AI MOTION</code></td>
+<td>TFLite object recognition (MobileNet SSD COCO) on CPU or Coral TPU.</td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li><strong>Dynamic Labeling</strong>: During active motion, the standard red badge will display <code>EDGE MOTION</code> instead of the generic <code>MOTION</code> text.</li>
-<li><strong>Noise Reduction</strong>: The static indigo <code>EDGE</code> indicator is suppressed in the Live View to provide a cleaner monitoring experience, appearing only as part of the dynamic motion pulse.</li>
+<li><strong>Dynamic Labeling</strong>: The red pulsing badge in Live View automatically reflects the active engine.</li>
+<li><strong>Noise Reduction</strong>: The static indigo <code>EDGE</code> indicator is suppressed in Live View to provide a cleaner monitoring experience when ONVIF edge detection is active.</li>
 </ul>
+<blockquote>
+<p>[!TIP]
+For full documentation on setting up <strong>AI detection</strong> with a <strong>Google Coral Edge TPU</strong>, including Docker Compose configuration and Proxmox LXC USB passthrough, see the dedicated <strong><a href="../AI-Detection/">AI Object Detection Guide</a></strong>.</p>
+</blockquote>
 <hr />
 <h2 id="pro-tips">💡 Pro Tips</h2>
 <h3 id="scaling-privacy-masks">Scaling Privacy Masks</h3>
@@ -1309,7 +1415,7 @@ While masks scale correctly, the physical FOV (Field of View) might differ betwe
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../ONVIF-Management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ONVIF Management">
+          <a href="../MQTT-Integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MQTT Integration">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1319,7 +1425,7 @@ While masks scale correctly, the physical FOV (Field of View) might differ betwe
                 Previous
               </span>
               <div class="md-ellipsis">
-                ONVIF Management
+                MQTT Integration
               </div>
             </div>
           </a>

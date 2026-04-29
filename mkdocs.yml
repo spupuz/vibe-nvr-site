@@ -47,6 +47,8 @@ nav:
   - Troubleshooting: Troubleshooting.md
   - Backups and Restoration: Backups.md
   - ONVIF Management: ONVIF-Management.md
+  - AI Detection: AI-Detection.md
+  - MQTT Integration: MQTT-Integration.md
   - Camera Settings: Camera-Settings.md
   - MFA Trusted Devices: MFA-Trusted-Devices.md
   - UniFi Integration: UniFi-Protect.md
