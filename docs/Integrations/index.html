@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Network/">
+        <link rel="prev" href="../MQTT-Integration/">
       
       
-        <link rel="next" href="../Storage-Profiles/">
+        <link rel="next" href="../Camera-Settings/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>WebCodecs Streaming - VibeNVR Documentation</title>
+        <title>External Integrations - VibeNVR Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#live-view-webcodecs-h264-streaming" class="md-skip">
+        <a href="#api-third-party-integrations" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              WebCodecs Streaming
+              External Integrations
             
           </span>
         </div>
@@ -275,11 +275,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../WebCodecs-Streaming/" class="md-tabs__link">
         
   
     
@@ -464,9 +462,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Integrations/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -649,31 +649,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    WebCodecs Streaming
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../WebCodecs-Streaming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -683,71 +662,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-verify-webcodecs-is-active" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔍 How to verify WebCodecs is active
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#browser-compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌐 Browser Compatibility
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secure-context-requirement" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Secure Context Requirement
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#streaming-mode-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚙️ Streaming Mode Selection
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#audio-synchronization" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎙️ Audio Synchronization
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -966,10 +880,31 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Integrations/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    External Integrations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -979,6 +914,125 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#homepage-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏠 Homepage Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏠 Homepage Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-an-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Obtaining an API Key
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#home-assistant-mqtt" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 Home Assistant (MQTT)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 Home Assistant (MQTT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#available-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Available Entities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ REST API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ REST API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Authentication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1073,47 +1127,101 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-verify-webcodecs-is-active" class="md-nav__link">
+  <a href="#homepage-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      🔍 How to verify WebCodecs is active
+      🏠 Homepage Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏠 Homepage Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Configuration
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#browser-compatibility" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#obtaining-an-api-key" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 Browser Compatibility
+      🔑 Obtaining an API Key
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#secure-context-requirement" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Secure Context Requirement
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#streaming-mode-selection" class="md-nav__link">
+  <a href="#home-assistant-mqtt" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚙️ Streaming Mode Selection
+      🤖 Home Assistant (MQTT)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 Home Assistant (MQTT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Setup
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#audio-synchronization" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#available-entities" class="md-nav__link">
     <span class="md-ellipsis">
-      🎙️ Audio Synchronization
+      📊 Available Entities
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rest-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ REST API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ REST API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Documentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Authentication
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1133,68 +1241,59 @@
 
 
 
-<h1 id="live-view-webcodecs-h264-streaming">Live View — WebCodecs H.264 Streaming</h1>
-<p>From <strong>v1.21.0</strong>, the Live View page uses the browser's native <strong>WebCodecs API</strong> to display a direct H.264 stream via WebSockets.</p>
+<h1 id="api-third-party-integrations">API &amp; Third-Party Integrations 🔌</h1>
+<p>VibeNVR is designed to be extensible and easily integrated into your existing smart home or dashboard ecosystem.</p>
 <hr />
-<h2 id="how-to-verify-webcodecs-is-active">🔍 How to verify WebCodecs is active</h2>
+<h2 id="homepage-integration">🏠 Homepage Integration</h2>
+<p><a href="https://gethomepage.dev/">Homepage</a> is a modern, static, semi-automated dashboard. VibeNVR provides a compatible API endpoint for the <code>customapi</code> widget.</p>
+<h3 id="configuration">⚙️ Configuration</h3>
+<p>Add the following to your <code>services.yaml</code> in Homepage:</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">VibeNVR</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mdi-cctv</span>
+<span class="w">    </span><span class="nt">href</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://your-vibenvr-ip:8080/</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Video Surveillance</span>
+<span class="w">    </span><span class="nt">widget</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">customapi</span>
+<span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://your-vibenvr-ip:8080/api/v1/homepage/stats</span>
+<span class="w">      </span><span class="nt">headers</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">X-API-Key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;your-api-token-here&quot;</span><span class="w">  </span><span class="c1"># Found in Settings -&gt; General</span>
+<span class="w">      </span><span class="nt">method</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GET</span>
+<span class="w">      </span><span class="nt">mappings</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> field</span><span class="p">:</span><span class="w"> </span><span class="nv">cameras_online</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span><span class="w"> </span><span class="nv">Online</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> field</span><span class="p">:</span><span class="w"> </span><span class="nv">cameras_recording</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span><span class="w"> </span><span class="nv">Recording</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> field</span><span class="p">:</span><span class="w"> </span><span class="nv">events_today</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span><span class="w"> </span><span class="nv">Events (24h)</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> field</span><span class="p">:</span><span class="w"> </span><span class="nv">storage_used_gb</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span><span class="w"> </span><span class="nv">Storage (GB)</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> field</span><span class="p">:</span><span class="w"> </span><span class="nv">storage_total_gb</span><span class="p p-Indicator">,</span><span class="nt"> label</span><span class="p">:</span><span class="w"> </span><span class="nv">Total Disk (GB)</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</code></pre></div>
+<h3 id="obtaining-an-api-key">🔑 Obtaining an API Key</h3>
+<p>Navigate to <strong>Settings -&gt; General</strong> in the VibeNVR UI. Your API key is unique to your installation and should be kept private.</p>
+<hr />
+<h2 id="home-assistant-mqtt">🤖 Home Assistant (MQTT)</h2>
+<p>VibeNVR supports <strong>MQTT Discovery</strong>, meaning it will automatically appear in Home Assistant once the MQTT service is configured.</p>
+<h3 id="setup">⚙️ Setup</h3>
 <ol>
-<li>Open the <strong>Live View</strong> page in a supported browser (Chrome 94+, Edge 94+).</li>
-<li>Hover over any active camera tile. Bottom-left badge: <strong><code>WS / H.264</code></strong> (Green) vs <strong><code>JPEG Poll</code></strong> (Yellow).</li>
-<li>Open <strong>DevTools → Network → WS</strong> to see the binary stream.</li>
+<li>Go to <strong>Settings -&gt; MQTT Service</strong>.</li>
+<li>Enable the service and provide your broker details.</li>
+<li>In Home Assistant, navigate to <strong>Settings -&gt; Devices &amp; Services -&gt; MQTT</strong>.</li>
+<li>You should see a new device for each of your cameras.</li>
 </ol>
+<h3 id="available-entities">📊 Available Entities</h3>
+<ul>
+<li><strong>Binary Sensor</strong>: Motion detection state (<code>ON</code>/<code>OFF</code>).</li>
+<li><strong>Sensor</strong>: Camera status (<code>online</code>/<code>offline</code>).</li>
+<li><strong>Attributes</strong>: JSON metadata containing AI detection results (labels, confidence).</li>
+</ul>
+<p>For more details, see the <strong><a href="../MQTT-Integration/">MQTT Integration Guide</a></strong>.</p>
 <hr />
-<h2 id="browser-compatibility">🌐 Browser Compatibility</h2>
-<table>
-<thead>
-<tr>
-<th>Browser</th>
-<th>WebCodecs Support</th>
-<th>Streaming Mode</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chrome 94+</td>
-<td>✅</td>
-<td>H.264 via WebCodecs</td>
-</tr>
-<tr>
-<td>Edge 94+</td>
-<td>✅</td>
-<td>H.264 via WebCodecs</td>
-</tr>
-<tr>
-<td>Firefox</td>
-<td>❌</td>
-<td>Falls back to MJPEG/JPEG polling</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>Partial</td>
-<td>Falls back to MJPEG/JPEG polling</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="secure-context-requirement">🔒 Secure Context Requirement</h2>
-<p>WebCodecs strictly requires a <strong>Secure Context</strong>:
-1. Access via <strong><code>http://localhost:8080</code></strong>.
-2. Access via <strong><code>https://...</code></strong> (Reverse Proxy).</p>
-<p>Insecure local IP access (<code>http://192.168.x.x</code>) will fall back to JPEG polling.</p>
-<hr />
-<h2 id="streaming-mode-selection">⚙️ Streaming Mode Selection</h2>
-<p>You can override the streaming technology:
-1. <strong>Global Default</strong>: <strong>Settings → General Preferences</strong>.
-2. <strong>Per-Camera</strong>: <strong>Settings → Cameras</strong> -&gt; <code>Live View Mode</code>:
-    - <strong>Auto</strong>: Optimal performance with WebCodecs fallback.
-    - <strong>Force WebCodecs</strong>: Explicit H.264.
-    - <strong>Force JPEG Polling</strong>: Legacy approach for maximum compatibility.</p>
-<hr />
-<h2 id="audio-synchronization">🎙️ Audio Synchronization</h2>
-<p>VibeNVR muxes video and audio packets into a single WebSocket stream. To ensure a low-latency experience:
-- <strong>Auto-Sync</strong>: The player monitors the drift between video frames and audio playback.
-- <strong>Drift Correction</strong>: If the audio lag exceeds <strong>300ms</strong> (common after network spikes), the buffer is automatically reset to "jump" the audio back into perfect sync with the video.
-- <strong>A-law Support</strong>: Native G.711 A-law decoding is handled client-side for immediate playback without backend transcoding latency.</p>
+<h2 id="rest-api">🛠️ REST API</h2>
+<p>For custom scripts or advanced integrations, VibeNVR exposes a full REST API.</p>
+<h3 id="documentation">📚 Documentation</h3>
+<ul>
+<li><strong>Interactive Swagger</strong>: Access <code>/docs</code> on your backend port (default: <code>5005</code>).</li>
+<li><strong>API Reference</strong>: See the <strong><a href="../API/">API.md</a></strong> wiki page for common endpoints.</li>
+</ul>
+<h3 id="authentication">🛡️ Authentication</h3>
+<p>All API requests (except public assets) require a Bearer token or a valid <code>X-API-Key</code> header.</p>
 
 
 
@@ -1230,7 +1329,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Network Setup">
+          <a href="../MQTT-Integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MQTT Integration">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1240,20 +1339,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Network Setup
+                MQTT Integration
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Storage-Profiles/" class="md-footer__link md-footer__link--next" aria-label="Next: Storage Profiles">
+          <a href="../Camera-Settings/" class="md-footer__link md-footer__link--next" aria-label="Next: Camera Settings">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Storage Profiles
+                Camera Settings
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -49,6 +49,7 @@ nav:
   - ONVIF Management: ONVIF-Management.md
   - AI Detection: AI-Detection.md
   - MQTT Integration: MQTT-Integration.md
+  - External Integrations: Integrations.md
   - Camera Settings: Camera-Settings.md
   - MFA Trusted Devices: MFA-Trusted-Devices.md
   - UniFi Integration: UniFi-Protect.md

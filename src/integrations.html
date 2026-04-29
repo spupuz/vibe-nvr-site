@@ -10,58 +10,71 @@
                 style="border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-md); width: 100%; max-width: 800px; margin: 0 auto; display: block; height: auto;">
         </div>
 
-        <div class="grid grid-cols-2" style="gap: 4rem; align-items: start;">
-            <div>
-                <h3 style="margin-bottom: 1rem;">Homepage Integration</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--muted-foreground);">
-                    VibeNVR integrates seamlessly with <a href="https://gethomepage.dev/" target="_blank"
-                        class="text-primary" style="text-decoration: none;">gethomepage.dev</a> via a custom API widget.
-                    Monitor your cameras, storage usage, and recent events directly from your personal dashboard.
-                </p>
-
-                <h3 style="margin-bottom: 1rem;">Home Assistant</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--muted-foreground);">
-                    Native MQTT service with <strong>Home Assistant Discovery</strong>. Instantly sync your cameras as motion sensors and binary sensors in HA without manual configuration.
-                </p>
-
-                <h3 style="margin-bottom: 1rem;">REST API</h3>
-                <p style="margin-bottom: 1.5rem; color: var(--muted-foreground);">
-                    Developers can leverage the full REST API to build custom integrations, scripts, or alternative
-                    frontends. Access live stats, camera configurations, and system events programmatically.
-                </p>
-            </div>
-
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div style="display: flex; flex-direction: column; gap: 5rem;">
+            <!-- Homepage Integration -->
+            <div class="grid grid-cols-2" style="gap: 4rem; align-items: start;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Homepage Integration</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--muted-foreground);">
+                        VibeNVR integrates seamlessly with <a href="https://gethomepage.dev/" target="_blank"
+                            class="text-primary" style="text-decoration: none;">gethomepage.dev</a> via a custom API widget.
+                        Monitor your cameras, storage usage, and recent events directly from your personal dashboard.
+                    </p>
+                </div>
                 <div class="code-window" style="font-size: 0.85rem;">
                     <div class="line comment"># services.yaml (Homepage)</div>
                     <div class="line"><span class="cmd">- VibeNVR:</span></div>
                     <div class="line indent"><span class="arg">icon:</span> mdi-cctv</div>
                     <div class="line indent"><span class="arg">href:</span> http://your-vibenvr-ip:8080/</div>
                     <div class="line indent"><span class="arg">description:</span> Video Surveillance</div>
-                    <div class="line indent"><span class="arg">server:</span> your-docker-host <span class="comment">#
-                            Optional</span></div>
-                    <div class="line indent"><span class="arg">container:</span> vibenvr-backend</div>
                     <div class="line indent"><span class="arg">widget:</span></div>
                     <div class="line double-indent"><span class="arg">type:</span> customapi</div>
-                    <div class="line double-indent"><span class="arg">url:</span>
-                        http://your-vibenvr-ip:8080/api/v1/homepage/stats</div>
+                    <div class="line double-indent"><span class="arg">url:</span> http://your-vibenvr-ip:8080/api/v1/homepage/stats</div>
                     <div class="line double-indent"><span class="arg">headers:</span></div>
                     <div class="line triple-indent"><span class="arg">X-API-Key:</span> "your-api-token-here"</div>
                     <div class="line double-indent"><span class="arg">method:</span> GET</div>
                     <div class="line double-indent"><span class="arg">mappings:</span></div>
-                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span>
-                        cameras_online, <span class="arg">label:</span> Online }</div>
-                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span>
-                        events_today, <span class="arg">label:</span> Events (24h) }</div>
-                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span>
-                        storage_used_gb, <span class="arg">label:</span> Storage (GB) }</div>
-                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> uptime,
-                        <span class="arg">label:</span> Uptime }
+                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> cameras_online, <span class="arg">label:</span> Online }</div>
+                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> events_today, <span class="arg">label:</span> Events (24h) }</div>
+                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> storage_used_gb, <span class="arg">label:</span> Storage (GB) }</div>
+                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> storage_total_gb, <span class="arg">label:</span> Total Disk (GB) }</div>
+                </div>
+            </div>
+
+            <!-- Home Assistant Integration -->
+            <div class="grid grid-cols-2" style="gap: 4rem; align-items: center;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">Home Assistant</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--muted-foreground);">
+                        Native MQTT service with <strong>Home Assistant Discovery</strong>. Instantly sync your cameras as motion sensors and binary sensors in HA without manual configuration. Supports real-time AI metadata reporting.
+                    </p>
+                </div>
+                <div style="background: #f1f5f9; border-radius: var(--radius); padding: 3rem; display: flex; justify-content: center; align-items: center;">
+                    <div style="text-align: center;">
+                        <ion-icon name="home-outline" style="font-size: 5rem; color: #03a9f4;"></ion-icon>
+                        <div style="margin-top: 1rem; font-weight: 600; color: #03a9f4;">Plug & Play MQTT</div>
                     </div>
-                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span>
-                        cameras_recording, <span class="arg">label:</span> Recording }</div>
-                    <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span>
-                        storage_total_gb, <span class="arg">label:</span> Total Disk (GB) }</div>
+                </div>
+            </div>
+
+            <!-- REST API -->
+            <div class="grid grid-cols-2" style="gap: 4rem; align-items: start;">
+                <div>
+                    <h3 style="margin-bottom: 1rem;">REST API</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--muted-foreground);">
+                        Developers can leverage the full REST API to build custom integrations, scripts, or alternative
+                        frontends. Access live stats, camera configurations, and system events programmatically.
+                    </p>
+                </div>
+                <div class="code-window" style="font-size: 0.85rem;">
+                    <div class="line comment"># GET /api/v1/cameras</div>
+                    <div class="line"><span class="cmd">[</span></div>
+                    <div class="line indent"><span class="arg">{</span></div>
+                    <div class="line double-indent"><span class="arg">"id":</span> 1,</div>
+                    <div class="line double-indent"><span class="arg">"name":</span> "Front Door",</div>
+                    <div class="line double-indent"><span class="arg">"status":</span> "online"</div>
+                    <div class="line indent"><span class="arg">}</span></div>
+                    <div class="line"><span class="cmd">]</span></div>
                 </div>
             </div>
         </div>
