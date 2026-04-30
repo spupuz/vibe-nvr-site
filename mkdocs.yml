@@ -43,6 +43,7 @@ nav:
   - API Reference: API.md
   - Access Recovery: Access-Recovery.md
   - Privacy Masking: Privacy-Masking.md
+  - Telemetry & Privacy: Telemetry.md
   - System Architecture: Architecture.md
   - Troubleshooting: Troubleshooting.md
   - Backups and Restoration: Backups.md

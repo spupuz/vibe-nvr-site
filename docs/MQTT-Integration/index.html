@@ -362,6 +362,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="../Telemetry/" class="md-tabs__link">
+        
+  
+    
+  
+  Telemetry & Privacy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../Architecture/" class="md-tabs__link">
         
   
@@ -757,6 +774,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../Telemetry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telemetry & Privacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Architecture/" class="md-nav__link">
         
   
@@ -991,6 +1029,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       🛠️ Troubleshooting
@@ -1199,6 +1246,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       🛠️ Troubleshooting
@@ -1324,9 +1380,16 @@
 Ensure that the <strong>MQTT Integration</strong> is installed and configured in Home Assistant. Once you enable the service in VibeNVR, the cameras will appear as new devices under the <strong>MQTT</strong> integration.</p>
 </blockquote>
 <hr />
+<h2 id="observability">📊 Observability</h2>
+<p>VibeNVR v1.28.0+ provides real-time visibility into the MQTT service status directly on the <strong>Dashboard</strong>. </p>
+<ul>
+<li><strong>MQTT Service Widget</strong>: Shows the current connection state, the configured broker host, and the active port.</li>
+<li><strong>Connection Diagnostics</strong>: The widget status indicator turns green only when a successful handshake with the broker is maintained.</li>
+</ul>
+<hr />
 <h2 id="troubleshooting">🛠️ Troubleshooting</h2>
 <ul>
-<li><strong>Service Inactive</strong>: Verify the "Service Active" badge in Settings. If it's red, check your broker address and credentials.</li>
+<li><strong>Service Inactive</strong>: Verify the <strong>MQTT Service</strong> widget on the Dashboard. If it's red, check your broker address and credentials.</li>
 <li><strong>No Discovery</strong>: Ensure your Home Assistant MQTT prefix is the default (<code>homeassistant</code>). VibeNVR currently uses this standard prefix for discovery.</li>
 <li><strong>Connection Refused</strong>: Check your broker logs. Ensure that VibeNVR's IP is allowed to connect and that anonymous access is enabled if no credentials are provided.</li>
 </ul>

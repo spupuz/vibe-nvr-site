@@ -362,6 +362,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="../Telemetry/" class="md-tabs__link">
+        
+  
+    
+  
+  Telemetry & Privacy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../Architecture/" class="md-tabs__link">
         
   
@@ -757,6 +774,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../Telemetry/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Telemetry & Privacy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Architecture/" class="md-nav__link">
         
   
@@ -1018,9 +1056,18 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dashboard-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Dashboard Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ai-metadata-timeline-filtering" class="md-nav__link">
     <span class="md-ellipsis">
-      📊 AI Metadata &amp; Timeline Filtering
+      📅 AI Metadata &amp; Timeline Filtering
     </span>
   </a>
   
@@ -1313,9 +1360,18 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dashboard-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Dashboard Observability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ai-metadata-timeline-filtering" class="md-nav__link">
     <span class="md-ellipsis">
-      📊 AI Metadata &amp; Timeline Filtering
+      📅 AI Metadata &amp; Timeline Filtering
     </span>
   </a>
   
@@ -1576,12 +1632,23 @@ AI: CPU interpreter loaded.
 <div class="highlight"><pre><span></span><code>[AI DETECT] Camera MyCamera (ID: 1): Motion START. Found: person (82%), car (74%)
 </code></pre></div></p>
 <hr />
-<h2 id="ai-metadata-timeline-filtering">📊 AI Metadata &amp; Timeline Filtering</h2>
-<p>Every event created by the AI engine has its detected objects stored in the database. In the <strong>Timeline</strong> view, you can use the <strong>"Objects" filter</strong> dropdown to show only events where a specific object was detected:</p>
+<h2 id="dashboard-observability">📊 Dashboard Observability</h2>
+<p>VibeNVR v1.28.0+ introduces real-time visibility for the AI engine status:</p>
 <ul>
-<li><strong>All Objects</strong> — show everything</li>
-<li><strong>Person</strong> — only events with <code>person</code> in the AI metadata</li>
-<li><strong>Vehicle</strong> — only events with <code>car</code>, <code>truck</code>, <code>bus</code>, <code>motorcycle</code></li>
+<li><strong>AI Processor Widget</strong>: Located on the Dashboard, this widget indicates if the AI engine is initialized and which hardware (TPU or CPU) is currently being used for inference.</li>
+<li><strong>Service Status</strong>: Instant feedback on the health of the AI inference pipeline.</li>
+</ul>
+<hr />
+<h2 id="ai-metadata-timeline-filtering">📅 AI Metadata &amp; Timeline Filtering</h2>
+<p>Every event created by the AI engine has its detected objects stored in the database as <code>ai_metadata</code>.</p>
+<ul>
+<li><strong>AI Labels (Badges)</strong>: Surfaced directly on event cards in the <strong>Recent Events</strong> list and the <strong>Timeline</strong>. Detected objects are displayed as stylized "pill" badges with a <code>Brain</code> icon.</li>
+<li><strong>Unified Filtering</strong>: In the <strong>Timeline</strong> view, you can use the <strong>"Objects" filter</strong> dropdown to show only events where a specific object was detected:<ul>
+<li><strong>All Objects</strong> — show everything.</li>
+<li><strong>Person</strong> — only events with <code>person</code> in the AI metadata.</li>
+<li><strong>Vehicle</strong> — events with <code>car</code>, <code>truck</code>, <code>bus</code>, or <code>motorcycle</code>.</li>
+</ul>
+</li>
 </ul>
 <blockquote>
 <p>[!NOTE]

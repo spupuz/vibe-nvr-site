@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Telemetry/">
+        <link rel="prev" href="../Privacy-Masking/">
       
       
-        <link rel="next" href="../Troubleshooting/">
+        <link rel="next" href="../Architecture/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>System Architecture - VibeNVR Documentation</title>
+        <title>Telemetry & Privacy - VibeNVR Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#system-architecture" class="md-skip">
+        <a href="#anonymous-telemetry-privacy" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              System Architecture
+              Telemetry & Privacy
             
           </span>
         </div>
@@ -360,9 +360,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Telemetry/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -377,11 +379,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../Architecture/" class="md-tabs__link">
         
   
     
@@ -771,27 +771,6 @@
       
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../Telemetry/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Telemetry & Privacy
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -808,7 +787,7 @@
           
   
   <span class="md-ellipsis">
-    System Architecture
+    Telemetry & Privacy
     
   </span>
   
@@ -820,7 +799,7 @@
         
   
   <span class="md-ellipsis">
-    System Architecture
+    Telemetry & Privacy
     
   </span>
   
@@ -843,87 +822,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#privacy-policy" class="md-nav__link">
     <span class="md-ellipsis">
-      🏗️ Core Components
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🏗️ Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-frontend-react-spa" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Frontend (React SPA)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-backend-fastapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Backend (FastAPI)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-vibeengine-custom-python-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. VibeEngine (Custom Python Engine)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-database-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Database (PostgreSQL)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-telemetry-worker-cloudflare-edge" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Telemetry Worker (Cloudflare Edge)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Security Model
+      🛡️ Privacy Policy
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#development-hygiene-build-isolation" class="md-nav__link">
+  <a href="#what-is-collected" class="md-nav__link">
     <span class="md-ellipsis">
-      🧼 Development Hygiene &amp; Build Isolation
+      📋 What is Collected?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#performance-optimization" class="md-nav__link">
+  <a href="#reporting-frequency" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚡ Performance Optimization
+      🕙 Reporting Frequency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Public Dashboard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opt-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚫 Opt-Out
     </span>
   </a>
   
@@ -933,6 +870,27 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    System Architecture
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1153,87 +1111,45 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#core-components" class="md-nav__link">
+  <a href="#privacy-policy" class="md-nav__link">
     <span class="md-ellipsis">
-      🏗️ Core Components
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🏗️ Core Components">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-frontend-react-spa" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Frontend (React SPA)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-backend-fastapi" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Backend (FastAPI)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-vibeengine-custom-python-engine" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. VibeEngine (Custom Python Engine)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-database-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Database (PostgreSQL)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-telemetry-worker-cloudflare-edge" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Telemetry Worker (Cloudflare Edge)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Security Model
+      🛡️ Privacy Policy
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#development-hygiene-build-isolation" class="md-nav__link">
+  <a href="#what-is-collected" class="md-nav__link">
     <span class="md-ellipsis">
-      🧼 Development Hygiene &amp; Build Isolation
+      📋 What is Collected?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#performance-optimization" class="md-nav__link">
+  <a href="#reporting-frequency" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚡ Performance Optimization
+      🕙 Reporting Frequency
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#public-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Public Dashboard
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opt-out" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚫 Opt-Out
     </span>
   </a>
   
@@ -1255,52 +1171,146 @@
 
 
 
-<h1 id="system-architecture">System Architecture</h1>
-<p>VibeNVR is designed as a modern, modular microservices ecosystem to ensure reliability, security, and high performance.</p>
+<h1 id="anonymous-telemetry-privacy">Anonymous Telemetry &amp; Privacy 📊</h1>
+<p>VibeNVR is built with a "Privacy First" mindset. While we collect anonymous telemetry to help improve the project, we are fully transparent about what data is shared and how it is used.</p>
 <hr />
-<h2 id="core-components">🏗️ Core Components</h2>
-<p>VibeNVR is split into four primary services, each running in its own Docker container:</p>
-<h3 id="1-frontend-react-spa">1. Frontend (React SPA)</h3>
-<p>A premium, responsive dashboard built with <strong>React</strong>, <strong>Vite</strong>, and <strong>TailwindCSS</strong>. It communicates with the backend via a REST API and handles low-latency video playback using the WebCodecs API.</p>
-<h3 id="2-backend-fastapi">2. Backend (FastAPI)</h3>
-<p>The central logic hub powered by <strong>FastAPI (Python)</strong>.
-- <strong>Authentication</strong>: Full JWT stack with 2FA support.
-- <strong>API</strong>: Handles configuration, user management, and event queries.
-- <strong>Media Relay</strong>: Manages secure, authenticated access to video streams via HttpOnly cookies.</p>
-<h3 id="3-vibeengine-custom-python-engine">3. VibeEngine (Custom Python Engine)</h3>
-<p>The dedicated video processing service. This is the "heavy lifter" of the system:
-- <strong>Stream Ingestion</strong>: Uses <strong>PyAV</strong> (native FFmpeg bindings) for robust RTSP connection management and packet demuxing.
-- <strong>Image Processing</strong>: Leverages <strong>OpenCV (cv2)</strong> for motion detection analysis, text overlays, and dynamic JPEG encoding for legacy previews.
-- <strong>Modular Design</strong>: The engine core is highly modularized (<code>stream_reader</code>, <code>motion_detector</code>, <code>recording_manager</code>, <code>mask_handler</code>, <code>overlay_handler</code>) for maximum stability.
-- <strong>Security</strong>: Communicates via internal Docker networks and requires a shared <code>WEBHOOK_SECRET</code> for backend interaction.
-- <strong>Decoupled Detection</strong>: Supports both server-side pixel analysis (OpenCV) and hardware-side edge event handling (ONVIF PullPoint). The detection engine is logically decoupled from the activation schedule (Always, Scheduled, Manual), allowing for hybrid configurations.</p>
-<h3 id="4-database-postgresql">4. Database (PostgreSQL)</h3>
-<p>Uses <strong>PostgreSQL 15</strong> for reliable storage of all persistent data, including camera configurations, user settings, and the event timeline.</p>
-<h3 id="5-telemetry-worker-cloudflare-edge">5. Telemetry Worker (Cloudflare Edge)</h3>
-<p>A highly modularized Cloudflare Worker repository (<code>vibenvr-telemetry-worker</code>) that handles global telemetry, metadata ingestion, and secure dashboarding.
-- <strong>Modularity</strong>: Split securely into dedicated ES modules (<code>security.js</code>, <code>api.js</code>, <code>assets.js</code>, etc.) to stay well below the 1000 LOC limits.
-- <strong>Edge Security</strong>: Provides native strict Content-Security-Policy (CSP) headers and input sanitization at the CDN edge before requests reach the VibeNVR origin.</p>
+<h2 id="privacy-policy">🛡️ Privacy Policy</h2>
+<ol>
+<li><strong>No Sensitive Data</strong>: We NEVER collect IP addresses, camera names, stream URLs, usernames, passwords, or video/image data.</li>
+<li><strong>Anonymous Identification</strong>: Every installation generates a random <strong>Instance ID</strong> (UUID) at boot. This ID is not linked to your identity.</li>
+<li><strong>Local First</strong>: All video processing, motion detection, and AI inference happen strictly on your local hardware. No media ever leaves your network.</li>
+<li><strong>Edge Anonymization</strong>: Telemetry is processed by a Cloudflare Worker at the edge. Your IP address is used only to determine the country of origin and is immediately discarded.</li>
+</ol>
 <hr />
-<h2 id="security-model">🔒 Security Model</h2>
-<p>VibeNVR implements a "Security by Design" approach:
-- <strong>Internal API Protection</strong>: Sensitive internal APIs (like the Engine's control port) are not exposed to the host machine.
-- <strong>Token Scoping</strong>: API tokens can be created with specific TTLs and limited permissions.
-- <strong>Reverse Proxy Ready</strong>: Built to work seamlessly behind Nginx Proxy Manager or Traefik with full WebSocket support.</p>
+<h2 id="what-is-collected">📋 What is Collected?</h2>
+<p>The telemetry report contains only technical and aggregate usage metrics:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Field</th>
+<th>Example</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Identity</strong></td>
+<td><code>instance_id</code></td>
+<td><code>a1b2c3-...</code></td>
+<td>A random UUID to distinguish unique installations.</td>
+</tr>
+<tr>
+<td><strong>Software</strong></td>
+<td><code>version</code></td>
+<td><code>1.27.1</code></td>
+<td>The installed VibeNVR version.</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td><code>os</code> / <code>arch</code></td>
+<td><code>Linux</code> / <code>x86_64</code></td>
+<td>Operating system and CPU architecture.</td>
+</tr>
+<tr>
+<td><strong>Hardware</strong></td>
+<td><code>cpu</code> / <code>ram</code></td>
+<td><code>12</code> / <code>64</code></td>
+<td>Core count and total RAM (GB).</td>
+</tr>
+<tr>
+<td><strong>Hardware</strong></td>
+<td><code>gpu</code></td>
+<td><code>True</code></td>
+<td>Whether hardware acceleration is active.</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td><code>cameras</code></td>
+<td><code>4</code></td>
+<td>Total number of configured cameras.</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td><code>groups</code></td>
+<td><code>2</code></td>
+<td>Total number of camera groups.</td>
+</tr>
+<tr>
+<td><strong>Usage</strong></td>
+<td><code>events</code></td>
+<td><code>1500</code></td>
+<td>Total number of recorded events in the database.</td>
+</tr>
+<tr>
+<td><strong>Engines</strong></td>
+<td><code>motion_opencv</code></td>
+<td><code>1</code></td>
+<td>Cameras using the classic OpenCV motion engine.</td>
+</tr>
+<tr>
+<td><strong>Engines</strong></td>
+<td><code>motion_onvif</code></td>
+<td><code>1</code></td>
+<td>Cameras using ONVIF Edge hardware detection.</td>
+</tr>
+<tr>
+<td><strong>Engines</strong></td>
+<td><code>motion_ai_engine</code></td>
+<td><code>2</code></td>
+<td>Cameras using the <strong>AI Native</strong> detection engine.</td>
+</tr>
+<tr>
+<td><strong>Features</strong></td>
+<td><code>motion_ai</code></td>
+<td><code>2</code></td>
+<td>Cameras with the AI detection layer enabled.</td>
+</tr>
+<tr>
+<td><strong>Features</strong></td>
+<td><code>mqtt_active</code></td>
+<td><code>True</code></td>
+<td>Whether the Native MQTT Service is enabled.</td>
+</tr>
+<tr>
+<td><strong>Features</strong></td>
+<td><code>onvif_count</code></td>
+<td><code>3</code></td>
+<td>Total number of cameras with ONVIF configured.</td>
+</tr>
+<tr>
+<td><strong>Features</strong></td>
+<td><code>substream_count</code></td>
+<td><code>2</code></td>
+<td>Total number of cameras using sub-streams.</td>
+</tr>
+<tr>
+<td><strong>Status</strong></td>
+<td><code>notifications</code></td>
+<td><code>True</code></td>
+<td>Whether any notification channel (Telegram, Email, Webhook) is configured.</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="development-hygiene-build-isolation">🧼 Development Hygiene &amp; Build Isolation</h2>
-<p>VibeNVR enforces strict isolation between development artifacts and production assets:
-- <strong>Build Hygiene</strong>: Every Docker context is isolated via rigorous <code>.dockerignore</code> files, ensuring no <code>venv</code>, <code>__pycache__</code>, or <code>node_modules</code> leak into the ultra-lean (~1GB) production images.
-- <strong>Repository Integrity</strong>: The project uses recursive <code>.gitignore</code> policies to ensure all local management scripts and temporary artifacts remain local-only and are never tracked by Git.
-- <strong>Automated Assurance</strong>: Every build is verified against a custom security and hygiene auditor to maintain these standards.</p>
-<hr />
-<h2 id="performance-optimization">⚡ Performance Optimization</h2>
+<h2 id="reporting-frequency">🕙 Reporting Frequency</h2>
 <ul>
-<li><strong>Passthrough Recording</strong>: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.</li>
-<li><strong>Dual-Stream Handling</strong>: The Engine initializes independent <code>StreamReader</code> instances for main and sub-streams. Sub-streams are prioritized for UI frame generation to reduce client-side bandwidth and CPU overhead in grid views.</li>
-<li><strong>Fallback Logic</strong>: If a sub-stream is not configured (optional), the Engine automatically falls back to the main stream reader for all operations, including live UI frames.</li>
-<li><strong>Adaptive Streaming</strong>: Automatically switches between high-performance WebCodecs (H.264), optimized Sub-Streams, and compatible JPEG polling fallback.</li>
-<li><strong>Live Audio</strong>: Implements low-latency audio streaming using browser WebCodecs (PCM ALAW/ULAW). The Engine performs secure authentication and direct passthrough of G.711 streams to the client, minimizing backend CPU overhead and ensuring perfect AV synchronization.</li>
+<li><strong>Initial Ping</strong>: Sent 30 seconds after the backend starts.</li>
+<li><strong>Daily Heartbeat</strong>: Sent once every 24 hours while the system is running.</li>
 </ul>
+<hr />
+<h2 id="public-dashboard">📊 Public Dashboard</h2>
+<p>You can view the aggregate, anonymous data from all VibeNVR users on our public dashboard:
+<strong><a href="https://vibenvr-telemetry.spupuz.workers.dev/">VibeNVR Public Telemetry</a></strong></p>
+<hr />
+<h2 id="opt-out">🚫 Opt-Out</h2>
+<p>You have total control over your data. To disable telemetry:</p>
+<ol>
+<li>Go to <strong>Settings</strong> &gt; <strong>Privacy &amp; Analytics</strong>.</li>
+<li>Toggle off <strong>Enable Anonymous Telemetry</strong>.</li>
+<li>Save your settings.</li>
+</ol>
+<p>Once disabled, the backend will immediately stop sending all reports.</p>
 
 
 
@@ -1336,7 +1346,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Telemetry/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Telemetry &amp; Privacy">
+          <a href="../Privacy-Masking/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Privacy Masking">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1346,20 +1356,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Telemetry & Privacy
+                Privacy Masking
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Troubleshooting/" class="md-footer__link md-footer__link--next" aria-label="Next: Troubleshooting">
+          <a href="../Architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: System Architecture">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Troubleshooting
+                System Architecture
               </div>
             </div>
             <div class="md-footer__button md-icon">
