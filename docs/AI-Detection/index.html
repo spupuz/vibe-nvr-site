@@ -1488,6 +1488,8 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 </tbody>
 </table>
 <blockquote>
+<p>[!TIP]
+<strong>Robust Configuration</strong>: VibeNVR implements a high-resilience parser for <code>Allowed Objects</code>. It supports both JSON (e.g. <code>["person", "vehicle"]</code>) and simple comma-separated lists (e.g. <code>person, vehicle</code>). This prevents configuration loss if the database is manually edited or during complex system migrations.</p>
 <p>[!NOTE]
 Setting confidence too low (e.g., 33%) can cause false positives from spinning objects, reflections, or camera noise. <strong>70%+ is recommended</strong> for stable production use.</p>
 <p>[!IMPORTANT]
@@ -1633,7 +1635,7 @@ AI: CPU interpreter loaded.
 </code></pre></div></p>
 <hr />
 <h2 id="dashboard-observability">📊 Dashboard Observability</h2>
-<p>VibeNVR v1.28.0+ introduces real-time visibility for the AI engine status:</p>
+<p>VibeNVR introduces real-time visibility for the AI engine status:</p>
 <ul>
 <li><strong>AI Processor Widget</strong>: Located on the Dashboard, this widget indicates if the AI engine is initialized and which hardware (TPU or CPU) is currently being used for inference.</li>
 <li><strong>Service Status</strong>: Instant feedback on the health of the AI inference pipeline.</li>

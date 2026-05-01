@@ -822,6 +822,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#disk-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Safety
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#technical-notes" class="md-nav__link">
     <span class="md-ellipsis">
       Technical Notes
@@ -1243,6 +1252,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#disk-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disk Safety
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#technical-notes" class="md-nav__link">
     <span class="md-ellipsis">
       Technical Notes
@@ -1305,10 +1323,16 @@
 <li>Save the camera settings. The engine will automatically begin saving new recordings to the new path.</li>
 </ol>
 <h2 id="how-quotas-work">How Quotas Work</h2>
-<p>VibeNVR employs a hierarchical cleanup strategy:
+<p>VibeNVR employs a hierarchical, <strong>reactive</strong> cleanup strategy:
 1. <strong>Camera Limit</strong>: First, it checks if the individual camera's <code>Max Storage (GB)</code> or <code>Retention (Days)</code> is exceeded.
 2. <strong>Profile Limit</strong>: Then, it checks if the Storage Profile's total quota is exceeded, purging the oldest events from any camera using that profile.
 3. <strong>Global Limit</strong>: Finally, it ensures the total disk usage across the entire system remains within the <code>Global Max Storage</code> defined in Settings.</p>
+<blockquote>
+<p>[!NOTE]
+<strong>Reactive Monitoring</strong>: Cleanup tasks run every <strong>10 minutes</strong> for quota violations and emergency disk space checks. This is independent of the full retention cycle (Every Hour/Day), ensuring the system remains responsive to rapid disk usage spikes.</p>
+</blockquote>
+<h2 id="disk-safety">Disk Safety</h2>
+<p>If the total free space on the <code>/data</code> volume falls below <strong>5%</strong>, VibeNVR triggers an <strong>Emergency Cleanup</strong>. It will purge the oldest events from the system regardless of quotas or retention settings until at least 10% free space is recovered. This protects the database and OS from filesystem exhaustion.</p>
 <h2 id="technical-notes">Technical Notes</h2>
 <ul>
 <li><strong>Path Traversal</strong>: For security, paths cannot contain <code>..</code> and must start with <code>/</code>.</li>

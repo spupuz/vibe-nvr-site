@@ -2359,7 +2359,7 @@
 <p>[!TIP]
 <strong>Optional Sub-Streaming</strong>: The <code>sub_rtsp_url</code> is completely optional. If left empty, the NVR will simply use the main <code>rtsp_url</code> for live previews and grid views. Configuring a sub-stream is recommended only for high-resolution cameras to optimize dashboard performance.</p>
 <p>[!NOTE]
-<strong>GUI Security</strong>: Starting from <strong>v1.25.3</strong>, the frontend automatically redacts passwords in the <code>rtsp_url</code> and <code>sub_rtsp_url</code> fields (displayed as <code>********</code>). Full URLs pasted into these fields are automatically parsed and their credentials moved to the separate Username/Password fields.</p>
+<strong>GUI Security</strong>: The frontend automatically redacts passwords in the <code>rtsp_url</code> and <code>sub_rtsp_url</code> fields (displayed as <code>********</code>). Full URLs pasted into these fields are automatically parsed and their credentials moved to the separate Username/Password fields.</p>
 </blockquote>
 <h4 id="put-camerascamera_id"><strong>PUT</strong> <code>/cameras/{camera_id}</code></h4>
 <p>Update an existing camera configuration. Fields are optional (only provided fields are updated).
@@ -2382,7 +2382,7 @@
 </ol>
 <hr />
 <h3 id="engine-synchronization">⚙️ Engine Synchronization</h3>
-<p>VibeNVR v1.26.0+ features advanced, real-time configuration synchronization between the Backend and the Video Engine. This ensures that critical streaming parameters are applied without restarting processing threads.</p>
+<p>VibeNVR features advanced, real-time configuration synchronization between the Backend and the Video Engine. This ensures that critical streaming parameters are applied without restarting processing threads.</p>
 <h4 id="synchronized-fields"><strong>Synchronized Fields</strong></h4>
 <p>The following fields are transmitted to the engine in real-time upon camera update:
 - <code>rtsp_transport</code>: (tcp/udp) Main stream protocol.
@@ -2616,7 +2616,7 @@
 </code></pre></div>
 <p><img src="http://localhost:8080/media/Camera1/2026-02-21/snap.jpg" />
 ```</p>
-<p><em>(Current Version: v1.27.0)</em></p>
+<p><em>(Documentation version: Current)</em></p>
 <hr />
 <blockquote>
 <p>[!TIP]
