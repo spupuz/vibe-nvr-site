@@ -1490,7 +1490,7 @@
 <p>All detected labels are saved per-event as <code>ai_metadata</code> (e.g., <code>person,car</code>) and are used by the <strong>Timeline</strong> object filter.</p>
 <hr />
 <h2 id="global-ai-configuration">🏗️ Global AI Configuration</h2>
-<p>Starting from v1.30.0, core AI parameters like <strong>Model Selection</strong> and <strong>Hardware Acceleration</strong> are managed <strong>globally</strong> in <strong>System Settings → AI Detection Engine</strong>. This ensures that the AI engine runs as a shared singleton, optimizing memory usage and ensuring consistency across all cameras.</p>
+<p>Core AI parameters like <strong>Global Activation</strong>, <strong>Model Selection</strong>, and <strong>Hardware Acceleration</strong> are managed <strong>globally</strong> in <strong>System Settings → AI Detection Engine</strong>. This ensures that the AI engine runs as a shared singleton, optimizing memory usage and ensuring consistency across all cameras.</p>
 <table>
 <thead>
 <tr>
@@ -1500,6 +1500,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><strong>AI Enabled</strong></td>
+<td>Master switch for the entire AI engine. If <strong>OFF</strong>, no AI models are loaded.</td>
+<td><code>ON</code> (if TPU present)</td>
+</tr>
 <tr>
 <td><strong>AI Model</strong></td>
 <td>Choose between <code>YOLOv8</code> (Superior accuracy) or <code>MobileNet SSD v2</code> (Faster/Legacy)</td>
@@ -1512,6 +1517,12 @@
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>Resource Efficiency</strong>: If the Global AI switch is <strong>OFF</strong>, the system skips loading the TFLite runtime and models entirely. This is the recommended state for users who do not have a Coral TPU and wish to use standard OpenCV motion detection to save CPU resources.</p>
+<p>[!NOTE]
+<strong>Automatic Fallback</strong>: If a camera is configured to use the "AI" engine but the Global Switch is <strong>OFF</strong>, the system automatically falls back to standard <strong>OpenCV</strong> detection. The UI will display an informative warning in the camera's Motion settings tab when this occurs.</p>
+</blockquote>
 <hr />
 <h2 id="detection-engines">🎯 Detection Engines</h2>
 <table>
@@ -1811,7 +1822,7 @@ Events recorded before the AI engine was enabled will not have object metadata a
 <h2 id="performance-optimization-nms">⚡ Performance Optimization: NMS</h2>
 <p>VibeNVR implements <strong>Non-Maximum Suppression (NMS)</strong> for YOLOv8 models. This technique prevents the system from reporting the same object multiple times (e.g., three "person" boxes for one human). </p>
 <ul>
-<li><strong>IoU Threshold</strong>: <code>0.45</code> (standard balanced filtering).</li>
+<li><strong>IoU Threshold</strong>: <code>0.45</code> (Default). This can be adjusted globally in <strong>System Settings → AI Detection Engine</strong> to fine-tune how aggressively overlapping boxes are merged.</li>
 <li><strong>Result Limit</strong>: Capped at <strong>10 objects</strong> per frame to ensure real-time stability on EdgeTPU and low-power CPUs.</li>
 </ul>
 <hr />
