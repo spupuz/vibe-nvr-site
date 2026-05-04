@@ -936,6 +936,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#global-ai-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Global AI Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#detection-engines" class="md-nav__link">
     <span class="md-ellipsis">
       🎯 Detection Engines
@@ -1077,6 +1086,30 @@
   <a href="#model-files" class="md-nav__link">
     <span class="md-ellipsis">
       🔄 Model Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 Model Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-models-quantized-tflite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Models (Quantized TFLite)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization-nms" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Performance Optimization: NMS
     </span>
   </a>
   
@@ -1240,6 +1273,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#global-ai-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Global AI Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#detection-engines" class="md-nav__link">
     <span class="md-ellipsis">
       🎯 Detection Engines
@@ -1384,6 +1426,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="🔄 Model Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-models-quantized-tflite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Models (Quantized TFLite)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization-nms" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Performance Optimization: NMS
+    </span>
+  </a>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1416,11 +1482,36 @@
 <hr />
 <h2 id="how-it-works">🧠 How It Works</h2>
 <p>When a camera's detection engine is set to <strong>AI</strong>, each video frame is:
-1. Resized and fed to a <strong>MobileNet SSD v2 (COCO)</strong> TFLite model.
+1. Resized and fed to a TFLite object detection model (e.g., <strong>YOLOv8</strong> or <strong>MobileNet SSD v2</strong>).
 2. Filtered by <strong>confidence threshold</strong> and <strong>allowed object types</strong>.
-3. <strong>Motion zones</strong> (exclusion polygons) are applied to the bounding boxes.
-4. If any objects pass all filters → motion is triggered, a recording starts, and detected labels are stored in the event database.</p>
+3. <strong>Non-Maximum Suppression (NMS)</strong> is applied to eliminate overlapping detections (especially relevant for YOLOv8).
+4. <strong>Motion zones</strong> (exclusion polygons) are applied to the bounding boxes.
+5. If any objects pass all filters → motion is triggered, a recording starts, and detected labels are stored in the event database.</p>
 <p>All detected labels are saved per-event as <code>ai_metadata</code> (e.g., <code>person,car</code>) and are used by the <strong>Timeline</strong> object filter.</p>
+<hr />
+<h2 id="global-ai-configuration">🏗️ Global AI Configuration</h2>
+<p>Starting from v1.30.0, core AI parameters like <strong>Model Selection</strong> and <strong>Hardware Acceleration</strong> are managed <strong>globally</strong> in <strong>System Settings → AI Detection Engine</strong>. This ensures that the AI engine runs as a shared singleton, optimizing memory usage and ensuring consistency across all cameras.</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Description</th>
+<th>Recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI Model</strong></td>
+<td>Choose between <code>YOLOv8</code> (Superior accuracy) or <code>MobileNet SSD v2</code> (Faster/Legacy)</td>
+<td><code>YOLOv8</code></td>
+</tr>
+<tr>
+<td><strong>AI Hardware</strong></td>
+<td><code>auto</code> (TPU preferred, CPU fallback), <code>cpu</code>, <code>tpu</code></td>
+<td><code>auto</code></td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="detection-engines">🎯 Detection Engines</h2>
 <table>
@@ -1455,7 +1546,7 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 </blockquote>
 <hr />
 <h2 id="camera-configuration">⚙️ Camera Configuration</h2>
-<p>Navigate to <strong>Cameras → Edit → Motion Tab → AI Detection</strong> to configure:</p>
+<p>Navigate to <strong>Cameras → Edit → AI &amp; Tracking Tab</strong> to configure per-camera detection behavior:</p>
 <table>
 <thead>
 <tr>
@@ -1466,9 +1557,9 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 </thead>
 <tbody>
 <tr>
-<td><strong>Detection Engine</strong></td>
-<td>Select <code>AI</code> to enable ML-based detection</td>
-<td><code>OpenCV</code></td>
+<td><strong>AI Detection</strong></td>
+<td>Toggle to enable ML-based detection for this camera</td>
+<td><code>Disabled</code></td>
 </tr>
 <tr>
 <td><strong>Confidence Threshold</strong></td>
@@ -1481,9 +1572,9 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 <td><code>person, vehicle</code></td>
 </tr>
 <tr>
-<td><strong>AI Hardware</strong></td>
-<td><code>auto</code> (TPU preferred, CPU fallback), <code>cpu</code>, <code>tpu</code></td>
-<td><code>auto</code></td>
+<td><strong>Tracking Enabled</strong></td>
+<td>Enable persistent object tracking across frames</td>
+<td><code>Disabled</code></td>
 </tr>
 </tbody>
 </table>
@@ -1684,6 +1775,45 @@ Events recorded before the AI engine was enabled will not have object metadata a
 <p>To manually download them (e.g., for offline builds), run:</p>
 <div class="highlight"><pre><span></span><code>python3<span class="w"> </span>engine/scripts/download_models.py
 </code></pre></div>
+<h3 id="supported-models-quantized-tflite">Supported Models (Quantized TFLite)</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Hardware</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>YOLOv8n</strong></td>
+<td>Coral TPU</td>
+<td><code>yolov8n_quant_edgetpu.tflite</code></td>
+</tr>
+<tr>
+<td><strong>YOLOv8n</strong></td>
+<td>CPU</td>
+<td><code>yolov8n_quant.tflite</code></td>
+</tr>
+<tr>
+<td><strong>SSD MobileNet v2</strong></td>
+<td>Coral TPU</td>
+<td><code>mobilenet_ssd_v2_coco_quant_postprocess_edgetpu.tflite</code></td>
+</tr>
+<tr>
+<td><strong>SSD MobileNet v2</strong></td>
+<td>CPU</td>
+<td><code>mobilenet_ssd_v2_coco_quant_postprocess.tflite</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="performance-optimization-nms">⚡ Performance Optimization: NMS</h2>
+<p>VibeNVR implements <strong>Non-Maximum Suppression (NMS)</strong> for YOLOv8 models. This technique prevents the system from reporting the same object multiple times (e.g., three "person" boxes for one human). </p>
+<ul>
+<li><strong>IoU Threshold</strong>: <code>0.45</code> (standard balanced filtering).</li>
+<li><strong>Result Limit</strong>: Capped at <strong>10 objects</strong> per frame to ensure real-time stability on EdgeTPU and low-power CPUs.</li>
+</ul>
 <hr />
 <h2 id="troubleshooting">🛠️ Troubleshooting</h2>
 <table>
