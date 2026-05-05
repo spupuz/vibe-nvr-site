@@ -822,6 +822,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#storage-maintenance-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Maintenance &amp; Breakdown
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#disk-safety" class="md-nav__link">
     <span class="md-ellipsis">
       Disk Safety
@@ -1252,6 +1261,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#storage-maintenance-breakdown" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storage Maintenance &amp; Breakdown
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#disk-safety" class="md-nav__link">
     <span class="md-ellipsis">
       Disk Safety
@@ -1323,11 +1341,21 @@
 <li>Save the camera settings. The engine will automatically begin saving new recordings to the new path.</li>
 </ol>
 <h2 id="how-quotas-work">How Quotas Work</h2>
-<p>VibeNVR employs a hierarchical, <strong>reactive</strong> cleanup strategy:
-1. <strong>Camera Limit</strong>: First, it checks if the individual camera's <code>Max Storage (GB)</code> or <code>Retention (Days)</code> is exceeded.
-2. <strong>Profile Limit</strong>: Then, it checks if the Storage Profile's total quota is exceeded, purging the oldest events from any camera using that profile.
-3. <strong>Global Limit</strong>: Finally, it ensures the total disk usage across the entire system remains within the <code>Global Max Storage</code> defined in Settings.</p>
+<p>VibeNVR employs a hierarchical, <strong>reactive</strong> cleanup strategy. The system automatically calculates the <strong>Effective Limit</strong> for each camera to ensure compliance with both local and global policies:</p>
+<ol>
+<li><strong>Effective Limit Calculation</strong>: The UI and Backend prioritize the most restrictive value between the individual camera setting and the global quota. </li>
+<li><em>Example</em>: If a Camera is set to 10GB but the Global Quota is 5GB, the Effective Limit is <strong>5GB</strong>.</li>
+<li><strong>Camera-Level Controls</strong>: Users can define specific <code>Max Storage (GB)</code> and <code>Retention (Days)</code> per camera.</li>
+<li><strong>Profile/Global Limit</strong>: The system ensures the total disk usage across all cameras remains within the defined profile or global quota, purging the oldest events from any camera as needed.</li>
+</ol>
+<h2 id="storage-maintenance-breakdown">Storage Maintenance &amp; Breakdown</h2>
+<p>The <strong>Storage Management</strong> section in Settings provides a detailed breakdown of space usage:
+- <strong>Real-time Metrics</strong>: See exactly how many GBs of Video and Snapshots each camera is consuming.
+- <strong>Granular Cleanup</strong>: Use the dedicated <strong>Cleanup</strong> buttons (Trash icons) in the breakdown table to manually purge only videos or only snapshots for a specific camera.
+- <strong>Action Targets</strong>: Maintenance buttons are optimized with large (44x44px) hit targets for high precision on both Desktop and Mobile.</p>
 <blockquote>
+<p>[!TIP]
+Use the <strong>Breakdown Table</strong> to identify "storage-hungry" cameras and adjust their individual retention settings or assign them to a dedicated Storage Profile.</p>
 <p>[!NOTE]
 <strong>Reactive Monitoring</strong>: Cleanup tasks run every <strong>10 minutes</strong> for quota violations and emergency disk space checks. This is independent of the full retention cycle (Every Hour/Day), ensuring the system remains responsive to rapid disk usage spikes.</p>
 </blockquote>

@@ -1205,6 +1205,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-settingscleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/cleanup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#global-settings-keys-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Global Settings Keys (/settings)
@@ -2097,6 +2106,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-settingscleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/cleanup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#global-settings-keys-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Global Settings Keys (/settings)
@@ -2540,6 +2558,28 @@
 <p>Retrieve the real-time runtime status of the video engine (Admin only).
 - <strong>Usage</strong>: Diagnostic tool to verify mask synchronization and thread health.
 - <strong>Response</strong>: Map of camera IDs to their engine state.</p>
+<h4 id="post-settingscleanup"><strong>POST</strong> <code>/settings/cleanup</code></h4>
+<p>Trigger a manual storage cleanup. This endpoint allows for granular purging of media based on camera and type.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Payload Example (Granular)</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;camera_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;media_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;video&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+- <strong>Payload Example (Global)</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{}</span>
+</code></pre></div>
+- <strong>Fields</strong>:
+  - <code>camera_id</code>: (Optional) Integer. If provided, only events for this camera are purged.
+  - <code>media_type</code>: (Optional) String (<code>video</code> or <code>snapshot</code>). If provided, only this type of media is purged.
+- <strong>Response Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manual cleanup completed successfully&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;deleted_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;deleted_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">120.5</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <h4 id="global-settings-keys-settings"><strong>Global Settings Keys (<code>/settings</code>)</strong></h4>
 <p>Commonly used keys for <code>/settings/{key}</code>:
 - <code>mqtt_enabled</code>: (<code>true</code>/<code>false</code>)
