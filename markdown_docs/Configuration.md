@@ -27,7 +27,7 @@ WEBHOOK_SECRET=another_64_char_random_hex_here
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `COOKIE_SECURE` | `true` | Controls the `Secure` flag on auth cookies. Set to `false` for local HTTP access (`http://localhost`). Must be `true` when serving via HTTPS. |
+| `COOKIE_SECURE` | `auto` | Controls the `Secure` flag on auth cookies. Set to `auto` (default) to automatically detect HTTPS vs HTTP based on request headers. Set to `false` for local HTTP access if auto-detection fails. |
 
 ```env
 # Local HTTP testing only:
@@ -104,6 +104,21 @@ HW_ACCEL_TYPE=auto
 # NVIDIA requires nvidia-container-toolkit installed on the host
 HW_ACCEL=true
 HW_ACCEL_TYPE=nvidia
+```
+
+---
+
+---
+
+### 🌍 Timezone & Localization
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `TZ` | `Europe/Rome` | Sets the timezone for all containers. This ensures that logs, schedules, and recording timestamps are consistent. Use standard TZ database names (e.g., `America/New_York`). |
+
+```env
+# Example: Set to New York time
+TZ=America/New_York
 ```
 
 ---

@@ -936,6 +936,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#session-cookie-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Session &amp; Cookie Issues
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1216,6 +1225,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#session-cookie-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔑 Session &amp; Cookie Issues
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1282,6 +1300,16 @@ Include a <strong>Diagnostic Bundle</strong>:
 2. Go to <strong>System Logs</strong>.
 3. Click <strong>"Download Report"</strong>.
 4. Attach the <code>.zip</code> file to your GitHub issue.</p>
+<blockquote>
+<p>💡 <strong>Tip</strong>: VibeNVR logs are now standardized with consistent timestamps across all components. When reviewing <code>docker compose logs</code>, you can easily correlate events between the Backend, Engine, and Frontend. Sensitive data (passwords, tokens) is automatically redacted.</p>
+</blockquote>
+<hr />
+<h3 id="session-cookie-issues">🔑 Session &amp; Cookie Issues</h3>
+<p>If you encounter "No session cookie" errors or are repeatedly logged out:
+1. <strong>Check <code>COOKIE_SECURE</code></strong>: By default, it is set to <code>auto</code>. The system detects if you are on HTTP or HTTPS.
+2. <strong>Local Access</strong>: If accessing via IP (e.g., <code>http://192.168.1.50:8080</code>), ensure you are using a modern browser.
+3. <strong>Reverse Proxy</strong>: If you are behind a proxy (like Nginx Proxy Manager), ensure it correctly passes the <code>X-Forwarded-Proto</code> header.
+4. <strong>Manual Override</strong>: If <code>auto</code> fails in your specific network setup, explicitly set <code>COOKIE_SECURE=false</code> in your <code>.env</code> file for local-only use.</p>
 
 
 

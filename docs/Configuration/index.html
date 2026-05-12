@@ -738,6 +738,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#timezone-localization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌍 Timezone &amp; Localization
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1207,6 +1216,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#timezone-localization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌍 Timezone &amp; Localization
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1287,8 +1305,8 @@ WEBHOOK_SECRET=another_64_char_random_hex_here
 <tbody>
 <tr>
 <td><code>COOKIE_SECURE</code></td>
-<td><code>true</code></td>
-<td>Controls the <code>Secure</code> flag on auth cookies. Set to <code>false</code> for local HTTP access (<code>http://localhost</code>). Must be <code>true</code> when serving via HTTPS.</td>
+<td><code>auto</code></td>
+<td>Controls the <code>Secure</code> flag on auth cookies. Set to <code>auto</code> (default) to automatically detect HTTPS vs HTTP based on request headers. Set to <code>false</code> for local HTTP access if auto-detection fails.</td>
 </tr>
 </tbody>
 </table>
@@ -1424,6 +1442,28 @@ HW_ACCEL_TYPE=auto
 # NVIDIA requires nvidia-container-toolkit installed on the host
 HW_ACCEL=true
 HW_ACCEL_TYPE=nvidia
+</code></pre></div>
+<hr />
+<hr />
+<h3 id="timezone-localization">🌍 Timezone &amp; Localization</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TZ</code></td>
+<td><code>Europe/Rome</code></td>
+<td>Sets the timezone for all containers. This ensures that logs, schedules, and recording timestamps are consistent. Use standard TZ database names (e.g., <code>America/New_York</code>).</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code># Example: Set to New York time
+TZ=America/New_York
 </code></pre></div>
 <hr />
 <h2 id="production-security-checklist">🔒 Production Security Checklist</h2>
