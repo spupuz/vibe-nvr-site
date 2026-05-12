@@ -1591,7 +1591,7 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 </table>
 <blockquote>
 <p>[!TIP]
-<strong>Robust Configuration</strong>: VibeNVR implements a high-resilience parser for <code>Allowed Objects</code>. It supports both JSON (e.g. <code>["person", "vehicle"]</code>) and simple comma-separated lists (e.g. <code>person, vehicle</code>). This prevents configuration loss if the database is manually edited or during complex system migrations.</p>
+<strong>Robust Configuration</strong>: To prevent database corruption and UI lag, the system now enforces a <strong>2000-character limit</strong> on AI object filters and automatically sanitizes inputs.</p>
 <p>[!NOTE]
 Setting confidence too low (e.g., 33%) can cause false positives from spinning objects, reflections, or camera noise. <strong>70%+ is recommended</strong> for stable production use.</p>
 <p>[!IMPORTANT]
@@ -1865,6 +1865,16 @@ Events recorded before the AI engine was enabled will not have object metadata a
 <td><code>Permission denied</code> on USB</td>
 <td>LXC apparmor/cgroup2 not configured</td>
 <td>Follow the LXC config steps above</td>
+</tr>
+<tr>
+<td><strong>Severe UI Lag / API Timeout</strong></td>
+<td>Database Corruption (Data Bloat)</td>
+<td>The system now auto-truncates oversized AI settings. Ensure v1.28.3+ is installed to prevent recurrence.</td>
+</tr>
+<tr>
+<td><code>Model 404 Error</code> on startup</td>
+<td>Outdated model URLs</td>
+<td>The system now skips non-existent models. Rebuild with <code>--build</code> to clean the cache.</td>
 </tr>
 </tbody>
 </table>
