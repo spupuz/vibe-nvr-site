@@ -1579,7 +1579,7 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 </tr>
 <tr>
 <td><strong>Allowed Objects</strong></td>
-<td>Comma-separated list: <code>person</code>, <code>vehicle</code>, <code>dog</code>, etc.</td>
+<td>Whitelisted list: <code>person</code>, <code>vehicle</code>, <code>dog</code>, etc.</td>
 <td><code>person, vehicle</code></td>
 </tr>
 <tr>
@@ -1591,7 +1591,7 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 </table>
 <blockquote>
 <p>[!TIP]
-<strong>Robust Configuration</strong>: To prevent database corruption and UI lag, the system now enforces a <strong>2000-character limit</strong> on AI object filters and automatically sanitizes inputs.</p>
+<strong>Robust Configuration &amp; Self-Healing</strong>: To prevent database corruption and UI lag, the system now enforces a <strong>2000-character limit</strong> on AI object filters. A defensive <strong>Self-Healing Pipeline</strong> automatically repairs legacy corrupted data (recursive encoding) and supports PostgreSQL native array formats (<code>{...}</code>), ensuring settings are never lost after a restart.</p>
 <p>[!NOTE]
 Setting confidence too low (e.g., 33%) can cause false positives from spinning objects, reflections, or camera noise. <strong>70%+ is recommended</strong> for stable production use.</p>
 <p>[!IMPORTANT]
@@ -1869,12 +1869,17 @@ Events recorded before the AI engine was enabled will not have object metadata a
 <tr>
 <td><strong>Severe UI Lag / API Timeout</strong></td>
 <td>Database Corruption (Data Bloat)</td>
-<td>The system now auto-truncates oversized AI settings. Ensure v1.28.3+ is installed to prevent recurrence.</td>
+<td>The system now auto-truncates oversized AI settings and uses a self-healing validator. Ensure v1.28.5+ is installed to prevent recurrence.</td>
 </tr>
 <tr>
 <td><code>Model 404 Error</code> on startup</td>
 <td>Outdated model URLs</td>
 <td>The system now skips non-existent models. Rebuild with <code>--build</code> to clean the cache.</td>
+</tr>
+<tr>
+<td><strong>Settings Reset after Reboot</strong></td>
+<td>Postgres Array Conflict</td>
+<td>v1.28.5 introduced a native Postgres array parser (<code>{...}</code>) to prevent accidental resets to defaults.</td>
 </tr>
 </tbody>
 </table>

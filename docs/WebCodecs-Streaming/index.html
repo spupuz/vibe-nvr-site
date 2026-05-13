@@ -761,6 +761,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ai-tracking-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 AI Tracking Boxes
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1155,6 +1164,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ai-tracking-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 AI Tracking Boxes
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1233,6 +1251,12 @@
 - <strong>Auto-Sync</strong>: The player monitors the drift between video frames and audio playback.
 - <strong>Drift Correction</strong>: If the audio lag exceeds <strong>300ms</strong> (common after network spikes), the buffer is automatically reset to "jump" the audio back into perfect sync with the video.
 - <strong>A-law Support</strong>: Native G.711 A-law decoding is handled client-side for immediate playback without backend transcoding latency.</p>
+<hr />
+<h2 id="ai-tracking-boxes">🤖 AI Tracking Boxes</h2>
+<p>Since v1.28.5, VibeNVR supports real-time <strong>AI Tracking Boxes</strong> in WebCodecs mode:
+- <strong>Metadata Channel</strong>: Detections are sent as JSON metadata packets multiplexed within the WebSocket stream.
+- <strong>Client-side Rendering</strong>: The browser draws the bounding boxes on top of the video canvas. This ensures low server CPU usage while maintaining visual parity with MJPEG mode.
+- <strong>Dynamic Styling</strong>: Bounding boxes are color-coded by class (Green for Persons, Blue for Vehicles, Orange for Animals).</p>
 
 
 

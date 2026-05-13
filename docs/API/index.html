@@ -1014,6 +1014,39 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#websocket-binary-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 WebSocket Binary Protocol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 WebSocket Binary Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header-format-little-endian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header Format (Little Endian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payload-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payload Types
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#system-stats-stats" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1915,6 +1948,39 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#websocket-binary-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠 WebSocket Binary Protocol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠 WebSocket Binary Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#header-format-little-endian" class="md-nav__link">
+    <span class="md-ellipsis">
+      Header Format (Little Endian)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#payload-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Payload Types
+    </span>
+  </a>
+  
+</li>
+        
           <li class="md-nav__item">
   <a href="#system-stats-stats" class="md-nav__link">
     <span class="md-ellipsis">
@@ -2457,6 +2523,46 @@
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all&quot;</span>
 <span class="p">}</span>
 </code></pre></div></p>
+<hr />
+<h2 id="websocket-binary-protocol">🛠 WebSocket Binary Protocol</h2>
+<p>The <code>/api/cameras/{id}/ws</code> endpoint provides a high-performance multiplexed stream using a custom <strong>10-byte binary header</strong>.</p>
+<h3 id="header-format-little-endian">Header Format (Little Endian)</h3>
+<table>
+<thead>
+<tr>
+<th>Offset</th>
+<th>Type</th>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td><code>uint8</code></td>
+<td><code>pType</code></td>
+<td>Packet Type: <code>0</code> (Video), <code>1</code> (Audio), <code>2</code> (Metadata/JSON)</td>
+</tr>
+<tr>
+<td>1</td>
+<td><code>uint8</code></td>
+<td><code>isKey</code></td>
+<td>Keyframe flag: <code>1</code> for I-frames, <code>0</code> otherwise</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>double</code></td>
+<td><code>pts</code></td>
+<td>Timestamp (seconds)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="payload-types">Payload Types</h3>
+<ul>
+<li><strong>Video (pType 0)</strong>: Raw H.264 NALUs (Annex-B).</li>
+<li><strong>Audio (pType 1)</strong>: Opus or G.711 A-law packets.</li>
+<li><strong>Metadata (pType 2)</strong>: JSON string containing detection results (labels, confidence, boxes).</li>
+</ul>
 <hr />
 <h3 id="system-stats-stats">📊 System &amp; Stats (<code>/stats</code>)</h3>
 <h4 id="get-stats"><strong>GET</strong> <code>/stats</code></h4>
