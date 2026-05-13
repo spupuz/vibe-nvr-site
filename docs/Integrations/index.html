@@ -1321,7 +1321,26 @@
 <li><strong>Sensor</strong>: Camera status (<code>online</code>/<code>offline</code>).</li>
 <li><strong>Attributes</strong>: JSON metadata containing AI detection results (labels, confidence).</li>
 </ul>
-<p>For more details, see the <strong><a href="../MQTT-Integration/">MQTT Integration Guide</a></strong>.</p>
+<p>For more details, see the <strong><a href="../MQTT-Integration/">MQTT Integration Guide</a></strong>.
++
++---
++
++## 📱 Telegram Notifications
++
++VibeNVR supports real-time alerts with snapshot attachments via Telegram Bots.
++
++### 🛠️ Hardened Security
++The notification pipeline is hardened to ensure that special characters in camera names or object labels do not cause API failures.
++- <strong>HTML Escaping</strong>: All data sent to Telegram is automatically HTML-escaped.
++- <strong>Snapshot Cleanup</strong>: Temporary snapshots used for notifications are automatically cleaned up after 1 hour.
++
++### ⚙️ Setup
++1. Create a bot using <a href="https://t.me/botfather">@BotFather</a>.
++2. Obtain your <strong>Bot Token</strong>.
++3. Get your <strong>Chat ID</strong> (using bots like <code>@userinfobot</code>).
++4. Configure these in <strong>Settings -&gt; Notifications</strong>.
++
++---</p>
 <hr />
 <h2 id="rest-api">🛠️ REST API</h2>
 <p>For custom scripts or advanced integrations, VibeNVR exposes a full REST API.</p>

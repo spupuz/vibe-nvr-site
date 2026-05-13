@@ -1272,7 +1272,19 @@
 <h3 id="cameras-not-connecting">Cameras not connecting</h3>
 <p>Verify the RTSP URL is reachable from inside the Docker container. The <code>localhost</code> addresses are blocked for security reasons — use the camera's actual LAN IP.</p>
 <blockquote>
-<p>💡 <strong>Note on URL format</strong>: VibeNVR supports raw RTSP paths including double slashes (e.g., <code>rtsp://ip:port//stream2</code>).</p>
+<p>💡 <strong>Note on URL format</strong>: VibeNVR supports raw RTSP paths including double slashes (e.g., <code>rtsp://ip:port//stream2</code>).
++
++---
++
++### 🔋 Battery / Wyze Camera Stability
++Wyze V3 and some battery-powered cameras (Eufy, Reolink) can be sensitive to rapid RTSP connections.
++
++<strong>Recommended Settings:</strong>
++1. <strong>RTSP Transport</strong>: Set to <strong>TCP</strong> in Camera Settings (Main &amp; Sub stream).
++2. <strong>Detection Mode</strong>: Use <strong>ONVIF Edge</strong> if supported, or ensure <strong>AI Master Switch</strong> is ON to allow the engine to use its adaptive sleep patterns.
++3. <strong>NAL Parsing</strong>: VibeNVR automatically uses optimized NAL-unit parsing to handle the non-standard H.264 streams typical of these devices.
++
++---</p>
 </blockquote>
 <hr />
 <h3 id="live-view-shows-authentication-error-401">Live View shows "Authentication Error" / 401</h3>
