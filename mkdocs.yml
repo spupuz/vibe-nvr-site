@@ -53,6 +53,8 @@ nav:
   - External Integrations: Integrations.md
   - Camera Settings: Camera-Settings.md
   - MFA Trusted Devices: MFA-Trusted-Devices.md
+  - Users and Roles: Users-and-Roles.md
+  - Resource Optimization: Resource-Optimization.md
   - UniFi Integration: UniFi-Protect.md
 
 extra:

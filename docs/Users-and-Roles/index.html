@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Troubleshooting/">
+        <link rel="prev" href="../MFA-Trusted-Devices/">
       
       
-        <link rel="next" href="../ONVIF-Management/">
+        <link rel="next" href="../Resource-Optimization/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Backups and Restoration - VibeNVR Documentation</title>
+        <title>Users and Roles - VibeNVR Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuration-backup-restore" class="md-skip">
+        <a href="#users-and-roles-rbac" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Backups and Restoration
+              Users and Roles
             
           </span>
         </div>
@@ -411,11 +411,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../Backups/" class="md-tabs__link">
         
   
     
@@ -532,9 +530,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Users-and-Roles/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -868,31 +868,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Backups and Restoration
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Backups/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -902,119 +881,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚙️ How it Works
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚙️ How it Works">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#automated-backups" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔄 Automated Backups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manual-backups" class="md-nav__link">
-    <span class="md-ellipsis">
-      📝 Manual Backups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restoration-procedures" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛠 Restoration Procedures
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🛠 Restoration Procedures">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-web-ui-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Web UI (Recommended)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-manual-recovery-host-terminal" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Manual Recovery (Host Terminal)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-location" class="md-nav__link">
-    <span class="md-ellipsis">
-      📂 Storage Location
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zero-trace-test-fallback" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛡️ Zero-Trace Test Fallback
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-note" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛡️ Security Note
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1149,10 +1015,31 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Users-and-Roles/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Users and Roles
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1162,6 +1049,101 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#available-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Admin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-viewer-standard-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Viewer (Standard User)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricted-viewer-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricted Viewer Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Restricted Viewer Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How it Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1235,28 +1217,70 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#available-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Available Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Admin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-viewer-standard-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Viewer (Standard User)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricted-viewer-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restricted Viewer Access
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Restricted Viewer Access">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚙️ How it Works
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="⚙️ How it Works">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#automated-backups" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔄 Automated Backups
+      How it Works
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#manual-backups" class="md-nav__link">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      📝 Manual Backups
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
     </span>
   </a>
   
@@ -1264,66 +1288,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#restoration-procedures" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛠 Restoration Procedures
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🛠 Restoration Procedures">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-web-ui-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Web UI (Recommended)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-manual-recovery-host-terminal" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Manual Recovery (Host Terminal)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-location" class="md-nav__link">
-    <span class="md-ellipsis">
-      📂 Storage Location
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#zero-trace-test-fallback" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛡️ Zero-Trace Test Fallback
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-note" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛡️ Security Note
-    </span>
-  </a>
   
 </li>
       
@@ -1343,47 +1307,50 @@
 
 
 
-<h1 id="configuration-backup-restore">💾 Configuration Backup &amp; Restore</h1>
-<p>VibeNVR includes a robust backup and restore system to protect your configuration. <strong>Every setting</strong> configurable via the UI or API is saved in the global backup, including:
-- <strong>Cameras</strong>: Full configuration, RTSP URLs, Schedules, Privacy Masks, and Motion Zones.
-- <strong>System Settings</strong>: Global options, notifications, storage limits, and optimization presets.
-- <strong>Users</strong>: User profiles, hashed passwords, roles, and 2FA secrets.
-- <strong>Groups</strong>: Camera groups and their associations.
-- <strong>Storage Profiles</strong>: All custom storage paths and size limits.
-- <strong>Security</strong>: API Tokens, 2FA Recovery Codes, and Trusted Device tokens.</p>
-<p>Backups are stored as JSON files in the <code>/data/backups/</code> directory.</p>
-<h2 id="how-it-works">⚙️ How it Works</h2>
-<h3 id="automated-backups">🔄 Automated Backups</h3>
-<p>You can enable automated backups in <strong>Settings &gt; Global Settings</strong>.
-- <strong>Frequency</strong>: Configurable in hours (e.g., every 24 hours).
-- <strong>Retention</strong>: Only the most recent $N$ automatic backups are kept (default 10). Older automatic backups are deleted to save space.
-- <strong>Startup Protection</strong>: On system startup, the background worker checks for any recent automatic backups. If a valid backup was created within the current frequency interval, it <strong>skips</strong> the startup backup to prevent redundant files if you restart the container frequently.</p>
-<h3 id="manual-backups">📝 Manual Backups</h3>
-<p>Manual backups can be triggered at any time from the UI or the API.
-- <strong>Retention</strong>: Manual backups are <strong>NEVER</strong> automatically deleted. They remain on the server until you manually delete them.
-- <strong>Naming</strong>: Manual backups are prefixed with <code>_manual_</code> for easy identification.</p>
-<h2 id="restoration-procedures">🛠 Restoration Procedures</h2>
-<h3 id="1-web-ui-recommended">1. Web UI (Recommended)</h3>
-<p>Navigate to <strong>Settings &gt; System Backups</strong> to see a list of available files.
-- <strong>Restore</strong>: Click the Restore icon. The system will apply all settings, cameras, and users from the file. A system reload is usually triggered automatically.
-- <strong>Import</strong>: You can upload a <code>.json</code> backup file from your computer using the "Import" button.</p>
-<h3 id="2-manual-recovery-host-terminal">2. Manual Recovery (Host Terminal)</h3>
-<p>If the UI is inaccessible, you can restore a configuration by placing a valid backup file in the <code>/data/backups/</code> folder and using the API or database directly. (Advanced users only).</p>
-<h2 id="storage-location">📂 Storage Location</h2>
-<p>By default, backups are saved in:
-<div class="highlight"><pre><span></span><code>./data/backups/
-</code></pre></div>
-<em>(Path may vary depending on your <code>docker-compose.yml</code> bind mounts).</em></p>
-<h2 id="zero-trace-test-fallback">🛡️ Zero-Trace Test Fallback</h2>
-<p>When running automated security or integration tests (e.g., <code>refactoring_sanity.py</code>), VibeNVR takes a temporary snapshot of the system state before executing intrusive checks. If a test crashes and fails to restore the state from memory, the system employs an emergency fallback to the most recent automatic backup in <code>/data/backups/</code>. </p>
+<h1 id="users-and-roles-rbac">Users and Roles (RBAC)</h1>
+<p>VibeNVR implements a strict Role-Based Access Control (RBAC) architecture to secure your surveillance data. Every account is assigned a specific role that determines its privileges across both the user interface and the underlying REST/WebSocket APIs.</p>
+<h2 id="available-roles">Available Roles</h2>
+<h3 id="1-admin">1. Admin</h3>
+<p>The <code>admin</code> role grants unrestricted access to all system features.
+- <strong>Privileges:</strong>
+  - Create, modify, or delete cameras and camera groups.
+  - Access system settings, engine debug statuses, and storage profiles.
+  - Manage user accounts, enforce 2FA policies, and configure API tokens.
+  - Perform system backups and restorations.
+  - Bulk delete events from the timeline.
+  - Execute Pan-Tilt-Zoom (PTZ) commands and configure ONVIF presets.</p>
+<h3 id="2-viewer-standard-user">2. Viewer (Standard User)</h3>
+<p>The <code>viewer</code> role is designed for standard monitoring purposes and is strictly <strong>Read-Only</strong> regarding system state.
+- <strong>Privileges:</strong>
+  - View live camera streams via WebSockets or MJPEG.
+  - Browse the event timeline and download recorded media.
+  - Manage their own personal profile and configure 2FA for their account.
+- <strong>Restrictions:</strong>
+  - Cannot modify system settings, create cameras, or delete media. Any attempt to access state-altering APIs will result in an HTTP 403 Forbidden.</p>
+<hr />
+<h2 id="restricted-viewer-access">Restricted Viewer Access</h2>
+<p>By default, Viewers can see all cameras configured in the system. However, Admins can explicitly restrict a Viewer's access to a specific subset of cameras or groups. This is ideal for scenarios where certain users (e.g., specific staff members, tenants) should only have visibility into specific areas.</p>
+<h3 id="how-it-works">How it Works</h3>
+<p>When a Viewer is restricted:
+- <strong>UI Masking</strong>: The Live View, Dashboard, and Camera Groups interfaces will only display the cameras/groups they have been explicitly granted access to.
+- <strong>Timeline Filtering</strong>: The Event Timeline will silently filter out recordings and motion events originating from unauthorized cameras.
+- <strong>API Security</strong>: The restriction is enforced at the core API level. Even if a restricted user attempts to manually request a frame, stream, or websocket connection using an unauthorized camera ID, the backend will proactively drop the connection and return a <code>403 Forbidden</code> error.
+- <strong>API Tokens</strong>: If a restricted Viewer generates an API token for a 3rd party integration, that token inherits the same camera restrictions as the user.</p>
+<h3 id="configuration">Configuration</h3>
+<p>To restrict a viewer's access:
+1. Log in as an <strong>Admin</strong>.
+2. Navigate to <strong>Settings</strong> -&gt; <strong>Users</strong>.
+3. Click the <strong>Edit</strong> (pencil) icon next to the target Viewer account.
+4. Toggle the <strong>Restrict Camera Access</strong> switch to <strong>ON</strong>.
+5. Use the provided checklist to select the specific <strong>Cameras</strong> and/or <strong>Camera Groups</strong> the user is allowed to view.</p>
 <blockquote>
-<p>[!IMPORTANT]
-<strong>Anti-Time Travel Protection:</strong> To prevent the system from accidentally reverting to a stale configuration (e.g., a backup from weeks ago), the fallback mechanism includes a strict <strong>1-hour expiration limit</strong>. If the most recent automatic backup is older than 60 minutes, the fallback is aborted and the system must be restored manually.</p>
+<p><strong>Note:</strong> Granting access to a Camera Group automatically grants the user access to all cameras currently assigned to that group.
+6. Click <strong>Save Changes</strong>. The restrictions take effect immediately.</p>
 </blockquote>
-<h2 id="security-note">🛡️ Security Note</h2>
-<p>Backups contain sensitive data, including <strong>hashed user passwords</strong> and <strong>RTSP URLs with credentials</strong>. 
-- Access to backup endpoints is restricted to users with the <code>admin</code> role.
-- Ensure the <code>/data/backups/</code> directory on the host is properly secured with file permissions.</p>
+<h3 id="best-practices">Best Practices</h3>
+<ul>
+<li><strong>Groups vs Individual Cameras</strong>: For larger deployments, assign cameras to Groups (e.g., "Exterior", "Lobby") and grant users access to the Group. If you add a new camera to "Exterior" later, all users with access to that group will automatically inherit access to the new camera, saving administrative overhead.</li>
+</ul>
 
 
 
@@ -1419,7 +1386,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Troubleshooting/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Troubleshooting">
+          <a href="../MFA-Trusted-Devices/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MFA Trusted Devices">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1429,20 +1396,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Troubleshooting
+                MFA Trusted Devices
               </div>
             </div>
           </a>
         
         
           
-          <a href="../ONVIF-Management/" class="md-footer__link md-footer__link--next" aria-label="Next: ONVIF Management">
+          <a href="../Resource-Optimization/" class="md-footer__link md-footer__link--next" aria-label="Next: Resource Optimization">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                ONVIF Management
+                Resource Optimization
               </div>
             </div>
             <div class="md-footer__button md-icon">
