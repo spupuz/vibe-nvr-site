@@ -56,6 +56,7 @@ nav:
   - Users and Roles: Users-and-Roles.md
   - Resource Optimization: Resource-Optimization.md
   - UniFi Integration: UniFi-Protect.md
+  - Localization: Localization.md
 
 extra:
   social:
