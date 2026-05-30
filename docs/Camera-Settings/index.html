@@ -1131,6 +1131,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Edge Motion & AI Motion Visual Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detection-badges-active-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection Badges (Active Motion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-badges-post-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lifecycle Badges (Post-Motion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-state-reliability-v1296" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion State Reliability (v1.29.6)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1405,6 +1438,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Edge Motion & AI Motion Visual Feedback">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#detection-badges-active-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detection Badges (Active Motion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-badges-post-motion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lifecycle Badges (Post-Motion)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motion-state-reliability-v1296" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motion State Reliability (v1.29.6)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1497,10 +1563,10 @@
 <hr />
 <h2 id="feature-workflows">🛠️ Feature Workflows</h2>
 <ul>
-<li><a href="#selective-propagation">Selective Propagation</a></li>
-<li><a href="#camera-cloning">Camera Cloning</a></li>
+<li><a href="#2-selective-propagation">Selective Propagation</a></li>
+<li><a href="#1-cloning-during-creation">Camera Cloning</a></li>
 <li><a href="#advanced-engine-sync">Advanced Engine Sync</a></li>
-<li><a href="#edge-motion-visual-feedback">Edge Motion Visual Feedback</a></li>
+<li><a href="#edge-motion-ai-motion-visual-feedback">Edge Motion Visual Feedback</a></li>
 <li><a href="#pro-tips">💡 Pro Tips</a></li>
 </ul>
 <h3 id="1-cloning-during-creation">1. Cloning during Creation</h3>
@@ -1525,12 +1591,14 @@
 </ul>
 <p>These settings are applied in real-time when the camera configuration is saved.</p>
 <h2 id="edge-motion-ai-motion-visual-feedback">Edge Motion &amp; AI Motion Visual Feedback</h2>
-<p>VibeNVR supports three detection engines, each with dedicated Live View feedback:</p>
+<p>VibeNVR supports three detection engines, each with dedicated Live View feedback. The live camera tile displays a color-coded badge that reflects the full recording lifecycle:</p>
+<h3 id="detection-badges-active-motion">Detection Badges (Active Motion)</h3>
 <table>
 <thead>
 <tr>
 <th>Engine</th>
-<th>Badge Label</th>
+<th>Badge</th>
+<th>Color</th>
 <th>Description</th>
 </tr>
 </thead>
@@ -1538,23 +1606,58 @@
 <tr>
 <td><strong>OpenCV</strong></td>
 <td><code>MOTION</code></td>
+<td>🔴 Pulsing Red</td>
 <td>Classical background subtraction (MOG2). Fast, no hardware required.</td>
 </tr>
 <tr>
 <td><strong>ONVIF Edge</strong></td>
 <td><code>EDGE MOTION</code></td>
+<td>🔴 Pulsing Red</td>
 <td>Motion events triggered by the camera hardware via ONVIF protocol.</td>
 </tr>
 <tr>
-<td><strong>AI</strong></td>
-<td><code>AI MOTION</code></td>
-<td>TFLite object recognition (YOLOv8 or MobileNet SSD) on CPU or Coral TPU. Core model and hardware are managed globally in System Settings.</td>
+<td><strong>AI Engine</strong></td>
+<td><code>AI: PERSON</code> (or detected label)</td>
+<td>🔴 Pulsing Red</td>
+<td>TFLite object recognition (YOLOv8 or MobileNet SSD). The badge shows the actual detected class name(s).</td>
 </tr>
 </tbody>
 </table>
+<h3 id="lifecycle-badges-post-motion">Lifecycle Badges (Post-Motion)</h3>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Badge</th>
+<th>Color</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Saving Recording</strong></td>
+<td><code>SAVING REC</code></td>
+<td>🟠 Solid Orange</td>
+<td>Motion has ended, but the post-capture buffer is still writing the video file to disk. The border also turns solid orange (non-pulsing) to distinguish this from an active alarm.</td>
+</tr>
+<tr>
+<td><strong>Continuous Mode</strong></td>
+<td><code>CONTINUOUS</code></td>
+<td>🔵 Solid Blue</td>
+<td>The camera is in Always-on recording mode. No motion trigger is needed.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!NOTE]
+The complete recording lifecycle transition is: <strong><code>AI: PERSON</code></strong> (motion active) → <strong><code>SAVING REC</code></strong> (post-capture buffer finalizing) → <em>(badge disappears)</em> (file written to disk).</p>
+</blockquote>
+<h3 id="motion-state-reliability-v1296">Motion State Reliability (v1.29.6)</h3>
+<p>The backend maintains an in-memory live motion registry (<code>LIVE_MOTION</code>). Three safeguards ensure badges never get stuck:</p>
 <ul>
-<li><strong>Dynamic Labeling</strong>: The red pulsing badge in Live View automatically reflects the active engine.</li>
-<li><strong>Noise Reduction</strong>: The static indigo <code>EDGE</code> indicator is suppressed in Live View to provide a cleaner monitoring experience when ONVIF edge detection is active.</li>
+<li><strong>Instant Cleanup on Stop</strong>: Disabling a camera immediately clears its motion state. The badge disappears the moment you toggle the camera off.</li>
+<li><strong>60-Second TTL</strong>: If the engine crashes mid-event and a <code>motion_end</code> signal is never sent, the badge automatically expires after 60 seconds.</li>
+<li><strong>Engine Switch Reset</strong>: If you change the detection engine (e.g., from OpenCV to AI) while a motion event is active, the system fires a synthetic <code>motion_end</code> before handing off to the new engine — preventing stale state carry-over.</li>
 </ul>
 <blockquote>
 <p>[!TIP]
