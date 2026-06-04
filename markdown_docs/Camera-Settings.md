@@ -36,10 +36,10 @@ Users can selectively pick which categories of settings to propagate. The availa
 
 ## 🛠️ Feature Workflows
 
-- [Selective Propagation](#2-selective-propagation)
-- [Camera Cloning](#1-cloning-during-creation)
+- [Selective Propagation](#selective-propagation)
+- [Camera Cloning](#camera-cloning)
 - [Advanced Engine Sync](#advanced-engine-sync)
-- [Edge Motion Visual Feedback](#edge-motion-ai-motion-visual-feedback)
+- [Edge Motion Visual Feedback](#edge-motion-visual-feedback)
 - [💡 Pro Tips](#pro-tips)
 
 ### 1. Cloning during Creation

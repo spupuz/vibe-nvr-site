@@ -65,25 +65,45 @@ Navigate to **Cameras → Edit → AI & Tracking Tab** to configure per-camera d
 > Setting confidence too low (e.g., 33%) can cause false positives from spinning objects, reflections, or camera noise. **70%+ is recommended** for stable production use.
 
 > [!IMPORTANT]
-> When the AI engine is active, `Passthrough Recording` is automatically incompatible and must be disabled, as the engine needs to process frames to apply detection and motion triggers.
+> When the AI engine is active, `Passthrough Recording` **must be enabled** (the UI enforces this). This ensures the CPU is not overloaded by running video compression (`libx264`) and neural networks simultaneously.
+
+## 🛡️ Emergency Software Fallback
+
+Even though AI requires Passthrough to be enabled, VibeNVR has a backend safety mechanism: if the camera stream drops packets and causes FFmpeg to crash (broken pipe), the Engine will automatically disable Passthrough for that recording chunk and fall back to software encoding (`libx264`) to prevent data loss.
+
+When this emergency fallback occurs, a **20-second Resource Protection Pause** is triggered at the start of the recording chunk:
+- The `libx264` video encoder causes a massive "startup burst" as it analyzes and compresses the initial frames.
+- During this 20-second window, **AI detection is temporarily paused**.
+- This guarantees that the server's CPU is not simultaneously hammered by both emergency video encoding and neural network inference, preventing a total system crash.
+
+> [!NOTE]
+> Under normal conditions (Passthrough is healthy), this 20-second pause **never happens** and AI runs continuously. You will only experience this "AI blind spot" if your camera's stream becomes unstable and triggers the software encoding fallback.
 
 ---
 
 ## 🤖 Coral Edge TPU Setup
 
-The Coral USB Accelerator dramatically speeds up inference (~10–15ms vs ~300ms CPU). It appears as a USB device and must be passed through to the Docker engine container.
+VibeNVR supports both the **USB** and **M.2 (PCIe)** versions of the Google Coral Edge TPU. The TPU dramatically speeds up inference (~10–15ms vs ~300ms CPU) and must be passed through from the host to the Docker container.
 
-### Prerequisites
-
+### USB Accelerator (Default)
+The USB version is our default configuration.
 1. The Coral USB Accelerator must be **plugged into a USB 3.0 port** on the host.
 2. Verify it is detected: `lsusb | grep Google` should show `18d1:9302` or similar.
 3. The engine Docker image already installs `libedgetpu1-std` and downloads the `_edgetpu.tflite` model at build time.
+
+### M.2 (PCIe) Accelerator
+To use the M.2/PCIe version, the TPU communicates via the PCIe bus rather than USB.
+1. Install the `gasket-dkms` and `gasket-sys` drivers on your **host machine** (the physical server or hypervisor) so the OS recognizes the device.
+2. Verify it is detected: `ls /dev/apex_0` should return the device node.
+3. You will need to modify the `docker-compose.yml` file to pass this PCIe device to the container instead of the USB bus (see the Docker Compose section below).
 
 ---
 
 ## 🐳 Docker Compose Configuration
 
-The `docker-compose.yml` already includes the necessary `privileged: true` flag and `/dev/bus/usb` volume mount for Coral support. Verify the `engine` service contains:
+### For USB TPU (Default)
+
+The `docker-compose.yml` already includes the necessary `privileged: true` flag and `/dev/bus/usb` volume mount for Coral USB support. Verify the `engine` service contains:
 
 ```yaml
 services:
@@ -110,6 +130,22 @@ services:
 
 > [!NOTE]
 > The device path (`/dev/bus/usb/001/002`) can change after each reboot. Using `privileged: true` is more robust for Coral USB on consumer hardware.
+
+### For M.2 (PCIe) TPU
+
+If you are using the M.2 PCIe version, the TPU is exposed as a `/dev/apex_0` device instead of a USB bus. Modify your `docker-compose.yml` to pass this device using the `devices:` block, and remove the USB volume:
+
+```yaml
+services:
+  engine:
+    # ...
+    devices:
+      - /dev/apex_0:/dev/apex_0           # Required for Coral M.2 (PCIe) access
+      - /dev/dri:/dev/dri                 # Keep for GPU/VAAPI (optional)
+    
+    # You can safely remove the /dev/bus/usb volume and privileged: true 
+    # if you are only using the M.2 TPU and don't need other privileged access.
+```
 
 ---
 

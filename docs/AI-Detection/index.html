@@ -1014,6 +1014,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#emergency-software-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Emergency Software Fallback
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#coral-edge-tpu-setup" class="md-nav__link">
     <span class="md-ellipsis">
       🤖 Coral Edge TPU Setup
@@ -1024,9 +1033,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#usb-accelerator-default" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      USB Accelerator (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m2-pcie-accelerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      M.2 (PCIe) Accelerator
     </span>
   </a>
   
@@ -1043,6 +1061,30 @@
       🐳 Docker Compose Configuration
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🐳 Docker Compose Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-usb-tpu-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      For USB TPU (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-m2-pcie-tpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      For M.2 (PCIe) TPU
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1414,6 +1456,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#emergency-software-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛡️ Emergency Software Fallback
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#coral-edge-tpu-setup" class="md-nav__link">
     <span class="md-ellipsis">
       🤖 Coral Edge TPU Setup
@@ -1424,9 +1475,18 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#usb-accelerator-default" class="md-nav__link">
     <span class="md-ellipsis">
-      Prerequisites
+      USB Accelerator (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#m2-pcie-accelerator" class="md-nav__link">
+    <span class="md-ellipsis">
+      M.2 (PCIe) Accelerator
     </span>
   </a>
   
@@ -1443,6 +1503,30 @@
       🐳 Docker Compose Configuration
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="🐳 Docker Compose Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-usb-tpu-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      For USB TPU (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-m2-pcie-tpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      For M.2 (PCIe) TPU
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1709,20 +1793,35 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 <p>[!NOTE]
 Setting confidence too low (e.g., 33%) can cause false positives from spinning objects, reflections, or camera noise. <strong>70%+ is recommended</strong> for stable production use.</p>
 <p>[!IMPORTANT]
-When the AI engine is active, <code>Passthrough Recording</code> is automatically incompatible and must be disabled, as the engine needs to process frames to apply detection and motion triggers.</p>
+When the AI engine is active, <code>Passthrough Recording</code> <strong>must be enabled</strong> (the UI enforces this). This ensures the CPU is not overloaded by running video compression (<code>libx264</code>) and neural networks simultaneously.</p>
+</blockquote>
+<h2 id="emergency-software-fallback">🛡️ Emergency Software Fallback</h2>
+<p>Even though AI requires Passthrough to be enabled, VibeNVR has a backend safety mechanism: if the camera stream drops packets and causes FFmpeg to crash (broken pipe), the Engine will automatically disable Passthrough for that recording chunk and fall back to software encoding (<code>libx264</code>) to prevent data loss.</p>
+<p>When this emergency fallback occurs, a <strong>20-second Resource Protection Pause</strong> is triggered at the start of the recording chunk:
+- The <code>libx264</code> video encoder causes a massive "startup burst" as it analyzes and compresses the initial frames.
+- During this 20-second window, <strong>AI detection is temporarily paused</strong>.
+- This guarantees that the server's CPU is not simultaneously hammered by both emergency video encoding and neural network inference, preventing a total system crash.</p>
+<blockquote>
+<p>[!NOTE]
+Under normal conditions (Passthrough is healthy), this 20-second pause <strong>never happens</strong> and AI runs continuously. You will only experience this "AI blind spot" if your camera's stream becomes unstable and triggers the software encoding fallback.</p>
 </blockquote>
 <hr />
 <h2 id="coral-edge-tpu-setup">🤖 Coral Edge TPU Setup</h2>
-<p>The Coral USB Accelerator dramatically speeds up inference (~10–15ms vs ~300ms CPU). It appears as a USB device and must be passed through to the Docker engine container.</p>
-<h3 id="prerequisites">Prerequisites</h3>
-<ol>
-<li>The Coral USB Accelerator must be <strong>plugged into a USB 3.0 port</strong> on the host.</li>
-<li>Verify it is detected: <code>lsusb | grep Google</code> should show <code>18d1:9302</code> or similar.</li>
-<li>The engine Docker image already installs <code>libedgetpu1-std</code> and downloads the <code>_edgetpu.tflite</code> model at build time.</li>
-</ol>
+<p>VibeNVR supports both the <strong>USB</strong> and <strong>M.2 (PCIe)</strong> versions of the Google Coral Edge TPU. The TPU dramatically speeds up inference (~10–15ms vs ~300ms CPU) and must be passed through from the host to the Docker container.</p>
+<h3 id="usb-accelerator-default">USB Accelerator (Default)</h3>
+<p>The USB version is our default configuration.
+1. The Coral USB Accelerator must be <strong>plugged into a USB 3.0 port</strong> on the host.
+2. Verify it is detected: <code>lsusb | grep Google</code> should show <code>18d1:9302</code> or similar.
+3. The engine Docker image already installs <code>libedgetpu1-std</code> and downloads the <code>_edgetpu.tflite</code> model at build time.</p>
+<h3 id="m2-pcie-accelerator">M.2 (PCIe) Accelerator</h3>
+<p>To use the M.2/PCIe version, the TPU communicates via the PCIe bus rather than USB.
+1. Install the <code>gasket-dkms</code> and <code>gasket-sys</code> drivers on your <strong>host machine</strong> (the physical server or hypervisor) so the OS recognizes the device.
+2. Verify it is detected: <code>ls /dev/apex_0</code> should return the device node.
+3. You will need to modify the <code>docker-compose.yml</code> file to pass this PCIe device to the container instead of the USB bus (see the Docker Compose section below).</p>
 <hr />
 <h2 id="docker-compose-configuration">🐳 Docker Compose Configuration</h2>
-<p>The <code>docker-compose.yml</code> already includes the necessary <code>privileged: true</code> flag and <code>/dev/bus/usb</code> volume mount for Coral support. Verify the <code>engine</code> service contains:</p>
+<h3 id="for-usb-tpu-default">For USB TPU (Default)</h3>
+<p>The <code>docker-compose.yml</code> already includes the necessary <code>privileged: true</code> flag and <code>/dev/bus/usb</code> volume mount for Coral USB support. Verify the <code>engine</code> service contains:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">engine</span><span class="p">:</span>
 <span class="w">    </span><span class="c1"># ...</span>
@@ -1746,6 +1845,18 @@ When the AI engine is active, <code>Passthrough Recording</code> is automaticall
 <p>[!NOTE]
 The device path (<code>/dev/bus/usb/001/002</code>) can change after each reboot. Using <code>privileged: true</code> is more robust for Coral USB on consumer hardware.</p>
 </blockquote>
+<h3 id="for-m2-pcie-tpu">For M.2 (PCIe) TPU</h3>
+<p>If you are using the M.2 PCIe version, the TPU is exposed as a <code>/dev/apex_0</code> device instead of a USB bus. Modify your <code>docker-compose.yml</code> to pass this device using the <code>devices:</code> block, and remove the USB volume:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ...</span>
+<span class="w">    </span><span class="nt">devices</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/apex_0:/dev/apex_0</span><span class="w">           </span><span class="c1"># Required for Coral M.2 (PCIe) access</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/dri:/dev/dri</span><span class="w">                 </span><span class="c1"># Keep for GPU/VAAPI (optional)</span>
+
+<span class="w">    </span><span class="c1"># You can safely remove the /dev/bus/usb volume and privileged: true </span>
+<span class="w">    </span><span class="c1"># if you are only using the M.2 TPU and don&#39;t need other privileged access.</span>
+</code></pre></div>
 <hr />
 <h2 id="proxmox-lxc-container-configuration">🐧 Proxmox LXC Container Configuration</h2>
 <p>If VibeNVR is running inside a <strong>Proxmox LXC container</strong>, the Coral USB device must be explicitly passed through at the <strong>LXC level</strong> before Docker can access it. This requires editing the container's configuration file on the Proxmox host.</p>
