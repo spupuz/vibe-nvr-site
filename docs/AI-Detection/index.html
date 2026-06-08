@@ -1217,6 +1217,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ui-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖥️ UI &amp; Rendering
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1654,6 +1663,15 @@
   <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
       🛠️ Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-rendering" class="md-nav__link">
+    <span class="md-ellipsis">
+      🖥️ UI &amp; Rendering
     </span>
   </a>
   
@@ -2106,8 +2124,17 @@ Events recorded before the AI engine was enabled will not have object metadata a
 <td>Postgres Array Conflict</td>
 <td>v1.28.5 introduced a native Postgres array parser (<code>{...}</code>) to prevent accidental resets to defaults.</td>
 </tr>
+<tr>
+<td><code>AI: invoke() timed out (6s)</code></td>
+<td>Queue contention across multiple cameras</td>
+<td>The system now implements a <strong>200ms submit lock timeout</strong> to safely drop frames when the AI engine is heavily loaded, completely preventing this endless loop.</td>
+</tr>
 </tbody>
 </table>
+<hr />
+<h2 id="ui-rendering">🖥️ UI &amp; Rendering</h2>
+<p>VibeNVR employs <strong>Dynamic Resolution Scaling</strong> for AI detection overlays.
+This means that bounding box thickness and label text size are strictly proportional to the native width of the video frame. Whether a camera is streaming at 640p (sub-stream) or 4K, the AI overlays will render at the exact same visual weight when displayed side-by-side in the Live View grid.</p>
 
 
 
