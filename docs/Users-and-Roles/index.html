@@ -1116,14 +1116,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#restricted-viewer-access" class="md-nav__link">
+  <a href="#granular-restricted-viewer-access" class="md-nav__link">
     <span class="md-ellipsis">
-      Restricted Viewer Access
+      Granular Restricted Viewer Access
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Restricted Viewer Access">
+    <nav class="md-nav" aria-label="Granular Restricted Viewer Access">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#granular-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Granular Permissions
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#how-it-works" class="md-nav__link">
@@ -1288,14 +1297,23 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#restricted-viewer-access" class="md-nav__link">
+  <a href="#granular-restricted-viewer-access" class="md-nav__link">
     <span class="md-ellipsis">
-      Restricted Viewer Access
+      Granular Restricted Viewer Access
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Restricted Viewer Access">
+    <nav class="md-nav" aria-label="Granular Restricted Viewer Access">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#granular-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Granular Permissions
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#how-it-works" class="md-nav__link">
@@ -1366,23 +1384,27 @@
 - <strong>Restrictions:</strong>
   - Cannot modify system settings, create cameras, or delete media. Any attempt to access state-altering APIs will result in an HTTP 403 Forbidden.</p>
 <hr />
-<h2 id="restricted-viewer-access">Restricted Viewer Access</h2>
-<p>By default, Viewers can see all cameras configured in the system. However, Admins can explicitly restrict a Viewer's access to a specific subset of cameras or groups. This is ideal for scenarios where certain users (e.g., specific staff members, tenants) should only have visibility into specific areas.</p>
+<h2 id="granular-restricted-viewer-access">Granular Restricted Viewer Access</h2>
+<p>By default, Viewers can see all cameras configured in the system. However, Admins can explicitly restrict a Viewer's access using a granular permissions model per Camera or per Group.</p>
+<h3 id="granular-permissions">Granular Permissions</h3>
+<p>When restricting a user, you can assign three specific levels of access per camera or group:
+- <strong>VIEW</strong>: The user can see the live stream (Live View, Dashboard, Groups).
+- <strong>REPLAY</strong>: The user can access the Event Timeline, view past recordings, and download media for this camera.
+- <strong>CONTROL (PTZ)</strong>: The user is allowed to execute Pan-Tilt-Zoom commands and trigger manual snapshots.</p>
 <h3 id="how-it-works">How it Works</h3>
 <p>When a Viewer is restricted:
-- <strong>UI Masking</strong>: The Live View, Dashboard, and Camera Groups interfaces will only display the cameras/groups they have been explicitly granted access to.
-- <strong>Timeline Filtering</strong>: The Event Timeline will silently filter out recordings and motion events originating from unauthorized cameras.
-- <strong>API Security</strong>: The restriction is enforced at the core API level. Even if a restricted user attempts to manually request a frame, stream, or websocket connection using an unauthorized camera ID, the backend will proactively drop the connection and return a <code>403 Forbidden</code> error.
-- <strong>API Tokens</strong>: If a restricted Viewer generates an API token for a 3rd party integration, that token inherits the same camera restrictions as the user.</p>
+- <strong>UI Masking</strong>: Interfaces will dynamically hide cameras or features based on the assigned permissions. If a user lacks <code>REPLAY</code> access for a camera, it won't appear in their Timeline. If they lack <code>CONTROL</code>, the PTZ and snapshot buttons are hidden.
+- <strong>API Security</strong>: Restrictions are strictly enforced at the core API level. Any direct attempt to access unauthorized media endpoints (<code>/frame</code>, <code>/events</code>) or execute state-altering commands (<code>/ptz</code>) for an unauthorized camera ID will result in a <code>403 Forbidden</code> error.
+- <strong>API Tokens</strong>: If a restricted Viewer generates an API token for a 3rd party integration, that token inherits the exact granular restrictions assigned to the user.</p>
 <h3 id="configuration">Configuration</h3>
 <p>To restrict a viewer's access:
 1. Log in as an <strong>Admin</strong>.
 2. Navigate to <strong>Settings</strong> -&gt; <strong>Users</strong>.
 3. Click the <strong>Edit</strong> (pencil) icon next to the target Viewer account.
 4. Toggle the <strong>Restrict Camera Access</strong> switch to <strong>ON</strong>.
-5. Use the provided checklist to select the specific <strong>Cameras</strong> and/or <strong>Camera Groups</strong> the user is allowed to view.</p>
+5. Use the provided interface to toggle <strong>VIEW</strong>, <strong>REPLAY</strong>, and <strong>CONTROL</strong> checkboxes for specific <strong>Cameras</strong> and/or <strong>Camera Groups</strong>.</p>
 <blockquote>
-<p><strong>Note:</strong> Granting access to a Camera Group automatically grants the user access to all cameras currently assigned to that group.
+<p><strong>Note:</strong> Granting access to a Camera Group automatically cascades those specific permissions to all cameras currently assigned to that group.
 6. Click <strong>Save Changes</strong>. The restrictions take effect immediately.</p>
 </blockquote>
 <h3 id="best-practices">Best Practices</h3>
