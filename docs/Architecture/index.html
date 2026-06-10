@@ -1383,7 +1383,7 @@
 - <strong>Media Relay</strong>: Manages secure, authenticated access to video streams via HttpOnly cookies.</p>
 <h3 id="3-vibeengine-custom-python-engine">3. VibeEngine (Custom Python Engine)</h3>
 <p>The dedicated video processing service. This is the "heavy lifter" of the system:
-- <strong>Stream Ingestion</strong>: Uses <strong>PyAV</strong> (native FFmpeg bindings) for robust RTSP connection management and packet demuxing.
+- <strong>Stream Ingestion</strong>: Uses <strong>PyAV</strong> (native FFmpeg bindings) for robust RTSP connection management and packet demuxing. Optionally routes connections through an internal <strong>go2rtc Gateway</strong> (<code>127.0.0.1:8554</code>) to stabilize flaky consumer IP cameras and prevent IP bans.
 - <strong>Image Processing</strong>: Leverages <strong>OpenCV (cv2)</strong> for motion detection analysis, text overlays, and dynamic JPEG encoding for legacy previews.
 - <strong>Modular Design</strong>: The engine core is highly modularized (<code>stream_reader</code>, <code>motion_detector</code>, <code>recording_manager</code>, <code>mask_handler</code>, <code>overlay_handler</code>) for maximum stability.
 - <strong>Security</strong>: Communicates via internal Docker networks and requires a shared <code>WEBHOOK_SECRET</code> for backend interaction.

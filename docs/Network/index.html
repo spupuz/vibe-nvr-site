@@ -774,6 +774,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#internal-streaming-gateway-go2rtc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 Internal Streaming Gateway (go2rtc)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#browser-security-headers" class="md-nav__link">
     <span class="md-ellipsis">
       🔒 Browser Security Headers
@@ -1243,6 +1252,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#internal-streaming-gateway-go2rtc" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 Internal Streaming Gateway (go2rtc)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#browser-security-headers" class="md-nav__link">
     <span class="md-ellipsis">
       🔒 Browser Security Headers
@@ -1342,6 +1360,17 @@ COOKIE_SECURE=true
 </code></pre></div></li>
 <li><strong>Nginx Proxy Manager:</strong> Edit your Proxy Host, go to the <strong>Details</strong> tab, and toggle the <strong>"Websockets Support"</strong> switch to ON.</li>
 <li><strong>Caddy / Traefik:</strong> WebSockets are supported automatically by default.</li>
+</ul>
+<hr />
+<h2 id="internal-streaming-gateway-go2rtc">🎥 Internal Streaming Gateway (go2rtc)</h2>
+<p>VibeNVR integrates an internal <strong>go2rtc</strong> gateway to handle flaky IP cameras and mitigate IP bans.</p>
+<ul>
+<li><strong>Role:</strong> When enabled globally in Settings, the Backend registers all active cameras with the internal go2rtc service.</li>
+<li><strong>RTSP Proxy:</strong> The Engine (VibeEngine) connects to the internal gateway (<code>127.0.0.1:8554</code>) instead of connecting directly to the camera hardware.</li>
+<li><strong>Benefits:</strong></li>
+<li>Dramatically improves connection stability for cheap/battery cameras (e.g., Wyze, Tapo).</li>
+<li>Absorbs dropped packets and reconnects invisibly.</li>
+<li>Mitigates aggressive IP-banning behavior from consumer cameras if multiple clients try to connect simultaneously.</li>
 </ul>
 <hr />
 <h2 id="browser-security-headers">🔒 Browser Security Headers</h2>
