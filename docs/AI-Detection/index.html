@@ -2127,7 +2127,12 @@ Events recorded before the AI engine was enabled will not have object metadata a
 <tr>
 <td><code>AI: invoke() timed out (6s)</code></td>
 <td>Queue contention across multiple cameras</td>
-<td>The system now implements a <strong>200ms submit lock timeout</strong> to safely drop frames when the AI engine is heavily loaded, completely preventing this endless loop.</td>
+<td>The system now implements a <strong>200ms submit lock timeout</strong> to safely drop frames when the AI engine is heavily loaded. Additionally, a <strong>passive watchdog</strong> automatically restarts the TFLite interpreter if a silent stall is detected, ensuring continuous detection without requiring an engine restart.</td>
+</tr>
+<tr>
+<td><strong>Silent Detection Stall</strong></td>
+<td>Interpreter state corruption</td>
+<td>A passive watchdog runs with every inference request. If inference stops producing events for over 10 seconds despite successful invokes, the interpreter is automatically reinitialized.</td>
 </tr>
 </tbody>
 </table>

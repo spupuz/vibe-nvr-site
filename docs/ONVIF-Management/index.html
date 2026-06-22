@@ -1038,6 +1038,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#stream-auto-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Stream Auto-Completion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#security-privacy" class="md-nav__link">
     <span class="md-ellipsis">
       🛡️ Security &amp; Privacy
@@ -1384,6 +1393,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#stream-auto-completion" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Stream Auto-Completion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#security-privacy" class="md-nav__link">
     <span class="md-ellipsis">
       🛡️ Security &amp; Privacy
@@ -1449,7 +1467,7 @@
 <li><strong>Real-time PTZ</strong>: Control Pan, Tilt, Zoom, and <strong>Home Positions</strong> directly from the Live View.</li>
 <li><strong>ONVIF Edge Motion</strong>: Offload detection logic to camera hardware to save server resources.</li>
 <li><strong>Advanced PTZ Home</strong>: Native support for <code>SetHomePosition</code> and <code>GotoHomePosition</code> with intelligent software fallbacks for restrictive hardware.</li>
-<li><strong>Probing</strong>: Automatically discover camera details (Manufacturer, Model, RTSP profiles, and hardware capabilities) as visual badges.</li>
+<li><strong>Probing &amp; Auto-Completion</strong>: Automatically discover camera details (Manufacturer, Model, and hardware capabilities) as visual badges. Instantly discover all available <strong>RTSP Stream Profiles</strong> and auto-fill your Main and Sub-stream configurations with a single click.</li>
 <li><strong>Credential Fallback</strong>: Automatically attempts to use RTSP streaming credentials if management credentials are not explicitly set.</li>
 <li><strong>Network Discovery</strong>: Securely scan your local network for ONVIF and RTSP devices using an optimized SSE (Server-Sent Events) stream.</li>
 </ul>
@@ -1528,6 +1546,19 @@ Use the <strong>"Test ONVIF Connection"</strong> button to verify that VibeNVR c
 </li>
 </ul>
 <hr />
+<h2 id="stream-auto-completion">🚀 Stream Auto-Completion</h2>
+<p>VibeNVR significantly simplifies the process of configuring camera streams by integrating directly with the ONVIF media service.</p>
+<ol>
+<li>Navigate to the <strong>ONVIF</strong> tab in the camera settings modal.</li>
+<li>Click <strong>"Test ONVIF Connection"</strong>.</li>
+<li>Once the connection is verified, scroll down to the <strong>"Detected Stream Profiles"</strong> section.</li>
+<li>The system will list all available streaming profiles provided by the camera (e.g., <code>mainStream</code>, <code>minorStream</code>, <code>profile1</code>).</li>
+<li>Click the <strong>"Use these streams"</strong> button next to a profile to instantly auto-fill the RTSP URL fields in the <strong>General</strong> tab.</li>
+</ol>
+<blockquote>
+<p>[!TIP]
+If your camera requires credentials for the RTSP stream, VibeNVR will automatically construct the complete URL using the username and password you provided in the ONVIF or General tab, ensuring a ready-to-use stream.</p>
+</blockquote>
 <h2 id="security-privacy">🛡️ Security &amp; Privacy</h2>
 <ul>
 <li><strong>RBAC</strong>: Only users with the <strong>Admin</strong> role can access ONVIF configuration and PTZ controls.</li>
