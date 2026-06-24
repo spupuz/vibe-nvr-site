@@ -1414,7 +1414,6 @@
 <li><strong>Fallback Logic</strong>: If a sub-stream is not configured (optional), the Engine automatically falls back to the main stream reader for all operations, including live UI frames.</li>
 <li><strong>Adaptive Streaming</strong>: Automatically switches between high-performance WebCodecs (H.264), optimized Sub-Streams, and compatible JPEG polling fallback.</li>
 <li><strong>Live Audio</strong>: Implements low-latency audio streaming using browser WebCodecs (PCM ALAW/ULAW). The Engine performs secure authentication and direct passthrough of G.711 streams to the client, minimizing backend CPU overhead and ensuring perfect AV synchronization.</li>
-<li><strong>Database Query Optimization</strong>: Critical API endpoints (such as <code>get_users</code>) employ eager loading techniques (<code>selectinload</code>) to resolve N+1 query issues during serialization, reducing database query complexity from O(N) to O(1) and ensuring scalable performance.</li>
 </ul>
 
 

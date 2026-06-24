@@ -1385,8 +1385,8 @@
 <tbody>
 <tr>
 <td><code>SECRET_KEY</code></td>
-<td><em>(insecure default)</em></td>
-<td><strong>Change this.</strong> Used to sign JWT tokens (min 32 chars). In production, the app <strong>will not start</strong> if set to a built-in default or weak key, unless <code>ALLOW_WEAK_SECRET=true</code> is set.</td>
+<td><em>(dynamic random)</em></td>
+<td><strong>Change this.</strong> Used to sign JWT tokens (min 32 chars). If left unset, a secure random key is generated on each startup, which will log out all users when the container restarts. In production, the app <strong>will not start</strong> if explicitly set to a weak key.</td>
 </tr>
 <tr>
 <td><code>WEBHOOK_SECRET</code></td>
