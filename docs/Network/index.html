@@ -1386,7 +1386,7 @@ COOKIE_SECURE=true
 <tbody>
 <tr>
 <td><strong>X-Frame-Options</strong></td>
-<td><code>SAMEORIGIN</code></td>
+<td><code>DENY</code> / <code>SAMEORIGIN</code></td>
 <td>Prevents Clickjacking by restricting embedding.</td>
 </tr>
 <tr>
@@ -1395,14 +1395,24 @@ COOKIE_SECURE=true
 <td>Prevents MIME-type sniffing.</td>
 </tr>
 <tr>
+<td><strong>X-XSS-Protection</strong></td>
+<td><code>1; mode=block</code></td>
+<td>Blocks cross-site scripting attacks.</td>
+</tr>
+<tr>
+<td><strong>Strict-Transport-Security</strong></td>
+<td><code>max-age=31536000; includeSubDomains</code></td>
+<td>Enforces secure (HTTPS) connections to the server.</td>
+</tr>
+<tr>
 <td><strong>Referrer-Policy</strong></td>
 <td><code>strict-origin-when-cross-origin</code></td>
 <td>Protects privacy when navigating to external links.</td>
 </tr>
 <tr>
-<td><strong>Content-Security-Policy-Report-Only</strong></td>
+<td><strong>Content-Security-Policy</strong></td>
 <td><em>(Strict)</em></td>
-<td>Mitigates XSS. See <a href="SECURITY.md">SECURITY.md</a> for details.</td>
+<td>Actively mitigates XSS. See <a href="SECURITY.md">SECURITY.md</a> for details.</td>
 </tr>
 </tbody>
 </table>

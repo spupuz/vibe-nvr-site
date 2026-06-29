@@ -1172,9 +1172,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-update_localespy" class="md-nav__link">
+  <a href="#1-extract_tpy" class="md-nav__link">
     <span class="md-ellipsis">
-      1. update_locales.py
+      1. extract_t.py
     </span>
   </a>
   
@@ -1275,9 +1275,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-update_localespy" class="md-nav__link">
+  <a href="#1-extract_tpy" class="md-nav__link">
     <span class="md-ellipsis">
-      1. update_locales.py
+      1. extract_t.py
     </span>
   </a>
   
@@ -1362,10 +1362,10 @@
 <p>The second argument acts as the English fallback. This ensures the codebase remains readable even without looking at the JSON dictionaries.</p>
 <h2 id="automated-translation-tools">Automated Translation Tools</h2>
 <p>To avoid manually maintaining 10 different language JSON files, VibeNVR provides two Python scripts located in <code>frontend/scripts/</code>.</p>
-<h3 id="1-update_localespy">1. <code>update_locales.py</code></h3>
+<h3 id="1-extract_tpy">1. <code>extract_t.py</code></h3>
 <p>This script scans all <code>.jsx</code> and <code>.js</code> files in the <code>src/</code> directory, extracts every string wrapped in <code>t('key', 'Default Value')</code>, and builds a comprehensive <code>en/translation.json</code> file. It automatically merges new keys, updates changed fallbacks, and cleans up orphaned keys.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>frontend
-python3<span class="w"> </span>scripts/update_locales.py
+python3<span class="w"> </span>scripts/extract_t.py
 </code></pre></div>
 <h3 id="2-auto_translatepy">2. <code>auto_translate.py</code></h3>
 <p>Once the English dictionary is up-to-date, this script uses Google Translate's API to automatically translate all missing strings across the other 9 language dictionaries. It includes intelligent skipping for technical terms (e.g., "WebCodecs", "ONVIF Edge") and system badges (e.g., "ENABLED").</p>
