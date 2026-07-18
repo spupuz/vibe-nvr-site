@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Network/">
+        <link rel="prev" href="../MFA-Trusted-Devices/">
       
       
-        <link rel="next" href="../Storage-Profiles/">
+        <link rel="next" href="../Users-and-Roles/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>WebCodecs Streaming - VibeNVR Documentation</title>
+        <title>SSO & OAuth Integration - VibeNVR Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#live-view-webcodecs-h264-streaming" class="md-skip">
+        <a href="#sso-oauth-oidc-integration" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              WebCodecs Streaming
+              SSO & OAuth Integration
             
           </span>
         </div>
@@ -275,11 +275,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../WebCodecs-Streaming/" class="md-tabs__link">
         
   
     
@@ -532,9 +530,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../SSO-OAuth-Integration/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -734,31 +734,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    WebCodecs Streaming
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../WebCodecs-Streaming/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -768,80 +747,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-verify-webcodecs-is-active" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔍 How to verify WebCodecs is active
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#browser-compatibility" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌐 Browser Compatibility
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#secure-context-requirement" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔒 Secure Context Requirement
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#streaming-mode-selection" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚙️ Streaming Mode Selection
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#audio-synchronization" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎙️ Audio Synchronization
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ai-tracking-boxes" class="md-nav__link">
-    <span class="md-ellipsis">
-      🤖 AI Tracking Boxes
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1144,10 +1049,31 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../SSO-OAuth-Integration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SSO & OAuth Integration
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1157,6 +1083,146 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-global-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Global Architecture
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-setting-up-the-identity-provider-idp" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Setting Up the Identity Provider (IdP)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setting Up the Identity Provider (IdP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-authentik" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Authentik
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-authelia" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Authelia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-google-workspace-google-cloud-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. Google Workspace (Google Cloud Console)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-microsoft-entra-id-formerly-azure-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      E. Microsoft Entra ID (formerly Azure AD)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuring-vibenvr" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuring VibeNVR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-user-provisioning-and-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. User Provisioning and Linking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. User Provisioning and Linking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-admin-links-the-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option A: Admin Links the Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-user-links-the-account-self-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option B: User Links the Account (Self-Service)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Considerations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1272,54 +1338,120 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-verify-webcodecs-is-active" class="md-nav__link">
+  <a href="#1-global-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      🔍 How to verify WebCodecs is active
+      1. Global Architecture
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#browser-compatibility" class="md-nav__link">
+  <a href="#2-setting-up-the-identity-provider-idp" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 Browser Compatibility
+      2. Setting Up the Identity Provider (IdP)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Setting Up the Identity Provider (IdP)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-authentik" class="md-nav__link">
+    <span class="md-ellipsis">
+      A. Authentik
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-keycloak" class="md-nav__link">
+    <span class="md-ellipsis">
+      B. Keycloak
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-authelia" class="md-nav__link">
+    <span class="md-ellipsis">
+      C. Authelia
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-google-workspace-google-cloud-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      D. Google Workspace (Google Cloud Console)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#e-microsoft-entra-id-formerly-azure-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      E. Microsoft Entra ID (formerly Azure AD)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuring-vibenvr" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuring VibeNVR
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#secure-context-requirement" class="md-nav__link">
+  <a href="#4-user-provisioning-and-linking" class="md-nav__link">
     <span class="md-ellipsis">
-      🔒 Secure Context Requirement
+      4. User Provisioning and Linking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. User Provisioning and Linking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-admin-links-the-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option A: Admin Links the Account
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#streaming-mode-selection" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#option-b-user-links-the-account-self-service" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚙️ Streaming Mode Selection
+      Option B: User Links the Account (Self-Service)
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#audio-synchronization" class="md-nav__link">
-    <span class="md-ellipsis">
-      🎙️ Audio Synchronization
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ai-tracking-boxes" class="md-nav__link">
+  <a href="#security-considerations" class="md-nav__link">
     <span class="md-ellipsis">
-      🤖 AI Tracking Boxes
+      Security Considerations
     </span>
   </a>
   
@@ -1341,77 +1473,132 @@
 
 
 
-<h1 id="live-view-webcodecs-h264-streaming">Live View — WebCodecs H.264 Streaming</h1>
-<p>The Live View page uses the browser's native <strong>WebCodecs API</strong> to display a direct H.264 stream via WebSockets.</p>
+<h1 id="sso-oauth-oidc-integration">SSO (OAuth / OIDC) Integration</h1>
+<p>VibeNVR supports Single Sign-On (SSO) using the OAuth 2.0 / OpenID Connect (OIDC) protocols. This allows you to integrate VibeNVR with external Identity Providers (IdP) such as <strong>Authentik</strong>, <strong>Keycloak</strong>, <strong>Authelia</strong>, or <strong>Google Workspace</strong>.</p>
+<blockquote>
+<p><strong>Note</strong>: Even with SSO enabled, local accounts and Multi-Factor Authentication (OTP/2FA) continue to work. SSO acts as an alternative login bridge to a local VibeNVR session.</p>
+</blockquote>
 <hr />
-<h2 id="how-to-verify-webcodecs-is-active">🔍 How to verify WebCodecs is active</h2>
+<h2 id="1-global-architecture">1. Global Architecture</h2>
+<p>When an SSO login occurs, VibeNVR receives the user's identity (the <code>sub</code> claim or subject ID, along with email and username) from the IdP.</p>
+<p>VibeNVR <strong>does not</strong> automatically provision new accounts (Just-In-Time provisioning is disabled for security). The user must already exist in the VibeNVR local database. VibeNVR links the IdP account to the local user based on the matching <code>OAuth Subject ID</code>, or by falling back to matching the <code>email</code> or <code>username</code>.</p>
+<p>Once linked, the user receives a standard VibeNVR JWT token, and the session continues just like a local login.</p>
+<hr />
+<h2 id="2-setting-up-the-identity-provider-idp">2. Setting Up the Identity Provider (IdP)</h2>
+<p>You can use any OIDC-compliant identity provider. Below are configuration examples for the most popular platforms.</p>
+<h3 id="a-authentik">A. Authentik</h3>
 <ol>
-<li>Open the <strong>Live View</strong> page in a supported browser (Chrome 94+, Edge 94+).</li>
-<li>Hover over any active camera tile. Bottom-left badge: <strong><code>WS / H.264</code></strong> (Green) vs <strong><code>JPEG Poll</code></strong> (Yellow).</li>
-<li>Open <strong>DevTools → Network → WS</strong> to see the binary stream.</li>
+<li>Log into your Authentik Admin interface.</li>
+<li>Go to <strong>Applications</strong> &gt; <strong>Providers</strong>.</li>
+<li>Click <strong>Create</strong> and select <strong>OAuth2/OpenID Provider</strong>.</li>
+<li>Configure the following:</li>
+<li><strong>Name</strong>: <code>VibeNVR Provider</code></li>
+<li><strong>Authorization flow</strong>: Select your explicit consent flow (or implicit if preferred).</li>
+<li><strong>Client Type</strong>: <code>Confidential</code></li>
+<li><strong>Client ID</strong>: (Leave auto-generated or specify one, e.g., <code>vibenvr_client</code>)</li>
+<li><strong>Client Secret</strong>: (Copy this, you'll need it later)</li>
+<li><strong>Redirect URIs/Origins (Regex)</strong>: <code>https://&lt;YOUR_VIBENVR_DOMAIN&gt;/api/oauth/callback</code>
+     <em>(If accessing locally, use <code>http://&lt;VIBENVR_IP&gt;:&lt;PORT&gt;/api/oauth/callback</code>)</em></li>
+<li>Go to <strong>Applications</strong> &gt; <strong>Applications</strong>.</li>
+<li>Click <strong>Create</strong> and set the Name to <code>VibeNVR</code>, Slug to <code>vibenvr</code>, and select the Provider you just created.</li>
+<li>To find your <strong>OpenID Configuration URL</strong>: Click on the Provider you just created in the list. In the provider details page, copy the link labeled <strong>OpenID Configuration URL</strong>. It will look similar to: <code>https://&lt;YOUR_AUTHENTIK_DOMAIN&gt;/application/o/vibenvr/.well-known/openid-configuration</code></li>
+</ol>
+<h3 id="b-keycloak">B. Keycloak</h3>
+<ol>
+<li>Log into your Keycloak Admin Console.</li>
+<li>Ensure you are in the correct <strong>Realm</strong> (or create a new one, e.g., <code>vibe-realm</code>).</li>
+<li>Go to <strong>Clients</strong> and click <strong>Create client</strong>.</li>
+<li>Configure the following:</li>
+<li><strong>Client type</strong>: <code>OpenID Connect</code></li>
+<li><strong>Client ID</strong>: <code>vibenvr_client</code></li>
+<li><strong>Client Authentication</strong>: <code>On</code> (This generates a Client Secret).</li>
+<li><strong>Valid redirect URIs</strong>: <code>https://&lt;YOUR_VIBENVR_DOMAIN&gt;/api/oauth/callback</code></li>
+<li>After creating the client, go to the <strong>Credentials</strong> tab to copy the <strong>Client Secret</strong>.</li>
+<li>The OpenID Configuration URL will typically be: <code>https://&lt;YOUR_KEYCLOAK_DOMAIN&gt;/realms/&lt;YOUR_REALM&gt;/.well-known/openid-configuration</code></li>
+</ol>
+<h3 id="c-authelia">C. Authelia</h3>
+<ol>
+<li>Open your <code>configuration.yml</code> for Authelia.</li>
+<li>Under the <code>identity_providers</code> &gt; <code>oidc</code> &gt; <code>clients</code> section, add VibeNVR:
+   <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vibenvr_client</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VibeNVR</span>
+<span class="w">  </span><span class="nt">secret</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$pbkdf2-sha512$...&#39;</span><span class="w"> </span><span class="c1"># Generate a secret using Authelia&#39;s crypto tool</span>
+<span class="w">  </span><span class="nt">public</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="w">  </span><span class="nt">authorization_policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">two_factor</span>
+<span class="w">  </span><span class="nt">redirect_uris</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://&lt;YOUR_VIBENVR_DOMAIN&gt;/api/oauth/callback</span>
+<span class="w">  </span><span class="nt">scopes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openid</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">profile</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span>
+<span class="w">  </span><span class="nt">userinfo_signing_algorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">none</span>
+</code></pre></div></li>
+<li>The OpenID Configuration URL will typically be: <code>https://&lt;YOUR_AUTHELIA_DOMAIN&gt;/.well-known/openid-configuration</code></li>
+</ol>
+<h3 id="d-google-workspace-google-cloud-console">D. Google Workspace (Google Cloud Console)</h3>
+<ol>
+<li>Go to the <a href="https://console.cloud.google.com/">Google Cloud Console</a>.</li>
+<li>Create a new Project or select an existing one.</li>
+<li>Go to <strong>APIs &amp; Services</strong> &gt; <strong>Credentials</strong>.</li>
+<li>Click <strong>Create Credentials</strong> &gt; <strong>OAuth client ID</strong>.</li>
+<li>Set the <strong>Application type</strong> to <code>Web application</code>.</li>
+<li>Name the application (e.g., <code>VibeNVR</code>).</li>
+<li>Add your callback URL to the <strong>Authorized redirect URIs</strong>: <code>https://&lt;YOUR_VIBENVR_DOMAIN&gt;/api/oauth/callback</code></li>
+<li>Click <strong>Create</strong> and save the <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
+<li>The OpenID Configuration URL for Google is: <code>https://accounts.google.com/.well-known/openid-configuration</code></li>
+</ol>
+<h3 id="e-microsoft-entra-id-formerly-azure-ad">E. Microsoft Entra ID (formerly Azure AD)</h3>
+<ol>
+<li>Go to the <a href="https://entra.microsoft.com/">Microsoft Entra admin center</a>.</li>
+<li>Navigate to <strong>Applications</strong> &gt; <strong>App registrations</strong> and click <strong>New registration</strong>.</li>
+<li>Set a Name (e.g., <code>VibeNVR</code>).</li>
+<li>Set <strong>Supported account types</strong> based on your needs.</li>
+<li>In <strong>Redirect URI</strong>, select <code>Web</code> and enter: <code>https://&lt;YOUR_VIBENVR_DOMAIN&gt;/api/oauth/callback</code></li>
+<li>Click <strong>Register</strong>. Copy the <strong>Application (client) ID</strong>.</li>
+<li>Go to <strong>Certificates &amp; secrets</strong> &gt; <strong>New client secret</strong>, create one, and copy the <strong>Value</strong> (this is your Client Secret).</li>
+<li>The OpenID Configuration URL can be found on the <strong>Endpoints</strong> tab of your app registration (look for the "OpenID Connect metadata document" URL), usually: <code>https://login.microsoftonline.com/&lt;TENANT_ID&gt;/v2.0/.well-known/openid-configuration</code></li>
 </ol>
 <hr />
-<h2 id="browser-compatibility">🌐 Browser Compatibility</h2>
-<table>
-<thead>
-<tr>
-<th>Browser</th>
-<th>WebCodecs Support</th>
-<th>Streaming Mode</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chrome 94+</td>
-<td>✅</td>
-<td>H.264 via WebCodecs</td>
-</tr>
-<tr>
-<td>Edge 94+</td>
-<td>✅</td>
-<td>H.264 via WebCodecs</td>
-</tr>
-<tr>
-<td>Firefox</td>
-<td>❌</td>
-<td>Falls back to MJPEG/JPEG polling</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>Partial</td>
-<td>Falls back to MJPEG/JPEG polling</td>
-</tr>
-</tbody>
-</table>
+<h2 id="3-configuring-vibenvr">3. Configuring VibeNVR</h2>
+<p>With the IdP configured, you now need to instruct VibeNVR to use it.</p>
+<ol>
+<li>Log into VibeNVR as an <strong>Admin</strong>.</li>
+<li>Go to <strong>Settings</strong> &gt; <strong>Single Sign-On (OAuth / OIDC)</strong>.</li>
+<li>Enable the <strong>Enable Global SSO Login</strong> toggle.</li>
+<li>Fill out the configuration fields:</li>
+<li><strong>Provider Display Name</strong>: e.g., <code>Authentik</code> or <code>Keycloak</code> (This is shown on the login button)</li>
+<li><strong>OpenID Configuration URL</strong>: The <code>.well-known/openid-configuration</code> URL provided by your IdP.</li>
+<li><strong>Client ID</strong>: The ID generated in your IdP.</li>
+<li><strong>Client Secret</strong>: The secret generated in your IdP.</li>
+<li>Click <strong>Save Settings</strong>.</li>
+</ol>
+<p>At this point, a <strong>"Sign in with [Provider Name]"</strong> button will appear on the VibeNVR login page.</p>
 <hr />
-<h2 id="secure-context-requirement">🔒 Secure Context Requirement</h2>
-<p>WebCodecs strictly requires a <strong>Secure Context</strong>:
-1. Access via <strong><code>http://localhost:8080</code></strong>.
-2. Access via <strong><code>https://...</code></strong> (Reverse Proxy).</p>
-<p>Insecure local IP access (<code>http://192.168.x.x</code>) will fall back to <strong>Metadata-Only Mode</strong>:
-- <strong>Video</strong> falls back to MJPEG/JPEG polling.
-- <strong>AI Tracking Boxes</strong> continue to be streamed via WebSockets and rendered on the canvas.
-- A warning banner will indicate that the browser restricted hardware decoding.</p>
+<h2 id="4-user-provisioning-and-linking">4. User Provisioning and Linking</h2>
+<p>Because auto-provisioning is disabled, users must be explicitly allowed to use SSO.</p>
+<h3 id="option-a-admin-links-the-account">Option A: Admin Links the Account</h3>
+<ol>
+<li>The Admin creates a new user (or edits an existing one) in <strong>Settings</strong> &gt; <strong>User Management</strong>.</li>
+<li>Under the SSO / OAuth section, verify that <strong>Enable SSO Login for this user</strong> is checked.</li>
+<li>If known, the Admin can manually paste the user's <code>OAuth Subject ID</code> (from the IdP) into the field.</li>
+</ol>
+<h3 id="option-b-user-links-the-account-self-service">Option B: User Links the Account (Self-Service)</h3>
+<ol>
+<li>The user logs into VibeNVR using their local <code>username</code> and <code>password</code>.</li>
+<li>The user goes to <strong>My Profile</strong> (top right corner).</li>
+<li>Under the <strong>Security</strong> section, they click <strong>Link Account</strong> next to Single Sign-On.</li>
+<li>They are redirected to the IdP to log in and grant consent.</li>
+<li>Upon returning to VibeNVR, their account is permanently linked. </li>
+</ol>
+<blockquote>
+<p><strong>Important:</strong> To unlink an account, the user can click <strong>Unlink Account</strong> in their Profile, or the Admin can clear the <code>OAuth Subject ID</code> field in User Management.</p>
+</blockquote>
 <hr />
-<h2 id="streaming-mode-selection">⚙️ Streaming Mode Selection</h2>
-<p>You can override the streaming technology:
-1. <strong>Global Default</strong>: <strong>Settings → General Preferences</strong>.
-2. <strong>Per-Camera</strong>: <strong>Settings → Cameras</strong> -&gt; <code>Live View Mode</code>:
-    - <strong>Auto</strong>: Optimal performance with WebCodecs fallback.
-    - <strong>Force WebCodecs</strong>: Explicit H.264.
-    - <strong>Force JPEG Polling</strong>: Legacy approach for maximum compatibility.</p>
-<hr />
-<h2 id="audio-synchronization">🎙️ Audio Synchronization</h2>
-<p>VibeNVR muxes video and audio packets into a single WebSocket stream. To ensure a low-latency experience:
-- <strong>Auto-Sync</strong>: The player monitors the drift between video frames and audio playback.
-- <strong>Drift Correction</strong>: If the audio lag exceeds <strong>300ms</strong> (common after network spikes), the buffer is automatically reset to "jump" the audio back into perfect sync with the video.
-- <strong>A-law Support</strong>: Native G.711 A-law decoding is handled client-side for immediate playback without backend transcoding latency.</p>
-<hr />
-<h2 id="ai-tracking-boxes">🤖 AI Tracking Boxes</h2>
-<p>Since v1.28.5, VibeNVR supports real-time <strong>AI Tracking Boxes</strong> in WebCodecs mode:
-- <strong>Metadata Channel</strong>: Detections are sent as JSON metadata packets multiplexed within the WebSocket stream.
-- <strong>Client-side Rendering</strong>: The browser draws the bounding boxes on top of the video canvas. This ensures low server CPU usage while maintaining visual parity with MJPEG mode.
-- <strong>Dynamic Styling</strong>: Bounding boxes are color-coded by class (Green for Persons, Blue for Vehicles, Orange for Animals).</p>
+<h2 id="security-considerations">Security Considerations</h2>
+<ul>
+<li><strong>Secure Context</strong>: It is highly recommended to expose VibeNVR over HTTPS when using OAuth, as standard redirect URIs require secure contexts.</li>
+<li><strong>Two-Factor Authentication (2FA)</strong>: If a user logs in via SSO, VibeNVR relies on the IdP to handle 2FA. If you want strict 2FA, enforce it within Authentik. VibeNVR's internal 2FA currently applies primarily to local password logins.</li>
+</ul>
 
 
 
@@ -1447,7 +1634,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Network Setup">
+          <a href="../MFA-Trusted-Devices/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MFA Trusted Devices">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1457,20 +1644,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Network Setup
+                MFA Trusted Devices
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Storage-Profiles/" class="md-footer__link md-footer__link--next" aria-label="Next: Storage Profiles">
+          <a href="../Users-and-Roles/" class="md-footer__link md-footer__link--next" aria-label="Next: Users and Roles">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Storage Profiles
+                Users and Roles
               </div>
             </div>
             <div class="md-footer__button md-icon">

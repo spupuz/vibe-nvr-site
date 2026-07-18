@@ -118,6 +118,62 @@
             });
         });
     </script>
-</body>
+    <script>
+        // Scroll Reveal Animation Logic
+        (function() {
+            // First, dynamically add the 'reveal' class to sections and cards
+            const sections = document.querySelectorAll("section:not(#hero)");
+            sections.forEach(sec => sec.classList.add("reveal"));
+            
+            const cards = document.querySelectorAll(".card");
+            cards.forEach((card, index) => {
+                card.classList.add("reveal");
+                // Add staggered delay based on index for grid items
+                const delay = (index % 3) + 1;
+                card.classList.add(`reveal-delay-${delay}`);
+            });
 
+            // Initialize Intersection Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px",
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // Activate if intersecting, or if the element is already scrolled past (above viewport)
+                    if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with the 'reveal' class
+            document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+        })();
+
+        // Smart Footer Logic (Hide during scroll, show when stopped)
+        (function() {
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                const footer = document.getElementById('smart-footer');
+                if (!footer) return;
+                
+                // Add a small threshold so it doesn't flicker on tiny movements
+                if (window.scrollY > 50) {
+                    footer.classList.add('hidden');
+                } else {
+                    footer.classList.remove('hidden');
+                }
+                
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    footer.classList.remove('hidden');
+                }, 400); // Wait 400ms after scrolling stops to show
+            }, { passive: true });
+        })();
+    </script>
+</body>
 </html>

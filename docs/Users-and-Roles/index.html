@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../MFA-Trusted-Devices/">
+        <link rel="prev" href="../SSO-OAuth-Integration/">
       
       
         <link rel="next" href="../Resource-Optimization/">
@@ -530,6 +530,23 @@
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../SSO-OAuth-Integration/" class="md-tabs__link">
+        
+  
+    
+  
+  SSO & OAuth Integration
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
     
   
   
@@ -1032,6 +1049,27 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../SSO-OAuth-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSO & OAuth Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -1112,6 +1150,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#single-sign-on-sso-oauth-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Single Sign-On (SSO / OAuth) Integration
+    </span>
+  </a>
   
 </li>
       
@@ -1297,6 +1344,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#single-sign-on-sso-oauth-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔐 Single Sign-On (SSO / OAuth) Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#granular-restricted-viewer-access" class="md-nav__link">
     <span class="md-ellipsis">
       Granular Restricted Viewer Access
@@ -1384,6 +1440,15 @@
 - <strong>Restrictions:</strong>
   - Cannot modify system settings, create cameras, or delete media. Any attempt to access state-altering APIs will result in an HTTP 403 Forbidden.</p>
 <hr />
+<h2 id="single-sign-on-sso-oauth-integration">🔐 Single Sign-On (SSO / OAuth) Integration</h2>
+<p>VibeNVR supports linking local accounts to external Identity Providers (IdP) via OAuth 2.0 / OIDC.</p>
+<ul>
+<li><strong>No Auto-Provisioning</strong>: For security, users cannot simply sign in with an IdP and automatically gain access to VibeNVR. A local account must exist first.</li>
+<li><strong>Account Linking</strong>: The user (via self-service in their Profile) or the Admin (via User Management) must explicitly link the <code>OAuth Subject ID</code> provided by the IdP to the local VibeNVR account.</li>
+<li><strong>Role Inheritance</strong>: Once linked, logging in via SSO simply grants access to the underlying local VibeNVR account, inheriting its assigned role (<code>admin</code> or <code>viewer</code>) and any granular restrictions.</li>
+</ul>
+<p>For setup details, see the <a href="../SSO-OAuth-Integration/">SSO &amp; OAuth Integration</a> guide.</p>
+<hr />
 <h2 id="granular-restricted-viewer-access">Granular Restricted Viewer Access</h2>
 <p>By default, Viewers can see all cameras configured in the system. However, Admins can explicitly restrict a Viewer's access using a granular permissions model per Camera or per Group.</p>
 <h3 id="granular-permissions">Granular Permissions</h3>
@@ -1446,7 +1511,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../MFA-Trusted-Devices/" class="md-footer__link md-footer__link--prev" aria-label="Previous: MFA Trusted Devices">
+          <a href="../SSO-OAuth-Integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SSO &amp; OAuth Integration">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1456,7 +1521,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                MFA Trusted Devices
+                SSO & OAuth Integration
               </div>
             </div>
           </a>

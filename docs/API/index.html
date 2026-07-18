@@ -534,6 +534,23 @@
   
   
     <li class="md-tabs__item">
+      <a href="../SSO-OAuth-Integration/" class="md-tabs__link">
+        
+  
+    
+  
+  SSO & OAuth Integration
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
       <a href="../Users-and-Roles/" class="md-tabs__link">
         
   
@@ -902,6 +919,48 @@
   <a href="#get-authme" class="md-nav__link">
     <span class="md-ellipsis">
       GET /auth/me
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso-oauth-oauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 SSO / OAuth (/oauth)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 SSO / OAuth (/oauth)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthlogin" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /oauth/login
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthcallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /oauth/callback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-oauthunlink" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /oauth/unlink
     </span>
   </a>
   
@@ -1712,6 +1771,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../SSO-OAuth-Integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSO & OAuth Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Users-and-Roles/" class="md-nav__link">
         
   
@@ -1908,6 +1988,48 @@
   <a href="#get-authme" class="md-nav__link">
     <span class="md-ellipsis">
       GET /auth/me
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sso-oauth-oauth" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌐 SSO / OAuth (/oauth)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌐 SSO / OAuth (/oauth)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthlogin" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /oauth/login
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-oauthcallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /oauth/callback
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post-oauthunlink" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /oauth/unlink
     </span>
   </a>
   
@@ -2521,6 +2643,19 @@
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div></p>
+<hr />
+<h3 id="sso-oauth-oauth">🌐 SSO / OAuth (<code>/oauth</code>)</h3>
+<h4 id="get-oauthlogin"><strong>GET</strong> <code>/oauth/login</code></h4>
+<p>Initiates the OAuth 2.0 authorization flow. Redirects the user to the configured Identity Provider (IdP).
+- <strong>Query Params</strong>:
+  - <code>provider</code>: (Optional) Currently defaults to the globally configured IdP if not specified.
+- <strong>Auth Required</strong>: None</p>
+<h4 id="get-oauthcallback"><strong>GET</strong> <code>/oauth/callback</code></h4>
+<p>Handles the callback from the IdP. Validates the authorization code, retrieves the user profile, and matches it against the local database (<code>oauth_subject_id</code>). Sets <code>auth_token</code> and <code>media_token</code> cookies on success.
+- <strong>Auth Required</strong>: None (Handles state verification internally).</p>
+<h4 id="post-oauthunlink"><strong>POST</strong> <code>/oauth/unlink</code></h4>
+<p>Unlinks the currently authenticated user's account from the SSO provider.
+- <strong>Auth Required</strong>: JWT or valid session cookie.</p>
 <hr />
 <h3 id="cameras-cameras">📷 Cameras (<code>/cameras</code>)</h3>
 <h4 id="get-cameras"><strong>GET</strong> <code>/cameras</code></h4>

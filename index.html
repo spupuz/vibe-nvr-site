@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VibeNVR - Modern Video Surveillance</title>
     <meta name="description" content="Simple, privacy-respecting local NVR — fast setup, flexible recording, no cloud required.">
-    <link rel="stylesheet" href="style.css?v=1.0.1">
+    <link rel="stylesheet" href="style.css?v=1.0.9">
     <link rel="icon" href="assets/logo.png" type="image/png">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
 </head>
 <body>
     <div id="component-header"></div>
@@ -28,10 +28,10 @@
     <script>
         async function loadComponents() {
             const components = ['header', 'hero', 'gallery', 'features', 'architecture', 'roadmap', 'integrations', 'docs', 'install', 'telemetry', 'support', 'footer', 'scripts'];
-            
+            const cacheBuster = Date.now();
             for (const c of components) {
                 try {
-                    const resp = await fetch(`src/${c}.html`);
+                    const resp = await fetch(`src/${c}.html?v=${cacheBuster}`);
                     const html = await resp.text();
                     const container = document.getElementById(`component-${c}`);
                     container.innerHTML = html;
