@@ -1175,6 +1175,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. Configuring VibeNVR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-auto-redirect-to-sso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable Auto-Redirect to SSO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rp-initiated-logout-oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      RP-Initiated Logout (OIDC)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1413,6 +1437,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. Configuring VibeNVR">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enable-auto-redirect-to-sso" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enable Auto-Redirect to SSO
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rp-initiated-logout-oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      RP-Initiated Logout (OIDC)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1573,6 +1621,13 @@
 <li>Click <strong>Save Settings</strong>.</li>
 </ol>
 <p>At this point, a <strong>"Sign in with [Provider Name]"</strong> button will appear on the VibeNVR login page.</p>
+<h3 id="enable-auto-redirect-to-sso">Enable Auto-Redirect to SSO</h3>
+<p>If you want users to be immediately redirected to your Identity Provider (bypassing the local VibeNVR login screen entirely), you can enable the <strong>Enable Auto-Redirect to SSO</strong> toggle.</p>
+<blockquote>
+<p><strong>Important (Escape Hatch)</strong>: If your Identity Provider goes offline and you need to access VibeNVR using a local admin account, you can bypass the auto-redirect by appending <code>?local=true</code> to the URL. For example: <code>http://&lt;VIBENVR_IP&gt;:8080/login?local=true</code></p>
+</blockquote>
+<h3 id="rp-initiated-logout-oidc">RP-Initiated Logout (OIDC)</h3>
+<p>VibeNVR supports RP-Initiated Logout. When a user who logged in via SSO clicks "Logout" in VibeNVR, they will be redirected to the Identity Provider's end-session endpoint (if supported by the provider, e.g., Authentik). This allows the user to securely terminate their session at the IdP level or easily switch accounts. If the provider doesn't support this, they will be safely redirected to the local VibeNVR login screen.</p>
 <hr />
 <h2 id="4-user-provisioning-and-linking">4. User Provisioning and Linking</h2>
 <p>Because auto-provisioning is disabled, users must be explicitly allowed to use SSO.</p>
