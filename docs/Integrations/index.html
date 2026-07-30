@@ -1103,6 +1103,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#for-more-details-see-the-mqtt-integration-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      For more details, see the MQTT Integration Guide.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telegram-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      📱 Telegram Notifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 Telegram Notifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardened-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Hardened Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sockshttps-proxy-auto-retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌍 SOCKS/HTTPS Proxy &amp; Auto-Retry
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rest-api" class="md-nav__link">
     <span class="md-ellipsis">
       🛠️ REST API
@@ -1383,6 +1434,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#for-more-details-see-the-mqtt-integration-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      For more details, see the MQTT Integration Guide.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#telegram-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      📱 Telegram Notifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📱 Telegram Notifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hardened-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Hardened Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sockshttps-proxy-auto-retry" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌍 SOCKS/HTTPS Proxy &amp; Auto-Retry
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rest-api" class="md-nav__link">
     <span class="md-ellipsis">
       🛠️ REST API
@@ -1473,31 +1575,25 @@
 <li><strong>Sensor</strong>: Camera status (<code>online</code>/<code>offline</code>).</li>
 <li><strong>Attributes</strong>: JSON metadata containing AI detection results (labels, confidence).</li>
 </ul>
-<p>For more details, see the <strong><a href="../MQTT-Integration/">MQTT Integration Guide</a></strong>.
-+
-+---
-+
-+## 📱 Telegram Notifications
-+
-+VibeNVR supports real-time alerts with snapshot attachments via Telegram Bots.
-+
-+### 🛠️ Hardened Security
-+The notification pipeline is hardened to ensure that special characters in camera names or object labels do not cause API failures.
-+- <strong>HTML Escaping</strong>: All data sent to Telegram is automatically HTML-escaped.
-+- <strong>Snapshot Cleanup</strong>: Temporary snapshots used for notifications are automatically cleaned up after 1 hour.
-+
-+### ⚙️ Setup
-+1. Create a bot using <a href="https://t.me/botfather">@BotFather</a>.
-+2. Obtain your <strong>Bot Token</strong>.
-+3. Get your <strong>Chat ID</strong> (using bots like <code>@userinfobot</code>).
-+4. Configure these in <strong>Settings -&gt; Notifications</strong>.
-+
-+### 🌍 SOCKS/HTTPS Proxy &amp; Auto-Retry
-+If your NVR is on a restricted network or Telegram is blocked in your region, VibeNVR natively supports routing notifications through a proxy.
-+- <strong>Format</strong>: <code>socks5://user:pass@host:port</code> or <code>http://...</code>
-+- <strong>Auto-Retry</strong>: Since free public proxies are often unstable, VibeNVR implements an intelligent background retry mechanism. You can configure the <strong>Max Retries</strong> and <strong>Retry Delay</strong> in the Settings UI. If a proxy drops the connection, VibeNVR will silently retry sending the notification without crashing or blocking the recording engine.
-+
-+---</p>
+<h2 id="for-more-details-see-the-mqtt-integration-guide">For more details, see the <strong><a href="../MQTT-Integration/">MQTT Integration Guide</a></strong>.</h2>
+<h2 id="telegram-notifications">📱 Telegram Notifications</h2>
+<p>VibeNVR supports real-time alerts with snapshot attachments via Telegram Bots.</p>
+<h3 id="hardened-security">🛠️ Hardened Security</h3>
+<p>The notification pipeline is hardened to ensure that special characters in camera names or object labels do not cause API failures.
+- <strong>HTML Escaping</strong>: All data sent to Telegram is automatically HTML-escaped.
+- <strong>Snapshot Cleanup</strong>: Temporary snapshots used for notifications are automatically cleaned up after 1 hour.</p>
+<h3 id="setup_1">⚙️ Setup</h3>
+<ol>
+<li>Create a bot using <a href="https://t.me/botfather">@BotFather</a>.</li>
+<li>Obtain your <strong>Bot Token</strong>.</li>
+<li>Get your <strong>Chat ID</strong> (using bots like <code>@userinfobot</code>).</li>
+<li>Configure these in <strong>Settings -&gt; Notifications</strong>.</li>
+</ol>
+<h3 id="sockshttps-proxy-auto-retry">🌍 SOCKS/HTTPS Proxy &amp; Auto-Retry</h3>
+<p>If your NVR is on a restricted network or Telegram is blocked in your region, VibeNVR natively supports routing notifications through a proxy.
+- <strong>Format</strong>: <code>socks5://user:pass@host:port</code> or <code>http://...</code>
+- <strong>Auto-Retry</strong>: Since free public proxies are often unstable, VibeNVR implements an intelligent background retry mechanism. You can configure the <strong>Max Retries</strong> and <strong>Retry Delay</strong> in the Settings UI. If a proxy drops the connection, VibeNVR will silently retry sending the notification without crashing or blocking the recording engine.</p>
+<hr />
 <hr />
 <h2 id="rest-api">🛠️ REST API</h2>
 <p>For custom scripts or advanced integrations, VibeNVR exposes a full REST API.</p>
