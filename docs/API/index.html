@@ -1000,6 +1000,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-camerasprobe-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /cameras/probe-stream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#post-cameras" class="md-nav__link">
     <span class="md-ellipsis">
       POST /cameras
@@ -2069,6 +2078,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-camerasprobe-stream" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /cameras/probe-stream
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#post-cameras" class="md-nav__link">
     <span class="md-ellipsis">
       POST /cameras
@@ -2691,6 +2709,16 @@
 - <strong>Query Params</strong>:
   - <code>raw</code>: (Optional, Admin only) Set to <code>true</code> to get the unmasked frame for editing.
 - <strong>Auth Required</strong>: Admin privileges or valid <code>media_token</code> cookie.</p>
+<h4 id="post-camerasprobe-stream"><strong>POST</strong> <code>/cameras/probe-stream</code></h4>
+<p>Validate an RTSP URL and fetch its resolution via ffprobe before saving.
+- <strong>Auth Required</strong>: Admin privileges.
+- <strong>Payload Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;rtsp_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;rtsp://admin:pass@192.168.1.10:554/main&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rtsp_transport&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+- <strong>Response</strong>: <code>{"success": true, "width": 1920, "height": 1080}</code></p>
 <h4 id="post-cameras"><strong>POST</strong> <code>/cameras</code></h4>
 <p>Create a new camera configuration.
 - <strong>Auth Required</strong>: Admin privileges.

@@ -1594,6 +1594,8 @@ Use the <strong>"Test ONVIF Connection"</strong> button to verify that VibeNVR c
 <li>Click the <strong>"Use these streams"</strong> button next to a profile to instantly auto-fill the RTSP URL fields in the <strong>General</strong> tab.</li>
 </ol>
 <blockquote>
+<p>[!NOTE]
+VibeNVR automatically validates the new RTSP URL using ffprobe before applying it. If the raw ONVIF URI fails validation (e.g., due to unsupported query parameters), VibeNVR will attempt to sanitize the URL and fallback safely, ensuring you never overwrite a working stream with a broken one.</p>
 <p>[!TIP]
 If your camera requires credentials for the RTSP stream, VibeNVR will automatically construct the complete URL using the username and password you provided in the ONVIF or General tab, ensuring a ready-to-use stream.</p>
 </blockquote>
