@@ -951,7 +951,7 @@ footer {
     transition: color 0.2s;
     text-decoration: none; /* remove underline if any */
     -webkit-tap-highlight-color: transparent;
-    outline: none;
+
 }
 
 .footer-link:hover, .footer-link:focus {
@@ -990,4 +990,10 @@ footer {
 /* Adjust body padding so content doesn't get hidden behind footer */
 body {
     padding-bottom: 80px;
+}
+
+/* Global Focus Styles for Accessibility */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
