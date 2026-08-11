@@ -29,22 +29,35 @@
         async function loadComponents() {
             const components = ['header', 'hero', 'gallery', 'features', 'architecture', 'roadmap', 'integrations', 'docs', 'install', 'telemetry', 'support', 'footer', 'scripts'];
             const cacheBuster = Date.now();
-            for (const c of components) {
+
+            // ⚡ Bolt: Fetch all components concurrently to prevent network waterfall
+            const fetchPromises = components.map(async (c) => {
                 try {
                     const resp = await fetch(`src/${c}.html?v=${cacheBuster}`);
                     const html = await resp.text();
-                    const container = document.getElementById(`component-${c}`);
-                    container.innerHTML = html;
-                    
-                    // Re-evaluate scripts to ensure they run globally
-                    const scripts = container.getElementsByTagName('script');
-                    for (let i = 0; i < scripts.length; i++) {
-                        const newScript = document.createElement('script');
-                        newScript.text = scripts[i].innerText;
-                        document.body.appendChild(newScript);
-                    }
+                    return { c, html, error: null };
                 } catch (e) {
-                    console.error("Failed to load component", c, e);
+                    return { c, html: null, error: e };
+                }
+            });
+
+            const results = await Promise.all(fetchPromises);
+
+            for (const result of results) {
+                if (result.error) {
+                    console.error("Failed to load component", result.c, result.error);
+                    continue;
+                }
+
+                const container = document.getElementById(`component-${result.c}`);
+                container.innerHTML = result.html;
+
+                // Re-evaluate scripts to ensure they run globally
+                const scripts = container.getElementsByTagName('script');
+                for (let i = 0; i < scripts.length; i++) {
+                    const newScript = document.createElement('script');
+                    newScript.text = scripts[i].innerText;
+                    document.body.appendChild(newScript);
                 }
             }
         }
