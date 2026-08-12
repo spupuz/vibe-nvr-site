@@ -991,3 +991,18 @@ footer {
 body {
     padding-bottom: 80px;
 }
+
+/* Accessibility: Focus visible styles */
+*:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Specific elements to ensure neat focus rings */
+.btn:focus-visible,
+.gallery-nav:focus-visible,
+.mobile-toggle:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
