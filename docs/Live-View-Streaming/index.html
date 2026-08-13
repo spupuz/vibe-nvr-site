@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#live-view-webcodecs-h264-streaming" class="md-skip">
+        <a href="#live-view-streaming-architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -785,27 +785,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-verify-webcodecs-is-active" class="md-nav__link">
+  <a href="#1-primary-mode-webcodecs-ws-h264" class="md-nav__link">
     <span class="md-ellipsis">
-      🔍 How to verify WebCodecs is active
+      1️⃣ Primary Mode: WebCodecs (WS / H.264)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#browser-compatibility" class="md-nav__link">
+  <a href="#2-intermediate-fallback-mse-via-jmuxer-mse-h264" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 Browser Compatibility
+      2️⃣ Intermediate Fallback: MSE via JMuxer (MSE / H.264)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#secure-context-requirement" class="md-nav__link">
+  <a href="#3-final-failsafe-mjpeg-polling-jpeg-poll" class="md-nav__link">
     <span class="md-ellipsis">
-      🔒 Secure Context Requirement
+      3️⃣ Final Failsafe: MJPEG Polling (JPEG Poll)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-verify-your-active-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 How to verify your active transport
     </span>
   </a>
   
@@ -1272,27 +1281,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-verify-webcodecs-is-active" class="md-nav__link">
+  <a href="#1-primary-mode-webcodecs-ws-h264" class="md-nav__link">
     <span class="md-ellipsis">
-      🔍 How to verify WebCodecs is active
+      1️⃣ Primary Mode: WebCodecs (WS / H.264)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#browser-compatibility" class="md-nav__link">
+  <a href="#2-intermediate-fallback-mse-via-jmuxer-mse-h264" class="md-nav__link">
     <span class="md-ellipsis">
-      🌐 Browser Compatibility
+      2️⃣ Intermediate Fallback: MSE via JMuxer (MSE / H.264)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#secure-context-requirement" class="md-nav__link">
+  <a href="#3-final-failsafe-mjpeg-polling-jpeg-poll" class="md-nav__link">
     <span class="md-ellipsis">
-      🔒 Secure Context Requirement
+      3️⃣ Final Failsafe: MJPEG Polling (JPEG Poll)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-verify-your-active-transport" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 How to verify your active transport
     </span>
   </a>
   
@@ -1341,76 +1359,63 @@
 
 
 
-<h1 id="live-view-webcodecs-h264-streaming">Live View — WebCodecs H.264 Streaming</h1>
-<p>The Live View page uses the browser's native <strong>WebCodecs API</strong> to display a direct H.264 stream via WebSockets.</p>
+<h1 id="live-view-streaming-architecture">Live View Streaming Architecture</h1>
+<p>The Live View page employs a <strong>3-stage fallback architecture</strong> to ensure the best possible performance across different environments and network setups, while respecting strict browser security requirements.</p>
+<p>All playback modes connect to the same efficient WebSocket endpoint on the backend, which multiplexes H.264 Video, G.711 Audio, and AI Metadata into a custom 10-byte hybrid binary protocol.</p>
 <hr />
-<h2 id="how-to-verify-webcodecs-is-active">🔍 How to verify WebCodecs is active</h2>
+<h2 id="1-primary-mode-webcodecs-ws-h264">1️⃣ Primary Mode: WebCodecs (WS / H.264)</h2>
+<ul>
+<li><strong>Technology</strong>: Native HTML5 <code>VideoDecoder</code> API.</li>
+<li><strong>Latency</strong>: Ultra-low (&lt;200ms).</li>
+<li><strong>Environment</strong>: <strong>Strictly Requires a Secure Context</strong>.</li>
+</ul>
+<p>To use the WebCodecs API, modern browsers (Chrome, Edge, Safari) strictly enforce that the page is loaded over <strong>HTTPS</strong> (or <code>localhost</code>). If you deploy VibeNVR locally and access it via <code>http://192.168.x.x</code>, WebCodecs is intentionally blocked by the browser.</p>
+<h2 id="2-intermediate-fallback-mse-via-jmuxer-mse-h264">2️⃣ Intermediate Fallback: MSE via JMuxer (MSE / H.264)</h2>
+<ul>
+<li><strong>Technology</strong>: Media Source Extensions (MSE) parsing NAL units via JMuxer.</li>
+<li><strong>Latency</strong>: Low (~1.5s).</li>
+<li><strong>Environment</strong>: Works on any HTTP or HTTPS connection.</li>
+</ul>
+<p>This is the primary solution for <strong>isolated LAN installations</strong> where setting up a Reverse Proxy, self-signed certificates, or a local DNS server is not practical. When accessed via plain HTTP, VibeNVR gracefully degrades to MSE. 
+- You still get <strong>fluid 30fps H.264 video</strong>.
+- You still get <strong>perfectly synchronized G.711 Audio</strong> via the Web Audio API.
+- You avoid the complexity of local HTTPS setups.</p>
+<h2 id="3-final-failsafe-mjpeg-polling-jpeg-poll">3️⃣ Final Failsafe: MJPEG Polling (JPEG Poll)</h2>
+<ul>
+<li><strong>Technology</strong>: Repeated HTTP <code>GET</code> requests for single JPEG frames.</li>
+<li><strong>Latency</strong>: High (1-5fps).</li>
+<li><strong>Environment</strong>: Universal (used when WebSocket/H.264 decoding fails completely).</li>
+</ul>
+<p>Used as a final resort for legacy browsers (e.g., old Firefox) or if the H.264 decoding fails repeatedly. Note that <strong>audio is disabled</strong> in this mode to save bandwidth and prevent extreme desynchronization, although AI Metadata continues to be streamed via WebSocket (Metadata-Only mode).</p>
+<hr />
+<h2 id="how-to-verify-your-active-transport">🔍 How to verify your active transport</h2>
 <ol>
-<li>Open the <strong>Live View</strong> page in a supported browser (Chrome 94+, Edge 94+).</li>
-<li>Hover over any active camera tile. Bottom-left badge: <strong><code>WS / H.264</code></strong> (Green) vs <strong><code>JPEG Poll</code></strong> (Yellow).</li>
-<li>Open <strong>DevTools → Network → WS</strong> to see the binary stream.</li>
+<li>Open the <strong>Live View</strong> page.</li>
+<li>Check the indicator in the upper-left corner of any camera feed:</li>
+<li><strong><code>WS / H.264</code></strong> (Green): WebCodecs is active.</li>
+<li><strong><code>MSE / H.264</code></strong> (Blue): MSE fallback is active.</li>
+<li><strong><code>JPEG Poll</code></strong> (Yellow): MJPEG polling is active.</li>
+<li>Open <strong>DevTools → Network → WS</strong> to inspect the hybrid binary stream.</li>
 </ol>
-<hr />
-<h2 id="browser-compatibility">🌐 Browser Compatibility</h2>
-<table>
-<thead>
-<tr>
-<th>Browser</th>
-<th>WebCodecs Support</th>
-<th>Streaming Mode</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chrome 94+</td>
-<td>✅</td>
-<td>H.264 via WebCodecs</td>
-</tr>
-<tr>
-<td>Edge 94+</td>
-<td>✅</td>
-<td>H.264 via WebCodecs</td>
-</tr>
-<tr>
-<td>Firefox</td>
-<td>❌</td>
-<td>Falls back to MJPEG/JPEG polling</td>
-</tr>
-<tr>
-<td>Safari</td>
-<td>Partial</td>
-<td>Falls back to MJPEG/JPEG polling</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="secure-context-requirement">🔒 Secure Context Requirement</h2>
-<p>WebCodecs strictly requires a <strong>Secure Context</strong>:
-1. Access via <strong><code>http://localhost:8080</code></strong>.
-2. Access via <strong><code>https://...</code></strong> (Reverse Proxy).</p>
-<p>Insecure local IP access (<code>http://192.168.x.x</code>) will fall back to <strong>Metadata-Only Mode</strong>:
-- <strong>Video</strong> falls back to MJPEG/JPEG polling.
-- <strong>AI Tracking Boxes</strong> continue to be streamed via WebSockets and rendered on the canvas.
-- A warning banner will indicate that the browser restricted hardware decoding.</p>
 <hr />
 <h2 id="streaming-mode-selection">⚙️ Streaming Mode Selection</h2>
 <p>You can override the streaming technology:
 1. <strong>Global Default</strong>: <strong>Settings → General Preferences</strong>.
 2. <strong>Per-Camera</strong>: <strong>Settings → Cameras</strong> -&gt; <code>Live View Mode</code>:
-    - <strong>Auto</strong>: Optimal performance with WebCodecs fallback.
-    - <strong>Force WebCodecs</strong>: Explicit H.264.
+    - <strong>Auto</strong>: Optimal performance using the 3-stage fallback architecture (Recommended).
+    - <strong>Force WebCodecs</strong>: Explicit H.264 (will fail to MJPEG on HTTP).
     - <strong>Force JPEG Polling</strong>: Legacy approach for maximum compatibility.</p>
 <hr />
 <h2 id="audio-synchronization">🎙️ Audio Synchronization</h2>
-<p>VibeNVR muxes video and audio packets into a single WebSocket stream. To ensure a low-latency experience:
+<p>VibeNVR muxes video and audio packets into a single WebSocket stream. To ensure a low-latency experience in both WebCodecs and MSE modes:
 - <strong>Auto-Sync</strong>: The player monitors the drift between video frames and audio playback.
 - <strong>Drift Correction</strong>: If the audio lag exceeds <strong>300ms</strong> (common after network spikes), the buffer is automatically reset to "jump" the audio back into perfect sync with the video.
 - <strong>A-law Support</strong>: Native G.711 A-law decoding is handled client-side for immediate playback without backend transcoding latency.</p>
 <hr />
 <h2 id="ai-tracking-boxes">🤖 AI Tracking Boxes</h2>
-<p>Since v1.28.5, VibeNVR supports real-time <strong>AI Tracking Boxes</strong> in WebCodecs mode:
-- <strong>Metadata Channel</strong>: Detections are sent as JSON metadata packets multiplexed within the WebSocket stream.
-- <strong>Client-side Rendering</strong>: The browser draws the bounding boxes on top of the video canvas. This ensures low server CPU usage while maintaining visual parity with MJPEG mode.
+<p>VibeNVR supports real-time <strong>AI Tracking Boxes</strong> natively overlaid on the video:
+- <strong>Metadata Channel</strong>: Detections are sent as JSON metadata packets (pType 2) multiplexed within the WebSocket stream.
+- <strong>Client-side Rendering</strong>: The browser draws the bounding boxes on an invisible canvas perfectly aligned over the video element. This ensures low server CPU usage.
 - <strong>Dynamic Styling</strong>: Bounding boxes are color-coded by class (Green for Persons, Blue for Vehicles, Orange for Animals).</p>
 
 

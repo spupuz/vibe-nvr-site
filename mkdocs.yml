@@ -38,7 +38,7 @@ nav:
   - Installation: Installation.md
   - Configuration: Configuration.md
   - Network Setup: Network.md
-  - WebCodecs Streaming: WebCodecs-Streaming.md
+  - WebCodecs Streaming: Live-View-Streaming.md
   - Storage Profiles: Storage-Profiles.md
   - API Reference: API.md
   - Access Recovery: Access-Recovery.md
