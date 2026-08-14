@@ -1,7 +1,7 @@
 <!-- Lightbox Modal -->
-    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
+    <div id="lightbox" class="lightbox" onclick="if(event.target === this) closeLightbox()" role="dialog" aria-modal="true" aria-label="Image preview">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close image preview">&times;</button>
+        <img class="lightbox-content" id="lightbox-img" alt="Enlarged view">
     </div>
 
     <script>
@@ -11,6 +11,10 @@
             lightboxImg.src = src;
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
+
+            // Focus the close button for keyboard accessibility
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
         }
 
         function closeLightbox() {
@@ -93,14 +97,17 @@
             const nav = document.querySelector(".nav-links");
             const overlay = document.querySelector(".nav-overlay");
             const icon = document.getElementById("menu-icon");
+            const toggleBtn = document.querySelector(".mobile-toggle");
             
             nav.classList.toggle("active");
             overlay.classList.toggle("active");
             
             if (nav.classList.contains("active")) {
                 icon.setAttribute("name", "close-outline");
+                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "true");
             } else {
                 icon.setAttribute("name", "menu-outline");
+                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
             }
         }
 
@@ -110,10 +117,12 @@
                 const nav = document.querySelector(".nav-links");
                 const overlay = document.querySelector(".nav-overlay");
                 const icon = document.getElementById("menu-icon");
+                const toggleBtn = document.querySelector(".mobile-toggle");
                 if(nav.classList.contains("active")) {
                     nav.classList.remove("active");
                     overlay.classList.remove("active");
                     icon.setAttribute("name", "menu-outline");
+                    if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
                 }
             });
         });

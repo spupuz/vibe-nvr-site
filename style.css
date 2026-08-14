@@ -839,6 +839,9 @@ footer {
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 .lightbox-close:hover,
