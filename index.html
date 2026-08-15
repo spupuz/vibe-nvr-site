@@ -33,7 +33,7 @@
     <script>
         async function loadComponents() {
             const components = ['header', 'hero', 'gallery', 'features', 'architecture', 'roadmap', 'integrations', 'docs', 'install', 'telemetry', 'support', 'footer', 'scripts'];
-            const cacheBuster = Date.now();
+            const cacheBuster = '1.0.9'; // ⚡ Bolt: Use static version string instead of Date.now() to allow browser caching of static HTML fragments
 
             // ⚡ Bolt: Fetch all components concurrently to prevent network waterfall
             const fetchPromises = components.map(async (c) => {
