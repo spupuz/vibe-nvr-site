@@ -788,6 +788,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-postgresql-setup-postgres_uservibenvr-postgres_passworda_strong_random_password-postgres_dbvibenvr-database_urlpostgresqlpostgres_userpostgres_passworddb5432postgres_db-or-lightweight-sqlite-setup-database_urlsqlitedatavibenvrdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      # Default PostgreSQL setup: POSTGRES_USER=vibenvr POSTGRES_PASSWORD=a_strong_random_password POSTGRES_DB=vibenvr DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB} # Or, lightweight SQLite setup: # DATABASE_URL=sqlite:////data/vibenvr.db
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="# Default PostgreSQL setup: POSTGRES_USER=vibenvr POSTGRES_PASSWORD=a_strong_random_password POSTGRES_DB=vibenvr DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB} # Or, lightweight SQLite setup: # DATABASE_URL=sqlite:////data/vibenvr.db">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#network-ports" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1350,6 +1365,21 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#default-postgresql-setup-postgres_uservibenvr-postgres_passworda_strong_random_password-postgres_dbvibenvr-database_urlpostgresqlpostgres_userpostgres_passworddb5432postgres_db-or-lightweight-sqlite-setup-database_urlsqlitedatavibenvrdb" class="md-nav__link">
+    <span class="md-ellipsis">
+      # Default PostgreSQL setup: POSTGRES_USER=vibenvr POSTGRES_PASSWORD=a_strong_random_password POSTGRES_DB=vibenvr DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB} # Or, lightweight SQLite setup: # DATABASE_URL=sqlite:////data/vibenvr.db
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="# Default PostgreSQL setup: POSTGRES_USER=vibenvr POSTGRES_PASSWORD=a_strong_random_password POSTGRES_DB=vibenvr DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB} # Or, lightweight SQLite setup: # DATABASE_URL=sqlite:////data/vibenvr.db">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#network-ports" class="md-nav__link">
     <span class="md-ellipsis">
@@ -1527,13 +1557,22 @@ VIBENVR_DB_DATA=/mnt/storage/vibenvr_db
 <td><code>vibenvr</code></td>
 <td>PostgreSQL database name.</td>
 </tr>
+<tr>
+<td><code>DATABASE_URL</code></td>
+<td><em>(postgres URL)</em></td>
+<td>Connection string. Can be changed to <code>sqlite:////data/vibe.db</code> to run without the PostgreSQL container.</td>
+</tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>POSTGRES_USER=vibenvr
+<h2 id="default-postgresql-setup-postgres_uservibenvr-postgres_passworda_strong_random_password-postgres_dbvibenvr-database_urlpostgresqlpostgres_userpostgres_passworddb5432postgres_db-or-lightweight-sqlite-setup-database_urlsqlitedatavibenvrdb"><div class="highlight"><pre><span></span><code># Default PostgreSQL setup:
+POSTGRES_USER=vibenvr
 POSTGRES_PASSWORD=a_strong_random_password
 POSTGRES_DB=vibenvr
-</code></pre></div>
-<hr />
+DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+
+# Or, lightweight SQLite setup:
+# DATABASE_URL=sqlite:////data/vibenvr.db
+</code></pre></div></h2>
 <h3 id="network-ports">🌐 Network &amp; Ports</h3>
 <table>
 <thead>

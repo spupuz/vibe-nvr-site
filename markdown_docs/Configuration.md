@@ -65,13 +65,18 @@ VIBENVR_DB_DATA=/mnt/storage/vibenvr_db
 | `POSTGRES_USER` | `vibenvr` | PostgreSQL username. |
 | `POSTGRES_PASSWORD` | `vibenvrpass` | PostgreSQL password. **Change this in production.** |
 | `POSTGRES_DB` | `vibenvr` | PostgreSQL database name. |
+| `DATABASE_URL` | *(postgres URL)* | Connection string. Can be changed to `sqlite:////data/vibe.db` to run without the PostgreSQL container. |
 
 ```env
+# Default PostgreSQL setup:
 POSTGRES_USER=vibenvr
 POSTGRES_PASSWORD=a_strong_random_password
 POSTGRES_DB=vibenvr
-```
+DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
 
+# Or, lightweight SQLite setup:
+# DATABASE_URL=sqlite:////data/vibenvr.db
+```
 ---
 
 ### 🌐 Network & Ports

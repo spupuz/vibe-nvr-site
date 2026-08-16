@@ -1267,6 +1267,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#database-optimization-ram-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗄️ Database Optimization (RAM reduction)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗄️ Database Optimization (RAM reduction)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-the-sqlite-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the SQLite Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1469,6 +1493,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#database-optimization-ram-reduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗄️ Database Optimization (RAM reduction)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗄️ Database Optimization (RAM reduction)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-the-sqlite-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the SQLite Version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1605,6 +1653,15 @@
 <p>[!TIP]
 For most users, the <strong>Optimized</strong> configuration is the sweet spot. Use a 640x480 sub-stream for detection and enable Passthrough on the 4K/2K main stream for crystal-clear recordings with minimal resource footprint.</p>
 </blockquote>
+<hr />
+<h2 id="database-optimization-ram-reduction">🗄️ Database Optimization (RAM reduction)</h2>
+<p>By default, VibeNVR uses <strong>PostgreSQL</strong> in its own container. While highly robust for handling thousands of events, the Postgres container itself constantly consumes <strong>~100MB to ~150MB of RAM</strong>, even when idle.</p>
+<p>If you are running VibeNVR on an extremely constrained device (like an older Intel NUC or mini-PC) and you want to reclaim that memory:</p>
+<h3 id="use-the-sqlite-version">Use the SQLite Version</h3>
+<p>VibeNVR fully supports running on a local <strong>SQLite</strong> file instead of a full Postgres server.
+*   <strong>Impact</strong>: Eliminates the <code>db</code> Docker container completely.
+*   <strong>Result</strong>: Instantly frees up ~150MB of RAM and reduces background CPU scheduling.
+*   <strong>How to apply</strong>: Use the <code>docker-compose.sqlite.yml</code> file instead of the standard <code>docker-compose.prod.yml</code>. No other changes are needed.</p>
 
 
 

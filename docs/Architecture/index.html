@@ -948,9 +948,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-database-postgresql" class="md-nav__link">
+  <a href="#4-database-postgresql-sqlite" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Database (PostgreSQL)
+      4. Database (PostgreSQL / SQLite)
     </span>
   </a>
   
@@ -1342,9 +1342,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-database-postgresql" class="md-nav__link">
+  <a href="#4-database-postgresql-sqlite" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Database (PostgreSQL)
+      4. Database (PostgreSQL / SQLite)
     </span>
   </a>
   
@@ -1426,8 +1426,9 @@
 - <strong>Modular Design</strong>: The engine core is highly modularized (<code>stream_reader</code>, <code>motion_detector</code>, <code>recording_manager</code>, <code>mask_handler</code>, <code>overlay_handler</code>) for maximum stability.
 - <strong>Security</strong>: Communicates via internal Docker networks and requires a shared <code>WEBHOOK_SECRET</code> for backend interaction.
 - <strong>Decoupled Detection</strong>: Supports both server-side pixel analysis (OpenCV) and hardware-side edge event handling (ONVIF PullPoint). The detection engine is logically decoupled from the activation schedule (Always, Scheduled, Manual), allowing for hybrid configurations.</p>
-<h3 id="4-database-postgresql">4. Database (PostgreSQL)</h3>
-<p>Uses <strong>PostgreSQL 15</strong> for reliable storage of all persistent data, including camera configurations, user settings, and the event timeline.</p>
+<h3 id="4-database-postgresql-sqlite">4. Database (PostgreSQL / SQLite)</h3>
+<p>Uses <strong>PostgreSQL 15</strong> by default for reliable storage of all persistent data, including camera configurations, user settings, and the event timeline.
+Alternatively, the backend fully supports <strong>SQLite</strong> via a direct file path (e.g. <code>sqlite:////data/vibe.db</code>) for lightweight edge deployments, automatically configuring Write-Ahead Logging (WAL) for concurrency.</p>
 <h3 id="5-telemetry-worker-cloudflare-edge">5. Telemetry Worker (Cloudflare Edge)</h3>
 <p>A highly modularized Cloudflare Worker repository (<code>vibenvr-telemetry-worker</code>) that handles global telemetry, metadata ingestion, and secure dashboarding.
 - <strong>Modularity</strong>: Split securely into dedicated ES modules (<code>security.js</code>, <code>api.js</code>, <code>assets.js</code>, etc.) to stay well below the 1000 LOC limits.
