@@ -13,3 +13,7 @@
 ## 2024-08-16 - Synchronous DOM Querying in Scroll Handlers
 **Learning:** Querying the DOM (e.g., `document.getElementById`) and manipulating DOM classes synchronously inside high-frequency event listeners like `scroll` causes unnecessary reflows, blocks the main thread, and leads to scroll jank.
 **Action:** Always cache DOM element references outside of the event listener, and use `requestAnimationFrame` to throttle and synchronize layout changes with the browser's render cycle during scroll events.
+
+## 2026-08-15 - Dynamic Cache Busting Defeats Caching
+**Learning:** Using `Date.now()` as a cache buster parameter for fetching static HTML component fragments effectively forces the browser to re-download all 13 components on every single page load, creating unnecessary network overhead and negatively impacting Time to Interactive (TTI) for return visitors.
+**Action:** Use a static version string (e.g., matching the main CSS version) instead of a dynamic timestamp when fetching static HTML fragments. This allows the browser to properly cache the components while still providing a mechanism to bust the cache when the site is updated.
