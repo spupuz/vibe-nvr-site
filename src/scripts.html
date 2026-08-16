@@ -164,23 +164,32 @@
         })();
 
         // Smart Footer Logic (Hide during scroll, show when stopped)
+        // ⚡ Bolt: Cached DOM element and used requestAnimationFrame to prevent scroll jank
         (function() {
             let scrollTimeout;
+            let isTicking = false;
+            let cachedFooter = null;
+
             window.addEventListener('scroll', () => {
-                const footer = document.getElementById('smart-footer');
-                if (!footer) return;
-                
-                // Add a small threshold so it doesn't flicker on tiny movements
-                if (window.scrollY > 50) {
-                    footer.classList.add('hidden');
-                } else {
-                    footer.classList.remove('hidden');
+                if (!isTicking) {
+                    window.requestAnimationFrame(() => {
+                        if (!cachedFooter) cachedFooter = document.getElementById('smart-footer');
+                        if (cachedFooter) {
+                            if (window.scrollY > 50) {
+                                cachedFooter.classList.add('hidden');
+                            } else {
+                                cachedFooter.classList.remove('hidden');
+                            }
+
+                            clearTimeout(scrollTimeout);
+                            scrollTimeout = setTimeout(() => {
+                                cachedFooter.classList.remove('hidden');
+                            }, 400); // Wait 400ms after scrolling stops to show
+                        }
+                        isTicking = false;
+                    });
+                    isTicking = true;
                 }
-                
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(() => {
-                    footer.classList.remove('hidden');
-                }, 400); // Wait 400ms after scrolling stops to show
             }, { passive: true });
         })();
     </script>
