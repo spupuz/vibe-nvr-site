@@ -36,9 +36,11 @@
             let isPaused = false;
             let scrollInterval;
 
-            // Pause on hover
+            // Pause on hover and focus
             galleryScroll.addEventListener('mouseenter', () => isPaused = true);
             galleryScroll.addEventListener('mouseleave', () => isPaused = false);
+            galleryScroll.addEventListener('focusin', () => isPaused = true);
+            galleryScroll.addEventListener('focusout', () => isPaused = false);
 
             function startAutoScroll() {
                 scrollInterval = setInterval(() => {

@@ -10,3 +10,7 @@
 ## 2026-08-16 - Adding native tooltips to icon-only buttons
 **Learning:** Icon-only buttons often include an `aria-label` for screen readers, but sighted mouse/pointer users can still be confused about the button's purpose without a visual tooltip.
 **Action:** When adding or auditing icon-only buttons with `aria-label`, also ensure they include a native `title` attribute so that standard browser tooltips appear on hover, bridging the gap between accessibility and general UX.
+
+## 2026-08-15 - Auto-Scroll Pause on Focus
+**Learning:** This app's auto-advancing UI elements (like the gallery) paused on mouse hover (`mouseenter`/`mouseleave`) but did not pause for keyboard users navigating with Tab, violating WCAG 2.2.2 (Pause, Stop, Hide).
+**Action:** Always pair `mouseenter`/`mouseleave` with `focusin`/`focusout` on auto-scrolling containers to ensure keyboard accessibility.
