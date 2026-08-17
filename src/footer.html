@@ -15,10 +15,27 @@
                 </div>
 
                 <div class="footer-copy">
-                    &copy; 2026 Alessandro Belloni.
+                    &copy; 2026 Alessandro Belloni.<br>
+                    <div style="margin-top: 0.5rem; font-size: 0.8rem; font-family: var(--font-mono, monospace); color: var(--muted-foreground);">
+                        site version <span id="site-version">...</span>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+    <script>
+        (async function fetchVersions() {
+            try {
+                const siteRes = await fetch('https://api.github.com/repos/spupuz/vibe-nvr-site/releases/latest');
+                if (siteRes.ok) {
+                    const siteData = await siteRes.json();
+                    const siteEl = document.getElementById('site-version');
+                    if (siteEl) siteEl.textContent = siteData.tag_name;
+                }
+            } catch (err) {
+                console.error('Failed to fetch versions', err);
+            }
+        })();
+    </script>
 
     
