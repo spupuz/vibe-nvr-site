@@ -14,3 +14,6 @@
 ## 2026-08-15 - Auto-Scroll Pause on Focus
 **Learning:** This app's auto-advancing UI elements (like the gallery) paused on mouse hover (`mouseenter`/`mouseleave`) but did not pause for keyboard users navigating with Tab, violating WCAG 2.2.2 (Pause, Stop, Hide).
 **Action:** Always pair `mouseenter`/`mouseleave` with `focusin`/`focusout` on auto-scrolling containers to ensure keyboard accessibility.
+## 2026-08-17 - Focus Restoration on Modal Close
+**Learning:** When creating custom modal dialogs (like the lightbox), focusing an element inside the dialog on open is good for screen readers, but failing to restore focus to the triggering element when the dialog closes causes the focus order to reset to the start of the document, disorienting keyboard users.
+**Action:** Always save `document.activeElement` before opening a modal and call `.focus()` on it during the modal's close routine to maintain a logical and continuous focus order.

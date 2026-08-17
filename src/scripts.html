@@ -5,7 +5,10 @@
     </div>
 
     <script>
+        let lastFocusedElement = null;
+
         function openLightbox(src) {
+            lastFocusedElement = document.activeElement;
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             lightboxImg.src = src;
@@ -21,6 +24,11 @@
             const lightbox = document.getElementById('lightbox');
             lightbox.style.display = 'none';
             document.body.style.overflow = ''; // Restore scrolling
+
+            if (lastFocusedElement) {
+                lastFocusedElement.focus();
+                lastFocusedElement = null;
+            }
         }
 
         // Close on Escape key
