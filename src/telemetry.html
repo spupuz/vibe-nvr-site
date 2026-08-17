@@ -103,23 +103,33 @@
         (function () {
             const API = 'https://vibenvr-telemetry.spupuz.workers.dev/api/stats';
 
-            function escapeHTML(str) {
-                if (!str) return '';
-                const div = document.createElement('div');
-                div.textContent = str;
-                return div.innerHTML;
-            }
+            function createStatCard(icon, label, value, sub) {
+                const card = document.createElement('div');
+                card.className = 'telemetry-stat-card';
 
-            function renderStat(icon, label, value, sub) {
-                return `<div class="telemetry-stat-card">
-                    <div class="stat-label"><ion-icon name="${icon}"></ion-icon> ${label}</div>
-                    <div class="stat-value">${value}</div>
-                    ${sub ? `<div class="stat-sub">${sub}</div>` : ''}
-                </div>`;
-            }
+                const labelDiv = document.createElement('div');
+                labelDiv.className = 'stat-label';
 
-            function renderBarChart(containerId, items, totalOverride) {
-                // Removed charts
+                const iconEl = document.createElement('ion-icon');
+                iconEl.setAttribute('name', icon);
+                labelDiv.appendChild(iconEl);
+                labelDiv.appendChild(document.createTextNode(' ' + label));
+
+                const valueDiv = document.createElement('div');
+                valueDiv.className = 'stat-value';
+                valueDiv.textContent = value;
+
+                card.appendChild(labelDiv);
+                card.appendChild(valueDiv);
+
+                if (sub) {
+                    const subDiv = document.createElement('div');
+                    subDiv.className = 'stat-sub';
+                    subDiv.textContent = sub;
+                    card.appendChild(subDiv);
+                }
+
+                return card;
             }
 
             async function loadTelemetry() {
@@ -129,20 +139,25 @@
                     const d = await res.json();
 
                     const grid = document.getElementById('telemetry-grid');
-                    grid.innerHTML = [
-                        renderStat('pulse-outline', 'Active Installs', escapeHTML(d.active_installs?.toString() ?? '0'), 'Last 7 days'),
-                        renderStat('albums-outline', 'Total Installs', escapeHTML(d.total_installs ?? '0'), 'All time distinct'),
-                        renderStat('videocam-outline', 'Cameras', escapeHTML(d.total_cameras?.toString() ?? '0'), 'Managed across active'),
-                        renderStat('film-outline', 'Events', escapeHTML(d.total_events?.toString() ?? '0'), 'Recordings / Detections'),
-                    ].join('');
+                    grid.innerHTML = ''; // Clear skeleton loader safely
+
+                    grid.appendChild(createStatCard('pulse-outline', 'Active Installs', d.active_installs?.toString() ?? '0', 'Last 7 days'));
+                    grid.appendChild(createStatCard('albums-outline', 'Total Installs', d.total_installs?.toString() ?? '0', 'All time distinct'));
+                    grid.appendChild(createStatCard('videocam-outline', 'Cameras', d.total_cameras?.toString() ?? '0', 'Managed across active'));
+                    grid.appendChild(createStatCard('film-outline', 'Events', d.total_events?.toString() ?? '0', 'Recordings / Detections'));
 
                     const now = new Date();
                     document.getElementById('telemetry-updated').textContent =
                         `Live data · Last updated ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · Anonymous aggregate stats`;
 
                 } catch (e) {
-                    document.getElementById('telemetry-grid').innerHTML =
-                        '<p style="color:var(--muted-foreground);text-align:center;grid-column:1/-1;">Could not load telemetry data.</p>';
+                    const grid = document.getElementById('telemetry-grid');
+                    grid.innerHTML = '';
+                    const errorMsg = document.createElement('p');
+                    errorMsg.style.cssText = 'color:var(--muted-foreground);text-align:center;grid-column:1/-1;';
+                    errorMsg.textContent = 'Could not load telemetry data.';
+                    grid.appendChild(errorMsg);
+
                     document.getElementById('telemetry-updated').textContent = '';
                 }
             }
