@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block footer %}
+  {{ super() }}
+  
+  <footer style="padding: 1.5rem 2rem; border-top: 1px solid var(--md-default-fg-color--lightest);">
+      <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+          
+          <div style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; color: var(--md-default-fg-color);">
+              <ion-icon name="videocam"></ion-icon> VibeNVR
+          </div>
+          
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+              <a href="https://github.com/spupuz/VibeNVR" style="color: var(--md-typeset-a-color); text-decoration: none; font-weight: 500;">GitHub</a>
+              <a href="https://github.com/spupuz/VibeNVR/issues" style="color: var(--md-typeset-a-color); text-decoration: none; font-weight: 500;">Issues</a>
+              <a href="https://github.com/spupuz/VibeNVR/discussions" style="color: var(--md-typeset-a-color); text-decoration: none; font-weight: 500;">Discussions</a>
+              <span style="color: var(--md-default-fg-color--light);">|</span>
+              <a href="https://github.com/spupuz/VibeNVR/blob/main/LICENSE" style="color: var(--md-typeset-a-color); text-decoration: none; font-weight: 500;">License</a>
+              <a href="https://spupuz.github.io/vibe-nvr-site/docs/Telemetry/" style="color: var(--md-typeset-a-color); text-decoration: none; font-weight: 500;">Privacy & Telemetry</a>
+              <span style="color: var(--md-default-fg-color--light);">|</span>
+              <a href="/" style="color: var(--md-typeset-a-color); text-decoration: none; font-weight: 500;">Main Site</a>
+          </div>
+
+          <div style="color: var(--md-default-fg-color--light); font-size: 0.8rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>&copy; 2026 Alessandro Belloni.</span>
+              <span style="color: var(--md-default-fg-color--light);">|</span>
+              <span style="font-family: monospace;">docs version <span id="site-version">...</span></span>
+          </div>
+      </div>
+  </footer>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
+  <script>
+      (async function fetchVersions() {
+          try {
+              const siteRes = await fetch('https://api.github.com/repos/spupuz/vibe-nvr-site/releases/latest');
+              if (siteRes.ok) {
+                  const siteData = await siteRes.json();
+                  const siteEl = document.getElementById('site-version');
+                  if (siteEl) siteEl.textContent = siteData.tag_name;
+              }
+          } catch (err) {
+              console.error('Failed to fetch versions', err);
+          }
+      })();
+  </script>
+{% endblock %}
