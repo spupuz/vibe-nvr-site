@@ -33,7 +33,10 @@
         // Auto-Scroll Gallery
         setTimeout(() => {
             const galleryScroll = document.querySelector('.gallery-scroll');
+            if (!galleryScroll) return;
+
             let isPaused = false;
+            let isVisible = false; // ⚡ Bolt: Track visibility
             let scrollInterval;
 
             // Pause on hover and focus
@@ -42,9 +45,18 @@
             galleryScroll.addEventListener('focusin', () => isPaused = true);
             galleryScroll.addEventListener('focusout', () => isPaused = false);
 
+            // ⚡ Bolt: Only scroll when the gallery is in the viewport to save CPU and battery
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    isVisible = entry.isIntersecting;
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(galleryScroll);
+
             function startAutoScroll() {
                 scrollInterval = setInterval(() => {
-                    if (!isPaused) {
+                    if (!isPaused && isVisible) {
                         const itemWidth = galleryScroll.querySelector('.gallery-item').clientWidth;
                         const gap = 32; // 2rem gap
                         const scrollAmount = itemWidth + gap;
