@@ -101,12 +101,8 @@
 
                 const img = new Image();
                 img.referrerPolicy = 'no-referrer-when-downgrade';
-                img.style.position = 'absolute';
-                img.style.width = '1px';
-                img.style.height = '1px';
-                img.style.opacity = '0';
+                // ⚡ Bolt: Trigger network request without appending to DOM to avoid layout recalculation
                 img.src = url.toString();
-                document.body.appendChild(img);
             } catch (e) {
                 // Ignore tracking errors to prevent breaking the main page
             }

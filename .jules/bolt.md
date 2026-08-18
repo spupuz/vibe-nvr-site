@@ -21,3 +21,7 @@
 ## 2024-08-17 - Pause Background Animations
 **Learning:** Interval-based animations (like auto-scrolling galleries) that run constantly in the background even when off-screen cause unnecessary layout calculations (`clientWidth`, `scrollWidth`) and continuous CPU wake-ups, negatively affecting performance and battery life.
 **Action:** Always wrap the execution logic of `setInterval` based animations with an `IntersectionObserver` visibility check (`isVisible` flag), so work is skipped when the element is out of the viewport.
+
+## 2026-08-18 - DOM Mutation for Telemetry Pixels
+**Learning:** Appending a hidden 1x1 image pixel to `document.body` for tracking/telemetry purposes forces the browser to unnecessarily recalculate layout and repaint, degrading performance on page load.
+**Action:** Always create tracking `Image` objects in memory and simply set their `src` attribute to trigger the network request. Never append them to the DOM unless visually required.
