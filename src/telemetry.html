@@ -162,7 +162,12 @@
                 }
             }
 
-            loadTelemetry();
+            // ⚡ Bolt: Defer API call using requestIdleCallback to avoid blocking the main thread during initial load, while ensuring it still runs without requiring scroll.
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => loadTelemetry());
+            } else {
+                setTimeout(loadTelemetry, 1000);
+            }
         })();
     </script>
 
