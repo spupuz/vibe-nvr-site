@@ -86,25 +86,34 @@
     <!-- Site Telemetry -->
     <script>
         (function () {
-            try {
-                // Generate or retrieve a persistent anonymous visitor ID
-                let vid = localStorage.getItem('viben_vid');
-                if (!vid) {
-                    vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
-                    localStorage.setItem('viben_vid', vid);
+            function sendTelemetry() {
+                try {
+                    // Generate or retrieve a persistent anonymous visitor ID
+                    let vid = localStorage.getItem('viben_vid');
+                    if (!vid) {
+                        vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+                        localStorage.setItem('viben_vid', vid);
+                    }
+
+                    // Ping the telemetry worker
+                    const url = new URL('https://vibenvr-telemetry.spupuz.workers.dev/site-telemetry.png');
+                    url.searchParams.set('visitor_id', vid);
+                    url.searchParams.set('path', window.location.pathname);
+
+                    const img = new Image();
+                    img.referrerPolicy = 'no-referrer-when-downgrade';
+                    // ⚡ Bolt: Trigger network request without appending to DOM to avoid layout recalculation
+                    img.src = url.toString();
+                } catch (e) {
+                    // Ignore tracking errors to prevent breaking the main page
                 }
+            }
 
-                // Ping the telemetry worker
-                const url = new URL('https://vibenvr-telemetry.spupuz.workers.dev/site-telemetry.png');
-                url.searchParams.set('visitor_id', vid);
-                url.searchParams.set('path', window.location.pathname);
-
-                const img = new Image();
-                img.referrerPolicy = 'no-referrer-when-downgrade';
-                // ⚡ Bolt: Trigger network request without appending to DOM to avoid layout recalculation
-                img.src = url.toString();
-            } catch (e) {
-                // Ignore tracking errors to prevent breaking the main page
+            // ⚡ Bolt: Defer telemetry tracking pixel to prevent blocking the main thread
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => sendTelemetry());
+            } else {
+                setTimeout(sendTelemetry, 1000);
             }
         })();
     </script>
