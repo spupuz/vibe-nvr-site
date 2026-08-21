@@ -583,7 +583,8 @@ footer {
     right: 1rem;
 }
 
-.gallery-item:hover {
+.gallery-item:hover,
+.gallery-item:focus-visible {
     transform: scale(1.02);
 }
 
@@ -778,7 +779,8 @@ footer {
     right: 1rem;
 }
 
-.gallery-item:hover {
+.gallery-item:hover,
+.gallery-item:focus-visible {
     transform: scale(1.02);
 }
 

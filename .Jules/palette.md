@@ -17,3 +17,6 @@
 ## 2026-08-17 - Focus Restoration on Modal Close
 **Learning:** When creating custom modal dialogs (like the lightbox), focusing an element inside the dialog on open is good for screen readers, but failing to restore focus to the triggering element when the dialog closes causes the focus order to reset to the start of the document, disorienting keyboard users.
 **Action:** Always save `document.activeElement` before opening a modal and call `.focus()` on it during the modal's close routine to maintain a logical and continuous focus order.
+## 2026-08-21 - Consistent Keyboard Accessibility for Custom Overlays
+**Learning:** Custom UI components like full-page lightboxes and mobile navigation overlays both function as "modals" structurally, trapping the user's attention. Omitting `Escape` key dismissal and failing to restore focus to the triggering element (e.g., the mobile menu button) when the overlay closes traps keyboard-only users. Furthermore, interactive custom elements require synchronized `:focus-visible` and `:hover` states for consistent visual feedback across all input methods.
+**Action:** Always ensure that any overlay or custom modal component implements `Escape` key listener dismissal and explicit focus restoration. Additionally, verify that CSS interactive pseudo-classes (`:hover`) are paired with their keyboard equivalents (`:focus-visible`).
