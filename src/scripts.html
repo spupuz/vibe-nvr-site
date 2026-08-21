@@ -90,7 +90,12 @@
                 // Generate or retrieve a persistent anonymous visitor ID
                 let vid = localStorage.getItem('viben_vid');
                 if (!vid) {
-                    vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+                    // 🛡️ Sentinel: Defense in depth - prefer crypto API for secure random identifier generation
+                    if (window.crypto && window.crypto.randomUUID) {
+                        vid = 'v_' + crypto.randomUUID().replace(/-/g, '').substring(0, 16);
+                    } else {
+                        vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+                    }
                     localStorage.setItem('viben_vid', vid);
                 }
 
