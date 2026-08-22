@@ -29,3 +29,11 @@
 ## 2026-08-19 - Deferring API Calls using requestIdleCallback
 **Learning:** Because the architecture fetches HTML fragments (`src/*.html`) dynamically and re-evaluates all their inner `<script>` tags immediately on insertion, any `fetch` calls or heavy logic in lower fragments (like footers or telemetry sections) will execute synchronously alongside critical LCP elements, blocking bandwidth and CPU. However, deferring based on `IntersectionObserver` causes tracking loss for users who bounce without scrolling.
 **Action:** Always wrap non-critical telemetry `fetch` calls or background tracking in `requestIdleCallback` (with a fallback to `setTimeout`) so it doesn't block the main thread and LCP, but still reliably fires regardless of scroll position.
+
+## 2026-08-22 - Sequential vs Concurrent Promise Processing in Vanilla HTML Component Architecture
+**Learning:** In a vanilla HTML architecture where components are dynamically fetched in the frontend, dispatching fetches concurrently but awaiting them using  introduces a rendering bottleneck, where rendering is delayed until the slowest fetch resolves.
+**Action:** Always process the fetch promises sequentially (e.g. using a `for...of` loop on the promises array) after dispatching them concurrently. This enables progressive rendering of earlier components as soon as they resolve, drastically improving First Contentful Paint (FCP) without slowing overall network time.
+
+## 2026-08-22 - Sequential vs Concurrent Promise Processing in Vanilla HTML Component Architecture
+**Learning:** In a vanilla HTML architecture where components are dynamically fetched in the frontend, dispatching fetches concurrently but awaiting them using Promise.all() introduces a rendering bottleneck, where rendering is delayed until the slowest fetch resolves.
+**Action:** Always process the fetch promises sequentially (e.g. using a `for...of` loop on the promises array) after dispatching them concurrently. This enables progressive rendering of earlier components as soon as they resolve, drastically improving First Contentful Paint (FCP) without slowing overall network time.

@@ -48,9 +48,10 @@
                 }
             });
 
-            const results = await Promise.all(fetchPromises);
+            // ⚡ Bolt: Await fetches sequentially so components render as soon as they resolve, improving FCP
+            for (const fetchPromise of fetchPromises) {
+                const result = await fetchPromise;
 
-            for (const result of results) {
                 if (result.error) {
                     console.error("Failed to load component", result.c, result.error);
                     continue;
