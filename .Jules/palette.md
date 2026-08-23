@@ -17,3 +17,6 @@
 ## 2026-08-17 - Focus Restoration on Modal Close
 **Learning:** When creating custom modal dialogs (like the lightbox), focusing an element inside the dialog on open is good for screen readers, but failing to restore focus to the triggering element when the dialog closes causes the focus order to reset to the start of the document, disorienting keyboard users.
 **Action:** Always save `document.activeElement` before opening a modal and call `.focus()` on it during the modal's close routine to maintain a logical and continuous focus order.
+## 2026-08-23 - Consistent Keyboard Interaction Styling
+**Learning:** Sighted keyboard users rely heavily on visual focus indicators to understand where they are on a page. While this app had extensive `:hover` styles for mouse users, it lacked equivalent `:focus-visible` styles on many interactive elements (buttons, cards, gallery items, footer links), leading to a degraded keyboard navigation experience.
+**Action:** When adding or updating interactive elements, always pair `:hover` styles with `:focus-visible` (e.g., `.btn:hover, .btn:focus-visible`) to ensure a consistent and accessible experience across input methods without relying solely on the browser's default outline.
