@@ -48,9 +48,12 @@
                 }
             });
 
-            const results = await Promise.all(fetchPromises);
-
-            for (const result of results) {
+            // ⚡ Bolt: Await fetches sequentially instead of using Promise.all().
+            // Because fetches are already initiated concurrently, this allows earlier components (like Header/Hero)
+            // to render immediately as they resolve, drastically improving First Contentful Paint (FCP)
+            // without being blocked by slower, lower-page components.
+            for (const fetchPromise of fetchPromises) {
+                const result = await fetchPromise;
                 if (result.error) {
                     console.error("Failed to load component", result.c, result.error);
                     continue;
