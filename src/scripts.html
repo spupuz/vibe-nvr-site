@@ -90,7 +90,12 @@
                 // Generate or retrieve a persistent anonymous visitor ID
                 let vid = localStorage.getItem('viben_vid');
                 if (!vid) {
-                    vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+                    // 🛡️ Sentinel: Use cryptographically secure random UUID for visitor ID instead of Math.random
+                    if (window.crypto && window.crypto.randomUUID) {
+                        vid = 'v_' + window.crypto.randomUUID();
+                    } else {
+                        vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
+                    }
                     localStorage.setItem('viben_vid', vid);
                 }
 
