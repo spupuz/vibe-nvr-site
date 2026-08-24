@@ -17,3 +17,6 @@
 ## 2026-08-17 - Focus Restoration on Modal Close
 **Learning:** When creating custom modal dialogs (like the lightbox), focusing an element inside the dialog on open is good for screen readers, but failing to restore focus to the triggering element when the dialog closes causes the focus order to reset to the start of the document, disorienting keyboard users.
 **Action:** Always save `document.activeElement` before opening a modal and call `.focus()` on it during the modal's close routine to maintain a logical and continuous focus order.
+## 2026-08-24 - Escape Key Dismissal & Focus Restoration for Mobile Menus
+**Learning:** Similar to lightboxes and modals, custom mobile navigation menus built as overlays often trap keyboard users if they cannot be dismissed with the Escape key. Failing to restore focus to the menu toggle button after dismissal also causes disorientation.
+**Action:** Always ensure custom overlays and menus listen for the Escape key to close, and explicitly call `.focus()` on the triggering element to maintain logical tab order.
