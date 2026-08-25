@@ -17,3 +17,6 @@
 ## 2026-08-17 - Focus Restoration on Modal Close
 **Learning:** When creating custom modal dialogs (like the lightbox), focusing an element inside the dialog on open is good for screen readers, but failing to restore focus to the triggering element when the dialog closes causes the focus order to reset to the start of the document, disorienting keyboard users.
 **Action:** Always save `document.activeElement` before opening a modal and call `.focus()` on it during the modal's close routine to maintain a logical and continuous focus order.
+## 2026-08-25 - Consistent Interaction States Across Devices
+**Learning:** Some elements in this app relied solely on `:hover` for visual feedback. Keyboard-only and screen reader users missed this feedback, leading to a disjointed interaction experience, which violates basic accessibility principles for focus indicators.
+**Action:** When styling interactive elements (like buttons, links, or custom cards), always ensure `:hover` styles are paired with `:focus-visible` pseudo-class equivalents to provide a uniform experience across all input modalities.

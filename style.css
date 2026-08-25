@@ -101,7 +101,7 @@ a {
     transition: color 0.2s;
 }
 
-a:hover {
+a:hover, a:focus-visible {
     color: var(--primary);
 }
 
@@ -233,7 +233,7 @@ a:hover {
     box-shadow: var(--shadow-sm);
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary:focus-visible {
     background-color: color-mix(in srgb, var(--primary) 90%, black);
     transform: translateY(-2px);
     box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
@@ -246,7 +246,7 @@ a:hover {
     box-shadow: var(--shadow-sm);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, .btn-secondary:focus-visible {
     background-color: var(--muted);
 }
 
@@ -262,7 +262,7 @@ a:hover {
     flex-direction: column;
 }
 
-.card:hover {
+.card:hover, .card:focus-visible {
     box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
     transform: translateY(-4px);
     border-color: rgba(59, 130, 246, 0.3);
@@ -568,7 +568,7 @@ footer {
     transition: all 0.2s;
 }
 
-.gallery-nav:hover {
+.gallery-nav:hover, .gallery-nav:focus-visible {
     background: white;
     transform: translateY(-50%) scale(1.1);
     box-shadow: var(--shadow-lg);
@@ -583,7 +583,7 @@ footer {
     right: 1rem;
 }
 
-.gallery-item:hover {
+.gallery-item:hover, .gallery-item:focus-visible {
     transform: scale(1.02);
 }
 
@@ -763,7 +763,7 @@ footer {
     transition: all 0.2s;
 }
 
-.gallery-nav:hover {
+.gallery-nav:hover, .gallery-nav:focus-visible {
     background: white;
     transform: translateY(-50%) scale(1.1);
     box-shadow: var(--shadow-lg);
@@ -778,7 +778,7 @@ footer {
     right: 1rem;
 }
 
-.gallery-item:hover {
+.gallery-item:hover, .gallery-item:focus-visible {
     transform: scale(1.02);
 }
 
@@ -844,7 +844,7 @@ footer {
     padding: 0;
 }
 
-.lightbox-close:hover,
+.lightbox-close:hover, .lightbox-close:focus-visible,
 .lightbox-close:focus {
     color: #bbb;
     text-decoration: none;
@@ -856,11 +856,11 @@ footer {
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#support .support-btn:hover {
+#support .support-btn:hover, #support .support-btn:focus-visible {
     transform: scale(1.05);
 }
 
-#support a[href*="star-history.com"]:hover {
+#support a[href*="star-history.com"]:hover, #support a[href*="star-history.com"]:focus-visible {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
 }
@@ -957,7 +957,7 @@ footer {
 
 }
 
-.footer-link:hover, .footer-link:focus {
+.footer-link:hover, .footer-link:focus, .footer-link:focus-visible {
     color: var(--primary);
 }
 
