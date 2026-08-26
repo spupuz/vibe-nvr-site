@@ -29,3 +29,7 @@
 ## 2026-08-19 - Deferring API Calls using requestIdleCallback
 **Learning:** Because the architecture fetches HTML fragments (`src/*.html`) dynamically and re-evaluates all their inner `<script>` tags immediately on insertion, any `fetch` calls or heavy logic in lower fragments (like footers or telemetry sections) will execute synchronously alongside critical LCP elements, blocking bandwidth and CPU. However, deferring based on `IntersectionObserver` causes tracking loss for users who bounce without scrolling.
 **Action:** Always wrap non-critical telemetry `fetch` calls or background tracking in `requestIdleCallback` (with a fallback to `setTimeout`) so it doesn't block the main thread and LCP, but still reliably fires regardless of scroll position.
+
+## 2024-08-20 - Unblocking FCP with Concurrent Fetching and Sequential Rendering
+**Learning:** Using `Promise.all()` to wait for multiple dynamic HTML component fetches forces the browser to delay rendering all components until the slowest one downloads. This blocks First Contentful Paint (FCP) unnecessarily.
+**Action:** Initiate network requests concurrently, but await their promises sequentially (e.g., using a `for...of` loop over an array of promises). This allows the browser to render components immediately as they resolve in order, significantly improving FCP.
