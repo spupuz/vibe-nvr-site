@@ -90,9 +90,9 @@
                 // Generate or retrieve a persistent anonymous visitor ID
                 let vid = localStorage.getItem('viben_vid');
                 if (!vid) {
-                    // 🛡️ Sentinel: Use cryptographically secure random identifier to prevent predictable ID generation
+                    // 🛡️ Sentinel: Use cryptographically secure random UUID if available, fallback to Math.random
                     if (window.crypto && window.crypto.randomUUID) {
-                        vid = 'v_' + window.crypto.randomUUID();
+                        vid = 'v_' + window.crypto.randomUUID().replace(/-/g, '');
                     } else {
                         vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
                     }
@@ -102,9 +102,6 @@
                 // Ping the telemetry worker
                 const url = new URL('https://vibenvr-telemetry.spupuz.workers.dev/site-telemetry.png');
                 url.searchParams.set('visitor_id', vid);
-                url.searchParams.set('path', window.location.pathname);
-
-                const img = new Image();
                 img.referrerPolicy = 'no-referrer-when-downgrade';
                 // ⚡ Bolt: Trigger network request without appending to DOM to avoid layout recalculation
                 img.src = url.toString();
