@@ -113,38 +113,65 @@
     <div class="nav-overlay" onclick="toggleMenu()"></div>
 
     <script>
+        let mobileMenuLastFocusedElement = null;
+
+        function closeMenu() {
+            const nav = document.querySelector(".nav-links");
+            const overlay = document.querySelector(".nav-overlay");
+            const icon = document.getElementById("menu-icon");
+            const toggleBtn = document.querySelector(".mobile-toggle");
+            
+            if(nav.classList.contains("active")) {
+                nav.classList.remove("active");
+                overlay.classList.remove("active");
+                icon.setAttribute("name", "menu-outline");
+                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+
+                if (mobileMenuLastFocusedElement) {
+                    mobileMenuLastFocusedElement.focus();
+                    mobileMenuLastFocusedElement = null;
+                }
+            }
+        }
+
         function toggleMenu() {
             const nav = document.querySelector(".nav-links");
             const overlay = document.querySelector(".nav-overlay");
             const icon = document.getElementById("menu-icon");
             const toggleBtn = document.querySelector(".mobile-toggle");
             
-            nav.classList.toggle("active");
-            overlay.classList.toggle("active");
-            
-            if (nav.classList.contains("active")) {
+            if (!nav.classList.contains("active")) {
+                // Opening
+                mobileMenuLastFocusedElement = document.activeElement;
+                nav.classList.add("active");
+                overlay.classList.add("active");
                 icon.setAttribute("name", "close-outline");
                 if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "true");
+
+                // Focus first link in menu for accessibility
+                const firstLink = nav.querySelector('a');
+                if (firstLink) setTimeout(() => firstLink.focus(), 50);
             } else {
-                icon.setAttribute("name", "menu-outline");
-                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+                // Closing
+                closeMenu();
             }
         }
 
         // Close menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach(link => {
             link.addEventListener("click", () => {
-                const nav = document.querySelector(".nav-links");
-                const overlay = document.querySelector(".nav-overlay");
-                const icon = document.getElementById("menu-icon");
-                const toggleBtn = document.querySelector(".mobile-toggle");
-                if(nav.classList.contains("active")) {
-                    nav.classList.remove("active");
-                    overlay.classList.remove("active");
-                    icon.setAttribute("name", "menu-outline");
-                    if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
-                }
+                closeMenu();
             });
+        });
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                const nav = document.querySelector(".nav-links");
+                if (nav && nav.classList.contains("active")) {
+                    closeMenu();
+                }
+            }
         });
     </script>
     <script>

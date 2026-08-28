@@ -20,3 +20,6 @@
 ## 2026-08-27 - Consistent Visual Feedback for Keyboard Navigation
 **Learning:** While CSS `:hover` states provide good visual feedback for mouse users, keyboard users often lack this feedback if focus indicators aren't explicitly styled. Interactive elements should provide consistent feedback regardless of the input method.
 **Action:** Always ensure that CSS interactive pseudo-classes (e.g., `:hover`) are paired with their keyboard equivalents (e.g., `:focus-visible`) to provide consistent visual feedback across all input methods.
+## 2026-03-05 - Mobile Menu Accessibility
+**Learning:** Custom mobile menus (like modal dialogs) require careful focus management. When a menu opens, focus should move into the menu so keyboard users don't tab through hidden page content. Crucially, when the menu closes via Escape, overlay click, or link click, focus must be restored to the triggering element (the menu button) to prevent the browser from resetting focus to the top of the document.
+**Action:** Always implement `Escape` key dismissal and explicitly track and restore `lastFocusedElement` for any custom full-screen overlay menus or modals.
