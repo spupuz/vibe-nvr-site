@@ -50,7 +50,7 @@ git rm -rf .agents .wrangler .env .dev.vars 2>/dev/null || true
 git add -A
 git commit -m "v$VER_NUM: merge PRs and bump version" || true
 
-echo "Merging to Main & Pushing..."
+echo "Merging to Main/Master & Pushing..."
 git checkout $DEFAULT_BRANCH
 git merge release/$NEW_VERSION --no-edit
 git branch -d release/$NEW_VERSION
