@@ -223,7 +223,7 @@ a:focus-visible {
     /* Buttons usually less rounded than cards */
     padding: 0.75rem 1.5rem;
     font-weight: 600;
-    transition: all 0.2s;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
     border: 1px solid transparent;
 }
@@ -408,7 +408,7 @@ header {
         backdrop-filter: blur(4px);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s;
+        transition: opacity 0.3s, visibility 0.3s;
         z-index: 80;
     }
 
@@ -569,7 +569,7 @@ footer {
     justify-content: center;
     font-size: 1.5rem;
     color: var(--foreground);
-    transition: all 0.2s;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
 .gallery-nav:hover,
@@ -766,7 +766,7 @@ footer {
     justify-content: center;
     font-size: 1.5rem;
     color: var(--foreground);
-    transition: all 0.2s;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s, color 0.2s;
 }
 
 .gallery-nav:hover,
@@ -899,7 +899,8 @@ footer {
 .reveal {
     opacity: 0;
     transform: translateY(60px) scale(0.95);
-    transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity, transform;
 }
 
 .reveal.active {
