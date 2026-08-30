@@ -18,3 +18,7 @@
 **Vulnerability:** The telemetry script (`src/scripts.html`) was generating user identifiers using `Math.random()`, which is not cryptographically secure and results in predictable IDs.
 **Learning:** For identifiers meant to be pseudo-anonymous but resistant to prediction or cross-user collisions, relying solely on `Math.random()` mixed with `Date.now()` is weak, particularly on the client side where the seed might be inferrable.
 **Prevention:** Always use `window.crypto.randomUUID()` when generating unique identifiers in the browser to ensure cryptographic randomness, falling back to older methods only for compatibility.
+## 2026-08-30 - [Missing Timeout on External API Calls]
+**Vulnerability:** External `fetch` calls to telemetry and third-party APIs lacked timeouts, which could cause the client to hang indefinitely on a slow network or if the external server becomes unresponsive.
+**Learning:** Default `fetch` behavior in browsers does not include a timeout, making it vulnerable to hanging. Implementing a timeout provides a better user experience and prevents unexpected application states.
+**Prevention:** Always implement an `AbortController` with a reasonable timeout (e.g., 5000ms) for external `fetch` requests to prevent hanging.

@@ -134,8 +134,13 @@
             }
 
             async function loadTelemetry() {
+                // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+
                 try {
-                    const res = await fetch(API);
+                    const res = await fetch(API, { signal: controller.signal });
+                    clearTimeout(timeoutId);
                     if (!res.ok) throw new Error('Network error');
                     const d = await res.json();
 
