@@ -223,7 +223,11 @@ a:focus-visible {
     /* Buttons usually less rounded than cards */
     padding: 0.75rem 1.5rem;
     font-weight: 600;
+<<<<<<< HEAD
     transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s, color 0.2s, border-color 0.2s;
+=======
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+>>>>>>> origin/bolt/css-transition-optimization-7897718665551362707
     cursor: pointer;
     border: 1px solid transparent;
 }
@@ -899,8 +903,13 @@ footer {
 .reveal {
     opacity: 0;
     transform: translateY(60px) scale(0.95);
+<<<<<<< HEAD
     will-change: opacity, transform;
     transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+=======
+    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: opacity, transform;
+>>>>>>> origin/bolt/css-transition-optimization-7897718665551362707
 }
 
 .reveal.active {

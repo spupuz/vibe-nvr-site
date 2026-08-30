@@ -217,6 +217,12 @@
                             entry.target.style.willChange = 'auto';
                         }, 1300);
                         observer.unobserve(entry.target); // Run once
+
+                        // ⚡ Bolt: Clean up animation classes after completion (1500ms allows for 800ms transition + max 450ms stagger + buffer)
+                        // This removes the 'will-change' property which consumes memory and can override local hover transitions
+                        setTimeout(() => {
+                            entry.target.classList.remove("reveal", "active", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3");
+                        }, 1500);
                     }
                 });
             }, observerOptions);
