@@ -33,13 +33,6 @@
 ## 2026-08-27 - Sequential Rendering of Concurrent Fetches
 **Learning:** Using `Promise.all()` to await dynamically loaded HTML components blocks rendering until *all* components are fetched, delaying First Contentful Paint (FCP).
 **Action:** Initiate fetches concurrently but await them sequentially using a `for...of` loop over the promises. This allows earlier components (like the hero section) to render as soon as they resolve, drastically improving perceived load time.
-<<<<<<< HEAD
-
-## 2024-11-20 - Global Transition Performance & will-change Memory Leaks
-**Learning:** Using `transition: all` on frequently interacted elements (like buttons and navigation) forces the browser to check and recalculate every single animatable CSS property on state changes (hover, focus), causing unnecessary layout thrashing. Additionally, when using `will-change: opacity, transform` to optimize initial scroll reveal paints, leaving the property applied indefinitely causes the browser to allocate and hold unnecessary memory for separate compositing layers, degrading long-term performance and breaking native component stacking contexts.
-**Action:** Always specify explicit CSS properties (e.g., `transition: background-color 0.2s, transform 0.2s`) instead of `all`. Furthermore, when utilizing `will-change` for animation optimization, always clean up the property dynamically (e.g., setting it to `auto` via `setTimeout` after the animation completes).
-=======
 ## 2026-08-29 - Targeted Transitions and Will-Change Cleanup
 **Learning:** Using `transition: all` globally across multiple components (like `.reveal`, `.btn`, and `.card`) forces the browser to animate *every* paint property change simultaneously. More critically, when used alongside `will-change` (to optimize initial paint on scroll reveal), leaving `will-change` active after an animation completes consumes excess composite memory and can break or override localized component transitions (such as hover states).
 **Action:** When implementing scroll reveal animations, explicitly define the transition properties (e.g. `opacity`, `transform`), apply `will-change` strategically, and use an `IntersectionObserver` with a `setTimeout` cleanup to remove animation classes after completion. This frees compositor memory and restores native component interactive states.
->>>>>>> origin/bolt/css-transition-optimization-7897718665551362707
