@@ -33,3 +33,7 @@
 ## 2026-08-27 - Sequential Rendering of Concurrent Fetches
 **Learning:** Using `Promise.all()` to await dynamically loaded HTML components blocks rendering until *all* components are fetched, delaying First Contentful Paint (FCP).
 **Action:** Initiate fetches concurrently but await them sequentially using a `for...of` loop over the promises. This allows earlier components (like the hero section) to render as soon as they resolve, drastically improving perceived load time.
+
+## 2024-11-20 - Global Transition Performance & will-change Memory Leaks
+**Learning:** Using `transition: all` on frequently interacted elements (like buttons and navigation) forces the browser to check and recalculate every single animatable CSS property on state changes (hover, focus), causing unnecessary layout thrashing. Additionally, when using `will-change: opacity, transform` to optimize initial scroll reveal paints, leaving the property applied indefinitely causes the browser to allocate and hold unnecessary memory for separate compositing layers, degrading long-term performance and breaking native component stacking contexts.
+**Action:** Always specify explicit CSS properties (e.g., `transition: background-color 0.2s, transform 0.2s`) instead of `all`. Furthermore, when utilizing `will-change` for animation optimization, always clean up the property dynamically (e.g., setting it to `auto` via `setTimeout` after the animation completes).

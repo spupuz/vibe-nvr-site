@@ -211,6 +211,11 @@
                     // Activate if intersecting, or if the element is already scrolled past (above viewport)
                     if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
                         entry.target.classList.add("active");
+                        // ⚡ Bolt: Clean up will-change after animation finishes (0.8s + max delay 0.45s = ~1250ms)
+                        // using slightly higher timeout to be safe
+                        setTimeout(() => {
+                            entry.target.style.willChange = 'auto';
+                        }, 1300);
                         observer.unobserve(entry.target); // Run once
                     }
                 });
