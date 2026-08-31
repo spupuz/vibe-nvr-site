@@ -147,10 +147,13 @@
                     const grid = document.getElementById('telemetry-grid');
                     grid.innerHTML = ''; // Clear skeleton loader safely
 
-                    grid.appendChild(createStatCard('pulse-outline', 'Active Installs', d.active_installs?.toString() ?? '0', 'Last 7 days'));
-                    grid.appendChild(createStatCard('albums-outline', 'Total Installs', d.total_installs?.toString() ?? '0', 'All time distinct'));
-                    grid.appendChild(createStatCard('videocam-outline', 'Cameras', d.total_cameras?.toString() ?? '0', 'Managed across active'));
-                    grid.appendChild(createStatCard('film-outline', 'Events', d.total_events?.toString() ?? '0', 'Recordings / Detections'));
+                    // ⚡ Bolt: Batch DOM insertions using DocumentFragment to minimize reflows
+                    const fragment = document.createDocumentFragment();
+                    fragment.appendChild(createStatCard('pulse-outline', 'Active Installs', d.active_installs?.toString() ?? '0', 'Last 7 days'));
+                    fragment.appendChild(createStatCard('albums-outline', 'Total Installs', d.total_installs?.toString() ?? '0', 'All time distinct'));
+                    fragment.appendChild(createStatCard('videocam-outline', 'Cameras', d.total_cameras?.toString() ?? '0', 'Managed across active'));
+                    fragment.appendChild(createStatCard('film-outline', 'Events', d.total_events?.toString() ?? '0', 'Recordings / Detections'));
+                    grid.appendChild(fragment);
 
                     const now = new Date();
                     document.getElementById('telemetry-updated').textContent =
