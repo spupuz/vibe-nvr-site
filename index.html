@@ -60,12 +60,16 @@
                 container.innerHTML = result.html;
 
                 // Re-evaluate scripts to ensure they run globally
-                const scripts = container.getElementsByTagName('script');
+                const scripts = Array.from(container.getElementsByTagName('script'));
                 for (let i = 0; i < scripts.length; i++) {
                     const newScript = document.createElement('script');
                     newScript.text = scripts[i].textContent;
                     document.body.appendChild(newScript);
+                    scripts[i].remove();
                 }
+
+                // ⚡ Bolt: explicitly yield the main thread and synchronize with paint cycle
+                await new Promise(resolve => requestAnimationFrame(resolve));
             }
         }
         loadComponents();
