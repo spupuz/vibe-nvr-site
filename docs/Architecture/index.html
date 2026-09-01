@@ -1627,8 +1627,13 @@ Alternatively, the backend fully supports <strong>SQLite</strong> via a direct f
   <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js"></script>
   <script>
       (async function fetchVersions() {
+          // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 5000);
+
           try {
-              const siteRes = await fetch('https://api.github.com/repos/spupuz/vibe-nvr-site/releases/latest');
+              const siteRes = await fetch('https://api.github.com/repos/spupuz/vibe-nvr-site/releases/latest', { signal: controller.signal });
+              clearTimeout(timeoutId);
               if (siteRes.ok) {
                   const siteData = await siteRes.json();
                   const siteEl = document.getElementById('site-version');
