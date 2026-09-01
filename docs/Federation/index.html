@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Architecture/">
+        <link rel="prev" href="../Telemetry/">
       
       
-        <link rel="next" href="../Backups/">
+        <link rel="next" href="../Architecture/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Troubleshooting - VibeNVR Documentation</title>
+        <title>Decentralized Federation - VibeNVR Documentation</title>
       
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#troubleshooting-guide" class="md-skip">
+        <a href="#decentralized-federation-multi-site-management" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Troubleshooting
+              Decentralized Federation
             
           </span>
         </div>
@@ -377,9 +377,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Federation/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -411,11 +413,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../Troubleshooting/" class="md-tabs__link">
         
   
     
@@ -877,10 +877,31 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Federation/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Decentralized Federation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -890,6 +911,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#key-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Capabilities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-federation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up Federation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-rbac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security &amp; RBAC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ui-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI Integration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -919,31 +996,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Troubleshooting
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -953,122 +1009,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 Common Issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔧 Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#permission-errors-on-proxmox-synology-qnap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Permission errors on Proxmox / Synology / QNAP
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#backend-fails-to-start" class="md-nav__link">
-    <span class="md-ellipsis">
-      Backend fails to start
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cameras-not-connecting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cameras not connecting
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#live-view-shows-authentication-error-401" class="md-nav__link">
-    <span class="md-ellipsis">
-      Live View shows "Authentication Error" / 401
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-webcodecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚡ Troubleshooting WebCodecs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#high-memory-usage-oom-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧠 High Memory Usage / OOM Errors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#high-cpu-usage-ui-lag-in-grid-view" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐢 High CPU Usage / UI Lag in Grid View
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reporting-bugs" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐛 Reporting Bugs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#session-cookie-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔑 Session &amp; Cookie Issues
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1352,98 +1292,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
+  <a href="#key-capabilities" class="md-nav__link">
     <span class="md-ellipsis">
-      🔧 Common Issues
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🔧 Common Issues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#permission-errors-on-proxmox-synology-qnap" class="md-nav__link">
-    <span class="md-ellipsis">
-      Permission errors on Proxmox / Synology / QNAP
+      Key Capabilities
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#backend-fails-to-start" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-federation" class="md-nav__link">
     <span class="md-ellipsis">
-      Backend fails to start
+      Setting Up Federation
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#cameras-not-connecting" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#security-rbac" class="md-nav__link">
     <span class="md-ellipsis">
-      Cameras not connecting
+      Security &amp; RBAC
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#live-view-shows-authentication-error-401" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#ui-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Live View shows "Authentication Error" / 401
+      UI Integration
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshooting-webcodecs" class="md-nav__link">
-    <span class="md-ellipsis">
-      ⚡ Troubleshooting WebCodecs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#high-memory-usage-oom-errors" class="md-nav__link">
-    <span class="md-ellipsis">
-      🧠 High Memory Usage / OOM Errors
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#high-cpu-usage-ui-lag-in-grid-view" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐢 High CPU Usage / UI Lag in Grid View
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reporting-bugs" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐛 Reporting Bugs
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#session-cookie-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔑 Session &amp; Cookie Issues
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1463,80 +1343,31 @@
 
 
 
-<h1 id="troubleshooting-guide">Troubleshooting Guide</h1>
-<p>This guide addresses common issues and provides steps for diagnostics and support.</p>
-<hr />
-<h2 id="common-issues">🔧 Common Issues</h2>
-<h3 id="permission-errors-on-proxmox-synology-qnap">Permission errors on Proxmox / Synology / QNAP</h3>
-<p>If you see <code>PermissionError: [Errno 13]</code> or <code>could not create Unix socket</code>, try uncommenting in <code>docker-compose.yml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">security_opt</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">seccomp:unconfined</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apparmor:unconfined</span>
-</code></pre></div>
-<p>As a last resort, use <code>privileged: true</code> on the affected service.</p>
-<h3 id="backend-fails-to-start">Backend fails to start</h3>
-<p>If the backend fails to start with a <code>SystemExit: 1</code>, check that <code>SECRET_KEY</code> is not set to one of the default values and is at least 32 characters long.</p>
-<p>In production (<code>ENVIRONMENT=production</code>), the app will strictly enforce this. To bypass it for troubleshooting, you can set <code>ALLOW_WEAK_SECRET=true</code> in your <code>.env</code> file.</p>
-<h3 id="cameras-not-connecting">Cameras not connecting</h3>
-<p>Verify the RTSP URL is reachable from inside the Docker container. The <code>localhost</code> addresses are blocked for security reasons — use the camera's actual LAN IP.</p>
-<blockquote>
-<p>💡 <strong>Note on URL format</strong>: VibeNVR supports raw RTSP paths including double slashes (e.g., <code>rtsp://ip:port//stream2</code>).
-+
-+---
-+
-+### 🔋 Battery / Wyze Camera Stability
-+Wyze V3 and some battery-powered cameras (Eufy, Reolink) can be sensitive to rapid RTSP connections.
-+
-+<strong>Recommended Settings:</strong>
-+1. <strong>RTSP Transport</strong>: Set to <strong>TCP</strong> in Camera Settings (Main &amp; Sub stream).
-+2. <strong>Detection Mode</strong>: Use <strong>ONVIF Edge</strong> if supported, or ensure <strong>AI Master Switch</strong> is ON to allow the engine to use its adaptive sleep patterns.
-+3. <strong>NAL Parsing</strong>: VibeNVR automatically uses optimized NAL-unit parsing to handle the non-standard H.264 streams typical of these devices.
-+
-+---</p>
-</blockquote>
-<hr />
-<h3 id="live-view-shows-authentication-error-401">Live View shows "Authentication Error" / 401</h3>
-<p>If you see an "AUTH ERROR" overlay, it might be a race condition during token load.</p>
-<p><strong>Solution:</strong>
-1. Ensure you are running the latest version of VibeNVR.
-2. Check camera credentials in <strong>Settings → Cameras</strong>.
-3. VibeNVR automatically enters a <strong>5-minute backoff period</strong> on persistent 401 errors to prevent IP bans.</p>
-<hr />
-<h3 id="troubleshooting-webcodecs">⚡ Troubleshooting WebCodecs</h3>
-<p>If you experience "black screens":
-1. Ensure your browser supports <strong>WebCodecs API</strong> (Chrome/Edge 94+).
-2. Check for <strong>Secure Context</strong> (HTTPS or localhost).
-3. If the stream stalls, the frontend jitter buffer should smooth it out automatically.</p>
-<hr />
-<hr />
-<h3 id="high-memory-usage-oom-errors">🧠 High Memory Usage / OOM Errors</h3>
-<p>If VibeNVR containers are crashing due to memory exhaustion or your host RAM is saturated:
-1. <strong>Resolution vs Buffers</strong>: High-resolution streams (1080p/4K) combined with large pre-capture buffers consume massive amounts of RAM.
-2. <strong>Consult the <a href="../Resource-Optimization/">Resource Optimization Guide</a></strong> for detailed RAM estimation formulas and tuning strategies (Passthrough, Sub-streams, Throttling).</p>
-<hr />
-<h3 id="high-cpu-usage-ui-lag-in-grid-view">🐢 High CPU Usage / UI Lag in Grid View</h3>
-<p>If the browser or host CPU spikes when viewing multiple cameras:
-1. <strong>Enable Dual-Stream</strong>: Configure a low-resolution sub-stream for your cameras. the UI grid will automatically prioritize the sub-stream, saving massive amounts of bandwidth and decoding power.
-2. <strong>Check FPS Throttle</strong>: Increase <code>opt_live_view_fps_throttle</code> in Global Settings to reduce the frequency of MJPEG fallback frames.
-3. <strong>Hardware Offloading</strong>: Use a Coral TPU for AI detection to offload CPU inference. See the <strong><a href="../Resource-Optimization/">Resource Optimization Guide</a></strong> for more tips.</p>
-<hr />
-<h3 id="reporting-bugs">🐛 Reporting Bugs</h3>
-<p>If you encounter a bug, please open an issue on GitHub.
-Include a <strong>Diagnostic Bundle</strong>:
-1. Log in as <strong>Admin</strong>.
-2. Go to <strong>System Logs</strong>.
-3. Click <strong>"Download Report"</strong>.
-4. Attach the <code>.zip</code> file to your GitHub issue.</p>
-<blockquote>
-<p>💡 <strong>Tip</strong>: VibeNVR logs are now standardized with consistent timestamps across all components. When reviewing <code>docker compose logs</code>, you can easily correlate events between the Backend, Engine, and Frontend. Sensitive data (passwords, tokens) is automatically redacted.</p>
-</blockquote>
-<hr />
-<h3 id="session-cookie-issues">🔑 Session &amp; Cookie Issues</h3>
-<p>If you encounter "No session cookie" errors or are repeatedly logged out:
-1. <strong>Check <code>COOKIE_SECURE</code></strong>: By default, it is set to <code>auto</code>. The system detects if you are on HTTP or HTTPS.
-2. <strong>Local Access</strong>: If accessing via IP (e.g., <code>http://192.168.1.50:8080</code>), ensure you are using a modern browser.
-3. <strong>Reverse Proxy</strong>: If you are behind a proxy (like Nginx Proxy Manager), ensure it correctly passes the <code>X-Forwarded-Proto</code> header.
-4. <strong>Manual Override</strong>: If <code>auto</code> fails in your specific network setup, explicitly set <code>COOKIE_SECURE=false</code> in your <code>.env</code> file for local-only use.</p>
+<h1 id="decentralized-federation-multi-site-management">Decentralized Federation (Multi-Site Management)</h1>
+<p>VibeNVR supports a decentralized federation model, allowing you to link multiple independent VibeNVR instances (nodes) together and manage them from a single "Master" pane of glass.</p>
+<h2 id="key-capabilities">Key Capabilities</h2>
+<ul>
+<li><strong>Single Pane of Glass</strong>: View live streams, timelines, and manage configurations across multiple physical sites without needing to open multiple browser tabs or memorize different IPs.</li>
+<li><strong>Decentralized Architecture</strong>: Each node remains fully independent. If the Master node goes offline, the child nodes continue recording and operating normally. There is no single point of failure for recording integrity.</li>
+<li><strong>Zero-Trust Proxying</strong>: The Master node securely proxies API and WebSocket requests to the child nodes. Clients (browsers) only need to communicate with the Master node, simplifying firewall and reverse proxy configurations (only the Master needs to be exposed externally).</li>
+<li><strong>Graceful Degradation</strong>: The system actively polls the health of federated nodes every 30 seconds. If a remote node goes offline (due to network failure or maintenance), the UI instantly reflects the "Offline" status and safely falls back to the Master node to prevent application crashes.</li>
+</ul>
+<h2 id="setting-up-federation">Setting Up Federation</h2>
+<ol>
+<li><strong>Obtain API Token</strong>: Log in to the "Child" node (the one you want to add), navigate to <strong>Settings &gt; API Tokens</strong>, and generate a new token with Admin privileges.</li>
+<li><strong>Add Node to Master</strong>: Log in to the "Master" node, navigate to <strong>Settings &gt; Federation</strong>, and click "Add Node".</li>
+<li><strong>Configure</strong>: Provide a recognizable Name, the Base URL of the Child node (e.g., <code>http://192.168.1.50:8080</code>), and paste the API Token.</li>
+<li><strong>Validation</strong>: The Master node will perform a pre-flight check to verify the URL and Token. If successful, the node is added to your Federation menu.</li>
+</ol>
+<h2 id="security-rbac">Security &amp; RBAC</h2>
+<p>The Federation Proxy layer is strictly hardened:
+- <strong>Authentication</strong>: All proxied requests require the user to be authenticated on the Master node.
+- <strong>Viewer Isolation</strong>: Users with the <code>Viewer</code> role on the Master node can only perform read-only actions (GET/HEAD) on federated nodes, even if the underlying backend connection utilizes an Admin API Token. Any attempt by a Viewer to modify settings, delete cameras, or move PTZ on a remote node will be intercepted and blocked with a <code>403 Forbidden</code> error by the Master's proxy layer.
+- <strong>SSRF Protection</strong>: The system prevents Server-Side Request Forgery by ensuring the Proxy only forwards requests to the pre-validated Base URLs configured by an Administrator.</p>
+<h2 id="ui-integration">UI Integration</h2>
+<p>Once configured, a Node Switcher dropdown will appear in the main Sidebar. 
+- Selecting a node will instantly scope the entire UI (Dashboard, Cameras, Live View, Timeline) to that specific node.
+- If a node goes offline while you are viewing it, VibeNVR will display a warning toast and automatically switch your view back to the local Master node.</p>
 
 
 
@@ -1573,7 +1404,7 @@ Include a <strong>Diagnostic Bundle</strong>:
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: System Architecture">
+          <a href="../Telemetry/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Telemetry &amp; Privacy">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1583,20 +1414,20 @@ Include a <strong>Diagnostic Bundle</strong>:
                 Previous
               </span>
               <div class="md-ellipsis">
-                System Architecture
+                Telemetry & Privacy
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Backups/" class="md-footer__link md-footer__link--next" aria-label="Next: Backups and Restoration">
+          <a href="../Architecture/" class="md-footer__link md-footer__link--next" aria-label="Next: System Architecture">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Backups and Restoration
+                System Architecture
               </div>
             </div>
             <div class="md-footer__button md-icon">
