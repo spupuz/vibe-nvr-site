@@ -354,6 +354,11 @@ header {
     z-index: 110;
 }
 
+.mobile-toggle:hover,
+.mobile-toggle:focus-visible {
+    color: var(--primary);
+}
+
 @media (max-width: 768px) {
     .mobile-toggle {
         display: block !important; /* Force show on mobile */
