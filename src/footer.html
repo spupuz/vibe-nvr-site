@@ -24,21 +24,39 @@
         </div>
     </footer>
     <script>
-        (async function fetchVersions() {
-            // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000);
+        (function() {
+            async function fetchVersions() {
+                // ⚡ Bolt: Cache third-party API results in sessionStorage to avoid redundant network requests across page loads
+                const cachedVersion = sessionStorage.getItem('vibe_site_version');
+                const siteEl = document.getElementById('site-version');
 
-            try {
-                const siteRes = await fetch('https://api.github.com/repos/spupuz/vibe-nvr-site/releases/latest', { signal: controller.signal });
-                clearTimeout(timeoutId);
-                if (siteRes.ok) {
-                    const siteData = await siteRes.json();
-                    const siteEl = document.getElementById('site-version');
-                    if (siteEl) siteEl.textContent = siteData.tag_name;
+                if (cachedVersion) {
+                    if (siteEl) siteEl.textContent = cachedVersion;
+                    return;
                 }
-            } catch (err) {
-                console.error('Failed to fetch versions', err);
+
+                // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+                try {
+                    const siteRes = await fetch('https://api.github.com/repos/spupuz/vibe-nvr-site/releases/latest', { signal: controller.signal });
+                    clearTimeout(timeoutId);
+                    if (siteRes.ok) {
+                        const siteData = await siteRes.json();
+                        if (siteEl) siteEl.textContent = siteData.tag_name;
+                        sessionStorage.setItem('vibe_site_version', siteData.tag_name);
+                    }
+                } catch (err) {
+                    console.error('Failed to fetch versions', err);
+                }
+            }
+
+            // ⚡ Bolt: Defer non-critical third-party API fetch to avoid blocking the main thread during initial page load
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(fetchVersions);
+            } else {
+                setTimeout(fetchVersions, 1000);
             }
         })();
     </script>
