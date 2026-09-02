@@ -39,3 +39,6 @@
 ## 2026-09-01 - Synchronizing Concurrent Rendering with Paint Cycles
 **Learning:** Awaiting concurrent fetch promises sequentially using `for...of` can execute as a single Long Task if the network requests resolve almost instantly (e.g., from browser cache), preventing the browser from painting intermediate UI states.
 **Action:** When sequentially rendering a batch of UI components fetched concurrently, use `await new Promise(resolve => requestAnimationFrame(resolve))` to explicitly yield the main thread and synchronize rendering with the browser's paint cycle, avoiding the 4ms penalty of `setTimeout(0)`.
+## 2026-09-02 - Caching and Deferring Third-Party API Calls
+**Learning:** Fetching data from external third-party APIs (like GitHub releases) directly on every page load causes unnecessary network overhead, introduces the risk of rate limiting, and can block the main thread if not deferred, delaying critical UI rendering (FCP/TTI).
+**Action:** Always cache the results of non-critical third-party API calls in `sessionStorage` (or `localStorage`) to prevent redundant requests across page loads, and wrap the execution in `requestIdleCallback` (with a `setTimeout` fallback) to keep it off the main thread during initial load.
