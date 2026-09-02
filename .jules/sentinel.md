@@ -22,3 +22,7 @@
 **Vulnerability:** External `fetch` calls to telemetry and third-party APIs lacked timeouts, which could cause the client to hang indefinitely on a slow network or if the external server becomes unresponsive.
 **Learning:** Default `fetch` behavior in browsers does not include a timeout, making it vulnerable to hanging. Implementing a timeout provides a better user experience and prevents unexpected application states.
 **Prevention:** Always implement an `AbortController` with a reasonable timeout (e.g., 5000ms) for external `fetch` requests to prevent hanging.
+## 2026-09-05 - [Missing SRI on Docs Override Scripts]
+**Vulnerability:** Missing Subresource Integrity (SRI) and crossorigin attributes on CDN-hosted scripts within MkDocs overrides (`overrides/main.html`).
+**Learning:** Even if the main landing page (`index.html`) correctly implements SRI for external dependencies, custom theme overrides in a documentation site can easily omit them when adding custom scripts, opening a vector for Cross-Site Scripting (XSS) if the CDN is compromised.
+**Prevention:** Always verify that all external scripts, including those embedded within documentation templates or theme overrides, utilize Subresource Integrity (SRI) hashes and `crossorigin="anonymous"` to ensure the integrity of executed code.
