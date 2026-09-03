@@ -26,3 +26,7 @@
 ## 2024-05-25 - Skip to Content Implementation for Screen Readers & Keyboard
 **Learning:** Adding a visually hidden "Skip to content" link that becomes visible on focus ensures keyboard users and screen readers can bypass repetitive navigation blocks (like headers). Providing the target `<main>` element with `tabindex="-1"` and removing its outline on focus ensures focus shifts properly without an undesirable visual focus ring around the whole page. The targeted `<main>` element strictly wraps only the unique page content, explicitly excluding repetitive navigation components like headers and footers.
 **Action:** Always include a skip-to-content link targeting the `<main>` area for accessibility, pairing `.sr-only` and `.sr-only-focusable` classes to handle focus visibility properly.
+
+## 2024-05-26 - Missing Tactile Active States on Interactive Elements
+**Learning:** While CSS `:hover` states provide feedback for mouse users and `:focus-visible` for keyboard users, touch screen users or mouse users actively clicking lack immediate tactile visual feedback without a corresponding `:active` state.
+**Action:** Always pair CSS `:hover` and `:focus-visible` pseudo-classes with an `:active` state (e.g., via `transform: translateY(0)` or `scale(0.95)`) to provide immediate tactile visual feedback during the mousedown or touch interaction phase.

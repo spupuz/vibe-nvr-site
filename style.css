@@ -270,6 +270,11 @@ main:focus {
     box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
 }
 
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
 .btn-secondary {
     background-color: white;
     color: var(--foreground);
@@ -280,6 +285,11 @@ main:focus {
 .btn-secondary:hover,
 .btn-secondary:focus-visible {
     background-color: var(--muted);
+}
+
+.btn-secondary:active {
+    background-color: var(--border);
+    transform: translateY(0);
 }
 
 /* Cards (Dashboard Style) */
@@ -299,6 +309,12 @@ main:focus {
     box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
     transform: translateY(-4px);
     border-color: rgba(59, 130, 246, 0.3);
+}
+
+.card:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.1), 0 2px 4px -1px rgba(59, 130, 246, 0.06);
+    border-color: rgba(59, 130, 246, 0.5);
 }
 
 .card-icon {
@@ -614,6 +630,11 @@ footer {
     color: var(--primary);
 }
 
+.gallery-nav:active {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: var(--shadow-sm);
+}
+
 .gallery-nav.prev {
     left: 1rem;
 }
@@ -625,6 +646,10 @@ footer {
 .gallery-item:hover,
 .gallery-item:focus-visible {
     transform: scale(1.02);
+}
+
+.gallery-item:active {
+    transform: scale(0.98);
 }
 
 .gallery-item img {
@@ -903,10 +928,19 @@ footer {
     transform: scale(1.05);
 }
 
+#support .support-btn:active {
+    transform: scale(0.95);
+}
+
 #support a[href*="star-history.com"]:hover,
 #support a[href*="star-history.com"]:focus-visible {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
+}
+
+#support a[href*="star-history.com"]:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 640px) {
