@@ -42,3 +42,6 @@
 ## 2026-09-02 - Caching and Deferring Third-Party API Calls
 **Learning:** Fetching data from external third-party APIs (like GitHub releases) directly on every page load causes unnecessary network overhead, introduces the risk of rate limiting, and can block the main thread if not deferred, delaying critical UI rendering (FCP/TTI).
 **Action:** Always cache the results of non-critical third-party API calls in `sessionStorage` (or `localStorage`) to prevent redundant requests across page loads, and wrap the execution in `requestIdleCallback` (with a `setTimeout` fallback) to keep it off the main thread during initial load.
+## 2026-09-04 - Caching Live Data Safely
+**Learning:** Caching data from a "live" endpoint without invalidation completely breaks its purpose. Also, accessing `sessionStorage` can throw `SecurityError`s synchronously in restricted contexts.
+**Action:** Always wrap `sessionStorage` and `localStorage` API calls in `try...catch` blocks to gracefully handle `SecurityError` crashes that occur in restricted environments (like embedded iframes). If the data represents live statistics, always implement a short Time-To-Live (TTL) (e.g., 5 minutes) cache invalidation check.

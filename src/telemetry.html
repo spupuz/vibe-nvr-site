@@ -134,41 +134,71 @@
             }
 
             async function loadTelemetry() {
-                // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 5000);
+                // ⚡ Bolt: Cache telemetry API results with 5 min TTL in sessionStorage to avoid redundant network requests while preserving "live" aspect
+                let d = null;
+                let lastUpdated = null;
+                const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 
                 try {
-                    const res = await fetch(API, { signal: controller.signal });
-                    clearTimeout(timeoutId);
-                    if (!res.ok) throw new Error('Network error');
-                    const d = await res.json();
+                    const cachedDataStr = sessionStorage.getItem('vibe_telemetry_data');
+                    const cachedTimeStr = sessionStorage.getItem('vibe_telemetry_time');
 
-                    const grid = document.getElementById('telemetry-grid');
-                    grid.innerHTML = ''; // Clear skeleton loader safely
-
-                    // ⚡ Bolt: Batch DOM insertions using DocumentFragment to minimize reflows
-                    const fragment = document.createDocumentFragment();
-                    fragment.appendChild(createStatCard('pulse-outline', 'Active Installs', d.active_installs?.toString() ?? '0', 'Last 7 days'));
-                    fragment.appendChild(createStatCard('albums-outline', 'Total Installs', d.total_installs?.toString() ?? '0', 'All time distinct'));
-                    fragment.appendChild(createStatCard('videocam-outline', 'Cameras', d.total_cameras?.toString() ?? '0', 'Managed across active'));
-                    fragment.appendChild(createStatCard('film-outline', 'Events', d.total_events?.toString() ?? '0', 'Recordings / Detections'));
-                    grid.appendChild(fragment);
-
-                    const now = new Date();
-                    document.getElementById('telemetry-updated').textContent =
-                        `Live data · Last updated ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · Anonymous aggregate stats`;
-
-                } catch (e) {
-                    const grid = document.getElementById('telemetry-grid');
-                    grid.innerHTML = '';
-                    const errorMsg = document.createElement('p');
-                    errorMsg.style.cssText = 'color:var(--muted-foreground);text-align:center;grid-column:1/-1;';
-                    errorMsg.textContent = 'Could not load telemetry data.';
-                    grid.appendChild(errorMsg);
-
-                    document.getElementById('telemetry-updated').textContent = '';
+                    if (cachedDataStr && cachedTimeStr) {
+                        const cacheTime = parseInt(cachedTimeStr, 10);
+                        if (Date.now() - cacheTime < CACHE_TTL_MS) {
+                            d = JSON.parse(cachedDataStr);
+                            lastUpdated = new Date(cacheTime);
+                        }
+                    }
+                } catch (err) {
+                    // Ignore sessionStorage access errors (e.g. in restricted iframes) and parsing errors
                 }
+
+                if (!d) {
+                    // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+                    try {
+                        const res = await fetch(API, { signal: controller.signal });
+                        clearTimeout(timeoutId);
+                        if (!res.ok) throw new Error('Network error');
+                        d = await res.json();
+                        lastUpdated = new Date();
+
+                        // Cache the results safely
+                        try {
+                            sessionStorage.setItem('vibe_telemetry_data', JSON.stringify(d));
+                            sessionStorage.setItem('vibe_telemetry_time', lastUpdated.getTime().toString());
+                        } catch (cacheErr) {
+                            // Ignore sessionStorage quota or access errors
+                        }
+                    } catch (e) {
+                        const grid = document.getElementById('telemetry-grid');
+                        grid.innerHTML = '';
+                        const errorMsg = document.createElement('p');
+                        errorMsg.style.cssText = 'color:var(--muted-foreground);text-align:center;grid-column:1/-1;';
+                        errorMsg.textContent = 'Could not load telemetry data.';
+                        grid.appendChild(errorMsg);
+
+                        document.getElementById('telemetry-updated').textContent = '';
+                        return; // Exit early on error
+                    }
+                }
+
+                const grid = document.getElementById('telemetry-grid');
+                grid.innerHTML = ''; // Clear skeleton loader safely
+
+                // ⚡ Bolt: Batch DOM insertions using DocumentFragment to minimize reflows
+                const fragment = document.createDocumentFragment();
+                fragment.appendChild(createStatCard('pulse-outline', 'Active Installs', d.active_installs?.toString() ?? '0', 'Last 7 days'));
+                fragment.appendChild(createStatCard('albums-outline', 'Total Installs', d.total_installs?.toString() ?? '0', 'All time distinct'));
+                fragment.appendChild(createStatCard('videocam-outline', 'Cameras', d.total_cameras?.toString() ?? '0', 'Managed across active'));
+                fragment.appendChild(createStatCard('film-outline', 'Events', d.total_events?.toString() ?? '0', 'Recordings / Detections'));
+                grid.appendChild(fragment);
+
+                document.getElementById('telemetry-updated').textContent =
+                    `Live data · Last updated ${lastUpdated.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · Anonymous aggregate stats`;
             }
 
             // ⚡ Bolt: Defer API call using requestIdleCallback to avoid blocking the main thread during initial load, while ensuring it still runs without requiring scroll.
