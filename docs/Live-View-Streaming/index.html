@@ -1418,6 +1418,10 @@
 - You still get <strong>fluid 30fps H.264 video</strong>.
 - You still get <strong>perfectly synchronized G.711 Audio</strong> via the Web Audio API.
 - You avoid the complexity of local HTTPS setups.</p>
+<blockquote>
+<p>[!WARNING]
+<strong>H.265 (HEVC) Limitation</strong>: MSE cannot natively decode H.265 streams in most browsers. If VibeNVR detects an H.265 stream while in a non-secure HTTP context, it will automatically bypass MSE and fall back directly to MJPEG Polling.</p>
+</blockquote>
 <h2 id="3-final-failsafe-mjpeg-polling-jpeg-poll">3️⃣ Final Failsafe: MJPEG Polling (JPEG Poll)</h2>
 <ul>
 <li><strong>Technology</strong>: Repeated HTTP <code>GET</code> requests for single JPEG frames.</li>
