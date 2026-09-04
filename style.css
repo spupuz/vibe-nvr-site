@@ -106,6 +106,10 @@ a:focus-visible {
     color: var(--primary);
 }
 
+a:active {
+    opacity: 0.8;
+}
+
 /* Utilities */
 .sr-only {
     position: absolute;
@@ -401,6 +405,10 @@ header {
 .mobile-toggle:hover,
 .mobile-toggle:focus-visible {
     color: var(--primary);
+}
+
+.mobile-toggle:active {
+    transform: scale(0.9);
 }
 
 @media (max-width: 768px) {
@@ -918,6 +926,10 @@ footer {
     cursor: pointer;
 }
 
+.lightbox-close:active {
+    transform: scale(0.9);
+}
+
 /* Support Section */
 #support .support-btn {
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1039,6 +1051,10 @@ footer {
 .footer-link:hover,
 .footer-link:focus-visible {
     color: var(--primary);
+}
+
+.footer-link:active {
+    opacity: 0.8;
 }
 
 .footer-divider {
