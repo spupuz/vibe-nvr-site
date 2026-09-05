@@ -45,3 +45,6 @@
 ## 2026-09-04 - Caching Live Data Safely
 **Learning:** Caching data from a "live" endpoint without invalidation completely breaks its purpose. Also, accessing `sessionStorage` can throw `SecurityError`s synchronously in restricted contexts.
 **Action:** Always wrap `sessionStorage` and `localStorage` API calls in `try...catch` blocks to gracefully handle `SecurityError` crashes that occur in restricted environments (like embedded iframes). If the data represents live statistics, always implement a short Time-To-Live (TTL) (e.g., 5 minutes) cache invalidation check.
+## 2026-09-05 - GPU-Accelerated Skeleton Animations
+**Learning:** Animating `background-position` for shimmer effects on skeleton loaders forces the browser to recalculate layouts and repaint pixels continuously on the main thread, wasting CPU and battery power.
+**Action:** Always implement shimmer animations using `transform: translateX` on a pseudo-element (e.g., `::after`), which allows the browser to offload the animation entirely to the GPU compositor thread without triggering main thread layouts or paints.
