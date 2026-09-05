@@ -1016,6 +1016,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#mp4-recordings-crash-or-fallback-to-software-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 MP4 Recordings crash or fallback to software encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#troubleshooting-webcodecs" class="md-nav__link">
     <span class="md-ellipsis">
       ⚡ Troubleshooting WebCodecs
@@ -1398,6 +1407,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#mp4-recordings-crash-or-fallback-to-software-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 MP4 Recordings crash or fallback to software encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#troubleshooting-webcodecs" class="md-nav__link">
     <span class="md-ellipsis">
       ⚡ Troubleshooting WebCodecs
@@ -1501,6 +1519,14 @@
 1. Ensure you are running the latest version of VibeNVR.
 2. Check camera credentials in <strong>Settings → Cameras</strong>.
 3. VibeNVR automatically enters a <strong>5-minute backoff period</strong> on persistent 401 errors to prevent IP bans.</p>
+<hr />
+<h3 id="mp4-recordings-crash-or-fallback-to-software-encoding">🎥 MP4 Recordings crash or fallback to software encoding</h3>
+<p>If you notice that <code>Passthrough</code> recording isn't working (e.g. AI bounding boxes are burned into the video or CPU usage spikes), check the Engine logs for <code>[Errno 22] Invalid argument</code> from <code>av.open</code>.</p>
+<p><strong>Likely Cause</strong>:
+VibeNVR uses PyAV 15+ and FFmpeg 7+ for strict, high-performance RTSP packet demuxing. Some IP cameras send keyframes with missing temporal timestamps (<code>dts/pts = None</code>), which FFmpeg 7 strictly rejects when muxing into MP4 containers.</p>
+<p><strong>Solution</strong>:
+1. VibeNVR automatically implements a stream normalization patch (<code>recording_manager.py</code>) that propagates the correct <code>time_base</code> and resets invalid <code>None</code> timestamps to <code>0</code> to prevent muxing crashes.
+2. If the issue persists, ensure your camera's firmware is up-to-date and that its RTSP stream complies with H.264 standard temporal metadata. As a workaround, you can disable <code>Passthrough</code> and force software encoding.</p>
 <hr />
 <h3 id="troubleshooting-webcodecs">⚡ Troubleshooting WebCodecs</h3>
 <p>If you experience "black screens":
