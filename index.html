@@ -64,11 +64,16 @@
 
                 // Re-evaluate scripts to ensure they run globally
                 const scripts = Array.from(container.getElementsByTagName('script'));
-                for (let i = 0; i < scripts.length; i++) {
-                    const newScript = document.createElement('script');
-                    newScript.text = scripts[i].textContent;
-                    document.body.appendChild(newScript);
-                    scripts[i].remove();
+                if (scripts.length > 0) {
+                    const fragment = document.createDocumentFragment();
+                    for (let i = 0; i < scripts.length; i++) {
+                        const newScript = document.createElement('script');
+                        newScript.text = scripts[i].textContent;
+                        fragment.appendChild(newScript);
+                        scripts[i].remove();
+                    }
+                    // ⚡ Bolt: Batch DOM insertions to minimize reflows
+                    document.body.appendChild(fragment);
                 }
 
                 // ⚡ Bolt: explicitly yield the main thread and synchronize with paint cycle
