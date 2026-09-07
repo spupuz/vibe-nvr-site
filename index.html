@@ -64,12 +64,14 @@
 
                 // Re-evaluate scripts to ensure they run globally
                 const scripts = Array.from(container.getElementsByTagName('script'));
+                const fragment = document.createDocumentFragment();
                 for (let i = 0; i < scripts.length; i++) {
                     const newScript = document.createElement('script');
                     newScript.text = scripts[i].textContent;
-                    document.body.appendChild(newScript);
+                    fragment.appendChild(newScript);
                     scripts[i].remove();
                 }
+                document.body.appendChild(fragment);
 
                 // ⚡ Bolt: explicitly yield the main thread and synchronize with paint cycle
                 await new Promise(resolve => requestAnimationFrame(resolve));

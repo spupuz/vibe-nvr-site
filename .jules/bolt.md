@@ -48,3 +48,6 @@
 ## 2026-09-05 - GPU-Accelerated Skeleton Animations
 **Learning:** Animating `background-position` for shimmer effects on skeleton loaders forces the browser to recalculate layouts and repaint pixels continuously on the main thread, wasting CPU and battery power.
 **Action:** Always implement shimmer animations using `transform: translateX` on a pseudo-element (e.g., `::after`), which allows the browser to offload the animation entirely to the GPU compositor thread without triggering main thread layouts or paints.
+## 2026-09-06 - Batching DOM Insertions with DocumentFragment
+**Learning:** Appending multiple elements to the DOM synchronously within a loop (e.g., dynamically re-evaluating \`<script>\` tags) causes multiple layout recalculations and repaints, which blocks the main thread and impacts First Contentful Paint (FCP) and Time to Interactive (TTI).
+**Action:** When inserting multiple dynamic elements into the DOM, use a \`DocumentFragment\` to batch the insertions instead of appending them sequentially in a loop, minimizing synchronous DOM mutations.
