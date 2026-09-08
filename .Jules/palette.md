@@ -30,3 +30,6 @@
 ## 2024-05-26 - Missing Tactile Active States on Interactive Elements
 **Learning:** While CSS `:hover` states provide feedback for mouse users and `:focus-visible` for keyboard users, touch screen users or mouse users actively clicking lack immediate tactile visual feedback without a corresponding `:active` state.
 **Action:** Always pair CSS `:hover` and `:focus-visible` pseudo-classes with an `:active` state (e.g., via `transform: translateY(0)` or `scale(0.95)`) to provide immediate tactile visual feedback during the mousedown or touch interaction phase.
+## 2024-05-28 - Importance of Focus Traps for Custom Modals
+**Learning:** When creating custom modals (like lightboxes) and full-screen overlays (like mobile menus), a focus trap is crucial for accessibility. Without it, keyboard users can accidentally tab out of the modal and interact with background content that is visually hidden, causing confusion and poor UX.
+**Action:** Always intercept the `Tab` key on custom modals and manually manage focus to cycle within the modal's focusable elements (or specifically the close button if it's the only one).
