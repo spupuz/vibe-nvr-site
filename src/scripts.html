@@ -31,10 +31,23 @@
             }
         }
 
-        // Close on Escape key
+        // Close on Escape key and handle Focus Trap for Lightbox
         document.addEventListener('keydown', function (event) {
+            const lightbox = document.getElementById('lightbox');
+            const isActive = lightbox && lightbox.style.display === 'flex';
+
+            if (!isActive) return;
+
             if (event.key === "Escape") {
                 closeLightbox();
+            }
+
+            // Focus Trap for Lightbox Modal
+            if (event.key === 'Tab') {
+                const closeBtn = lightbox.querySelector('.lightbox-close');
+                // Since closeBtn is the only focusable element in this modal, prevent default
+                event.preventDefault();
+                if (closeBtn) closeBtn.focus();
             }
         });
 
@@ -174,12 +187,33 @@
             });
         });
 
-        // Close menu on Escape key
+        // Close menu on Escape key and handle Focus Trap
         document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape") {
-                const nav = document.querySelector(".nav-links");
-                if (nav && nav.classList.contains("active")) {
-                    closeMenu();
+            const nav = document.querySelector(".nav-links");
+            const isActive = nav && nav.classList.contains("active");
+
+            if (event.key === "Escape" && isActive) {
+                closeMenu();
+            }
+
+            // Focus Trap for Mobile Menu
+            if (event.key === 'Tab' && isActive) {
+                const focusableElements = nav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+                if (focusableElements.length === 0) return;
+
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (event.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstElement) {
+                        lastElement.focus();
+                        event.preventDefault();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastElement) {
+                        firstElement.focus();
+                        event.preventDefault();
+                    }
                 }
             }
         });
