@@ -52,12 +52,17 @@
                 }
             }
 
-            // ⚡ Bolt: Defer non-critical third-party API fetch to avoid blocking the main thread during initial page load
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(fetchVersions);
-            } else {
-                setTimeout(fetchVersions, 1000);
-            }
+            // ⚡ Bolt: Defer non-critical third-party API fetch using IntersectionObserver to avoid blocking the main thread during initial page load,
+            // while ensuring data is only fetched when the user scrolls near the footer.
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        fetchVersions();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '200px' });
+            observer.observe(document.getElementById('smart-footer'));
         })();
     </script>
 

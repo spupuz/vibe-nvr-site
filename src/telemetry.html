@@ -206,12 +206,17 @@
                     `Live data · Last updated ${lastUpdated.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} · Anonymous aggregate stats`;
             }
 
-            // ⚡ Bolt: Defer API call using requestIdleCallback to avoid blocking the main thread during initial load, while ensuring it still runs without requiring scroll.
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(() => loadTelemetry());
-            } else {
-                setTimeout(loadTelemetry, 1000);
-            }
+            // ⚡ Bolt: Defer API call using IntersectionObserver to avoid blocking main thread during initial load,
+            // while ensuring data is only fetched when the user scrolls near the telemetry section.
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        loadTelemetry();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '200px' }); // Load slightly before it comes into view
+            observer.observe(document.getElementById('telemetry'));
         })();
     </script>
 
