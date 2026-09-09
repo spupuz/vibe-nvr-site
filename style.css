@@ -255,8 +255,8 @@ main:focus {
     /* Buttons usually less rounded than cards */
     padding: 0.75rem 1.5rem;
     font-weight: 600;
-    will-change: opacity, transform;
-    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* ⚡ Bolt: Removed will-change to save compositor memory. Explicitly target hover state properties */
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
     cursor: pointer;
     border: 1px solid transparent;
 }
@@ -912,7 +912,8 @@ footer {
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
-    transition: 0.3s;
+    /* ⚡ Bolt: Explicitly define transitioned properties instead of implicit 'all' */
+    transition: color 0.3s, transform 0.3s;
     cursor: pointer;
     background: transparent;
     border: none;
