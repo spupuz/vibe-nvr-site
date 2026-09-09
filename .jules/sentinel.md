@@ -26,3 +26,7 @@
 **Vulnerability:** Missing Subresource Integrity (SRI) and crossorigin attributes on CDN-hosted scripts within MkDocs overrides (`overrides/main.html`).
 **Learning:** Even if the main landing page (`index.html`) correctly implements SRI for external dependencies, custom theme overrides in a documentation site can easily omit them when adding custom scripts, opening a vector for Cross-Site Scripting (XSS) if the CDN is compromised.
 **Prevention:** Always verify that all external scripts, including those embedded within documentation templates or theme overrides, utilize Subresource Integrity (SRI) hashes and `crossorigin="anonymous"` to ensure the integrity of executed code.
+## 2026-09-09 - [Predictable Telemetry ID Generation - Fallback]
+**Vulnerability:** The telemetry script generated pseudo-anonymous identifiers via a weak `Math.random()` fallback on older browsers where `randomUUID()` was unavailable.
+**Learning:** Even as a fallback, `Math.random()` poses predictability risks. When `randomUUID()` is missing, browsers still frequently support `window.crypto.getRandomValues()` which provides cryptographic randomness and should be prioritized before degrading to entirely weak implementations.
+**Prevention:** Always employ a multi-stage degradation sequence for unique identifier generation: prioritize `window.crypto.randomUUID()`, fallback to `window.crypto.getRandomValues()` formatted into a base-36 string, and only use `Math.random()` when cryptographic methods are completely absent.
