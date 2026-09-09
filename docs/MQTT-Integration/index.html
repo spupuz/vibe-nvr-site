@@ -1477,7 +1477,8 @@
 <li><strong>Real-time Motion Reporting</strong>: Instant <code>ON</code>/<code>OFF</code> state updates for motion sensors.</li>
 <li><strong>AI Metadata</strong>: Publishes object detection results (e.g., "person", "vehicle") in JSON format.</li>
 <li><strong>Status Monitoring</strong>: Tracks the online/offline status of each camera thread.</li>
-<li><strong>Asynchronous &amp; Resilient</strong>: The service runs in the background and automatically reconnects if the broker goes down.</li>
+<li><strong>Robust Event Queueing</strong>: Natively queues <code>ON</code>/<code>OFF</code> state transitions in memory if the broker temporarily goes down, flushing them immediately upon reconnect to ensure Home Assistant never gets "stuck".</li>
+<li><strong>Asynchronous &amp; Resilient</strong>: The service runs in the background and automatically reconnects using a stable unique client ID if the network drops.</li>
 </ul>
 <hr />
 <h2 id="configuration">⚙️ Configuration</h2>

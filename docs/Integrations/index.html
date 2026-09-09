@@ -1135,17 +1135,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#for-more-details-see-the-mqtt-integration-guide" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#home-assistant-live-view-restream" class="md-nav__link">
     <span class="md-ellipsis">
-      For more details, see the MQTT Integration Guide.
+      📹 Home Assistant Live View / Restream
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1466,17 +1466,17 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#for-more-details-see-the-mqtt-integration-guide" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#home-assistant-live-view-restream" class="md-nav__link">
     <span class="md-ellipsis">
-      For more details, see the MQTT Integration Guide.
+      📹 Home Assistant Live View / Restream
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1613,7 +1613,26 @@
 <li><strong>Sensor</strong>: Camera status (<code>online</code>/<code>offline</code>).</li>
 <li><strong>Attributes</strong>: JSON metadata containing AI detection results (labels, confidence).</li>
 </ul>
-<h2 id="for-more-details-see-the-mqtt-integration-guide">For more details, see the <strong><a href="../MQTT-Integration/">MQTT Integration Guide</a></strong>.</h2>
+<p>For more details, see the <strong><a href="../MQTT-Integration/">MQTT Integration Guide</a></strong>.</p>
+<h3 id="home-assistant-live-view-restream">📹 Home Assistant Live View / Restream</h3>
+<p>VibeNVR integrates <strong>go2rtc</strong> internally as its core stream gateway, which can be used to expose streams to Home Assistant with zero latency, preventing multiple connections to the physical cameras (Camera → VibeNVR → HA).</p>
+<ol>
+<li>Edit your <code>docker-compose.yml</code> to expose the internal go2rtc ports from the <code>engine</code> service:
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="nt">engine</span><span class="p">:</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;1984:1984&quot;</span><span class="w"> </span><span class="c1"># go2rtc API &amp; WebRTC</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;8554:8554&quot;</span><span class="w"> </span><span class="c1"># go2rtc RTSP</span>
+</code></pre></div></li>
+<li>Restart the containers.</li>
+<li>In Home Assistant, install the <strong>WebRTC Camera</strong> custom component (or use the generic RTSP integration).</li>
+<li>Point the integration to <code>http://&lt;VIBENVR_IP&gt;:1984</code>.</li>
+</ol>
+<p>The streams are automatically named <code>cam_&lt;id&gt;</code> (e.g., <code>cam_1</code>, <code>cam_2</code>). This will give you zero-latency Live View in HA using the stream already managed by VibeNVR. </p>
+<blockquote>
+<p><strong>Note:</strong> Ensure the "Internal go2rtc Gateway" is enabled in VibeNVR's global settings (Settings -&gt; General).</p>
+</blockquote>
+<hr />
 <h2 id="telegram-notifications">📱 Telegram Notifications</h2>
 <p>VibeNVR supports real-time alerts with snapshot attachments via Telegram Bots.</p>
 <h3 id="hardened-security">🛠️ Hardened Security</h3>
