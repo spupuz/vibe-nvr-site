@@ -198,7 +198,14 @@
 
             // Focus Trap for Mobile Menu
             if (event.key === 'Tab' && isActive) {
-                const focusableElements = nav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+                const focusableElements = Array.from(nav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'));
+                const toggleBtn = document.querySelector(".mobile-toggle");
+
+                // Add toggleBtn to the beginning of the focusableElements array since it appears visually first
+                if (toggleBtn) {
+                    focusableElements.unshift(toggleBtn);
+                }
+
                 if (focusableElements.length === 0) return;
 
                 const firstElement = focusableElements[0];
