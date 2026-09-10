@@ -57,3 +57,6 @@
 ## 2026-09-09 - Targeted Transitions and Will-Change Cleanup (Addendum)
 **Learning:** Implicit `transition: 0.3s;` expands to `transition: all 0.3s`, forcing the browser to animate every property and causing unnecessary global paint recalculations. Furthermore, leaving `will-change: opacity, transform` statically on common elements like `.btn` without cleanup wastes compositor memory permanently.
 **Action:** When creating hover transitions, explicitly specify the target properties (e.g. `transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;`). Never leave `will-change` statically applied in CSS on interactive elements unless heavily justified.
+## 2026-09-10 - Preventing Layout Thrashing in Intervals
+**Learning:** Querying layout properties like `clientWidth` or `scrollWidth` directly inside a `setInterval` or `requestAnimationFrame` forces the browser to synchronously recalculate layout (reflow) on every tick, drastically increasing CPU overhead and blocking the main thread even when no changes have occurred.
+**Action:** When implementing frequent visual updates (like an auto-scrolling gallery), always cache layout properties outside of the update loop. Use a `resize` event listener (and `load` listeners for images) to keep the cache accurate without querying the DOM directly on every animation frame.
