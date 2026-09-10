@@ -75,16 +75,37 @@
 
             observer.observe(galleryScroll);
 
+            // ⚡ Bolt: Cache layout properties outside the interval to prevent synchronous layout thrashing (reflows) every 3 seconds
+            let cachedItemWidth = 0;
+            let cachedScrollWidth = 0;
+            let cachedClientWidth = 0;
+
+            function updateGalleryLayoutCache() {
+                if (!galleryScroll || !galleryScroll.querySelector('.gallery-item')) return;
+                cachedItemWidth = galleryScroll.querySelector('.gallery-item').clientWidth;
+                cachedScrollWidth = galleryScroll.scrollWidth;
+                cachedClientWidth = galleryScroll.clientWidth;
+            }
+
+            // Initial cache and update on window resize
+            updateGalleryLayoutCache();
+            window.addEventListener('resize', updateGalleryLayoutCache);
+            // Re-cache when gallery images load to ensure correct widths
+            galleryScroll.querySelectorAll('img').forEach(img => {
+                if (!img.complete) {
+                    img.addEventListener('load', updateGalleryLayoutCache);
+                }
+            });
+
             function startAutoScroll() {
                 scrollInterval = setInterval(() => {
-                    if (!isPaused && isVisible) {
-                        const itemWidth = galleryScroll.querySelector('.gallery-item').clientWidth;
+                    if (!isPaused && isVisible && cachedItemWidth > 0) {
                         const gap = 32; // 2rem gap
-                        const scrollAmount = itemWidth + gap;
+                        const scrollAmount = cachedItemWidth + gap;
 
-                        // Check if we reached the end
                         // Use a small buffer (10px) to account for floating point inaccuracies
-                        if (galleryScroll.scrollLeft + galleryScroll.clientWidth >= galleryScroll.scrollWidth - 10) {
+                        // Dynamically read scrollLeft as it changes, but rely on cached dimensions for the rest
+                        if (galleryScroll.scrollLeft + cachedClientWidth >= cachedScrollWidth - 10) {
                             galleryScroll.scrollTo({ left: 0, behavior: 'smooth' });
                         } else {
                             galleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
