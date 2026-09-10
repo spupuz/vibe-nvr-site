@@ -1487,6 +1487,7 @@ Alternatively, the backend fully supports <strong>SQLite</strong> via a direct f
 <h2 id="performance-optimization">⚡ Performance Optimization</h2>
 <ul>
 <li><strong>Passthrough Recording</strong>: Optionally records raw RTSP streams directly to disk without re-encoding, resulting in near-zero CPU usage.</li>
+<li><strong>OS-level I/O Buffering</strong>: Implements strict <code>flush_packets=0</code> policies in the PyAV muxer during passthrough recording to allow OS-level disk buffering, dramatically reducing IOPS and stabilizing ZFS deployments.</li>
 <li><strong>MP4 Metadata Placement</strong>: Passthrough recordings are explicitly saved as standard MP4s with the <code>+faststart</code> flag. This forces the <code>moov</code> atom to the beginning of the file upon completion, guaranteeing instant playback and precise frame seeking in all Chromium and Firefox browsers without the playback/seek issues associated with fragmented MP4s.</li>
 <li><strong>Dual-Stream Handling</strong>: The Engine initializes independent <code>StreamReader</code> instances for main and sub-streams. Sub-streams are prioritized for UI frame generation to reduce client-side bandwidth and CPU overhead in grid views.</li>
 <li><strong>Fallback Logic</strong>: If a sub-stream is not configured (optional), the Engine automatically falls back to the main stream reader for all operations, including live UI frames.</li>

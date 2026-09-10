@@ -1306,6 +1306,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#disk-io-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Disk I/O Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💾 Disk I/O Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-max-movie-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Max Movie Length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-os-level-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OS-level Buffering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#database-optimization-ram-reduction" class="md-nav__link">
     <span class="md-ellipsis">
       🗄️ Database Optimization (RAM reduction)
@@ -1532,6 +1565,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#disk-io-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      💾 Disk I/O Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💾 Disk I/O Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-max-movie-length" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Max Movie Length
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-os-level-buffering" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OS-level Buffering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#database-optimization-ram-reduction" class="md-nav__link">
     <span class="md-ellipsis">
       🗄️ Database Optimization (RAM reduction)
@@ -1691,6 +1757,15 @@
 <p>[!TIP]
 For most users, the <strong>Optimized</strong> configuration is the sweet spot. Use a 640x480 sub-stream for detection and enable Passthrough on the 4K/2K main stream for crystal-clear recordings with minimal resource footprint.</p>
 </blockquote>
+<hr />
+<h2 id="disk-io-optimization">💾 Disk I/O Optimization</h2>
+<p>High disk I/O (Input/Output operations per second) can cause system instability, particularly on hypervisors using ZFS (like Proxmox) or on slower HDDs, presenting as high CPU Load Averages or I/O Wait percentages.</p>
+<h3 id="1-max-movie-length">1. Max Movie Length</h3>
+<p>By default, VibeNVR splits recording segments every <strong>5 minutes</strong> (300 seconds). 
+- <strong>Impact</strong>: Setting this too low (e.g., 1-2 minutes) forces the system to constantly open, close, and process video files, triggering frequent thumbnail generation tasks.
+- <strong>Recommendation</strong>: Keep the default at 5 minutes, or increase it to 10-15 minutes if you are using Continuous Recording to reduce disk thrashing.</p>
+<h3 id="2-os-level-buffering">2. OS-level Buffering</h3>
+<p>VibeNVR automatically implements OS-level buffering during passthrough recording to prevent thousands of synchronous tiny writes to the disk. Ensure you are running the latest version to benefit from this native optimization.</p>
 <hr />
 <h2 id="database-optimization-ram-reduction">🗄️ Database Optimization (RAM reduction)</h2>
 <p>By default, VibeNVR uses <strong>PostgreSQL</strong> in its own container. While highly robust for handling thousands of events, the Postgres container itself constantly consumes <strong>~100MB to ~150MB of RAM</strong>, even when idle.</p>
