@@ -60,3 +60,6 @@
 ## 2026-09-10 - Preventing Layout Thrashing in Intervals
 **Learning:** Querying layout properties like `clientWidth` or `scrollWidth` directly inside a `setInterval` or `requestAnimationFrame` forces the browser to synchronously recalculate layout (reflow) on every tick, drastically increasing CPU overhead and blocking the main thread even when no changes have occurred.
 **Action:** When implementing frequent visual updates (like an auto-scrolling gallery), always cache layout properties outside of the update loop. Use a `resize` event listener (and `load` listeners for images) to keep the cache accurate without querying the DOM directly on every animation frame.
+## 2026-09-11 - Caching DOM Queries in High-Frequency Events
+**Learning:** Querying the DOM (e.g., `querySelector`) repeatedly inside event listeners that fire frequently, such as `resize` or image `load` events, incurs unnecessary overhead.
+**Action:** Cache the result of DOM queries the first time they are needed and reuse the cached reference in subsequent invocations of the event listener to avoid repeated DOM traversal.

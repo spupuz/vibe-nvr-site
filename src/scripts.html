@@ -79,10 +79,16 @@
             let cachedItemWidth = 0;
             let cachedScrollWidth = 0;
             let cachedClientWidth = 0;
+            let cachedGalleryItem = null;
 
             function updateGalleryLayoutCache() {
-                if (!galleryScroll || !galleryScroll.querySelector('.gallery-item')) return;
-                cachedItemWidth = galleryScroll.querySelector('.gallery-item').clientWidth;
+                if (!galleryScroll) return;
+                if (!cachedGalleryItem) {
+                    cachedGalleryItem = galleryScroll.querySelector('.gallery-item');
+                }
+                if (!cachedGalleryItem) return;
+
+                cachedItemWidth = cachedGalleryItem.clientWidth;
                 cachedScrollWidth = galleryScroll.scrollWidth;
                 cachedClientWidth = galleryScroll.clientWidth;
             }
