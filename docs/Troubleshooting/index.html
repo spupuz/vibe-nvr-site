@@ -1034,6 +1034,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#black-videos-on-recording-passthrough-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 Black Videos on Recording (Passthrough Enabled)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#troubleshooting-webcodecs" class="md-nav__link">
     <span class="md-ellipsis">
       ⚡ Troubleshooting WebCodecs
@@ -1434,6 +1443,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#black-videos-on-recording-passthrough-enabled" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎥 Black Videos on Recording (Passthrough Enabled)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#troubleshooting-webcodecs" class="md-nav__link">
     <span class="md-ellipsis">
       ⚡ Troubleshooting WebCodecs
@@ -1554,6 +1572,9 @@ VibeNVR uses PyAV 15+ and FFmpeg 7+ for strict, high-performance RTSP packet dem
 <p><strong>Solution</strong>:
 VibeNVR v1.35.5+ fully mitigates these issues by replacing <code>add_stream_from_template</code> with manual stream initialization and by calculating ring buffer expirations using strictly monotonic OS-level time (<code>time.time()</code>). Ensure you are running the latest Engine container build.</p>
 <hr />
+<h3 id="black-videos-on-recording-passthrough-enabled">🎥 Black Videos on Recording (Passthrough Enabled)</h3>
+<p>If you enable <strong>Passthrough</strong> recording and the resulting MP4 files are completely black (or unplayable) in standard media players like QuickTime or web browsers, your camera is likely outputting a raw <strong>Annex-B</strong> stream without proper in-band <code>avcC</code> headers. This is a common violation of the H.264 standard seen in cheap OEM cameras (e.g., generic xSeries, V380).</p>
+<p><strong>Solution</strong>: Disable <strong>Passthrough</strong> in the camera's settings. When Passthrough is disabled, VibeNVR's Engine will transcode the raw Annex-B stream and rebuild a standard-compliant MP4 file that plays perfectly across all devices.</p>
 <h3 id="troubleshooting-webcodecs">⚡ Troubleshooting WebCodecs</h3>
 <p>If you experience "black screens":
 1. Ensure your browser supports <strong>WebCodecs API</strong> (Chrome/Edge 94+).
