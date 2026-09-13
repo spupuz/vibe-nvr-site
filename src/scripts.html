@@ -6,23 +6,38 @@
 
     <script>
         let lastFocusedElement = null;
+        let cachedLightbox = null;
+        let cachedLightboxImg = null;
+        let cachedLightboxCloseBtn = null;
+
+        function getLightboxElements() {
+            if (!cachedLightbox) {
+                cachedLightbox = document.getElementById('lightbox');
+                if (cachedLightbox) {
+                    cachedLightboxImg = document.getElementById('lightbox-img');
+                    cachedLightboxCloseBtn = cachedLightbox.querySelector('.lightbox-close');
+                }
+            }
+        }
 
         function openLightbox(src) {
             lastFocusedElement = document.activeElement;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = src;
-            lightbox.style.display = 'flex';
+            getLightboxElements();
+            if (!cachedLightbox) return;
+
+            cachedLightboxImg.src = src;
+            cachedLightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
 
             // Focus the close button for keyboard accessibility
-            const closeBtn = lightbox.querySelector('.lightbox-close');
-            if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+            if (cachedLightboxCloseBtn) setTimeout(() => cachedLightboxCloseBtn.focus(), 50);
         }
 
         function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
+            getLightboxElements();
+            if (!cachedLightbox) return;
+
+            cachedLightbox.style.display = 'none';
             document.body.style.overflow = ''; // Restore scrolling
 
             if (lastFocusedElement) {
@@ -33,8 +48,8 @@
 
         // Close on Escape key and handle Focus Trap for Lightbox
         document.addEventListener('keydown', function (event) {
-            const lightbox = document.getElementById('lightbox');
-            const isActive = lightbox && lightbox.style.display === 'flex';
+            getLightboxElements();
+            const isActive = cachedLightbox && cachedLightbox.style.display === 'flex';
 
             if (!isActive) return;
 
@@ -44,10 +59,9 @@
 
             // Focus Trap for Lightbox Modal
             if (event.key === 'Tab') {
-                const closeBtn = lightbox.querySelector('.lightbox-close');
                 // Since closeBtn is the only focusable element in this modal, prevent default
                 event.preventDefault();
-                if (closeBtn) closeBtn.focus();
+                if (cachedLightboxCloseBtn) cachedLightboxCloseBtn.focus();
             }
         });
 
@@ -168,18 +182,31 @@
 
     <script>
         let mobileMenuLastFocusedElement = null;
+        let cachedNav = null;
+        let cachedOverlay = null;
+        let cachedMenuIcon = null;
+        let cachedToggleBtn = null;
+
+        function getMenuElements() {
+            if (!cachedNav) {
+                cachedNav = document.querySelector(".nav-links");
+                if (cachedNav) {
+                    cachedOverlay = document.querySelector(".nav-overlay");
+                    cachedMenuIcon = document.getElementById("menu-icon");
+                    cachedToggleBtn = document.querySelector(".mobile-toggle");
+                }
+            }
+        }
 
         function closeMenu() {
-            const nav = document.querySelector(".nav-links");
-            const overlay = document.querySelector(".nav-overlay");
-            const icon = document.getElementById("menu-icon");
-            const toggleBtn = document.querySelector(".mobile-toggle");
+            getMenuElements();
+            if (!cachedNav) return;
             
-            if(nav.classList.contains("active")) {
-                nav.classList.remove("active");
-                overlay.classList.remove("active");
-                icon.setAttribute("name", "menu-outline");
-                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+            if(cachedNav.classList.contains("active")) {
+                cachedNav.classList.remove("active");
+                if (cachedOverlay) cachedOverlay.classList.remove("active");
+                if (cachedMenuIcon) cachedMenuIcon.setAttribute("name", "menu-outline");
+                if (cachedToggleBtn) cachedToggleBtn.setAttribute("aria-expanded", "false");
 
                 if (mobileMenuLastFocusedElement) {
                     mobileMenuLastFocusedElement.focus();
@@ -189,21 +216,19 @@
         }
 
         function toggleMenu() {
-            const nav = document.querySelector(".nav-links");
-            const overlay = document.querySelector(".nav-overlay");
-            const icon = document.getElementById("menu-icon");
-            const toggleBtn = document.querySelector(".mobile-toggle");
+            getMenuElements();
+            if (!cachedNav) return;
             
-            if (!nav.classList.contains("active")) {
+            if (!cachedNav.classList.contains("active")) {
                 // Opening
                 mobileMenuLastFocusedElement = document.activeElement;
-                nav.classList.add("active");
-                overlay.classList.add("active");
-                icon.setAttribute("name", "close-outline");
-                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "true");
+                cachedNav.classList.add("active");
+                if (cachedOverlay) cachedOverlay.classList.add("active");
+                if (cachedMenuIcon) cachedMenuIcon.setAttribute("name", "close-outline");
+                if (cachedToggleBtn) cachedToggleBtn.setAttribute("aria-expanded", "true");
 
                 // Focus first link in menu for accessibility
-                const firstLink = nav.querySelector('a');
+                const firstLink = cachedNav.querySelector('a');
                 if (firstLink) setTimeout(() => firstLink.focus(), 50);
             } else {
                 // Closing
@@ -211,30 +236,32 @@
             }
         }
 
-        // Close menu when a link is clicked
-        document.querySelectorAll(".nav-links a").forEach(link => {
-            link.addEventListener("click", () => {
+        // Close menu when a link is clicked (need to use document since this is initialized early)
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.nav-links a')) {
                 closeMenu();
-            });
+            }
         });
 
         // Close menu on Escape key and handle Focus Trap
         document.addEventListener('keydown', function(event) {
-            const nav = document.querySelector(".nav-links");
-            const isActive = nav && nav.classList.contains("active");
+            getMenuElements();
+            const isActive = cachedNav && cachedNav.classList.contains("active");
 
-            if (event.key === "Escape" && isActive) {
+            if (!isActive) return;
+
+            if (event.key === "Escape") {
                 closeMenu();
+                return;
             }
 
             // Focus Trap for Mobile Menu
-            if (event.key === 'Tab' && isActive) {
-                const focusableElements = Array.from(nav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'));
-                const toggleBtn = document.querySelector(".mobile-toggle");
+            if (event.key === 'Tab') {
+                const focusableElements = Array.from(cachedNav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'));
 
                 // Add toggleBtn to the beginning of the focusableElements array since it appears visually first
-                if (toggleBtn) {
-                    focusableElements.unshift(toggleBtn);
+                if (cachedToggleBtn) {
+                    focusableElements.unshift(cachedToggleBtn);
                 }
 
                 if (focusableElements.length === 0) return;

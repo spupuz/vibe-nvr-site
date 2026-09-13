@@ -63,3 +63,6 @@
 ## 2026-09-11 - Caching DOM Queries in High-Frequency Events
 **Learning:** Querying the DOM (e.g., `querySelector`) repeatedly inside event listeners that fire frequently, such as `resize` or image `load` events, incurs unnecessary overhead.
 **Action:** Cache the result of DOM queries the first time they are needed and reuse the cached reference in subsequent invocations of the event listener to avoid repeated DOM traversal.
+## 2026-09-13 - Caching DOM Queries in High-Frequency Global Event Listeners
+**Learning:** Querying the DOM synchronously inside high-frequency global event listeners like `keydown` (especially attached to `document`) forces unnecessary main thread execution, resulting in wasted CPU cycles and input lag for users when they are simply typing or interacting with the page.
+**Action:** When attaching high-frequency event listeners to `document` or `window` (like `keydown` for modal/menu escape handling), always implement lazy-cached variables (e.g. `cachedLightbox`, `cachedNav`) and ensure an early return check is placed before any heavy DOM traversal to prevent blocking the main thread during typing.
