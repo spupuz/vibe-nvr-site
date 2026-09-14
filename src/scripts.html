@@ -246,9 +246,9 @@
                 }
                 const toggleBtn = cachedToggleBtn;
 
-                // Add toggleBtn to the beginning of the focusableElements array since it appears visually first
+                // Add toggleBtn to the end of the focusableElements array to strictly match the DOM order
                 if (toggleBtn) {
-                    focusableElements.unshift(toggleBtn);
+                    focusableElements.push(toggleBtn);
                 }
 
                 if (focusableElements.length === 0) return;

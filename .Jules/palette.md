@@ -36,3 +36,6 @@
 ## 2026-08-28 - Exposing Hidden Keyboard Shortcuts in Tooltips
 **Learning:** While implementing `Escape` key dismissal for modals (like lightboxes) is great for accessibility, sighted mouse users often don't know the shortcut exists. Adding the shortcut text (e.g., "(Esc)") to the close button's native tooltip makes hidden power-user features discoverable.
 **Action:** Always append known keyboard shortcuts to the `title` attribute of interactive buttons (e.g., "Close (Esc)") to bridge the gap between accessibility features and general user discoverability.
+## 2024-05-28 - Maintaining Strict DOM Order in Focus Traps
+**Learning:** When manually constructing an array of focusable elements for a focus trap (e.g., combining queried elements with external ones like a toggle button), it's crucial to append them in the exact order they appear in the DOM structure, regardless of their visual rendering order. Using `unshift()` to place an element first in the array because it appears visually at the top will break the native `Tab` / `Shift+Tab` focus loop because the array's conceptual endpoints won't match the browser's native DOM traversal order.
+**Action:** When manually constructing an array of focusable elements for a focus trap, always ensure the final array strictly matches the DOM order rather than visual positioning.
