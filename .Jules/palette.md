@@ -36,3 +36,6 @@
 ## 2026-08-28 - Exposing Hidden Keyboard Shortcuts in Tooltips
 **Learning:** While implementing `Escape` key dismissal for modals (like lightboxes) is great for accessibility, sighted mouse users often don't know the shortcut exists. Adding the shortcut text (e.g., "(Esc)") to the close button's native tooltip makes hidden power-user features discoverable.
 **Action:** Always append known keyboard shortcuts to the `title` attribute of interactive buttons (e.g., "Close (Esc)") to bridge the gap between accessibility features and general user discoverability.
+## 2026-09-14 - Dynamic ARIA and Tooltips for State-Changing Toggle Buttons
+**Learning:** When a single toggle button (like a mobile menu) changes its visual icon to reflect a new action (e.g., changing from a hamburger to an "X"), keeping the original static `aria-label` and `title` (e.g., "Toggle Menu") creates a disconnect. Sighted users see a "Close" icon, but screen readers still announce "Toggle", and hover tooltips remain stale.
+**Action:** Always dynamically update both `aria-label` and `title` via JavaScript to match the current visual state and intended action (e.g., "Close Menu (Esc)"), ensuring you also expose hidden keyboard shortcuts in the new tooltip.
