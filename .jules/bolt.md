@@ -63,3 +63,6 @@
 ## 2026-09-11 - Caching DOM Queries in High-Frequency Events
 **Learning:** Querying the DOM (e.g., `querySelector`) repeatedly inside event listeners that fire frequently, such as `resize` or image `load` events, incurs unnecessary overhead.
 **Action:** Cache the result of DOM queries the first time they are needed and reuse the cached reference in subsequent invocations of the event listener to avoid repeated DOM traversal.
+## 2026-09-14 - Early Returns in High-Frequency Listeners
+**Learning:** Even when DOM queries inside high-frequency event listeners (like `keydown`) are cached, executing any logic on irrelevant events (like typing any character) wastes CPU cycles.
+**Action:** Always implement an early return (e.g., `if (event.key !== 'Escape' && event.key !== 'Tab') return;`) at the very beginning of the listener to completely skip unnecessary processing and variable evaluation for irrelevant events.

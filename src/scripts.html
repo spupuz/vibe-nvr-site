@@ -32,9 +32,14 @@
         }
 
         // Close on Escape key and handle Focus Trap for Lightbox
+        let cachedLightbox = null;
         document.addEventListener('keydown', function (event) {
-            const lightbox = document.getElementById('lightbox');
-            const isActive = lightbox && lightbox.style.display === 'flex';
+            if (event.key !== 'Escape' && event.key !== 'Tab') return; // ⚡ Bolt: Early return to prevent DOM queries
+
+            if (!cachedLightbox) {
+                cachedLightbox = document.getElementById('lightbox');
+            }
+            const isActive = cachedLightbox && cachedLightbox.style.display === 'flex';
 
             if (!isActive) return;
 
@@ -44,7 +49,7 @@
 
             // Focus Trap for Lightbox Modal
             if (event.key === 'Tab') {
-                const closeBtn = lightbox.querySelector('.lightbox-close');
+                const closeBtn = cachedLightbox.querySelector('.lightbox-close');
                 // Since closeBtn is the only focusable element in this modal, prevent default
                 event.preventDefault();
                 if (closeBtn) closeBtn.focus();
@@ -219,9 +224,15 @@
         });
 
         // Close menu on Escape key and handle Focus Trap
+        let cachedNav = null;
+        let cachedToggleBtn = null;
         document.addEventListener('keydown', function(event) {
-            const nav = document.querySelector(".nav-links");
-            const isActive = nav && nav.classList.contains("active");
+            if (event.key !== 'Escape' && event.key !== 'Tab') return; // ⚡ Bolt: Early return to prevent DOM queries
+
+            if (!cachedNav) {
+                cachedNav = document.querySelector(".nav-links");
+            }
+            const isActive = cachedNav && cachedNav.classList.contains("active");
 
             if (event.key === "Escape" && isActive) {
                 closeMenu();
@@ -229,8 +240,11 @@
 
             // Focus Trap for Mobile Menu
             if (event.key === 'Tab' && isActive) {
-                const focusableElements = Array.from(nav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'));
-                const toggleBtn = document.querySelector(".mobile-toggle");
+                const focusableElements = Array.from(cachedNav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'));
+                if (!cachedToggleBtn) {
+                    cachedToggleBtn = document.querySelector(".mobile-toggle");
+                }
+                const toggleBtn = cachedToggleBtn;
 
                 // Add toggleBtn to the beginning of the focusableElements array since it appears visually first
                 if (toggleBtn) {
