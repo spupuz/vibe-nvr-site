@@ -184,7 +184,11 @@
                 nav.classList.remove("active");
                 overlay.classList.remove("active");
                 icon.setAttribute("name", "menu-outline");
-                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+                if (toggleBtn) {
+                    toggleBtn.setAttribute("aria-expanded", "false");
+                    toggleBtn.setAttribute("aria-label", "Toggle Menu");
+                    toggleBtn.setAttribute("title", "Toggle Menu");
+                }
 
                 if (mobileMenuLastFocusedElement) {
                     mobileMenuLastFocusedElement.focus();
@@ -205,7 +209,11 @@
                 nav.classList.add("active");
                 overlay.classList.add("active");
                 icon.setAttribute("name", "close-outline");
-                if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "true");
+                if (toggleBtn) {
+                    toggleBtn.setAttribute("aria-expanded", "true");
+                    toggleBtn.setAttribute("aria-label", "Close Menu");
+                    toggleBtn.setAttribute("title", "Close Menu (Esc)");
+                }
 
                 // Focus first link in menu for accessibility
                 const firstLink = nav.querySelector('a');
