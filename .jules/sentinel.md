@@ -30,3 +30,7 @@
 **Vulnerability:** The telemetry script generated pseudo-anonymous identifiers via a weak `Math.random()` fallback on older browsers where `randomUUID()` was unavailable.
 **Learning:** Even as a fallback, `Math.random()` poses predictability risks. When `randomUUID()` is missing, browsers still frequently support `window.crypto.getRandomValues()` which provides cryptographic randomness and should be prioritized before degrading to entirely weak implementations.
 **Prevention:** Always employ a multi-stage degradation sequence for unique identifier generation: prioritize `window.crypto.randomUUID()`, fallback to `window.crypto.getRandomValues()` formatted into a base-36 string, and only use `Math.random()` when cryptographic methods are completely absent.
+## 2026-09-15 - [Referrer Leakage Prevention]
+**Vulnerability:** Although not a direct vulnerability, omitting an explicit Referrer-Policy allows browsers to use their default behavior, which could inadvertently leak the full URL path (and any sensitive query parameters) to external cross-origin domains via the `Referer` header.
+**Learning:** Adding `<meta name="referrer" content="strict-origin-when-cross-origin">` explicitly instructs the browser to only send the origin when making cross-origin requests, thereby protecting path and query data while preserving referrers for same-origin analytics.
+**Prevention:** Always implement an explicit Referrer-Policy via HTTP headers or `<meta>` tags as a defense-in-depth measure.
