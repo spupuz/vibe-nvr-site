@@ -1052,6 +1052,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#live-view-falls-back-to-mjpeg-unexpectedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Live View Falls Back to MJPEG unexpectedly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#high-memory-usage-oom-errors" class="md-nav__link">
     <span class="md-ellipsis">
       🧠 High Memory Usage / OOM Errors
@@ -1461,6 +1470,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#live-view-falls-back-to-mjpeg-unexpectedly" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚡ Live View Falls Back to MJPEG unexpectedly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#high-memory-usage-oom-errors" class="md-nav__link">
     <span class="md-ellipsis">
       🧠 High Memory Usage / OOM Errors
@@ -1576,6 +1594,10 @@ VibeNVR v1.35.5+ fully mitigates these issues by replacing <code>add_stream_from
 <p>If you enable <strong>Passthrough</strong> recording and the resulting MP4 files are completely black (or unplayable) in standard media players like QuickTime or web browsers, your camera is likely outputting a raw <strong>Annex-B</strong> stream without proper in-band <code>avcC</code> headers. This is a common violation of the H.264 standard seen in cheap OEM cameras (e.g., generic xSeries, V380).</p>
 <p><strong>Solution</strong>: Disable <strong>Passthrough</strong> in the camera's settings. When Passthrough is disabled, VibeNVR's Engine will transcode the raw Annex-B stream and rebuild a standard-compliant MP4 file that plays perfectly across all devices.</p>
 <h3 id="troubleshooting-webcodecs">⚡ Troubleshooting WebCodecs</h3>
+<h3 id="live-view-falls-back-to-mjpeg-unexpectedly">⚡ Live View Falls Back to MJPEG unexpectedly</h3>
+<p>If you have an H.264 camera but the frontend displays <code>JPEG Poll</code> instead of <code>WS / H.264</code> or <code>MSE / H.264</code>:
+1. <strong>Verify Codec</strong>: Ensure the camera is actually outputting H.264. Browsers (and MSE) cannot natively decode H.265 (HEVC), so VibeNVR will automatically fallback to MJPEG for H.265 streams on HTTP.
+2. <strong>Slow Startup</strong>: Some cheaper/slower cameras take a long time to send the first keyframe. VibeNVR waits up to 10 seconds for a decodable frame before falling back. Ensure your camera's I-Frame interval is not set too high (recommend 1x or 2x the FPS).</p>
 <p>If you experience "black screens":
 1. Ensure your browser supports <strong>WebCodecs API</strong> (Chrome/Edge 94+).
 2. Check for <strong>Secure Context</strong> (HTTPS or localhost).
