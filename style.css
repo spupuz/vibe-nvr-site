@@ -844,6 +844,11 @@ footer {
     color: var(--primary);
 }
 
+.gallery-nav:active {
+    transform: translateY(-50%) scale(0.95);
+    box-shadow: var(--shadow-sm);
+}
+
 .gallery-nav.prev {
     left: 1rem;
 }
@@ -855,6 +860,10 @@ footer {
 .gallery-item:hover,
 .gallery-item:focus-visible {
     transform: scale(1.02);
+}
+
+.gallery-item:active {
+    transform: scale(0.98);
 }
 
 .gallery-item img {
