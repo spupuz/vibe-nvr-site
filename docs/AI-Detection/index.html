@@ -2210,6 +2210,11 @@ Events recorded before the AI engine was enabled will not have object metadata a
 <td>Interpreter state corruption</td>
 <td>A passive watchdog runs with every inference request. If inference stops producing events for over 10 seconds despite successful invokes, the interpreter is automatically reinitialized.</td>
 </tr>
+<tr>
+<td><code>Illegal instruction (SIGILL)</code> or <code>CPU has no AVX</code></td>
+<td>CPU lacks AVX instructions</td>
+<td>The official <code>tflite-runtime</code> library requires AVX/AVX2 support (absent on some Celeron/Pentium/Atom CPUs like Jasper Lake). The engine will gracefully fall back to standard OpenCV motion detection.</td>
+</tr>
 </tbody>
 </table>
 <hr />
