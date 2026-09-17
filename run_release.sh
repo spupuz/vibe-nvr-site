@@ -1,42 +1,29 @@
-REPO_NAME="vibe-nvr-site"
-DEFAULT_BRANCH="main"
+#!/bin/bash
+set -e
+REPO_NAME=$(basename -s .git $(git config --get remote.origin.url) 2>/dev/null || basename "$PWD")
+if [[ "$REPO_NAME" == "VibeNVR-site" || "$REPO_NAME" == "vibe-nvr-site" ]]; then
+  DEFAULT_BRANCH="main"
+elif [[ "$REPO_NAME" == "vibenvr-telemetry-worker" ]]; then
+  DEFAULT_BRANCH="master"
+else
+  echo "Error: This workflow can only be used for the site or telemetry repositories."
+  exit 1
+fi
 
-git status --short
-git diff --stat
-
-grep -riE "(api_key|password|secret|token|auth|credentials)" . | grep -v "node_modules" | grep -v "\.git" || true
-git ls-files | grep -E "\.env|dev\.vars|\.wrangler" || true
+git fetch origin
+git checkout $DEFAULT_BRANCH
+git pull origin $DEFAULT_BRANCH
 
 LAST_TAG=$(git tag --sort=-v:refname | head -1 || true)
 LAST_TAG=${LAST_TAG:-v1.0.0}
-SUBJECT=$(git log -1 --format=%s)
 
 NEW_VERSION=$(node -e '
-const [tag, subject] = process.argv.slice(1);
+const [tag] = process.argv.slice(1);
 const [maj, minor, patch] = tag.replace(/^v/i, "").split(".").map(Number);
-const m = subject.match(/^([a-z]+)(\([^)]*\))?(!)?:/);
-const bump = m && m[3] ? "major" : (m && m[1] === "feat" ? "minor" : "patch");
-console.log(bump === "major" ? `v${maj + 1}.0.0` : bump === "minor" ? `v${maj}.${minor + 1}.0` : `v${maj}.${minor}.${patch + 1}`);
-' "$LAST_TAG" "$SUBJECT")
+console.log(`v${maj}.${minor}.${patch + 1}`);
+' "$LAST_TAG")
 
 VER_NUM=${NEW_VERSION#v}
-echo "Bumping to $NEW_VERSION"
+git checkout -b "release/$NEW_VERSION"
 
-sed -i -E "s/>v[0-9]+\.[0-9]+\.[0-9]+</>v$VER_NUM</" src/header.html || true
-
-git add -A
-git commit -m "chore: release $NEW_VERSION
-- Auto-bump version to $NEW_VERSION" || true
-
-git push origin $DEFAULT_BRANCH
-
-git tag "$NEW_VERSION"
-git push origin $DEFAULT_BRANCH --tags
-
-TODAY=$(date +%Y-%m-%d)
-NOTES="## [$VER_NUM] - $TODAY
-
-### Changed
-$(git log "$LAST_TAG"..HEAD --format='- %s' | sed 's/^- \([a-z]*\): \(.*\)/- **\1**: \2/')
-"
-gh release create "$NEW_VERSION" --title "$NEW_VERSION" --notes "$NOTES"
+echo "Releasing $NEW_VERSION on $REPO_NAME"
