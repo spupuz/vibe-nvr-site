@@ -34,3 +34,7 @@
 **Vulnerability:** Although not a direct vulnerability, omitting an explicit Referrer-Policy allows browsers to use their default behavior, which could inadvertently leak the full URL path (and any sensitive query parameters) to external cross-origin domains via the `Referer` header.
 **Learning:** Adding `<meta name="referrer" content="strict-origin-when-cross-origin">` explicitly instructs the browser to only send the origin when making cross-origin requests, thereby protecting path and query data while preserving referrers for same-origin analytics.
 **Prevention:** Always implement an explicit Referrer-Policy via HTTP headers or `<meta>` tags as a defense-in-depth measure.
+## 2026-09-17 - [Missing CSP and Referrer Policy in Docs Site]
+**Vulnerability:** The main landing page implemented a strict Content Security Policy (CSP) and Referrer-Policy, but the generated MkDocs documentation site (`docs/`) completely lacked these critical defense-in-depth headers, exposing it to potential DOM XSS vulnerabilities from third-party themes, plugins, or compromised CDNs.
+**Learning:** Security policies must be applied consistently across all sub-applications and documentation sites hosted on the same domain or subdomain. A robust CSP on the index page does not protect independently generated static documentation pages.
+**Prevention:** When extending themes like MkDocs Material, inject `<meta>` security tags (CSP, Referrer-Policy) into the `{% block extrahead %}` of `overrides/main.html` to guarantee they are applied to all generated HTML files.
