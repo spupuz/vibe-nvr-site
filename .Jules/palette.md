@@ -5,3 +5,7 @@
 ## 2024-05-15 - Missing Active States for Interactive Elements
 **Learning:** For mobile and pointer interactions, relying solely on CSS `:hover` and `:focus-visible` is insufficient. Adding an `:active` pseudo-class ensures immediate tactile visual feedback during tap or click events.
 **Action:** Always pair CSS `:hover` and `:focus-visible` pseudo-classes with an `:active` state (e.g., via `transform` or `box-shadow` changes) to provide immediate tactile visual feedback for pointer and touch interactions.
+
+## 2024-05-16 - Missing Accessible Labels on Image-Only Links
+**Learning:** External links that only wrap an `<img>` tag (e.g., GitHub stats badges, Buy Me A Coffee buttons) are often announced poorly by screen readers or lack descriptive tooltips for mouse users.
+**Action:** Always add `aria-label` and `title` attributes to anchor tags (`<a>`) that exclusively contain images or decorative icons to ensure they are fully accessible and discoverable.
