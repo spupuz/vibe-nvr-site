@@ -66,3 +66,6 @@
 ## 2026-09-14 - Early Returns in High-Frequency Listeners
 **Learning:** Even when DOM queries inside high-frequency event listeners (like `keydown`) are cached, executing any logic on irrelevant events (like typing any character) wastes CPU cycles.
 **Action:** Always implement an early return (e.g., `if (event.key !== 'Escape' && event.key !== 'Tab') return;`) at the very beginning of the listener to completely skip unnecessary processing and variable evaluation for irrelevant events.
+## 2026-09-19 - Debouncing Layout Calculations During Resize
+**Learning:** Attaching layout calculation functions (that query properties like `clientWidth` or `scrollWidth`) directly to the `resize` event without debouncing forces the browser to repeatedly recalculate layouts on the main thread as the window is actively resized. This creates significant CPU bottlenecks, scroll/resize jank, and violates performance budgets.
+**Action:** Always wrap layout-querying functions in high-frequency event listeners (like `resize` or multiple fast-firing `load` events) with a debounce timeout (e.g., 150ms) to ensure the layout is only recalculated once the events have settled.
