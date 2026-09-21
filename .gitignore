@@ -26,3 +26,12 @@ build/
 site/
 .agents/workflows/sync-docs.md
 .agents
+
+# Scripts & Temp
+*.sh
+!package.json
+!package-lock.json
+!tsconfig.json
+*.py
+open_prs.json
+prs.json
