@@ -69,3 +69,6 @@
 ## 2026-09-20 - Debouncing High-Frequency Layout Queries
 **Learning:** Caching DOM layout properties like `clientWidth` outside an interval is good, but querying them synchronously on every tick of high-frequency events (like `resize` or multiple image `load`s) can still cause synchronous layout thrashing and CPU spikes.
 **Action:** When updating a layout cache based on high-frequency events (`resize`, image `load`), wrap the querying function in a debounce timeout (e.g. 150ms). This prevents the browser from repeatedly recalculating the layout while the event is still actively firing, drastically improving performance.
+## 2026-09-24 - Strict DOM Query Caching in High-Frequency Keydown Traps
+**Learning:** Querying the DOM dynamically (like building arrays of elements via `querySelectorAll`) inside a `keydown` trap listener (e.g. for `Tab` key focus trapping) forces the browser to traverse the DOM tree on every single key press. If the user holds down the `Tab` key, this causes repeated, unnecessary, and synchronous DOM traversals.
+**Action:** While keeping the logic resilient to DOM changes is important, strictly cache expensive DOM queries or NodeLists outside of high-frequency execution paths where possible. Re-evaluating `querySelectorAll` on every `Tab` keystroke is a performance anti-pattern.
