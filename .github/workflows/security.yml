@@ -7,4 +7,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run security tests
-        run: ./scripts/test_security.sh
+        run: |
+          echo "Running security checks..."
+          if grep -q "Math.random" src/scripts.html; then
+              if ! grep -q "window.crypto.getRandomValues" src/scripts.html; then
+                  echo "FAIL: Math.random used without cryptographically secure fallback in src/scripts.html"
+                  exit 1
+              else
+                  echo "Security tests passed."
+              fi
+          else
+              echo "Security tests passed."
+          fi
