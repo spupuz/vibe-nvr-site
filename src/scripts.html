@@ -98,13 +98,20 @@
                 cachedClientWidth = galleryScroll.clientWidth;
             }
 
+            // ⚡ Bolt: Debounce layout queries to prevent synchronous thrashing during frequent events like resize or multiple image loads
+            let layoutCacheTimeout;
+            function debouncedUpdateGalleryLayoutCache() {
+                clearTimeout(layoutCacheTimeout);
+                layoutCacheTimeout = setTimeout(updateGalleryLayoutCache, 150);
+            }
+
             // Initial cache and update on window resize
             updateGalleryLayoutCache();
-            window.addEventListener('resize', updateGalleryLayoutCache);
+            window.addEventListener('resize', debouncedUpdateGalleryLayoutCache);
             // Re-cache when gallery images load to ensure correct widths
             galleryScroll.querySelectorAll('img').forEach(img => {
                 if (!img.complete) {
-                    img.addEventListener('load', updateGalleryLayoutCache);
+                    img.addEventListener('load', debouncedUpdateGalleryLayoutCache);
                 }
             });
 
