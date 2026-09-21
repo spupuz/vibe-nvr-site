@@ -55,6 +55,10 @@
     
     
     
+  
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://api.github.com; connect-src 'self' https://api.github.com https://cdn.jsdelivr.net; frame-src 'none'; object-src 'none'; base-uri 'self';">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
   </head>
   
   
@@ -1580,7 +1584,7 @@ Use the <strong>Breakdown Table</strong> to identify "storage-hungry" cameras an
 <p>If the total free space on the <code>/data</code> volume falls below <strong>5%</strong>, VibeNVR triggers an <strong>Emergency Cleanup</strong>. It will purge the oldest events from the system regardless of quotas or retention settings until at least 10% free space is recovered. This protects the database and OS from filesystem exhaustion.</p>
 <h2 id="technical-notes">Technical Notes</h2>
 <ul>
-<li><strong>Path Traversal</strong>: For security, paths cannot contain <code>..</code> and must start with <code>/</code>.</li>
+<li><strong>Path Traversal</strong>: For security, media paths are dynamically validated against configured <code>StorageProfile</code> directories (<code>is_path_safe</code>). Paths cannot contain <code>..</code> and must start with <code>/</code>. This replaces legacy strict <code>/data/</code> checks and allows custom storage profiles (like SSD/NAS) to function securely.</li>
 <li><strong>Engine Sync</strong>: When a camera's profile is changed, a new configuration is pushed to the VibeEngine, which immediately redirects its write streams.</li>
 <li><strong>Backups</strong>: Storage profiles are included in system backups. If you restore a backup to a new system, ensure the same paths are mounted in Docker.</li>
 </ul>
