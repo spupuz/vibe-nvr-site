@@ -38,3 +38,7 @@
 **Vulnerability:** The main landing page implemented a strict Content Security Policy (CSP) and Referrer-Policy, but the generated MkDocs documentation site (`docs/`) completely lacked these critical defense-in-depth headers, exposing it to potential DOM XSS vulnerabilities from third-party themes, plugins, or compromised CDNs.
 **Learning:** Security policies must be applied consistently across all sub-applications and documentation sites hosted on the same domain or subdomain. A robust CSP on the index page does not protect independently generated static documentation pages.
 **Prevention:** When extending themes like MkDocs Material, inject `<meta>` security tags (CSP, Referrer-Policy) into the `{% block extrahead %}` of `overrides/main.html` to guarantee they are applied to all generated HTML files.
+## 2024-09-22 - Prevent Reverse Tabnabbing and Protect Privacy
+**Vulnerability:** External links opening in new tabs (`target="_blank"`) without `rel="noopener noreferrer"` can allow the new tab to access the `window.opener` object (enabling reverse tabnabbing attacks) and leak the referrer URL.
+**Learning:** Even static sites and documentation pages must follow secure linking practices, particularly when linking to external resources like GitHub or external dashboards.
+**Prevention:** Always pair `target="_blank"` with `rel="noopener noreferrer"` on all external links across the codebase, including inside documentation template overrides.
