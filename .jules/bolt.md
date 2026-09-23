@@ -72,3 +72,9 @@
 ## 2026-09-24 - Strict DOM Query Caching in High-Frequency Keydown Traps
 **Learning:** Querying the DOM dynamically (like building arrays of elements via `querySelectorAll`) inside a `keydown` trap listener (e.g. for `Tab` key focus trapping) forces the browser to traverse the DOM tree on every single key press. If the user holds down the `Tab` key, this causes repeated, unnecessary, and synchronous DOM traversals.
 **Action:** While keeping the logic resilient to DOM changes is important, strictly cache expensive DOM queries or NodeLists outside of high-frequency execution paths where possible. Re-evaluating `querySelectorAll` on every `Tab` keystroke is a performance anti-pattern.
+## 2026-09-24 - Strict Layout Reads and Writes in RequestAnimationFrame
+**Learning:** Querying layout properties like `window.scrollY` directly inside `requestAnimationFrame` can cause layout thrashing and scroll jank, as the read operation gets mixed with write operations from other frames or components.
+**Action:** Always read layout properties outside of the `requestAnimationFrame` block in high-frequency event listeners (like `scroll`) and pass the cached value into the callback to ensure read/write operations are strictly separated.
+## 2026-09-24 - Avoiding Stale Closures When Debouncing Layout Reads
+**Learning:** When separating layout reads (like `window.scrollY`) from writes (`requestAnimationFrame`) inside a debounced or throttled event listener (using an `isTicking` flag), placing the read *outside* the flag captures a state that gets discarded. This causes the UI to update with a stale layout value on the next frame.
+**Action:** When throttling high-frequency events using `isTicking` and `requestAnimationFrame`, always perform the layout read *inside* the `if (!isTicking)` block but *outside* the `requestAnimationFrame` callback to ensure the most recent non-discarded value is used without layout thrashing.

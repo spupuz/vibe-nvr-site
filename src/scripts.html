@@ -346,10 +346,12 @@
 
             window.addEventListener('scroll', () => {
                 if (!isTicking) {
+                    // ⚡ Bolt: Read layout properties outside of requestAnimationFrame to prevent layout thrashing
+                    const currentScrollY = window.scrollY;
                     window.requestAnimationFrame(() => {
                         if (!cachedFooter) cachedFooter = document.getElementById('smart-footer');
                         if (cachedFooter) {
-                            if (window.scrollY > 50) {
+                            if (currentScrollY > 50) {
                                 cachedFooter.classList.add('hidden');
                             } else {
                                 cachedFooter.classList.remove('hidden');
