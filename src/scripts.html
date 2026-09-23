@@ -238,7 +238,13 @@
 
         // Close menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach(link => {
-            link.addEventListener("click", () => {
+            link.addEventListener("click", (e) => {
+                // If navigating to an in-page section, do not restore focus to the menu toggle
+                // because it forcefully interrupts the user's focus flow to the new section.
+                const href = link.getAttribute("href");
+                if (href && href.startsWith("#")) {
+                    mobileMenuLastFocusedElement = null;
+                }
                 closeMenu();
             });
         });

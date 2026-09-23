@@ -9,3 +9,7 @@
 ## 2024-05-16 - Accessible Keyboard Shortcuts
 **Learning:** For elements acting as custom buttons, such as interactive gallery items, missing `aria-label` and `title` attributes makes it harder for screen reader users and those navigating via keyboard to understand the action and available shortcuts.
 **Action:** Append known keyboard shortcuts to the `title` attribute of custom interactive elements (e.g., 'View image (Enter)') to make hidden keyboard accessibility features discoverable to general users via native browser tooltips, and ensure proper `aria-label`s are added.
+
+## 2024-05-18 - Mobile Menu In-Page Navigation Focus Restoration
+**Learning:** Restoring focus to the triggering element (like a menu toggle button) when closing a modal or menu is standard practice for cancellations. However, it is an anti-pattern when the closure is triggered by a successful in-page navigation action (e.g. anchor link to a section), as it forcefully hijacks the user's focus flow back to the top of the page, interrupting their journey to the new section.
+**Action:** When handling click events on navigation links that close a menu, conditionally skip restoring focus to the toggle button if the destination is an in-page anchor (`href.startsWith("#")`), allowing the browser's default anchor navigation focus handling to take over.
