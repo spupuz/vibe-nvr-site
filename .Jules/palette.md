@@ -12,3 +12,7 @@
 ## 2026-09-21 - Accessibility for Dynamically Generated Icons
 **Learning:** Decorative icons (like `<ion-icon>`) that are dynamically generated via JavaScript and injected into the DOM may lack the `aria-hidden="true"` attribute if not explicitly set during creation, causing screen readers to announce them redundantly.
 **Action:** Always ensure that dynamically created decorative elements have `aria-hidden="true"` explicitly set via `setAttribute` before appending them to the DOM.
+
+## 2024-09-24 - Inline Copy to Clipboard Feedback
+**Learning:** Users often copy installation commands from code blocks. Providing an inline copy button without external dependencies improves UX, but it must include immediate visual feedback (like an icon change and aria-label update) to confirm the action succeeded.
+**Action:** When adding copy-to-clipboard buttons, use native `navigator.clipboard.writeText` and temporarily update the button's icon (e.g., to a checkmark) and `aria-label` for ~2 seconds to provide accessible, immediate confirmation of success.
