@@ -196,6 +196,9 @@
                 nav.classList.remove("active");
                 overlay.classList.remove("active");
                 icon.setAttribute("name", "menu-outline");
+
+                // ⚡ Bolt: Invalidate the cache when menu closes so it gets rebuilt fresh next time
+                cachedFocusableElements = null;
                 if (toggleBtn) {
                     toggleBtn.setAttribute("aria-expanded", "false");
                     toggleBtn.setAttribute("aria-label", "Toggle Menu");
@@ -252,6 +255,7 @@
         // Close menu on Escape key and handle Focus Trap
         let cachedNav = null;
         let cachedToggleBtn = null;
+        let cachedFocusableElements = null;
         document.addEventListener('keydown', function(event) {
             if (event.key !== 'Escape' && event.key !== 'Tab') return; // ⚡ Bolt: Early return to prevent DOM queries
 
@@ -266,16 +270,20 @@
 
             // Focus Trap for Mobile Menu
             if (event.key === 'Tab' && isActive) {
-                // ⚡ Bolt: Re-query focusable elements to prevent memory leaks or broken state if DOM changes
-                const focusableElements = Array.from(cachedNav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'));
-                if (!cachedToggleBtn) {
-                    cachedToggleBtn = document.querySelector(".mobile-toggle");
+                if (!cachedFocusableElements) {
+                    // ⚡ Bolt: Cache DOM queries instead of repeatedly querying on every keydown event
+                    cachedFocusableElements = Array.from(cachedNav.querySelectorAll('a, button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])'));
+                    if (!cachedToggleBtn) {
+                        cachedToggleBtn = document.querySelector(".mobile-toggle");
+                    }
+
+                    // Add toggleBtn to the end of the focusableElements array to strictly match the DOM order
+                    if (cachedToggleBtn) {
+                        cachedFocusableElements.push(cachedToggleBtn);
+                    }
                 }
 
-                // Add toggleBtn to the end of the focusableElements array to strictly match the DOM order
-                if (cachedToggleBtn) {
-                    focusableElements.push(cachedToggleBtn);
-                }
+                const focusableElements = cachedFocusableElements;
 
                 if (focusableElements.length === 0) return;
 
