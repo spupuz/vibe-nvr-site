@@ -5,21 +5,40 @@
             <p>Deploy with Docker Compose.</p>
         </div>
 
-        <div class="code-window">
-            <div class="line comment"># 1. Download the compose file</div>
-            <div class="line">
-                <span class="cmd">curl</span> <span class="arg">-O
-                    https://raw.githubusercontent.com/spupuz/VibeNVR/main/docker-compose.prod.yml</span>
-            </div>
-            <br>
-            <div class="line comment"># 2. Configure variables (optional)</div>
-            <div class="line">
-                <span class="cmd">touch</span> <span class="arg">.env</span>
-            </div>
-            <br>
-            <div class="line comment"># 3. Start VibeNVR</div>
-            <div class="line">
-                <span class="cmd">docker</span> <span class="arg">compose -f docker-compose.prod.yml up -d</span>
+        <div style="position: relative; max-width: 100%;">
+            <button class="btn" aria-label="Copy installation commands" title="Copy to clipboard"
+                    style="position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(255,255,255,0.1); color: #E2E8F0; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.2);"
+                    onclick="
+                        const commands = `curl -O https://raw.githubusercontent.com/spupuz/VibeNVR/main/docker-compose.prod.yml\ntouch .env\ndocker compose -f docker-compose.prod.yml up -d`;
+                        navigator.clipboard.writeText(commands);
+                        const icon = this.querySelector('ion-icon');
+                        icon.setAttribute('name', 'checkmark-outline');
+                        this.setAttribute('aria-label', 'Commands copied');
+                        this.setAttribute('title', 'Copied!');
+                        setTimeout(() => {
+                            icon.setAttribute('name', 'copy-outline');
+                            this.setAttribute('aria-label', 'Copy installation commands');
+                            this.setAttribute('title', 'Copy to clipboard');
+                        }, 2000);
+                    ">
+                <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
+            </button>
+            <div class="code-window">
+                <div class="line comment"># 1. Download the compose file</div>
+                <div class="line">
+                    <span class="cmd">curl</span> <span class="arg">-O
+                        https://raw.githubusercontent.com/spupuz/VibeNVR/main/docker-compose.prod.yml</span>
+                </div>
+                <br>
+                <div class="line comment"># 2. Configure variables (optional)</div>
+                <div class="line">
+                    <span class="cmd">touch</span> <span class="arg">.env</span>
+                </div>
+                <br>
+                <div class="line comment"># 3. Start VibeNVR</div>
+                <div class="line">
+                    <span class="cmd">docker</span> <span class="arg">compose -f docker-compose.prod.yml up -d</span>
+                </div>
             </div>
         </div>
 
