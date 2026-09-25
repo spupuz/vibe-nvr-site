@@ -247,6 +247,26 @@ main:focus {
 /* Components */
 
 /* Buttons */
+.code-copy-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #E2E8F0;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.code-copy-btn:hover,
+.code-copy-btn:focus-visible {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.code-copy-btn:active {
+    transform: scale(0.95);
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
