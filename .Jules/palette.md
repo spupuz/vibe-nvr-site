@@ -16,3 +16,7 @@
 ## 2024-09-24 - Inline Copy to Clipboard Feedback
 **Learning:** Users often copy installation commands from code blocks. Providing an inline copy button without external dependencies improves UX, but it must include immediate visual feedback (like an icon change and aria-label update) to confirm the action succeeded.
 **Action:** When adding copy-to-clipboard buttons, use native `navigator.clipboard.writeText` and temporarily update the button's icon (e.g., to a checkmark) and `aria-label` for ~2 seconds to provide accessible, immediate confirmation of success.
+
+## 2024-09-25 - Redundant Announcements for Images in Descriptive Links
+**Learning:** Images with `alt` text nested inside anchor tags (`<a>`) that already have an explicit `aria-label` (or adjacent descriptive text) cause screen readers to announce the link's purpose redundantly, degrading the auditory UX.
+**Action:** Always set `alt=""` and `aria-hidden="true"` on images nested inside links if the parent link already provides an explicit `aria-label` or contains adjacent descriptive text that fully conveys the link's purpose.

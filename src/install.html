@@ -6,8 +6,7 @@
         </div>
 
         <div style="position: relative; max-width: 100%;">
-            <button class="btn" aria-label="Copy installation commands" title="Copy to clipboard"
-                    style="position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(255,255,255,0.1); color: #E2E8F0; padding: 0.5rem; border: 1px solid rgba(255,255,255,0.2);"
+            <button class="btn code-copy-btn" aria-label="Copy installation commands" title="Copy to clipboard"
                     onclick="
                         const commands = `curl -O https://raw.githubusercontent.com/spupuz/VibeNVR/main/docker-compose.prod.yml\ntouch .env\ndocker compose -f docker-compose.prod.yml up -d`;
                         navigator.clipboard.writeText(commands);
