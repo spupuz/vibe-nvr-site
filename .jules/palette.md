@@ -5,11 +5,18 @@
 ## 2024-05-15 - Missing Active States for Interactive Elements
 **Learning:** For mobile and pointer interactions, relying solely on CSS `:hover` and `:focus-visible` is insufficient. Adding an `:active` pseudo-class ensures immediate tactile visual feedback during tap or click events.
 **Action:** Always pair CSS `:hover` and `:focus-visible` pseudo-classes with an `:active` state (e.g., via `transform` or `box-shadow` changes) to provide immediate tactile visual feedback for pointer and touch interactions.
+## 2024-05-24 - Accessibility for Image-Only Links
+**Learning:** Anchor tags (`<a>`) that exclusively contain images or decorative icons (such as GitHub stat badges or 'Buy Me A Coffee' buttons) can lack context for screen readers and missing tooltips for mouse users, making them less accessible and discoverable.
+**Action:** Always add explicit `aria-label` and `title` attributes to such anchor tags to ensure they are fully accessible to screen readers and offer descriptive tooltips for all users.
 
-## 2024-05-16 - Accessible Keyboard Shortcuts
-**Learning:** For elements acting as custom buttons, such as interactive gallery items, missing `aria-label` and `title` attributes makes it harder for screen reader users and those navigating via keyboard to understand the action and available shortcuts.
-**Action:** Append known keyboard shortcuts to the `title` attribute of custom interactive elements (e.g., 'View image (Enter)') to make hidden keyboard accessibility features discoverable to general users via native browser tooltips, and ensure proper `aria-label`s are added.
+## 2026-09-21 - Accessibility for Dynamically Generated Icons
+**Learning:** Decorative icons (like `<ion-icon>`) that are dynamically generated via JavaScript and injected into the DOM may lack the `aria-hidden="true"` attribute if not explicitly set during creation, causing screen readers to announce them redundantly.
+**Action:** Always ensure that dynamically created decorative elements have `aria-hidden="true"` explicitly set via `setAttribute` before appending them to the DOM.
 
-## 2024-05-18 - Mobile Menu In-Page Navigation Focus Restoration
-**Learning:** Restoring focus to the triggering element (like a menu toggle button) when closing a modal or menu is standard practice for cancellations. However, it is an anti-pattern when the closure is triggered by a successful in-page navigation action (e.g. anchor link to a section), as it forcefully hijacks the user's focus flow back to the top of the page, interrupting their journey to the new section.
-**Action:** When handling click events on navigation links that close a menu, conditionally skip restoring focus to the toggle button if the destination is an in-page anchor (`href.startsWith("#")`), allowing the browser's default anchor navigation focus handling to take over.
+## 2024-09-24 - Inline Copy to Clipboard Feedback
+**Learning:** Users often copy installation commands from code blocks. Providing an inline copy button without external dependencies improves UX, but it must include immediate visual feedback (like an icon change and aria-label update) to confirm the action succeeded.
+**Action:** When adding copy-to-clipboard buttons, use native `navigator.clipboard.writeText` and temporarily update the button's icon (e.g., to a checkmark) and `aria-label` for ~2 seconds to provide accessible, immediate confirmation of success.
+
+## 2024-09-25 - Redundant Announcements for Images in Descriptive Links
+**Learning:** Images with `alt` text nested inside anchor tags (`<a>`) that already have an explicit `aria-label` (or adjacent descriptive text) cause screen readers to announce the link's purpose redundantly, degrading the auditory UX.
+**Action:** Always set `alt=""` and `aria-hidden="true"` on images nested inside links if the parent link already provides an explicit `aria-label` or contains adjacent descriptive text that fully conveys the link's purpose.
