@@ -81,3 +81,6 @@
 ## 2026-09-24 - Strict DOM Query Caching in High-Frequency Keydown Traps
 **Learning:** Querying the DOM dynamically (like building arrays of elements via `querySelectorAll`) inside a `keydown` trap listener (e.g. for `Tab` key focus trapping) forces the browser to traverse the DOM tree on every single key press. If the user holds down the `Tab` key, this causes repeated, unnecessary, and synchronous DOM traversals.
 **Action:** While keeping the logic resilient to DOM changes is important, strictly cache expensive DOM queries or NodeLists outside of high-frequency execution paths where possible. Re-evaluating `querySelectorAll` on every `Tab` keystroke is a performance anti-pattern.
+## 2026-09-24 - Avoiding Cache Invalidation for Hidden UI Components
+**Learning:** Explicitly invalidating (e.g., setting to `null`) cached DOM elements for interactive components like mobile menus or modals upon closing forces unnecessary re-queries on subsequent opens, decreasing performance, if those elements are merely hidden and not completely removed from the DOM tree.
+**Action:** Retain cached DOM elements across interactions for components that are hidden instead of destroyed to prevent redundant DOM queries.

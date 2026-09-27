@@ -185,20 +185,34 @@
 
     <script>
         let mobileMenuLastFocusedElement = null;
+        let cachedNav = null;
+        let cachedToggleBtn = null;
+        let cachedFocusableElements = null;
+        let cachedOverlay = null;
+        let cachedIcon = null;
+
+        function getMenuElements() {
+            if (!cachedNav) cachedNav = document.querySelector(".nav-links");
+            if (!cachedOverlay) cachedOverlay = document.querySelector(".nav-overlay");
+            if (!cachedIcon) cachedIcon = document.getElementById("menu-icon");
+            if (!cachedToggleBtn) cachedToggleBtn = document.querySelector(".mobile-toggle");
+
+            return {
+                nav: cachedNav,
+                overlay: cachedOverlay,
+                icon: cachedIcon,
+                toggleBtn: cachedToggleBtn
+            };
+        }
 
         function closeMenu() {
-            const nav = document.querySelector(".nav-links");
-            const overlay = document.querySelector(".nav-overlay");
-            const icon = document.getElementById("menu-icon");
-            const toggleBtn = document.querySelector(".mobile-toggle");
+            const { nav, overlay, icon, toggleBtn } = getMenuElements();
             
-            if(nav.classList.contains("active")) {
+            if(nav && nav.classList.contains("active")) {
                 nav.classList.remove("active");
-                overlay.classList.remove("active");
-                icon.setAttribute("name", "menu-outline");
+                if (overlay) overlay.classList.remove("active");
+                if (icon) icon.setAttribute("name", "menu-outline");
 
-                // ⚡ Bolt: Invalidate the cache when menu closes so it gets rebuilt fresh next time
-                cachedFocusableElements = null;
                 if (toggleBtn) {
                     toggleBtn.setAttribute("aria-expanded", "false");
                     toggleBtn.setAttribute("aria-label", "Toggle Menu");
@@ -213,17 +227,14 @@
         }
 
         function toggleMenu() {
-            const nav = document.querySelector(".nav-links");
-            const overlay = document.querySelector(".nav-overlay");
-            const icon = document.getElementById("menu-icon");
-            const toggleBtn = document.querySelector(".mobile-toggle");
+            const { nav, overlay, icon, toggleBtn } = getMenuElements();
             
-            if (!nav.classList.contains("active")) {
+            if (nav && !nav.classList.contains("active")) {
                 // Opening
                 mobileMenuLastFocusedElement = document.activeElement;
                 nav.classList.add("active");
-                overlay.classList.add("active");
-                icon.setAttribute("name", "close-outline");
+                if (overlay) overlay.classList.add("active");
+                if (icon) icon.setAttribute("name", "close-outline");
                 if (toggleBtn) {
                     toggleBtn.setAttribute("aria-expanded", "true");
                     toggleBtn.setAttribute("aria-label", "Close Menu");
@@ -253,9 +264,6 @@
         });
 
         // Close menu on Escape key and handle Focus Trap
-        let cachedNav = null;
-        let cachedToggleBtn = null;
-        let cachedFocusableElements = null;
         document.addEventListener('keydown', function(event) {
             if (event.key !== 'Escape' && event.key !== 'Tab') return; // ⚡ Bolt: Early return to prevent DOM queries
 
