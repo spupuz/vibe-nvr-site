@@ -165,7 +165,6 @@
                     const url = new URL('https://vibenvr-telemetry.spupuz.workers.dev/site-telemetry.png');
                     url.searchParams.set('visitor_id', vid);
                     const img = new Image();
-                    img.referrerPolicy = 'no-referrer-when-downgrade';
                     // ⚡ Bolt: Trigger network request without appending to DOM to avoid layout recalculation
                     img.src = url.toString();
                 } catch (e) {
