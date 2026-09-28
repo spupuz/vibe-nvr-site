@@ -197,8 +197,7 @@
                 overlay.classList.remove("active");
                 icon.setAttribute("name", "menu-outline");
 
-                // ⚡ Bolt: Invalidate the cache when menu closes so it gets rebuilt fresh next time
-                cachedFocusableElements = null;
+                // ⚡ Bolt: Preserve the cache when menu closes since elements are only hidden, avoiding redundant DOM queries on reopen
                 if (toggleBtn) {
                     toggleBtn.setAttribute("aria-expanded", "false");
                     toggleBtn.setAttribute("aria-label", "Toggle Menu");
