@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../Integrations/">
+        <link rel="prev" href="../ONVIF-Management/">
       
       
-        <link rel="next" href="../MFA-Trusted-Devices/">
+        <link rel="next" href="../AI-Detection/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>Camera Settings - VibeNVR Documentation</title>
+        <title>Camera Event Providers - VibeNVR Documentation</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#camera-settings-management" class="md-skip">
+        <a href="#camera-event-providers-event-sources" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Camera Settings
+              Camera Event Providers
             
           </span>
         </div>
@@ -466,9 +466,11 @@
         
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../Camera-Event-Providers/" class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
         
   
     
@@ -534,11 +536,9 @@
         
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="./" class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../Camera-Settings/" class="md-tabs__link">
         
   
     
@@ -1003,10 +1003,31 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Camera-Event-Providers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Camera Event Providers
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1016,6 +1037,101 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-server-ai-opencv-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Server AI / OpenCV (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-onvif-edge-camera-side-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. ONVIF Edge (Camera-side Hardware)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-hikvision-isapi-camera-side-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Hikvision ISAPI (Camera-side Classification)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-hikvision-isapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Configuring Hikvision ISAPI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Configuring Hikvision ISAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#connection-diagnostics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Diagnostics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#engine-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 Engine Integration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1087,31 +1203,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Camera Settings
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Camera-Settings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1121,194 +1216,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#copy-clone-logic" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Copy &amp; Clone Logic
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📋 Copy & Clone Logic">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-is-not-copied-excluded" class="md-nav__link">
-    <span class="md-ellipsis">
-      ❌ What is NOT copied (Excluded)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-is-copied-categories" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✅ What IS copied (Categories)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#feature-workflows" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛠️ Feature Workflows
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🛠️ Feature Workflows">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-cloning-during-creation" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Cloning during Creation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-selective-propagation" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Selective Propagation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-group-level-propagation" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Group-Level Propagation
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#advanced-engine-sync" class="md-nav__link">
-    <span class="md-ellipsis">
-      Advanced Engine Sync
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edge-motion-ai-motion-visual-feedback" class="md-nav__link">
-    <span class="md-ellipsis">
-      Edge Motion &amp; AI Motion Visual Feedback
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Edge Motion & AI Motion Visual Feedback">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detection-badges-active-motion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Detection Badges (Active Motion)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lifecycle-badges-post-motion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lifecycle Badges (Post-Motion)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#motion-state-reliability-v1296" class="md-nav__link">
-    <span class="md-ellipsis">
-      Motion State Reliability (v1.29.6)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pro-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      💡 Pro Tips
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="💡 Pro Tips">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scaling-privacy-masks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Scaling Privacy Masks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hardware-differences" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hardware Differences
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verification
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1466,28 +1373,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#copy-clone-logic" class="md-nav__link">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      📋 Copy &amp; Clone Logic
+      ⚙️ Configuration
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📋 Copy & Clone Logic">
+    <nav class="md-nav" aria-label="⚙️ Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#what-is-not-copied-excluded" class="md-nav__link">
+  <a href="#1-server-ai-opencv-default" class="md-nav__link">
     <span class="md-ellipsis">
-      ❌ What is NOT copied (Excluded)
+      1. Server AI / OpenCV (Default)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#what-is-copied-categories" class="md-nav__link">
+  <a href="#2-onvif-edge-camera-side-hardware" class="md-nav__link">
     <span class="md-ellipsis">
-      ✅ What IS copied (Categories)
+      2. ONVIF Edge (Camera-side Hardware)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-hikvision-isapi-camera-side-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Hikvision ISAPI (Camera-side Classification)
     </span>
   </a>
   
@@ -1499,37 +1415,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#feature-workflows" class="md-nav__link">
+  <a href="#configuring-hikvision-isapi" class="md-nav__link">
     <span class="md-ellipsis">
-      🛠️ Feature Workflows
+      🛠️ Configuring Hikvision ISAPI
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🛠️ Feature Workflows">
+    <nav class="md-nav" aria-label="🛠️ Configuring Hikvision ISAPI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-cloning-during-creation" class="md-nav__link">
+  <a href="#connection-diagnostics" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Cloning during Creation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-selective-propagation" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Selective Propagation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-group-level-propagation" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Group-Level Propagation
+      Connection Diagnostics
     </span>
   </a>
   
@@ -1541,95 +1439,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#advanced-engine-sync" class="md-nav__link">
+  <a href="#engine-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Advanced Engine Sync
+      💡 Engine Integration
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#edge-motion-ai-motion-visual-feedback" class="md-nav__link">
-    <span class="md-ellipsis">
-      Edge Motion &amp; AI Motion Visual Feedback
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Edge Motion & AI Motion Visual Feedback">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#detection-badges-active-motion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Detection Badges (Active Motion)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lifecycle-badges-post-motion" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lifecycle Badges (Post-Motion)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#motion-state-reliability-v1296" class="md-nav__link">
-    <span class="md-ellipsis">
-      Motion State Reliability (v1.29.6)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pro-tips" class="md-nav__link">
-    <span class="md-ellipsis">
-      💡 Pro Tips
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="💡 Pro Tips">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scaling-privacy-masks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Scaling Privacy Masks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hardware-differences" class="md-nav__link">
-    <span class="md-ellipsis">
-      Hardware Differences
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Verification
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1649,152 +1463,45 @@
 
 
 
-<h1 id="camera-settings-management">Camera Settings Management</h1>
-<p>VibeNVR allows you to rapidly configure multiple cameras using the <strong>Selective Copy Settings</strong> feature. This can be done for individual cameras, at the group level, or even during the initial camera creation via <strong>Cloning</strong>.</p>
+<h1 id="camera-event-providers-event-sources">Camera Event Providers (Event Sources)</h1>
+<p>VibeNVR supports processing motion and smart events directly from your camera's hardware. This offloads the CPU-intensive video analysis from the NVR to the camera's internal chipset, allowing you to scale up without adding expensive server hardware.</p>
 <hr />
-<h2 id="copy-clone-logic">📋 Copy &amp; Clone Logic</h2>
-<p>To ensure system integrity and avoid connection conflicts, the system distinguishes between <strong>configuration</strong> (reusable) and <strong>identity</strong> (unique).</p>
-<h3 id="what-is-not-copied-excluded">❌ What is NOT copied (Excluded)</h3>
-<p>These fields are specific to each hardware device or system-managed and are <strong>never</strong> overwritten or cloned:</p>
-<ul>
-<li><strong>Identity</strong>: ID, Name, Location, Creation Date.</li>
-<li><strong>Connection</strong>: Primary RTSP URL, Sub-Stream URL, Internal Stream URL.</li>
-<li><strong>Status</strong>: Online/Offline status, Last seen timestamp, Enabled/Disabled state.</li>
-<li><strong>Hardware/Video</strong>: Resolution (Width/Height), Auto-resolution setting.</li>
-<li><strong>ONVIF Configuration</strong>: Host, Port, Username, Password, and Profile Tokens.</li>
-<li><strong>Capabilities</strong>: Hardware-detected flags for PTZ (Pan/Tilt/Zoom) and ONVIF Event support.</li>
-<li><strong>Relations</strong>: Group assignments.</li>
-<li><strong>Layout</strong>: Visual Sort Order (Drag-and-drop position).</li>
-</ul>
-<h3 id="what-is-copied-categories">✅ What IS copied (Categories)</h3>
-<p>Users can selectively pick which categories of settings to propagate. The available categories are:</p>
-<ul>
-<li><strong>Recording</strong>: Mode (Continuous, Motion Triggered, Off), quality (CRF), and retention policies.</li>
-<li><strong>Motion Detection</strong>: Threshold, Sensitivity, Discovery Engine, and capture buffers.</li>
-<li><strong>Privacy Masks</strong>: Black-out polygons used for legal/privacy shielding.</li>
-<li><strong>Motion Zones</strong>: Exclusion areas where motion is ignored.</li>
-<li><strong>Snapshots</strong>: Frequency and quality for still images.</li>
-<li><strong>Alerts/Notifications</strong>: Telegram, Email, and Webhook dispatch settings.</li>
-<li><strong>Overlay (OSD)</strong>: Timestamp and text overlays on the video stream.</li>
-<li><strong>Storage Routing</strong>: Assignment of Primary, Motion, Continuous, Snapshot, and Archive Storage Profiles.</li>
-<li><strong>Advanced/Schedule</strong>: Weekly schedules and other low-level system flags.</li>
-</ul>
+<h2 id="configuration">⚙️ Configuration</h2>
+<p>Event sources are configured per-camera in the <strong>Camera Settings -&gt; Event Sources</strong> tab. 
+<em>(Note: The ONVIF tab is specifically for device management, PTZ, and stream discovery. The Event Sources tab manages motion detection).</em></p>
+<p>You can choose one of the following <strong>Detection Engines</strong>:</p>
+<h3 id="1-server-ai-opencv-default">1. Server AI / OpenCV (Default)</h3>
+<p>The VibeNVR engine pulls the RTSP stream and analyzes the video frames using standard motion detection (OpenCV) or an AI Coral TPU / CPU (MobileNet, YOLO).</p>
+<h3 id="2-onvif-edge-camera-side-hardware">2. ONVIF Edge (Camera-side Hardware)</h3>
+<p>VibeNVR subscribes to camera-side motion events via the <strong>ONVIF PullPoint</strong> service. The camera hardware decides when generic motion is occurring.
+- <strong>Prerequisite</strong>: An ONVIF Host must be configured in the camera's ONVIF tab.
+- <strong>Behavior</strong>: This is a binary trigger (Motion / No Motion). The timeline will show generic movement without AI labels. Local NVR exclusion zones are ignored, but Privacy Masks are still respected.</p>
+<h3 id="3-hikvision-isapi-camera-side-classification">3. Hikvision ISAPI (Camera-side Classification)</h3>
+<p>Unlike ONVIF Edge which only detects generic movement, this specialized provider connects to the camera's HTTP API (ISAPI) to receive highly accurate, <strong>classified AI smart events</strong> (e.g., Person, Vehicle).
+- <strong>Prerequisite</strong>: A Hikvision-compatible camera with ISAPI and smart event detection enabled.
+- <strong>AI Hardware Offloading</strong>: VibeNVR automatically translates Hikvision's VMD (Video Motion Detection) events into native AI metadata. "Human/Pedestrian" becomes <code>person</code>, and "Car/Vehicle" becomes <code>vehicle</code>.
+- <strong>Zero Server Cost</strong>: The timeline, smart filters, and notifications will display the exact AI object labels just as if VibeNVR had used a local Google Coral TPU to process the frame, providing advanced AI features with zero CPU overhead.</p>
 <hr />
-<h2 id="feature-workflows">🛠️ Feature Workflows</h2>
-<ul>
-<li><a href="#selective-propagation">Selective Propagation</a></li>
-<li><a href="#camera-cloning">Camera Cloning</a></li>
-<li><a href="#advanced-engine-sync">Advanced Engine Sync</a></li>
-<li><a href="#edge-motion-visual-feedback">Edge Motion Visual Feedback</a></li>
-<li><a href="#pro-tips">💡 Pro Tips</a></li>
-</ul>
-<h3 id="1-cloning-during-creation">1. Cloning during Creation</h3>
-<p>When adding a <strong>New Camera</strong>, you can use the "Clone Settings From..." dropdown. 
-1. Select a source camera.
-2. Toggle the specific <strong>Categories</strong> you wish to import (Recording, Motion, etc.).
-3. The form will automatically populate with those settings, while keeping the Name, URLs, and unique configurations fresh.</p>
-<h3 id="2-selective-propagation">2. Selective Propagation</h3>
-<p>From the camera list, select "Copy Settings to...". This opens a modal where you can select one or more target cameras and exactly which categories to apply.</p>
-<h3 id="3-group-level-propagation">3. Group-Level Propagation</h3>
-<p>In the <strong>Groups Manager</strong>, each group has a "Copy Settings" button.
-1. Select a <em>Source Camera</em> (from anywhere in the system).
-2. Select the categories to apply.
-3. Every camera in that group will be updated simultaneously with the selected settings.</p>
+<h2 id="configuring-hikvision-isapi">🛠️ Configuring Hikvision ISAPI</h2>
+<p>To configure Hikvision ISAPI:</p>
+<ol>
+<li>Open <strong>Camera Settings -&gt; Event Sources</strong>.</li>
+<li>Select <strong>Hikvision ISAPI</strong> as the provider.</li>
+<li><strong>ISAPI Credentials</strong>:</li>
+<li>By default, VibeNVR will attempt to reuse your existing ONVIF credentials for the ISAPI connection.</li>
+<li>If your camera requires different credentials for the web/HTTP interface, select <strong>Use separate ISAPI credentials</strong> and enter them.</li>
+<li><strong>Port</strong>: Specify the HTTP port of your camera (Default: <code>80</code>). This may differ from the ONVIF port.</li>
+</ol>
+<h3 id="connection-diagnostics">Connection Diagnostics</h3>
+<p>The Event Sources tab provides an <strong>Event Provider Status</strong> card specifically for ISAPI. It reports:
+- The connection state (e.g., "Connected", "Authentication rejected", "Timeout").
+- The most recently observed labels.
+- The time of the last received event.</p>
 <hr />
-<h2 id="advanced-engine-sync">Advanced Engine Sync</h2>
-<p>Certain critical settings are automatically synchronized with the recording engine to ensure streaming stability and correct rendering:</p>
-<ul>
-<li><strong>RTSP Transport</strong>: Whether to use TCP or UDP for the main stream (fully supported in both Re-encode and Passthrough modes).</li>
-<li><strong>Sub RTSP Transport</strong>: Independent transport setting for the sub-stream.</li>
-<li><strong>Live View Mode</strong>: Preference for WebCodecs (WebSocket/H.264), MSE (Media Source Extensions), or MJPEG polling fallback.</li>
-</ul>
-<p>These settings are applied in real-time when the camera configuration is saved.</p>
-<h2 id="edge-motion-ai-motion-visual-feedback">Edge Motion &amp; AI Motion Visual Feedback</h2>
-<p>VibeNVR supports three detection engines, each with dedicated Live View feedback. The live camera tile displays a color-coded badge that reflects the full recording lifecycle:</p>
-<h3 id="detection-badges-active-motion">Detection Badges (Active Motion)</h3>
-<table>
-<thead>
-<tr>
-<th>Engine</th>
-<th>Badge</th>
-<th>Color</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>OpenCV</strong></td>
-<td><code>MOTION</code></td>
-<td>🔴 Pulsing Red</td>
-<td>Classical background subtraction (MOG2). Fast, no hardware required.</td>
-</tr>
-<tr>
-<td><strong>ONVIF Edge</strong></td>
-<td><code>EDGE MOTION</code></td>
-<td>🔴 Pulsing Red</td>
-<td>Motion events triggered by the camera hardware via ONVIF protocol.</td>
-</tr>
-<tr>
-<td><strong>AI Engine</strong></td>
-<td><code>AI: PERSON</code> (or detected label)</td>
-<td>🔴 Pulsing Red</td>
-<td>TFLite object recognition (YOLOv8 or MobileNet SSD). The badge shows the actual detected class name(s).</td>
-</tr>
-</tbody>
-</table>
-<h3 id="lifecycle-badges-post-motion">Lifecycle Badges (Post-Motion)</h3>
-<table>
-<thead>
-<tr>
-<th>State</th>
-<th>Badge</th>
-<th>Color</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Saving Recording</strong></td>
-<td><code>SAVING REC</code></td>
-<td>🟠 Solid Orange</td>
-<td>Motion has ended, but the post-capture buffer is still writing the video file to disk. The border also turns solid orange (non-pulsing) to distinguish this from an active alarm.</td>
-</tr>
-<tr>
-<td><strong>Continuous Mode</strong></td>
-<td><code>CONTINUOUS</code></td>
-<td>🔵 Solid Blue</td>
-<td>The camera is in Always-on recording mode. No motion trigger is needed.</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p>[!TIP]
-<strong>Dual Recording Support</strong>: When a camera is set to <strong>Continuous</strong> mode, the engine still listens to the active detection engine (OpenCV/AI/ONVIF). When motion occurs, VibeNVR generates independent, easy-to-export motion video clips <strong>in parallel</strong> to the continuous stream, preserving both formats simultaneously.</p>
-<p>[!NOTE]
-The complete recording lifecycle transition is: <strong><code>AI: PERSON</code></strong> (motion active) → <strong><code>SAVING REC</code></strong> (post-capture buffer finalizing) → <em>(badge disappears)</em> (file written to disk).</p>
-</blockquote>
-<h3 id="motion-state-reliability-v1296">Motion State Reliability (v1.29.6)</h3>
-<p>The backend maintains an in-memory live motion registry (<code>LIVE_MOTION</code>). Three safeguards ensure badges never get stuck:</p>
-<ul>
-<li><strong>Instant Cleanup on Stop</strong>: Disabling a camera immediately clears its motion state. The badge disappears the moment you toggle the camera off.</li>
-<li><strong>60-Second TTL</strong>: If the engine crashes mid-event and a <code>motion_end</code> signal is never sent, the badge automatically expires after 60 seconds.</li>
-<li><strong>Engine Switch Reset</strong>: If you change the detection engine (e.g., from OpenCV to AI) while a motion event is active, the system fires a synthetic <code>motion_end</code> before handing off to the new engine — preventing stale state carry-over.</li>
-</ul>
-<blockquote>
-<p>[!TIP]
-For full documentation on setting up <strong>AI detection</strong> with a <strong>Google Coral Edge TPU</strong>, including Docker Compose configuration and Proxmox LXC USB passthrough, see the dedicated <strong><a href="../AI-Detection/">AI Object Detection Guide</a></strong>.</p>
-</blockquote>
-<hr />
-<h2 id="pro-tips">💡 Pro Tips</h2>
-<h3 id="scaling-privacy-masks">Scaling Privacy Masks</h3>
-<p>Privacy Masks and Motion Zones use normalized coordinates (0.0 to 1.0), meaning they will scale correctly even if you copy them between cameras with different resolutions.</p>
-<h3 id="hardware-differences">Hardware Differences</h3>
-<blockquote>
-<p>[!CAUTION]
-While masks scale correctly, the physical FOV (Field of View) might differ between cameras. Always verify masks and zones after copying to ensure they align with the actual scene of the target camera.</p>
-</blockquote>
-<h3 id="verification">Verification</h3>
-<p>After copying settings, it is recommended to check the <strong>Live View</strong> to ensure the cameras are still communicating correctly, especially if you have changed recording modes or engines.</p>
+<h2 id="engine-integration">💡 Engine Integration</h2>
+<p>VibeNVR tracks the active/inactive state of camera events and seamlessly injects them into the recording pipeline.
+- All timeline object filters, AI metadata, and notifications work exactly the same regardless of whether the event was generated by Server AI, ONVIF Edge, or Hikvision ISAPI.
+- VibeNVR automatically expires stale active events after 30 seconds if a disconnect occurs.</p>
 
 
 
@@ -1831,7 +1538,7 @@ While masks scale correctly, the physical FOV (Field of View) might differ betwe
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Integrations/" class="md-footer__link md-footer__link--prev" aria-label="Previous: External Integrations">
+          <a href="../ONVIF-Management/" class="md-footer__link md-footer__link--prev" aria-label="Previous: ONVIF Management">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1841,20 +1548,20 @@ While masks scale correctly, the physical FOV (Field of View) might differ betwe
                 Previous
               </span>
               <div class="md-ellipsis">
-                External Integrations
+                ONVIF Management
               </div>
             </div>
           </a>
         
         
           
-          <a href="../MFA-Trusted-Devices/" class="md-footer__link md-footer__link--next" aria-label="Next: MFA Trusted Devices">
+          <a href="../AI-Detection/" class="md-footer__link md-footer__link--next" aria-label="Next: AI Detection">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                MFA Trusted Devices
+                AI Detection
               </div>
             </div>
             <div class="md-footer__button md-icon">

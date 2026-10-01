@@ -12,7 +12,7 @@
         <link rel="prev" href="../Backups/">
       
       
-        <link rel="next" href="../AI-Detection/">
+        <link rel="next" href="../Camera-Event-Providers/">
       
       
       <link rel="icon" href="../assets/logo.png">
@@ -459,6 +459,23 @@
     
   
   ONVIF Management
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../Camera-Event-Providers/" class="md-tabs__link">
+        
+  
+    
+  
+  Camera Event Providers
 
       </a>
     </li>
@@ -1162,6 +1179,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../Camera-Event-Providers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camera Event Providers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../AI-Detection/" class="md-nav__link">
         
   
@@ -1663,26 +1701,8 @@ If your camera requires credentials for the RTSP stream, VibeNVR will automatica
 <hr />
 <hr />
 <p>2: 
-3: ## 🤖 ONVIF Edge Motion Detection
-4: 
-5: VibeNVR can subscribe to camera-side motion events via the <strong>ONVIF PullPoint</strong> service. This allows the camera's hardware to decide when motion is occurring, bypassing the NVR's CPU-intensive image analysis.
-6: 
-7: ### Benefits
-8: - <strong>CPU Efficiency</strong>: The NVR server does not need to decode and analyze video frames for motion, drastically reducing overall system load.
-9: - <strong>Native Accuracy</strong>: Take advantage of manufacturer-specific tuned sensors and onboard AI algorithms.
-10: - <strong>Bypass Bounding Boxes</strong>: Reduces false triggers by using the camera's internal logic.
-11: 
-12: ### Configuration &amp; Logic
-13: 
-14: 1.  Go to <strong>Camera Settings</strong> -&gt; <strong>Motion</strong> tab.
-15: 2.  Select <strong>"ONVIF Edge (Camera-side Hardware)"</strong> in the <strong>Detection Engine</strong> dropdown.
-16:     - <em>Note: This option is only available if an ONVIF Host is configured and the camera supports event subscriptions.</em>
-17: 3.  <strong>Intelligent UI</strong>: When ONVIF Edge is active, the <strong>Motion Zones</strong> tab is automatically hidden from the interface. Since the camera hardware handles the detection, local NVR exclusion zones are ignored.
-18: 4.  <strong>Privacy</strong>: Privacy masks are still respected as they are burned into the stream before recording.
-19: 
-20: ---
-21: 
-22: </p>
+3: ## 🤖 ONVIF Edge Motion Detection</p>
+<p>ONVIF Edge motion detection has been moved to the new <strong>Event Sources</strong> subsystem. For configuration and details, please see the <strong><a href="../Camera-Event-Providers/">Camera Event Providers</a></strong> guide.</p>
 
 
 
@@ -1736,13 +1756,13 @@ If your camera requires credentials for the RTSP stream, VibeNVR will automatica
         
         
           
-          <a href="../AI-Detection/" class="md-footer__link md-footer__link--next" aria-label="Next: AI Detection">
+          <a href="../Camera-Event-Providers/" class="md-footer__link md-footer__link--next" aria-label="Next: Camera Event Providers">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                AI Detection
+                Camera Event Providers
               </div>
             </div>
             <div class="md-footer__button md-icon">
