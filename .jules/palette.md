@@ -20,3 +20,6 @@
 ## 2024-09-25 - Redundant Announcements for Images in Descriptive Links
 **Learning:** Images with `alt` text nested inside anchor tags (`<a>`) that already have an explicit `aria-label` (or adjacent descriptive text) cause screen readers to announce the link's purpose redundantly, degrading the auditory UX.
 **Action:** Always set `alt=""` and `aria-hidden="true"` on images nested inside links if the parent link already provides an explicit `aria-label` or contains adjacent descriptive text that fully conveys the link's purpose.
+## 2024-05-24 - Redundant Alt Text in Labeled Buttons
+**Learning:** Images with `alt` text nested inside interactive elements (like `<a>` or `<div role="button">`) that already have an explicit `aria-label` cause screen readers to announce the purpose redundantly, degrading auditory UX.
+**Action:** Always set `alt=""` and `aria-hidden="true"` on images when they are nested inside an interactive element that already provides an `aria-label` or adjacent descriptive text.
