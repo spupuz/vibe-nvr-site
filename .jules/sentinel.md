@@ -42,3 +42,7 @@
 **Vulnerability:** External links opening in new tabs (`target="_blank"`) without `rel="noopener noreferrer"` can allow the new tab to access the `window.opener` object (enabling reverse tabnabbing attacks) and leak the referrer URL.
 **Learning:** Even static sites and documentation pages must follow secure linking practices, particularly when linking to external resources like GitHub or external dashboards.
 **Prevention:** Always pair `target="_blank"` with `rel="noopener noreferrer"` on all external links across the codebase, including inside documentation template overrides.
+## 2024-10-01 - [Inline Referrer Policy Weakening]
+**Vulnerability:** An inline `referrerPolicy = 'no-referrer-when-downgrade'` on a tracking image was overriding the secure document-level `strict-origin-when-cross-origin` policy.
+**Learning:** Adding less secure inline referrer policies to specific elements weakens the defense-in-depth provided by document-level headers, potentially leaking full URL paths to cross-origin third parties.
+**Prevention:** Avoid using inline `referrerPolicy` attributes that weaken document-level policies; rely on the document's secure `Referrer-Policy` header or `<meta>` tag.
