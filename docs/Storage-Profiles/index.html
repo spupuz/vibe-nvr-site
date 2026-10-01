@@ -937,6 +937,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#monitoring-dashboard-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring &amp; Dashboard Analytics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#storage-maintenance-breakdown" class="md-nav__link">
     <span class="md-ellipsis">
       Storage Maintenance &amp; Breakdown
@@ -1520,6 +1529,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#monitoring-dashboard-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring &amp; Dashboard Analytics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#storage-maintenance-breakdown" class="md-nav__link">
     <span class="md-ellipsis">
       Storage Maintenance &amp; Breakdown
@@ -1634,8 +1652,19 @@ Since the SFTP upload acts as a post-processing step, short network outages won'
 <li><strong>Camera-Level Controls</strong>: Users can define specific <code>Max Storage (GB)</code> and <code>Retention</code> (Preset intervals like 1 week, or a Custom number of days) per camera.</li>
 <li><strong>Profile/Global Limit</strong>: The system ensures the total disk usage across all cameras remains within the defined profile or global quota, purging the oldest events from any camera as needed.</li>
 </ol>
+<h2 id="monitoring-dashboard-analytics">Monitoring &amp; Dashboard Analytics</h2>
+<p>VibeNVR provides robust telemetry to monitor your storage health across multiple locations directly from the <strong>Dashboard</strong>:</p>
+<ol>
+<li><strong>Storage Used (Global Overview)</strong>:</li>
+<li><strong>Physical Disk</strong>: Accurately reports the real hardware capacity and utilization of the primary system disk (the <code>/data</code> mount), regardless of which profiles or VibeNVR files are present.</li>
+<li><strong>App Quota</strong>: Reports the virtual "global weight" of VibeNVR. It sums the size of all recordings and snapshots—including those saved on remote SFTP servers—and compares them to the system's Max Global Storage limit.</li>
+<li><strong>Storage Locations Widget</strong>:</li>
+<li>A dedicated table providing real-time status for every configured Storage Profile (Local and Remote).</li>
+<li>Shows the exact path/host, the logical capacity (Quota), and current consumption.</li>
+<li>Includes an intelligent <strong>Health check</strong> (e.g., <code>OK</code>, <code>Path Not Found</code>, <code>Unreachable</code>) powered by a lightweight 2-second socket ping to prevent remote host timeouts from freezing your dashboard.</li>
+</ol>
 <h2 id="storage-maintenance-breakdown">Storage Maintenance &amp; Breakdown</h2>
-<p>The <strong>Storage Management</strong> section in Settings provides a detailed breakdown of space usage:
+<p>The <strong>Storage Management</strong> section in Settings provides a deeper breakdown of space usage for maintenance:
 - <strong>Profile Breakdown</strong>: A dedicated table showing the total storage quota, used space, and remaining capacity <em>per Storage Profile</em>.
 - <strong>Camera Metrics</strong>: See exactly how many GBs of Video and Snapshots each camera is consuming.
 - <strong>Granular Cleanup</strong>: Use the dedicated <strong>Cleanup</strong> buttons (Trash icons) in the breakdown table to manually purge only videos or only snapshots for a specific camera.
