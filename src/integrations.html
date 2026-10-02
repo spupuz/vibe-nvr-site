@@ -21,8 +21,25 @@
                         Monitor your cameras, storage usage, and recent events directly from your personal dashboard.
                     </p>
                 </div>
-                <div class="code-window" style="font-size: 0.85rem;">
-                    <div class="line comment"># services.yaml (Homepage)</div>
+                <div style="position: relative; max-width: 100%;">
+                    <button class="btn code-copy-btn" aria-label="Copy Homepage config" title="Copy to clipboard"
+                            onclick="
+                                const commands = `- VibeNVR:\n  icon: mdi-cctv\n  href: http://your-vibenvr-ip:8080/\n  description: Video Surveillance\n  widget:\n    type: customapi\n    url: http://your-vibenvr-ip:8080/api/v1/homepage/stats\n    headers:\n      X-API-Key: &quot;your-api-token-here&quot;\n    method: GET\n    mappings:\n      - { field: cameras_online, label: Online }\n      - { field: events_today, label: Events (24h) }\n      - { field: storage_used_gb, label: Storage (GB) }\n      - { field: storage_total_gb, label: Total Disk (GB) }`;
+                                navigator.clipboard.writeText(commands);
+                                const icon = this.querySelector('ion-icon');
+                                icon.setAttribute('name', 'checkmark-outline');
+                                this.setAttribute('aria-label', 'Config copied');
+                                this.setAttribute('title', 'Copied!');
+                                setTimeout(() => {
+                                    icon.setAttribute('name', 'copy-outline');
+                                    this.setAttribute('aria-label', 'Copy Homepage config');
+                                    this.setAttribute('title', 'Copy to clipboard');
+                                }, 2000);
+                            ">
+                        <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <div class="code-window" style="font-size: 0.85rem;">
+                        <div class="line comment"># services.yaml (Homepage)</div>
                     <div class="line"><span class="cmd">- VibeNVR:</span></div>
                     <div class="line indent"><span class="arg">icon:</span> mdi-cctv</div>
                     <div class="line indent"><span class="arg">href:</span> http://your-vibenvr-ip:8080/</div>
@@ -38,6 +55,7 @@
                     <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> events_today, <span class="arg">label:</span> Events (24h) }</div>
                     <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> storage_used_gb, <span class="arg">label:</span> Storage (GB) }</div>
                     <div class="line triple-indent"><span class="cmd">-</span> { <span class="arg">field:</span> storage_total_gb, <span class="arg">label:</span> Total Disk (GB) }</div>
+                </div>
                 </div>
             </div>
 
@@ -82,8 +100,25 @@
                         frontends. Access live stats, camera configurations, and system events programmatically.
                     </p>
                 </div>
-                <div class="code-window" style="font-size: 0.85rem;">
-                    <div class="line comment"># GET /api/v1/cameras</div>
+                <div style="position: relative; max-width: 100%;">
+                    <button class="btn code-copy-btn" aria-label="Copy REST API response" title="Copy to clipboard"
+                            onclick="
+                                const commands = `[\n  {\n    &quot;id&quot;: 1,\n    &quot;name&quot;: &quot;Front Door&quot;,\n    &quot;status&quot;: &quot;online&quot;\n  }\n]`;
+                                navigator.clipboard.writeText(commands);
+                                const icon = this.querySelector('ion-icon');
+                                icon.setAttribute('name', 'checkmark-outline');
+                                this.setAttribute('aria-label', 'Response copied');
+                                this.setAttribute('title', 'Copied!');
+                                setTimeout(() => {
+                                    icon.setAttribute('name', 'copy-outline');
+                                    this.setAttribute('aria-label', 'Copy REST API response');
+                                    this.setAttribute('title', 'Copy to clipboard');
+                                }, 2000);
+                            ">
+                        <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
+                    </button>
+                    <div class="code-window" style="font-size: 0.85rem;">
+                        <div class="line comment"># GET /api/v1/cameras</div>
                     <div class="line"><span class="cmd">[</span></div>
                     <div class="line indent"><span class="arg">{</span></div>
                     <div class="line double-indent"><span class="arg">"id":</span> 1,</div>
@@ -91,6 +126,7 @@
                     <div class="line double-indent"><span class="arg">"status":</span> "online"</div>
                     <div class="line indent"><span class="arg">}</span></div>
                     <div class="line"><span class="cmd">]</span></div>
+                </div>
                 </div>
             </div>
         </div>
