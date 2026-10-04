@@ -23,3 +23,6 @@
 ## 2024-05-24 - Redundant Alt Text in Labeled Buttons
 **Learning:** Images with `alt` text nested inside interactive elements (like `<a>` or `<div role="button">`) that already have an explicit `aria-label` cause screen readers to announce the purpose redundantly, degrading auditory UX.
 **Action:** Always set `alt=""` and `aria-hidden="true"` on images when they are nested inside an interactive element that already provides an `aria-label` or adjacent descriptive text.
+## 2026-10-02 - Add copy buttons to code blocks
+**Learning:** Adding fully accessible copy buttons to code snippets (like YAML configs or JSON API responses) significantly improves the UX for developers. It is important to ensure these buttons use the native `navigator.clipboard.writeText` API, and temporarily update their `aria-label`, `title`, and inner icon to provide immediate, accessible visual feedback to the user.
+**Action:** When working on pages that display configuration snippets or API responses, look for opportunities to add an inline copy button using existing styles to make the content easier to interact with.
