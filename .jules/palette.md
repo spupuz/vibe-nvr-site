@@ -26,3 +26,7 @@
 ## 2026-10-02 - Add copy buttons to code blocks
 **Learning:** Adding fully accessible copy buttons to code snippets (like YAML configs or JSON API responses) significantly improves the UX for developers. It is important to ensure these buttons use the native `navigator.clipboard.writeText` API, and temporarily update their `aria-label`, `title`, and inner icon to provide immediate, accessible visual feedback to the user.
 **Action:** When working on pages that display configuration snippets or API responses, look for opportunities to add an inline copy button using existing styles to make the content easier to interact with.
+
+## 2026-10-05 - Actionable Error States for Remote Data
+**Learning:** Providing a "Could not load data" message for failed async component fetching leaves the user stranded, leading them to rely on hard page refreshes which disrupt their reading flow.
+**Action:** Always include an inline "Retry" button alongside generic async failure messages to provide immediate, actionable recovery without refreshing the entire page.

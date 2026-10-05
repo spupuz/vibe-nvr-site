@@ -189,7 +189,18 @@
                         grid.innerHTML = '';
                         const errorMsg = document.createElement('p');
                         errorMsg.style.cssText = 'color:var(--muted-foreground);text-align:center;grid-column:1/-1;';
-                        errorMsg.textContent = 'Could not load telemetry data.';
+                        errorMsg.textContent = 'Could not load telemetry data. ';
+
+                        const retryBtn = document.createElement('button');
+                        retryBtn.textContent = 'Retry';
+                        retryBtn.style.cssText = 'background:none;border:none;color:var(--primary);cursor:pointer;text-decoration:underline;padding:0;font:inherit;';
+                        retryBtn.onclick = () => {
+                            grid.innerHTML = '<div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div>';
+                            document.getElementById('telemetry-updated').innerHTML = 'Loading live data&hellip;';
+                            loadTelemetry();
+                        };
+                        errorMsg.appendChild(retryBtn);
+
                         grid.appendChild(errorMsg);
 
                         document.getElementById('telemetry-updated').textContent = '';
