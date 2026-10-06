@@ -20,13 +20,7 @@
 ## 2024-09-25 - Redundant Announcements for Images in Descriptive Links
 **Learning:** Images with `alt` text nested inside anchor tags (`<a>`) that already have an explicit `aria-label` (or adjacent descriptive text) cause screen readers to announce the link's purpose redundantly, degrading the auditory UX.
 **Action:** Always set `alt=""` and `aria-hidden="true"` on images nested inside links if the parent link already provides an explicit `aria-label` or contains adjacent descriptive text that fully conveys the link's purpose.
-## 2024-05-24 - Redundant Alt Text in Labeled Buttons
-**Learning:** Images with `alt` text nested inside interactive elements (like `<a>` or `<div role="button">`) that already have an explicit `aria-label` cause screen readers to announce the purpose redundantly, degrading auditory UX.
-**Action:** Always set `alt=""` and `aria-hidden="true"` on images when they are nested inside an interactive element that already provides an `aria-label` or adjacent descriptive text.
-## 2026-10-02 - Add copy buttons to code blocks
-**Learning:** Adding fully accessible copy buttons to code snippets (like YAML configs or JSON API responses) significantly improves the UX for developers. It is important to ensure these buttons use the native `navigator.clipboard.writeText` API, and temporarily update their `aria-label`, `title`, and inner icon to provide immediate, accessible visual feedback to the user.
-**Action:** When working on pages that display configuration snippets or API responses, look for opportunities to add an inline copy button using existing styles to make the content easier to interact with.
 
-## 2026-10-05 - Actionable Error States for Remote Data
-**Learning:** Providing a "Could not load data" message for failed async component fetching leaves the user stranded, leading them to rely on hard page refreshes which disrupt their reading flow.
-**Action:** Always include an inline "Retry" button alongside generic async failure messages to provide immediate, actionable recovery without refreshing the entire page.
+## 2026-10-06 - Dynamic Error State Buttons Accessibility
+**Learning:** Buttons dynamically generated via JavaScript to handle error states (e.g., 'Retry' buttons after API failures) often lack critical accessibility attributes like `aria-label` and `title` because they are constructed purely for functional recovery rather than being part of the static, templated HTML.
+**Action:** When creating interactive elements (like 'Retry' buttons) dynamically via `document.createElement`, always use `setAttribute` to add appropriate `aria-label` and `title` attributes before appending them to the DOM to ensure they are accessible to screen readers and mouse users.
