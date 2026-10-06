@@ -193,6 +193,8 @@
 
                         const retryBtn = document.createElement('button');
                         retryBtn.textContent = 'Retry';
+                        retryBtn.setAttribute('aria-label', 'Retry loading telemetry data');
+                        retryBtn.setAttribute('title', 'Retry');
                         retryBtn.style.cssText = 'background:none;border:none;color:var(--primary);cursor:pointer;text-decoration:underline;padding:0;font:inherit;';
                         retryBtn.onclick = () => {
                             grid.innerHTML = '<div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div><div class="telemetry-card-skeleton"></div>';

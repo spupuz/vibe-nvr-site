@@ -20,3 +20,7 @@
 ## 2024-09-25 - Redundant Announcements for Images in Descriptive Links
 **Learning:** Images with `alt` text nested inside anchor tags (`<a>`) that already have an explicit `aria-label` (or adjacent descriptive text) cause screen readers to announce the link's purpose redundantly, degrading the auditory UX.
 **Action:** Always set `alt=""` and `aria-hidden="true"` on images nested inside links if the parent link already provides an explicit `aria-label` or contains adjacent descriptive text that fully conveys the link's purpose.
+
+## 2026-10-06 - Dynamic Error State Buttons Accessibility
+**Learning:** Buttons dynamically generated via JavaScript to handle error states (e.g., 'Retry' buttons after API failures) often lack critical accessibility attributes like `aria-label` and `title` because they are constructed purely for functional recovery rather than being part of the static, templated HTML.
+**Action:** When creating interactive elements (like 'Retry' buttons) dynamically via `document.createElement`, always use `setAttribute` to add appropriate `aria-label` and `title` attributes before appending them to the DOM to ensure they are accessible to screen readers and mouse users.
