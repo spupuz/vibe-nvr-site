@@ -55,6 +55,10 @@ html {
     overflow-x: clip;
 }
 
+[id] {
+    scroll-margin-top: 5rem;
+}
+
 body {
     background-color: var(--background);
     color: var(--foreground);

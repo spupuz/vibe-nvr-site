@@ -24,3 +24,7 @@
 ## 2026-10-06 - Dynamic Error State Buttons Accessibility
 **Learning:** Buttons dynamically generated via JavaScript to handle error states (e.g., 'Retry' buttons after API failures) often lack critical accessibility attributes like `aria-label` and `title` because they are constructed purely for functional recovery rather than being part of the static, templated HTML.
 **Action:** When creating interactive elements (like 'Retry' buttons) dynamically via `document.createElement`, always use `setAttribute` to add appropriate `aria-label` and `title` attributes before appending them to the DOM to ensure they are accessible to screen readers and mouse users.
+
+## 2024-10-08 - Sticky Header Anchor Overlap
+**Learning:** When using sticky headers and anchor link navigation, the target section scrolls to the absolute top of the viewport, causing the sticky header to visually overlap and obscure the section's content.
+**Action:** Always apply `scroll-margin-top` to target elements (e.g., `[id] { scroll-margin-top: 5rem; }`) to offset the scroll position and ensure the content remains visible below the sticky header.
