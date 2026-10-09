@@ -46,3 +46,7 @@
 **Vulnerability:** An inline `referrerPolicy = 'no-referrer-when-downgrade'` on a tracking image was overriding the secure document-level `strict-origin-when-cross-origin` policy.
 **Learning:** Adding less secure inline referrer policies to specific elements weakens the defense-in-depth provided by document-level headers, potentially leaking full URL paths to cross-origin third parties.
 **Prevention:** Avoid using inline `referrerPolicy` attributes that weaken document-level policies; rely on the document's secure `Referrer-Policy` header or `<meta>` tag.
+## 2026-10-15 - [Unhandled SecurityError on Web Storage APIs]
+**Vulnerability:** Accessing `sessionStorage` or `localStorage` directly can throw a `SecurityError` in restricted browser contexts (e.g., highly restricted iframes, strict privacy settings, or third-party cookie blocking).
+**Learning:** If these calls are not wrapped in a `try...catch` block, the thrown exception goes unhandled, halting the script execution. This can break critical page functionality (like navigation or fetching API data) simply because an optional cache read/write failed.
+**Prevention:** Always wrap `sessionStorage` and `localStorage` accesses (both `.getItem` and `.setItem`) in `try...catch` blocks to gracefully degrade and ensure core script execution continues securely.

@@ -27,7 +27,12 @@
         (function() {
             async function fetchVersions() {
                 // ⚡ Bolt: Cache third-party API results in sessionStorage to avoid redundant network requests across page loads
-                const cachedVersion = sessionStorage.getItem('vibe_site_version');
+                let cachedVersion = null;
+                try {
+                    cachedVersion = sessionStorage.getItem('vibe_site_version');
+                } catch (e) {
+                    // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+                }
                 const siteEl = document.getElementById('site-version');
 
                 if (cachedVersion) {
@@ -45,7 +50,11 @@
                     if (siteRes.ok) {
                         const siteData = await siteRes.json();
                         if (siteEl) siteEl.textContent = siteData.tag_name;
-                        sessionStorage.setItem('vibe_site_version', siteData.tag_name);
+                        try {
+                            sessionStorage.setItem('vibe_site_version', siteData.tag_name);
+                        } catch (e) {
+                            // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+                        }
                     }
                 } catch (err) {
                     console.error('Failed to fetch versions', err);
