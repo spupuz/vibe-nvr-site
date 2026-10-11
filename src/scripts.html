@@ -305,39 +305,36 @@
     <script>
         // Scroll Reveal Animation Logic
         (function() {
-            // First, dynamically add the 'reveal' class to sections and cards
-            const sections = document.querySelectorAll("section:not(#hero)");
-            sections.forEach(sec => sec.classList.add("reveal"));
-            
-            const cards = document.querySelectorAll(".card");
-            cards.forEach((card, index) => {
-                card.classList.add("reveal");
-                // Add staggered delay based on index for grid items
-                const delay = (index % 3) + 1;
-                card.classList.add(`reveal-delay-${delay}`);
+            // Apply reveal only to individual cards and section titles, NEVER to whole container sections
+            // This prevents massive multi-viewport sections from becoming invisible on mobile.
+            const animElements = document.querySelectorAll(".section-title, .card");
+            animElements.forEach((el, index) => {
+                el.classList.add("reveal");
+                if (el.classList.contains("card")) {
+                    const delay = (index % 3) + 1;
+                    el.classList.add(`reveal-delay-${delay}`);
+                }
             });
 
-            // Initialize Intersection Observer
+            // Initialize Intersection Observer with responsive-friendly margins and threshold
             const observerOptions = {
                 root: null,
-                rootMargin: "0px",
-                threshold: 0.15
+                rootMargin: "0px 0px 50px 0px", // Trigger slightly before entering viewport for seamless reveal
+                threshold: 0.02 // Trigger as soon as 2% enters viewport
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    // Activate if intersecting, or if the element is already scrolled past (above viewport)
-                    if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
+                    // Activate if intersecting or already scrolled past/in viewport
+                    if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
                         entry.target.classList.add("active");
                         // ⚡ Bolt: Clean up will-change after animation finishes (0.8s + max delay 0.45s = ~1250ms)
-                        // using slightly higher timeout to be safe
                         setTimeout(() => {
                             entry.target.style.willChange = 'auto';
                         }, 1300);
                         observer.unobserve(entry.target); // Run once
 
                         // ⚡ Bolt: Clean up animation classes after completion (1500ms allows for 800ms transition + max 450ms stagger + buffer)
-                        // This removes the 'will-change' property which consumes memory and can override local hover transitions
                         setTimeout(() => {
                             entry.target.classList.remove("reveal", "active", "reveal-delay-1", "reveal-delay-2", "reveal-delay-3");
                         }, 1500);
