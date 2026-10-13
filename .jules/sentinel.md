@@ -50,3 +50,7 @@
 **Vulnerability:** Accessing `sessionStorage` or `localStorage` directly can throw a `SecurityError` in restricted browser contexts (e.g., highly restricted iframes, strict privacy settings, or third-party cookie blocking).
 **Learning:** If these calls are not wrapped in a `try...catch` block, the thrown exception goes unhandled, halting the script execution. This can break critical page functionality (like navigation or fetching API data) simply because an optional cache read/write failed.
 **Prevention:** Always wrap `sessionStorage` and `localStorage` accesses (both `.getItem` and `.setItem`) in `try...catch` blocks to gracefully degrade and ensure core script execution continues securely.
+## 2026-10-18 - [Unhandled SecurityError on Web Storage APIs in Analytics]
+**Vulnerability:** Accessing `localStorage` for telemetry tracking can throw a `SecurityError` in restricted browser contexts. If not caught, this halts the entire `sendTelemetry` execution.
+**Learning:** Even within an outer try-catch, a specific error in storage access shouldn't abort the core functionality (like generating an ID in memory and pinging the telemetry server).
+**Prevention:** Wrap individual storage access operations (`getItem`, `setItem`) in their own `try...catch` blocks to gracefully degrade and ensure core script execution continues securely.

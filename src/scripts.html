@@ -146,7 +146,13 @@
             const sendTelemetry = () => {
                 try {
                     // Generate or retrieve a persistent anonymous visitor ID
-                    let vid = localStorage.getItem('viben_vid');
+                    let vid = null;
+                    try {
+                        vid = localStorage.getItem('viben_vid');
+                    } catch (e) {
+                        // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+                    }
+
                     if (!vid) {
                         // 🛡️ Sentinel: Use cryptographically secure random UUID if available, fallback to Math.random
                         if (window.crypto && window.crypto.randomUUID) {
@@ -158,7 +164,11 @@
                         } else {
                             vid = 'v_' + Math.random().toString(36).substring(2, 10) + Date.now().toString(36);
                         }
-                        localStorage.setItem('viben_vid', vid);
+                        try {
+                            localStorage.setItem('viben_vid', vid);
+                        } catch (e) {
+                            // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+                        }
                     }
 
                     // Ping the telemetry worker
