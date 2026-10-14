@@ -84,3 +84,6 @@
 ## 2026-10-01 - Avoid Explicit Invalidation of Cached DOM Elements
 **Learning:** Explicitly invalidating (e.g., setting to `null`) cached DOM elements for interactive components like mobile menus or modals upon closing forces unnecessary re-queries on subsequent opens when those elements are merely hidden rather than completely removed from the DOM tree. Clearing the cache decreases performance and can introduce runtime errors.
 **Action:** Do not explicitly invalidate cached DOM elements for interactive components upon closing if they are merely hidden. Retain the cache to improve performance and prevent unnecessary DOM traversal.
+## 2024-05-14 - Use decoding="async" for all images
+**Learning:** Adding `decoding="async"` to `<img>` tags allows the browser to decode image data off the main thread. This prevents jank when large images or multiple images finish downloading and need to be decoded before rendering.
+**Action:** Next time I optimize a frontend codebase, ensure `decoding="async"` is applied to images to improve main thread availability.
