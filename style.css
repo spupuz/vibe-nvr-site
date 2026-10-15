@@ -433,7 +433,7 @@ main:focus {
 }
 
 .btn-secondary {
-    background-color: white;
+    background-color: var(--card);
     color: var(--foreground);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-sm);
