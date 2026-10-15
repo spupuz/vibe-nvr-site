@@ -24,3 +24,7 @@
 ## 2026-10-06 - Dynamic Error State Buttons Accessibility
 **Learning:** Buttons dynamically generated via JavaScript to handle error states (e.g., 'Retry' buttons after API failures) often lack critical accessibility attributes like `aria-label` and `title` because they are constructed purely for functional recovery rather than being part of the static, templated HTML.
 **Action:** When creating interactive elements (like 'Retry' buttons) dynamically via `document.createElement`, always use `setAttribute` to add appropriate `aria-label` and `title` attributes before appending them to the DOM to ensure they are accessible to screen readers and mouse users.
+
+## 2026-10-15 - Accessibility for Main Logo Anchor Links
+**Learning:** Main logo anchor links acting as 'Home' buttons (e.g., `href="#"`) can lack discoverability for screen readers and miss tooltips for mouse users, even if they contain visible text.
+**Action:** Always add explicit `aria-label` and `title` attributes (e.g., '[Site Name] Home') to these links to improve screen reader discoverability and provide context.
