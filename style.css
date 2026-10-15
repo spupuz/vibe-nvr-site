@@ -49,6 +49,82 @@
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+:root.dark, html.dark {
+    --background: #090D16;
+    --foreground: #F8FAFC;
+
+    --card: #111827;
+    --card-foreground: #F1F5F9;
+
+    --primary: #3B82F6;
+    --primary-foreground: #FFFFFF;
+
+    --secondary: #1E293B;
+    --secondary-foreground: #93C5FD;
+
+    --muted: #1E293B;
+    --muted-foreground: #94A3B8;
+
+    --border: #334155;
+    --input: #334155;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5), 0 2px 4px -2px rgb(0 0 0 / 0.5);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+}
+
+html.dark header,
+html.dark .smart-footer {
+    background-color: rgba(9, 13, 22, 0.85);
+}
+
+html.dark .nav-links {
+    background: var(--card);
+}
+
+html.dark .gallery-nav {
+    background: rgba(17, 24, 39, 0.9);
+}
+
+html.dark .gallery-nav:hover,
+html.dark .gallery-nav:focus-visible {
+    background: #1F2937;
+}
+
+html.dark footer {
+    background-color: var(--card);
+}
+
+/* Theme Toggle Button */
+.site-theme-toggle {
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--card);
+    border-radius: 99px;
+    height: 36px;
+    padding: 0 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted-foreground);
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.site-theme-toggle:hover,
+.site-theme-toggle:focus-visible {
+    color: var(--primary);
+    border-color: var(--primary);
+}
+
+.site-theme-toggle ion-icon {
+    font-size: 1.1rem;
+}
+
 html {
     scroll-behavior: smooth;
     font-size: 16px;

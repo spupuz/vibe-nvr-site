@@ -1010,9 +1010,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend-fails-to-start" class="md-nav__link">
+  <a href="#weak-or-default-secret_key-warning" class="md-nav__link">
     <span class="md-ellipsis">
-      Backend fails to start
+      Weak or default SECRET_KEY warning
     </span>
   </a>
   
@@ -1449,9 +1449,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#backend-fails-to-start" class="md-nav__link">
+  <a href="#weak-or-default-secret_key-warning" class="md-nav__link">
     <span class="md-ellipsis">
-      Backend fails to start
+      Weak or default SECRET_KEY warning
     </span>
   </a>
   
@@ -1588,9 +1588,14 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apparmor:unconfined</span>
 </code></pre></div>
 <p>As a last resort, use <code>privileged: true</code> on the affected service.</p>
-<h3 id="backend-fails-to-start">Backend fails to start</h3>
-<p>If the backend fails to start with a <code>SystemExit: 1</code>, check that <code>SECRET_KEY</code> is not set to one of the default values and is at least 32 characters long.</p>
-<p>In production (<code>ENVIRONMENT=production</code>), the app will strictly enforce this. To bypass it for troubleshooting, you can set <code>ALLOW_WEAK_SECRET=true</code> in your <code>.env</code> file.</p>
+<h3 id="weak-or-default-secret_key-warning">Weak or default SECRET_KEY warning</h3>
+<p>If you see critical warnings in the backend logs regarding <code>SECRET_KEY</code> or a persistent red security banner across the web interface:</p>
+<ol>
+<li>Check that <code>SECRET_KEY</code> in <code>.env</code> is not set to one of the default values and is at least 32 characters long.</li>
+<li>Generate a secure random key using <code>openssl rand -hex 32</code>.</li>
+<li>Update <code>.env</code> and restart the containers with <code>docker compose down &amp;&amp; docker compose up -d --build</code>.</li>
+<li>To acknowledge a weak key during troubleshooting without blocking production warnings, you can set <code>ALLOW_WEAK_SECRET=true</code> in <code>.env</code>. Note that weak key diagnostics are strictly restricted to authenticated administrator sessions and are never leaked via public health endpoints.</li>
+</ol>
 <h3 id="cameras-not-connecting">Cameras not connecting</h3>
 <p>Verify the RTSP URL is reachable from inside the Docker container. The <code>localhost</code> addresses are blocked for security reasons — use the camera's actual LAN IP.</p>
 <blockquote>

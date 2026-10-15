@@ -18,6 +18,17 @@
     <!-- 🛡️ Sentinel: Added SRI checks to prevent malicious code injection if CDN is compromised -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js" integrity="sha384-ka/QOj1/87D5umY1GYq4GS0y8e8vwy0Wj0BKvxJTWpNFUIarDm645Kvr8QaxM3jy" crossorigin="anonymous"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js" integrity="sha384-I7UNMgUrv6nA6xNHRbytUMytFlugSJWu/Il4VAV+Rhv73j9qaQqjf5IS1w9vHGsD" crossorigin="anonymous"></script>
+    <script>
+        (function() {
+            try {
+                var saved = localStorage.getItem('vibe-site-theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (saved === 'dark' || ((!saved || saved === 'system') && prefersDark)) {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body>
     <a href="#main-content" class="sr-only sr-only-focusable" style="padding: 1rem; background: var(--primary); color: white; position: absolute; z-index: 9999; text-decoration: none; border-bottom-right-radius: var(--radius);">Skip to content</a>

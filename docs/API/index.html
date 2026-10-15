@@ -968,6 +968,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#system-health-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏥 System Health (/health)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏥 System Health (/health)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /health
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sso-oauth-oauth" class="md-nav__link">
     <span class="md-ellipsis">
       🌐 SSO / OAuth (/oauth)
@@ -2088,6 +2112,30 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#system-health-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏥 System Health (/health)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏥 System Health (/health)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      GET /health
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#sso-oauth-oauth" class="md-nav__link">
     <span class="md-ellipsis">
       🌐 SSO / OAuth (/oauth)
@@ -2730,7 +2778,7 @@
 <p>Bootstrap the session from the HttpOnly <code>auth_token</code> cookie. Used by the frontend on page reload — the browser sends the cookie automatically and the server returns <code>{ user, access_token }</code> for in-memory state.
 - <strong>Auth Required</strong>: Valid <code>auth_token</code> cookie</p>
 <h4 id="get-authme"><strong>GET</strong> <code>/auth/me</code></h4>
-<p>Retrieve profile information for the currently authenticated user.
+<p>Retrieve profile information for the currently authenticated user. For admin users, this response also includes system security diagnostics (<code>is_weak_key</code>).
 - <strong>Auth Required</strong>: JWT or API Key
 - <strong>Response Example</strong>:
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -2738,7 +2786,22 @@
 <span class="w">  </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user@example.com&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;admin&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;is_2fa_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;is_weak_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h3 id="system-health-health">🏥 System Health (<code>/health</code>)</h3>
+<h4 id="get-health"><strong>GET</strong> <code>/health</code></h4>
+<p>Public liveness and component readiness probe for load balancers and orchestrators. To prevent information disclosure, security evaluations (such as weak key diagnostics) are never exposed on this public endpoint.
+- <strong>Auth Required</strong>: None
+- <strong>Response Example</strong>:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;components&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;engine&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></p>
 <hr />

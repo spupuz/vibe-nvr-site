@@ -387,6 +387,58 @@
                 }
             }, { passive: true });
         })();
+
+        // ─── THEME CONTROLLER (Light / Dark / Follow System) ───────────────
+        (function() {
+            let currentTheme = 'system';
+
+            function updateTheme(setting) {
+                currentTheme = setting;
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const isDark = setting === 'dark' || (setting === 'system' && prefersDark);
+
+                document.documentElement.classList.toggle('dark', isDark);
+
+                const sun = document.getElementById('site-icon-sun');
+                const moon = document.getElementById('site-icon-moon');
+                const system = document.getElementById('site-icon-system');
+                const lbl = document.getElementById('site-theme-label');
+                const btn = document.getElementById('site-theme-toggle');
+
+                if (sun) sun.style.display = setting === 'light' ? 'inline-block' : 'none';
+                if (moon) moon.style.display = setting === 'dark' ? 'inline-block' : 'none';
+                if (system) system.style.display = setting === 'system' ? 'inline-block' : 'none';
+
+                const nextMode = setting === 'system' ? 'light' : (setting === 'light' ? 'dark' : 'system');
+                const nextLabel = setting === 'system' ? 'Light' : (setting === 'light' ? 'Dark' : 'Follow System');
+                const currentLabel = setting === 'system' ? 'System' : (setting === 'light' ? 'Light' : 'Dark');
+
+                if (lbl) lbl.textContent = currentLabel;
+                if (btn) {
+                    btn.title = `Theme: ${currentLabel} (Click for ${nextLabel})`;
+                    btn.setAttribute('aria-label', `Theme: ${currentLabel}. Switch to ${nextLabel}`);
+                }
+
+                localStorage.setItem('vibe-site-theme', setting);
+            }
+
+            function cycleSiteTheme() {
+                const next = currentTheme === 'system' ? 'light' : (currentTheme === 'light' ? 'dark' : 'system');
+                updateTheme(next);
+            }
+
+            const saved = localStorage.getItem('vibe-site-theme');
+            const initial = (saved === 'dark' || saved === 'light' || saved === 'system') ? saved : 'system';
+            updateTheme(initial);
+
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+                if (currentTheme === 'system') {
+                    updateTheme('system');
+                }
+            });
+
+            document.getElementById('site-theme-toggle')?.addEventListener('click', cycleSiteTheme);
+        })();
     </script>
 </body>
 </html>

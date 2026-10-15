@@ -1534,7 +1534,7 @@
 <tr>
 <td><code>SECRET_KEY</code></td>
 <td><em>(dynamic random)</em></td>
-<td><strong>Change this.</strong> Used to sign JWT tokens (min 32 chars). If left unset, a secure random key is generated on each startup, which will log out all users when the container restarts. In production, the app <strong>will not start</strong> if explicitly set to a weak key.</td>
+<td><strong>Change this.</strong> Used to sign JWT tokens (min 32 chars). If left unset, a secure random key is generated on each startup, which will log out all users when the container restarts. If explicitly set to a weak key, the system emits critical log warnings and displays a <strong>persistent security warning banner</strong> in the administration interface.</td>
 </tr>
 <tr>
 <td><code>WEBHOOK_SECRET</code></td>
@@ -1544,7 +1544,7 @@
 <tr>
 <td><code>ALLOW_WEAK_SECRET</code></td>
 <td><code>false</code></td>
-<td>Set to <code>true</code> to bypass the <code>SECRET_KEY</code> security check in production (NOT RECOMMENDED).</td>
+<td>Set to <code>true</code> to acknowledge and silence strict production warnings for a weak key (NOT RECOMMENDED).</td>
 </tr>
 </tbody>
 </table>

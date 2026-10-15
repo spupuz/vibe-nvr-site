@@ -1817,7 +1817,7 @@
 <h2 id="how-it-works">🧠 How It Works</h2>
 <p>When a camera's detection engine is set to <strong>AI</strong>, each video frame is:
 1. Resized and fed to a TFLite object detection model (e.g., <strong>YOLOv8</strong> or <strong>MobileNet SSD v2</strong>).
-2. Filtered by <strong>confidence threshold</strong> and <strong>allowed object types</strong>.
+2. Filtered by <strong>confidence threshold</strong>, <strong>minimum object size</strong>, and <strong>allowed object types</strong>.
 3. <strong>Non-Maximum Suppression (NMS)</strong> is applied to eliminate overlapping detections (especially relevant for YOLOv8).
 4. <strong>Motion zones</strong> (exclusion polygons) are applied to the bounding boxes.
 5. If any objects pass all filters → motion is triggered, a recording starts, and detected labels are stored in the event database.</p>
@@ -1910,6 +1910,11 @@ The <code>AI MOTION</code> label in Live View will show <code>AI Engine [TPU]</c
 <td><strong>Confidence Threshold</strong></td>
 <td>Minimum score (0–100%) for a detection to count</td>
 <td><code>50%</code></td>
+</tr>
+<tr>
+<td><strong>Minimum Object Size</strong></td>
+<td>Minimum % of frame area (0–20%) required to count (filters out tiny false positives like floor cracks or distant artifacts)</td>
+<td><code>0% (Disabled)</code></td>
 </tr>
 <tr>
 <td><strong>Allowed Objects</strong></td>
