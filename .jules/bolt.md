@@ -84,3 +84,6 @@
 ## 2026-10-01 - Avoid Explicit Invalidation of Cached DOM Elements
 **Learning:** Explicitly invalidating (e.g., setting to `null`) cached DOM elements for interactive components like mobile menus or modals upon closing forces unnecessary re-queries on subsequent opens when those elements are merely hidden rather than completely removed from the DOM tree. Clearing the cache decreases performance and can introduce runtime errors.
 **Action:** Do not explicitly invalidate cached DOM elements for interactive components upon closing if they are merely hidden. Retain the cache to improve performance and prevent unnecessary DOM traversal.
+## 2024-10-15 - Offload Image Decoding
+**Learning:** Native `decoding="async"` is highly effective for heavy image pages (like galleries). Browsers without support gracefully fallback, making it a perfectly safe micro-optimization.
+**Action:** Always include `decoding="async"` alongside `loading="lazy"` for large images not critical to the immediate initial render.
