@@ -96,6 +96,48 @@ html.dark footer {
     background-color: var(--card);
 }
 
+/* Dark Mode Overrides for Inlined Backgrounds & Sections */
+html.dark #gallery,
+html.dark #roadmap,
+html.dark #docs {
+    background-color: var(--background) !important;
+}
+
+html.dark #architecture,
+html.dark #telemetry,
+html.dark #support {
+    background-color: var(--background) !important;
+    border-color: var(--border) !important;
+}
+
+html.dark #architecture .card {
+    background: var(--card) !important;
+    border-color: var(--border) !important;
+}
+
+html.dark .hero .hero-video-wrapper {
+    background: var(--card) !important;
+    box-shadow: var(--shadow-lg);
+}
+
+html.dark .integration-preview-box {
+    background: var(--card) !important;
+}
+
+/* Adaptive Logo for Light / Dark Mode */
+.logo-light {
+    display: inline-block;
+}
+.logo-dark {
+    display: none;
+}
+html.dark .logo-light {
+    display: none !important;
+}
+html.dark .logo-dark {
+    display: inline-block !important;
+}
+
 /* Theme Toggle Button */
 .site-theme-toggle {
     cursor: pointer;
