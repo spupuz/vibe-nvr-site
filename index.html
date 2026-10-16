@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
     <link rel="preload" href="assets/vibenvr_video.webp" as="image" media="(min-width: 769px)">
-    <link rel="stylesheet" href="style.css?v=1.35.56">
+    <link rel="stylesheet" href="style.css?v=1.35.58">
     <link rel="icon" href="assets/logo.png" type="image/png">
     <!-- 🛡️ Sentinel: Added SRI checks to prevent malicious code injection if CDN is compromised -->
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.esm.js" integrity="sha384-ka/QOj1/87D5umY1GYq4GS0y8e8vwy0Wj0BKvxJTWpNFUIarDm645Kvr8QaxM3jy" crossorigin="anonymous"></script>
@@ -51,7 +51,7 @@
     <script>
         async function loadComponents() {
             const components = ['header', 'hero', 'gallery', 'features', 'architecture', 'roadmap', 'integrations', 'docs', 'install', 'telemetry', 'support', 'footer', 'scripts'];
-            const cacheBuster = '1.35.56'; // ⚡ Bolt: Use static version string instead of Date.now() to allow browser caching of static HTML fragments
+            const cacheBuster = '1.35.58'; // ⚡ Bolt: Use static version string instead of Date.now() to allow browser caching of static HTML fragments
 
             // ⚡ Bolt: Fetch all components concurrently to prevent network waterfall
             const fetchPromises = components.map(async (c) => {
