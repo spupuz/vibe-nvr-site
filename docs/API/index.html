@@ -1437,6 +1437,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-settingstest-vision-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/test-vision-llm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#global-settings-keys-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Global Settings Keys (/settings)
@@ -2581,6 +2590,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-settingstest-vision-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/test-vision-llm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#global-settings-keys-settings" class="md-nav__link">
     <span class="md-ellipsis">
       Global Settings Keys (/settings)
@@ -3138,6 +3156,23 @@
 <span class="w">  </span><span class="nt">&quot;deleted_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">120.5</span>
 <span class="p">}</span>
 </code></pre></div></p>
+<h4 id="post-settingstest-vision-llm"><strong>POST</strong> <code>/settings/test-vision-llm</code></h4>
+<p>Test connectivity and inference to an OpenAI-compatible Vision LLM endpoint (Admin only).
+- <strong>Auth Required</strong>: Admin privileges (Bearer JWT or API Key).
+- <strong>Payload Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;base_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://generativelanguage.googleapis.com/v1beta/openai&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;api_key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AIzaSy...&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gemini-3.5-flash-lite&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;prompt&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Describe this test image in a few words.&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+- <strong>Response Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A black test image.&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <h4 id="global-settings-keys-settings"><strong>Global Settings Keys (<code>/settings</code>)</strong></h4>
 <p>Commonly used keys for <code>/settings/{key}</code>:
 - <code>mqtt_enabled</code>: (<code>true</code>/<code>false</code>)
@@ -3152,7 +3187,13 @@
 - <code>ai_model</code>: (<code>YOLOv8</code>/<code>MobileNet SSD v2</code>) Global detection model.
 - <code>ai_hardware</code>: (<code>auto</code>/<code>cpu</code>/<code>tpu</code>) Global hardware preference.
 - <code>ai_nms_iou_threshold</code>: (<code>0.45</code>) IoU threshold for YOLOv8 NMS (Float).
-- <code>ai_confidence_default</code>: (<code>0.5</code>) Default threshold for new cameras (Float).</p>
+- <code>ai_confidence_default</code>: (<code>0.5</code>) Default threshold for new cameras (Float).
+- <code>llm_enricher_enabled</code>: (<code>true</code>/<code>false</code>) Master Vision LLM event captioning switch.
+- <code>llm_enricher_base_url</code>: Base URL for OpenAI-compatible endpoint.
+- <code>llm_enricher_api_key</code>: API key for Vision LLM provider.
+- <code>llm_enricher_model</code>: Model name (e.g. <code>llama3.2-vision</code>, <code>gemini-3.5-flash-lite</code>, <code>gpt-4o-mini</code>).
+- <code>llm_enricher_filter_classes</code>: Comma-separated labels to trigger VLM analysis (blank for all events).
+- <code>llm_enricher_prompt</code>: Custom security prompt override.</p>
 <hr />
 <h3 id="onvif-ptz-onvif">🎮 ONVIF &amp; PTZ (<code>/onvif</code>)</h3>
 <h4 id="post-onvifprobe"><strong>POST</strong> <code>/onvif/probe</code></h4>
