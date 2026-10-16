@@ -28,3 +28,7 @@
 ## 2024-10-14 - Accessibility for Logo Anchor Links
 **Learning:** Main logo anchor links acting as 'Home' buttons (e.g., `href="#"`) can benefit from explicit `aria-label` and `title` attributes to improve screen reader discoverability and provide tooltips for mouse users, even if the link already contains visible text.
 **Action:** Always add explicit `aria-label` and `title` attributes (e.g., 'VibeNVR Home') to main logo anchor links acting as 'Home' buttons to ensure they are fully accessible to screen readers and offer descriptive tooltips for mouse users.
+
+## 2026-10-16 - Add Active State to Theme Toggle Button
+**Learning:** The theme toggle button in the header (`.site-theme-toggle`) lacked an `:active` pseudo-class, which is necessary for tactile visual feedback during tap or click events, especially on mobile devices.
+**Action:** Added `.site-theme-toggle:active { transform: scale(0.95); box-shadow: var(--shadow-sm); }` to provide immediate tactile feedback when the user interacts with the button.
