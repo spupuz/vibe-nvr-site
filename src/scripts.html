@@ -419,7 +419,7 @@
                     btn.setAttribute('aria-label', `Theme: ${currentLabel}. Switch to ${nextLabel}`);
                 }
 
-                localStorage.setItem('vibe-site-theme', setting);
+                try { localStorage.setItem('vibe-site-theme', setting); } catch (e) { /* 🛡️ Sentinel: Ignore SecurityError */ }
             }
 
             function cycleSiteTheme() {
@@ -427,7 +427,7 @@
                 updateTheme(next);
             }
 
-            const saved = localStorage.getItem('vibe-site-theme');
+            let saved = null; try { saved = localStorage.getItem('vibe-site-theme'); } catch (e) { /* 🛡️ Sentinel: Ignore SecurityError */ }
             const initial = (saved === 'dark' || saved === 'light' || saved === 'system') ? saved : 'system';
             updateTheme(initial);
 

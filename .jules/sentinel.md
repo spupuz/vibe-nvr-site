@@ -54,3 +54,7 @@
 **Vulnerability:** Accessing `localStorage` for telemetry tracking can throw a `SecurityError` in restricted browser contexts. If not caught, this halts the entire `sendTelemetry` execution.
 **Learning:** Even within an outer try-catch, a specific error in storage access shouldn't abort the core functionality (like generating an ID in memory and pinging the telemetry server).
 **Prevention:** Wrap individual storage access operations (`getItem`, `setItem`) in their own `try...catch` blocks to gracefully degrade and ensure core script execution continues securely.
+## 2024-10-24 - Unhandled SecurityError for localStorage in theme controller
+**Vulnerability:** The theme controller accessed `localStorage` without a `try...catch` block, which could cause a `SecurityError` and halt script execution in strict privacy modes or certain iframe environments.
+**Learning:** Web storage APIs must be treated as potentially unavailable or restricted depending on user privacy settings and context.
+**Prevention:** Always wrap `localStorage` and `sessionStorage` accesses in `try...catch` blocks to gracefully degrade functionality (e.g., fallback to default theme).

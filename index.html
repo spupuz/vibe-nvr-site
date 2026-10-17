@@ -21,7 +21,7 @@
     <script>
         (function() {
             try {
-                var saved = localStorage.getItem('vibe-site-theme');
+                var saved = null; try { saved = localStorage.getItem('vibe-site-theme'); } catch (e) { /* 🛡️ Sentinel: Ignore SecurityError */ }
                 var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (saved === 'dark' || ((!saved || saved === 'system') && prefersDark)) {
                     document.documentElement.classList.add('dark');
