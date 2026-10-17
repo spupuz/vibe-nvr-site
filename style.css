@@ -163,6 +163,11 @@ html.dark .logo-dark {
     border-color: var(--primary);
 }
 
+.site-theme-toggle:active {
+    transform: scale(0.95);
+    box-shadow: var(--shadow-sm);
+}
+
 .site-theme-toggle ion-icon {
     font-size: 1.1rem;
 }
