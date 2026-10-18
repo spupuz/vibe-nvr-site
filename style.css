@@ -153,7 +153,8 @@ html.dark .logo-dark {
     font-size: 0.85rem;
     font-weight: 500;
     font-family: inherit;
-    transition: all 0.2s ease;
+    /* ⚡ Bolt: Explicitly define transitioned properties instead of implicit 'all' to prevent unnecessary paint recalculations */
+    transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     white-space: nowrap;
 }
 

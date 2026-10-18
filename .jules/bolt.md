@@ -87,3 +87,6 @@
 ## 2024-05-14 - Use decoding="async" for all images
 **Learning:** Adding `decoding="async"` to `<img>` tags allows the browser to decode image data off the main thread. This prevents jank when large images or multiple images finish downloading and need to be decoded before rendering.
 **Action:** Next time I optimize a frontend codebase, ensure `decoding="async"` is applied to images to improve main thread availability.
+## 2024-10-18 - Explicit CSS Transitions
+**Learning:** Using implicit `transition: all` in CSS forces the browser to evaluate and potentially animate every single property when a state changes (like `:hover`), which can lead to unnecessary layout or paint recalculations, especially for non-composited properties.
+**Action:** Always explicitly define the specific properties intended to transition (e.g., `transition: color 0.2s, background-color 0.2s;`) instead of using `all`.
