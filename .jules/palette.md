@@ -32,3 +32,7 @@
 ## 2026-10-16 - Add Active State to Theme Toggle Button
 **Learning:** The theme toggle button in the header (`.site-theme-toggle`) lacked an `:active` pseudo-class, which is necessary for tactile visual feedback during tap or click events, especially on mobile devices.
 **Action:** Added `.site-theme-toggle:active { transform: scale(0.95); box-shadow: var(--shadow-sm); }` to provide immediate tactile feedback when the user interacts with the button.
+
+## 2026-10-19 - Dynamic Alt Text for Lightbox Modals
+**Learning:** Generic alt text (like "Enlarged view") on reusable lightbox modal images deprives screen reader users of context, making it impossible to know which image was expanded.
+**Action:** Always dynamically update the `alt` text of the lightbox image element to match the specific context or description of the thumbnail that was activated.

@@ -7,11 +7,12 @@
     <script>
         let lastFocusedElement = null;
 
-        function openLightbox(src) {
+        function openLightbox(src, altText) {
             lastFocusedElement = document.activeElement;
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             lightboxImg.src = src;
+            lightboxImg.alt = altText || 'Enlarged view';
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
 
