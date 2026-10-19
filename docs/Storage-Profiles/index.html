@@ -1681,8 +1681,10 @@ Use the <strong>Breakdown Table</strong> to identify "storage-hungry" cameras an
 <ul>
 <li><strong>Archival Enabled</strong>: A global toggle that instructs the <code>StorageService</code> to attempt archival <em>before</em> purging events.</li>
 <li><strong>Archival Interval</strong>: An independent background scheduler (e.g., every 24 hours) that sweeps for archivable events, preventing blocking on the main cleanup loop.</li>
+<li><strong>Failed-Move Retries &amp; Self-Healing</strong>: If a remote mount or SFTP server becomes temporarily unreachable during an archival sweep, the system flags the batch as incomplete and safely retries the failed file transfers on the next scheduled monitor pass instead of permanently losing them or deleting them prematurely.</li>
+<li><strong>Path Traversal Protection</strong>: Every source and destination path (including associated thumbnails) is strictly validated via <code>is_path_safe</code> and <code>translate_path</code> prior to any transfer or deletion.</li>
 </ul>
-<p>If an event reaches its retention limit and archival is enabled, it will be moved to the assigned archival path. If archival fails or the archival volume is full, the system falls back to standard deletion to preserve primary disk space.</p>
+<p>If an event reaches its retention limit and archival is enabled, it will be moved to the assigned archival path. If archival is disabled or emergency space limits are reached, the system falls back to standard deletion to preserve primary disk space.</p>
 <h2 id="disk-safety">Disk Safety</h2>
 <p>If the total free space on the <code>/data</code> volume falls below <strong>5%</strong>, VibeNVR triggers an <strong>Emergency Cleanup</strong>. It will purge the oldest events from the system regardless of quotas or retention settings until at least 10% free space is recovered. This protects the database and OS from filesystem exhaustion.</p>
 <h2 id="technical-notes">Technical Notes</h2>

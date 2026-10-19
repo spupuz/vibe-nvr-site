@@ -1139,9 +1139,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-topic" class="md-nav__link">
+  <a href="#1-system-level-topics" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Topic
+      1. System Level Topics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-camera-specific-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Camera Specific Topics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Topics
     </span>
   </a>
   
@@ -1440,9 +1458,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-topic" class="md-nav__link">
+  <a href="#1-system-level-topics" class="md-nav__link">
     <span class="md-ellipsis">
-      Example Topic
+      1. System Level Topics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-camera-specific-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Camera Specific Topics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-topics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Topics
     </span>
   </a>
   
@@ -1569,7 +1605,26 @@
 </table>
 <hr />
 <h2 id="topic-structure">🛰️ Topic Structure</h2>
-<p>All messages follow the pattern: <code>&lt;prefix&gt;/&lt;camera_id&gt;/&lt;subtopic&gt;</code>.</p>
+<p>Messages are organized under your configured base prefix.</p>
+<h3 id="1-system-level-topics">1. System Level Topics</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Topic</th>
+<th style="text-align: left;">Payload</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong><code>&lt;prefix&gt;/status</code></strong></td>
+<td style="text-align: left;"><code>online</code> / <code>offline</code></td>
+<td style="text-align: left;">Global VibeNVR engine status (includes MQTT Last Will and Testament - LWT).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-camera-specific-topics">2. Camera Specific Topics</h3>
+<p>All camera messages follow the pattern: <code>&lt;prefix&gt;/&lt;camera_id&gt;/&lt;subtopic&gt;</code>.</p>
 <table>
 <thead>
 <tr>
@@ -1582,7 +1637,7 @@
 <tr>
 <td style="text-align: left;"><strong><code>status</code></strong></td>
 <td style="text-align: left;"><code>online</code> / <code>offline</code></td>
-<td style="text-align: left;">Availability of the camera service.</td>
+<td style="text-align: left;">Availability of the camera stream (retained &amp; refreshed via 30s heartbeat).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong><code>motion</code></strong></td>
@@ -1596,10 +1651,16 @@
 </tr>
 </tbody>
 </table>
-<h3 id="example-topic">Example Topic</h3>
+<h3 id="example-topics">Example Topics</h3>
 <p>If your prefix is <code>vibenvr</code> and camera ID is <code>88</code>:
-- Topic: <code>vibenvr/88/motion</code>
-- Payload: <code>ON</code></p>
+- System Status: <code>vibenvr/status</code> -&gt; <code>online</code>
+- Camera Availability: <code>vibenvr/88/status</code> -&gt; <code>online</code>
+- Motion Sensor: <code>vibenvr/88/motion</code> -&gt; <code>ON</code></p>
+<blockquote>
+<p>[!NOTE]
+<strong>Availability Heartbeat &amp; Self-Healing</strong>: VibeNVR runs a background watchdog thread (every 30 seconds) that re-verifies camera connectivity and refreshes retained availability messages. If a network blip or broker restart causes an inconsistent state, camera availability automatically self-heals without user intervention.</p>
+<p><strong>Dynamic Prefix Changes</strong>: When changing the MQTT Topic Prefix in Settings, VibeNVR automatically reconnects, resets the discovery cache, and republishes Home Assistant discovery and availability payloads under the new prefix.</p>
+</blockquote>
 <hr />
 <h2 id="home-assistant-integration">🤖 Home Assistant Integration</h2>
 <p>VibeNVR automatically publishes Discovery payloads to the <code>homeassistant/</code> topic.</p>
