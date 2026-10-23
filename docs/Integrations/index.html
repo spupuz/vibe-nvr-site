@@ -1234,6 +1234,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#apprise-multi-provider-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔔 Apprise Multi-Provider Notifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔔 Apprise Multi-Provider Notifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#highlights" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Highlights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-url-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Setup &amp; URL Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rest-api" class="md-nav__link">
     <span class="md-ellipsis">
       🛠️ REST API
@@ -1565,6 +1598,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#apprise-multi-provider-notifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔔 Apprise Multi-Provider Notifications
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔔 Apprise Multi-Provider Notifications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#highlights" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Highlights
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-url-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Setup &amp; URL Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rest-api" class="md-nav__link">
     <span class="md-ellipsis">
       🛠️ REST API
@@ -1693,6 +1759,29 @@
 - <strong>Format</strong>: <code>socks5://user:pass@host:port</code> or <code>http://...</code>
 - <strong>Auto-Retry</strong>: Since free public proxies are often unstable, VibeNVR implements an intelligent background retry mechanism. You can configure the <strong>Max Retries</strong> and <strong>Retry Delay</strong> in the Settings UI. If a proxy drops the connection, VibeNVR will silently retry sending the notification without crashing or blocking the recording engine.</p>
 <hr />
+<h2 id="apprise-multi-provider-notifications">🔔 Apprise Multi-Provider Notifications</h2>
+<p>VibeNVR integrates <a href="https://github.com/caronc/apprise">Apprise</a> to deliver alerts across <strong>80+ notification services</strong>, including <strong>Discord, Pushover, Gotify, NTFY, Slack, Matrix, Microsoft Teams</strong>, and more.</p>
+<h3 id="highlights">✨ Highlights</h3>
+<ul>
+<li><strong>Global &amp; Per-Camera Endpoints</strong>: Define global default Apprise URLs in <strong>Settings -&gt; Notifications</strong>, or override them per camera in the <strong>Alerts</strong> tab.</li>
+<li><strong>Independent Triggers</strong>: Configure alerts for motion/event start (<code>Send Apprise Alert on Start</code>) and camera health issues (<code>Notify Health via Apprise</code>) independently.</li>
+<li><strong>Snapshot Attachments</strong>: Automatically attach high-resolution event snapshot images to supported push providers. Controlled globally via <strong>Attachment Defaults</strong> and toggled per camera.</li>
+<li><strong>AI Enrichment</strong>: Automatically formats alerts with detected AI objects and Vision LLM descriptions (<code>ai_description</code>) when available.</li>
+<li><strong>Confidential URL Masking</strong>: The UI uses a secure <code>MaskedTextarea</code> component that hides sensitive webhook tokens and passwords by default, requiring an explicit toggle to view or edit.</li>
+<li><strong>Instant Test Utility</strong>: Test your Apprise configuration directly from the UI via the <strong>Test Apprise</strong> button before saving.</li>
+</ul>
+<h3 id="setup-url-format">⚙️ Setup &amp; URL Format</h3>
+<p>Apprise supports newline-separated or comma-separated service URLs:</p>
+<div class="highlight"><pre><span></span><code>discord://webhook_id/webhook_token
+pover://user@token
+gotify://hostname/token
+ntfy://ntfy.sh/topic
+slack://TokenA/TokenB/TokenC
+</code></pre></div>
+<blockquote>
+<p>[!TIP]
+For a full list of supported schemes, parameters, and syntax examples, see the <a href="https://github.com/caronc/apprise/wiki">Apprise Wiki</a>.</p>
+</blockquote>
 <hr />
 <h2 id="rest-api">🛠️ REST API</h2>
 <p>For custom scripts or advanced integrations, VibeNVR exposes a full REST API.</p>

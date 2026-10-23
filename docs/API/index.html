@@ -1437,6 +1437,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-settingstest-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/test-notify
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#post-settingstest-vision-llm" class="md-nav__link">
     <span class="md-ellipsis">
       POST /settings/test-vision-llm
@@ -2590,6 +2599,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#post-settingstest-notify" class="md-nav__link">
+    <span class="md-ellipsis">
+      POST /settings/test-notify
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#post-settingstest-vision-llm" class="md-nav__link">
     <span class="md-ellipsis">
       POST /settings/test-vision-llm
@@ -3156,6 +3174,23 @@
 <span class="w">  </span><span class="nt">&quot;deleted_size_mb&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">120.5</span>
 <span class="p">}</span>
 </code></pre></div></p>
+<h4 id="post-settingstest-notify"><strong>POST</strong> <code>/settings/test-notify</code></h4>
+<p>Send a synchronous test notification across configured channels (<code>email</code>, <code>telegram</code>, <code>webhook</code>, <code>apprise</code>) (Admin only).
+- <strong>Auth Required</strong>: Admin privileges (Bearer JWT or API Key).
+- <strong>Payload Example (<code>apprise</code>)</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;apprise&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;notify_apprise_urls&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;discord://webhook_id/webhook_token\npover://user@token&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+- <strong>Response Example</strong>:
+  <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;success&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test Apprise notification sent to 2 destination(s)&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
 <h4 id="post-settingstest-vision-llm"><strong>POST</strong> <code>/settings/test-vision-llm</code></h4>
 <p>Test connectivity and inference to an OpenAI-compatible Vision LLM endpoint (Admin only).
 - <strong>Auth Required</strong>: Admin privileges (Bearer JWT or API Key).
@@ -3183,6 +3218,10 @@
 - <code>mqtt_topic_prefix</code>: Root topic (Default: <code>vibenvr</code>)
 - <code>telemetry_enabled</code>: (<code>true</code>/<code>false</code>)
 - <code>notify_webhook_url</code>: Global endpoint for notifications
+- <code>notify_apprise_urls</code>: Global Apprise notification URLs (separated by newlines or commas)
+- <code>global_attach_image_apprise</code>: (<code>true</code>/<code>false</code>) Default behavior for image attachments in Apprise notifications
+- <code>global_attach_image_telegram</code>: (<code>true</code>/<code>false</code>) Default behavior for image attachments in Telegram notifications
+- <code>global_attach_image_email</code>: (<code>true</code>/<code>false</code>) Default behavior for image attachments in Email notifications
 - <code>ai_enabled</code>: (<code>true</code>/<code>false</code>) Master AI activation switch.
 - <code>ai_model</code>: (<code>YOLOv8</code>/<code>MobileNet SSD v2</code>) Global detection model.
 - <code>ai_hardware</code>: (<code>auto</code>/<code>cpu</code>/<code>tpu</code>) Global hardware preference.
