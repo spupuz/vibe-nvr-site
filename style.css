@@ -902,27 +902,27 @@ footer {
     transform: scale(0.9);
 }
 
-/* Support Section */
-#support .support-btn {
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+/* Interactive Badges & Support Buttons */
+.support-btn, .badge-link {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
 }
 
-#support .support-btn:hover,
-#support .support-btn:focus-visible {
+.support-btn:hover,
+.support-btn:focus-visible {
     transform: scale(1.05);
 }
 
-#support .support-btn:active {
+.support-btn:active {
     transform: scale(0.95);
 }
 
-#support a[href*="star-history.com"]:hover,
-#support a[href*="star-history.com"]:focus-visible {
+.badge-link:hover,
+.badge-link:focus-visible {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
 }
 
-#support a[href*="star-history.com"]:active {
+.badge-link:active {
     transform: translateY(0);
     box-shadow: var(--shadow-sm);
 }
