@@ -903,16 +903,16 @@ footer {
 }
 
 /* Support Section */
-#support .support-btn {
+.support-btn {
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#support .support-btn:hover,
-#support .support-btn:focus-visible {
+.support-btn:hover,
+.support-btn:focus-visible {
     transform: scale(1.05);
 }
 
-#support .support-btn:active {
+.support-btn:active {
     transform: scale(0.95);
 }
 
@@ -932,7 +932,7 @@ footer {
         font-size: 1.75rem;
     }
     
-    #support .support-btn img {
+    .support-btn img {
         height: 50px !important;
         width: auto !important;
     }
