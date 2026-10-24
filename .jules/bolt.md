@@ -90,3 +90,6 @@
 ## 2024-10-18 - Explicit CSS Transitions
 **Learning:** Using implicit `transition: all` in CSS forces the browser to evaluate and potentially animate every single property when a state changes (like `:hover`), which can lead to unnecessary layout or paint recalculations, especially for non-composited properties.
 **Action:** Always explicitly define the specific properties intended to transition (e.g., `transition: color 0.2s, background-color 0.2s;`) instead of using `all`.
+## 2026-10-24 - Cache DOM Elements in Interactive Functions
+**Learning:** Repeatedly querying the DOM using `querySelector` or `getElementById` inside functions that handle UI interactions (like opening or closing a mobile menu) introduces unnecessary overhead, especially if the elements are guaranteed to exist or merely toggle visibility.
+**Action:** Cache the resulting DOM nodes globally (or within a closure) upon their first use, and reuse those cached references in subsequent calls instead of performing repeated traversals.
