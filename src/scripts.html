@@ -196,11 +196,25 @@
     <script>
         let mobileMenuLastFocusedElement = null;
 
+        // ⚡ Bolt: Cache menu DOM queries globally to avoid repeated traversals
+        let cachedNavEl = null;
+        let cachedOverlayEl = null;
+        let cachedIconEl = null;
+        let cachedToggleBtnEl = null;
+
+        function initMenuCache() {
+            if (!cachedNavEl) cachedNavEl = document.querySelector(".nav-links");
+            if (!cachedOverlayEl) cachedOverlayEl = document.querySelector(".nav-overlay");
+            if (!cachedIconEl) cachedIconEl = document.getElementById("menu-icon");
+            if (!cachedToggleBtnEl) cachedToggleBtnEl = document.querySelector(".mobile-toggle");
+        }
+
         function closeMenu() {
-            const nav = document.querySelector(".nav-links");
-            const overlay = document.querySelector(".nav-overlay");
-            const icon = document.getElementById("menu-icon");
-            const toggleBtn = document.querySelector(".mobile-toggle");
+            initMenuCache();
+            const nav = cachedNavEl;
+            const overlay = cachedOverlayEl;
+            const icon = cachedIconEl;
+            const toggleBtn = cachedToggleBtnEl;
             
             if(nav.classList.contains("active")) {
                 nav.classList.remove("active");
@@ -222,10 +236,11 @@
         }
 
         function toggleMenu() {
-            const nav = document.querySelector(".nav-links");
-            const overlay = document.querySelector(".nav-overlay");
-            const icon = document.getElementById("menu-icon");
-            const toggleBtn = document.querySelector(".mobile-toggle");
+            initMenuCache();
+            const nav = cachedNavEl;
+            const overlay = cachedOverlayEl;
+            const icon = cachedIconEl;
+            const toggleBtn = cachedToggleBtnEl;
             
             if (!nav.classList.contains("active")) {
                 // Opening
