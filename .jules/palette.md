@@ -36,3 +36,7 @@
 ## 2026-10-19 - Dynamic Alt Text for Lightbox Modals
 **Learning:** Generic alt text (like "Enlarged view") on reusable lightbox modal images deprives screen reader users of context, making it impossible to know which image was expanded.
 **Action:** Always dynamically update the `alt` text of the lightbox image element to match the specific context or description of the thumbnail that was activated.
+
+## 2024-10-23 - Interactive States for Reused Components
+**Learning:** Scoping interactive pseudo-classes (like `:hover`, `:active`) to specific sections (e.g., `#support .support-btn`) prevents components from receiving essential tactile visual feedback when reused elsewhere (like in a `.hero` section).
+**Action:** Always declare interactive states for reusable UI elements (like `.support-btn` or `.badge-link`) globally rather than scoping them tightly to specific layout containers.
