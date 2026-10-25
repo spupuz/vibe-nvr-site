@@ -58,3 +58,7 @@
 **Vulnerability:** The theme controller accessed `localStorage` without a `try...catch` block, which could cause a `SecurityError` and halt script execution in strict privacy modes or certain iframe environments.
 **Learning:** Web storage APIs must be treated as potentially unavailable or restricted depending on user privacy settings and context.
 **Prevention:** Always wrap `localStorage` and `sessionStorage` accesses in `try...catch` blocks to gracefully degrade functionality (e.g., fallback to default theme).
+## 2024-10-25 - [Missing form-action and upgrade-insecure-requests in CSP]
+**Vulnerability:** The Content Security Policy (CSP) lacked `form-action` and `upgrade-insecure-requests` directives. Without `form-action`, an attacker who achieves DOM XSS could inject a malicious `<form>` to exfiltrate user data. Without `upgrade-insecure-requests`, passive or active mixed content might occur if resources are requested over HTTP.
+**Learning:** A robust CSP must protect against data exfiltration vectors, not just script execution. Even static sites without backend forms should implement `form-action 'none'` (or `'self'` if local forms exist, e.g., MkDocs search).
+**Prevention:** Always include `form-action` and `upgrade-insecure-requests` in CSP declarations to ensure comprehensive defense-in-depth against data exfiltration and mixed content.

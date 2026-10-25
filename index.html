@@ -6,7 +6,8 @@
     <title>VibeNVR - Modern Video Surveillance</title>
     <meta name="description" content="Simple, privacy-respecting local NVR — fast setup, flexible recording, no cloud required.">
     <!-- 🛡️ Sentinel: Added Content Security Policy (CSP) to mitigate XSS and restrict external assets -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://vibenvr-telemetry.spupuz.workers.dev https://cdn.buymeacoffee.com https://img.shields.io; connect-src 'self' https://vibenvr-telemetry.spupuz.workers.dev https://cdn.jsdelivr.net https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self';">
+    <!-- 🛡️ Sentinel: Added form-action and upgrade-insecure-requests to CSP for defense-in-depth against data exfiltration and mixed content -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://vibenvr-telemetry.spupuz.workers.dev https://cdn.buymeacoffee.com https://img.shields.io; connect-src 'self' https://vibenvr-telemetry.spupuz.workers.dev https://cdn.jsdelivr.net https://api.github.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests;">
     <!-- 🛡️ Sentinel: Added Referrer-Policy to prevent leaking URL paths to external domains -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="preconnect" href="https://fonts.googleapis.com">
