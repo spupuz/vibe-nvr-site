@@ -93,3 +93,6 @@
 ## 2026-10-24 - Cache DOM Elements in Interactive Functions
 **Learning:** Repeatedly querying the DOM using `querySelector` or `getElementById` inside functions that handle UI interactions (like opening or closing a mobile menu) introduces unnecessary overhead, especially if the elements are guaranteed to exist or merely toggle visibility.
 **Action:** Cache the resulting DOM nodes globally (or within a closure) upon their first use, and reuse those cached references in subsequent calls instead of performing repeated traversals.
+## 2026-10-25 - CSS contain-intrinsic-size default value collapsing
+**Learning:** Using `contain-intrinsic-size: 0 300px` sets the intrinsic width of an element to 0. If the element is used in flexbox/grid containers without explicit `flex-grow` or width properties, this can cause the element's width to collapse entirely, breaking the layout.
+**Action:** When using `content-visibility: auto`, always use `contain-intrinsic-size: auto [height]` (e.g., `contain-intrinsic-size: auto 300px`) or simply `contain-intrinsic-height: [height]` to preserve the natural horizontal layout behavior of the elements while still providing the browser an estimated height for scrollbars.
