@@ -40,3 +40,7 @@
 ## 2024-10-23 - Interactive States for Reused Components
 **Learning:** Scoping interactive pseudo-classes (like `:hover`, `:active`) to specific sections (e.g., `#support .support-btn`) prevents components from receiving essential tactile visual feedback when reused elsewhere (like in a `.hero` section).
 **Action:** Always declare interactive states for reusable UI elements (like `.support-btn` or `.badge-link`) globally rather than scoping them tightly to specific layout containers.
+
+## 2026-10-25 - Context Cues for External Links
+**Learning:** Links that open in a new tab (`target="_blank"`) without visual and programmatic context cues can disorient users, especially screen reader users who expect to stay in the same browsing context.
+**Action:** Always append an external link icon (e.g., `<ion-icon name="open-outline">`) and a visually hidden screen reader text (e.g., `<span class="sr-only">(opens in a new tab)</span>`) to key outbound links to provide clear visual affordance and accessible context shifts.
