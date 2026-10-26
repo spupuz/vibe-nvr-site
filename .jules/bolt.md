@@ -93,3 +93,7 @@
 ## 2026-10-24 - Cache DOM Elements in Interactive Functions
 **Learning:** Repeatedly querying the DOM using `querySelector` or `getElementById` inside functions that handle UI interactions (like opening or closing a mobile menu) introduces unnecessary overhead, especially if the elements are guaranteed to exist or merely toggle visibility.
 **Action:** Cache the resulting DOM nodes globally (or within a closure) upon their first use, and reuse those cached references in subsequent calls instead of performing repeated traversals.
+
+## 2024-05-24 - Deferring off-screen rendering
+**Learning:** For large lists of off-screen elements (like cards), the browser spends a lot of time calculating their layout on initial load, degrading FCP/TTI.
+**Action:** Use `content-visibility: auto` paired with `contain-intrinsic-size` to explicitly instruct the browser to skip layout and painting for elements that aren't yet in the viewport.
