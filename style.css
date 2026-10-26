@@ -465,6 +465,9 @@ main:focus {
     transition: box-shadow 0.2s ease, transform 0.2s ease;
     display: flex;
     flex-direction: column;
+    /* ⚡ Bolt: Improve FCP/TTI by deferring layout of off-screen cards */
+    content-visibility: auto;
+    contain-intrinsic-size: auto 250px;
 }
 
 .card:hover,
