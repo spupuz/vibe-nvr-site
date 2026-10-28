@@ -6,24 +6,29 @@
 
     <script>
         let lastFocusedElement = null;
+        // ⚡ Bolt: Cache DOM elements for interactive lightbox modal
+        let cachedLightbox = null;
+        let cachedLightboxImg = null;
+        let cachedLightboxCloseBtn = null;
 
         function openLightbox(src, altText) {
             lastFocusedElement = document.activeElement;
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            lightboxImg.src = src;
-            lightboxImg.alt = altText || 'Enlarged view';
-            lightbox.style.display = 'flex';
+            if (!cachedLightbox) cachedLightbox = document.getElementById('lightbox');
+            if (!cachedLightboxImg) cachedLightboxImg = document.getElementById('lightbox-img');
+
+            cachedLightboxImg.src = src;
+            cachedLightboxImg.alt = altText || 'Enlarged view';
+            cachedLightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden'; // Prevent scrolling
 
             // Focus the close button for keyboard accessibility
-            const closeBtn = lightbox.querySelector('.lightbox-close');
-            if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+            if (!cachedLightboxCloseBtn) cachedLightboxCloseBtn = cachedLightbox.querySelector('.lightbox-close');
+            if (cachedLightboxCloseBtn) setTimeout(() => cachedLightboxCloseBtn.focus(), 50);
         }
 
         function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.style.display = 'none';
+            if (!cachedLightbox) cachedLightbox = document.getElementById('lightbox');
+            cachedLightbox.style.display = 'none';
             document.body.style.overflow = ''; // Restore scrolling
 
             if (lastFocusedElement) {
@@ -33,8 +38,6 @@
         }
 
         // Close on Escape key and handle Focus Trap for Lightbox
-        let cachedLightbox = null;
-        let cachedLightboxCloseBtn = null;
         document.addEventListener('keydown', function (event) {
             if (event.key !== 'Escape' && event.key !== 'Tab') return; // ⚡ Bolt: Early return to prevent DOM queries
 

@@ -97,3 +97,6 @@
 ## 2024-05-24 - Deferring off-screen rendering
 **Learning:** For large lists of off-screen elements (like cards), the browser spends a lot of time calculating their layout on initial load, degrading FCP/TTI.
 **Action:** Use `content-visibility: auto` paired with `contain-intrinsic-size` to explicitly instruct the browser to skip layout and painting for elements that aren't yet in the viewport.
+## 2026-10-24 - Cache DOM Elements in Lightbox Modal
+**Learning:** Querying the DOM dynamically (like `document.getElementById`) on every toggle of a UI modal incurs unnecessary DOM traversal overhead.
+**Action:** Cache the resulting DOM nodes globally upon their first use to prevent redundant queries on subsequent interactions.
