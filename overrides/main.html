@@ -40,6 +40,19 @@
   <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js" integrity="sha384-I7UNMgUrv6nA6xNHRbytUMytFlugSJWu/Il4VAV+Rhv73j9qaQqjf5IS1w9vHGsD" crossorigin="anonymous"></script>
   <script>
       (async function fetchVersions() {
+          let cachedVersion = null;
+          try {
+              cachedVersion = sessionStorage.getItem('vibe_site_version');
+          } catch (e) {
+              // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+          }
+          const siteEl = document.getElementById('site-version');
+
+          if (cachedVersion) {
+              if (siteEl) siteEl.textContent = cachedVersion;
+              return;
+          }
+
           // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -49,8 +62,12 @@
               clearTimeout(timeoutId);
               if (siteRes.ok) {
                   const siteData = await siteRes.json();
-                  const siteEl = document.getElementById('site-version');
                   if (siteEl) siteEl.textContent = siteData.tag_name;
+                  try {
+                      sessionStorage.setItem('vibe_site_version', siteData.tag_name);
+                  } catch (e) {
+                      // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+                  }
               }
           } catch (err) {
               console.error('Failed to fetch versions', err);
