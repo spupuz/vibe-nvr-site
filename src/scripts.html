@@ -222,6 +222,7 @@
             if(nav.classList.contains("active")) {
                 nav.classList.remove("active");
                 overlay.classList.remove("active");
+                document.body.style.overflow = ''; // ⚡ Palette: restore background scroll
                 icon.setAttribute("name", "menu-outline");
 
                 // ⚡ Bolt: Retain cachedFocusableElements since the menu is merely hidden, avoiding unnecessary DOM re-queries on subsequent opens
@@ -250,6 +251,7 @@
                 mobileMenuLastFocusedElement = document.activeElement;
                 nav.classList.add("active");
                 overlay.classList.add("active");
+                document.body.style.overflow = 'hidden'; // ⚡ Palette: lock background scroll
                 icon.setAttribute("name", "close-outline");
                 if (toggleBtn) {
                     toggleBtn.setAttribute("aria-expanded", "true");
