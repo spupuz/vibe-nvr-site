@@ -175,8 +175,13 @@
         </div>
 
         <script>
+            // ⚡ Bolt: Cache DOM elements in interactive functions to avoid repeated traversals
+            let cachedGalleryScrollContainer = null;
             function scrollGallery(direction) {
-                const container = document.querySelector('.gallery-scroll');
+                if (!cachedGalleryScrollContainer) {
+                    cachedGalleryScrollContainer = document.querySelector('.gallery-scroll');
+                }
+                const container = cachedGalleryScrollContainer;
                 const scrollAmount = 350 + 32; // item width + gap
                 container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
             }
