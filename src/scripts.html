@@ -429,6 +429,13 @@
         (function() {
             let currentTheme = 'system';
 
+            // ⚡ Bolt: Cache DOM elements within closure to prevent repeated querying on every theme toggle
+            let cachedSun = null;
+            let cachedMoon = null;
+            let cachedSystem = null;
+            let cachedLbl = null;
+            let cachedBtn = null;
+
             function updateTheme(setting) {
                 currentTheme = setting;
                 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -436,24 +443,24 @@
 
                 document.documentElement.classList.toggle('dark', isDark);
 
-                const sun = document.getElementById('site-icon-sun');
-                const moon = document.getElementById('site-icon-moon');
-                const system = document.getElementById('site-icon-system');
-                const lbl = document.getElementById('site-theme-label');
-                const btn = document.getElementById('site-theme-toggle');
+                if (!cachedSun) cachedSun = document.getElementById('site-icon-sun');
+                if (!cachedMoon) cachedMoon = document.getElementById('site-icon-moon');
+                if (!cachedSystem) cachedSystem = document.getElementById('site-icon-system');
+                if (!cachedLbl) cachedLbl = document.getElementById('site-theme-label');
+                if (!cachedBtn) cachedBtn = document.getElementById('site-theme-toggle');
 
-                if (sun) sun.style.display = setting === 'light' ? 'inline-block' : 'none';
-                if (moon) moon.style.display = setting === 'dark' ? 'inline-block' : 'none';
-                if (system) system.style.display = setting === 'system' ? 'inline-block' : 'none';
+                if (cachedSun) cachedSun.style.display = setting === 'light' ? 'inline-block' : 'none';
+                if (cachedMoon) cachedMoon.style.display = setting === 'dark' ? 'inline-block' : 'none';
+                if (cachedSystem) cachedSystem.style.display = setting === 'system' ? 'inline-block' : 'none';
 
                 const nextMode = setting === 'system' ? 'light' : (setting === 'light' ? 'dark' : 'system');
                 const nextLabel = setting === 'system' ? 'Light' : (setting === 'light' ? 'Dark' : 'Follow System');
                 const currentLabel = setting === 'system' ? 'System' : (setting === 'light' ? 'Light' : 'Dark');
 
-                if (lbl) lbl.textContent = currentLabel;
-                if (btn) {
-                    btn.title = `Theme: ${currentLabel} (Click for ${nextLabel})`;
-                    btn.setAttribute('aria-label', `Theme: ${currentLabel}. Switch to ${nextLabel}`);
+                if (cachedLbl) cachedLbl.textContent = currentLabel;
+                if (cachedBtn) {
+                    cachedBtn.title = `Theme: ${currentLabel} (Click for ${nextLabel})`;
+                    cachedBtn.setAttribute('aria-label', `Theme: ${currentLabel}. Switch to ${nextLabel}`);
                 }
 
                 try { localStorage.setItem('vibe-site-theme', setting); } catch (e) { /* 🛡️ Sentinel: Ignore SecurityError */ }
@@ -474,7 +481,8 @@
                 }
             });
 
-            document.getElementById('site-theme-toggle')?.addEventListener('click', cycleSiteTheme);
+            if (!cachedBtn) cachedBtn = document.getElementById('site-theme-toggle');
+            cachedBtn?.addEventListener('click', cycleSiteTheme);
         })();
     </script>
 </body>

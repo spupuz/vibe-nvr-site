@@ -100,3 +100,6 @@
 ## 2026-10-24 - Cache DOM Elements in Lightbox Modal
 **Learning:** Querying the DOM dynamically (like `document.getElementById`) on every toggle of a UI modal incurs unnecessary DOM traversal overhead.
 **Action:** Cache the resulting DOM nodes globally upon their first use to prevent redundant queries on subsequent interactions.
+## 2026-10-31 - Cache DOM Elements for Theme Toggling
+**Learning:** Querying the DOM dynamically (like `document.getElementById`) on every toggle of the theme switcher incurs unnecessary DOM traversal overhead.
+**Action:** Cache the resulting DOM nodes within a closure upon their first use to prevent redundant queries on subsequent theme toggles.
