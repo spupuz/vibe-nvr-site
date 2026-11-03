@@ -123,7 +123,8 @@
             updateGalleryLayoutCache();
             window.addEventListener('resize', debouncedUpdateGalleryLayoutCache);
             // Re-cache when gallery images load to ensure correct widths
-            galleryScroll.querySelectorAll('img').forEach(img => {
+            const galleryImages = galleryScroll.querySelectorAll('img');
+            galleryImages.forEach(img => {
                 if (!img.complete) {
                     img.addEventListener('load', debouncedUpdateGalleryLayoutCache);
                 }
