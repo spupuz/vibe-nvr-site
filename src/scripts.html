@@ -428,6 +428,7 @@
         // ─── THEME CONTROLLER (Light / Dark / Follow System) ───────────────
         (function() {
             let currentTheme = 'system';
+            const darkMatchMedia = window.matchMedia('(prefers-color-scheme: dark)');
 
             // ⚡ Bolt: Cache DOM elements within closure to prevent repeated querying on every theme toggle
             let cachedSun = null;
@@ -438,7 +439,7 @@
 
             function updateTheme(setting) {
                 currentTheme = setting;
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                const prefersDark = darkMatchMedia.matches;
                 const isDark = setting === 'dark' || (setting === 'system' && prefersDark);
 
                 document.documentElement.classList.toggle('dark', isDark);
@@ -475,7 +476,7 @@
             const initial = (saved === 'dark' || saved === 'light' || saved === 'system') ? saved : 'system';
             updateTheme(initial);
 
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            darkMatchMedia.addEventListener('change', () => {
                 if (currentTheme === 'system') {
                     updateTheme('system');
                 }
