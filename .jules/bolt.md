@@ -103,3 +103,6 @@
 ## 2026-10-31 - Cache DOM Elements for Theme Toggling
 **Learning:** Querying the DOM dynamically (like `document.getElementById`) on every toggle of the theme switcher incurs unnecessary DOM traversal overhead.
 **Action:** Cache the resulting DOM nodes within a closure upon their first use to prevent redundant queries on subsequent theme toggles.
+## 2026-11-04 - Cache MediaQueryList in Theme Controller
+**Learning:** Calling \`window.matchMedia('(prefers-color-scheme: dark)')\` repeatedly on every theme toggle creates a new \`MediaQueryList\` object each time, which incurs unnecessary overhead.
+**Action:** Cache the resulting \`MediaQueryList\` object within a closure upon its first use to prevent redundant queries and object creation on subsequent theme toggles.
