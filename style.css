@@ -751,6 +751,13 @@ footer {
 }
 
 .gallery-item {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
     width: 350px;
     /* Increased width per user request */
     min-width: 350px;
