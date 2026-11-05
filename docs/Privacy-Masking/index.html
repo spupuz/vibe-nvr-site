@@ -56,7 +56,8 @@
     
     
   
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://api.github.com; connect-src 'self' https://api.github.com https://cdn.jsdelivr.net; frame-src 'none'; object-src 'none'; base-uri 'self';">
+  <!-- 🛡️ Sentinel: Added form-action and upgrade-insecure-requests to CSP for defense-in-depth against data exfiltration and mixed content -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://api.github.com; connect-src 'self' https://api.github.com https://cdn.jsdelivr.net; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   </head>
@@ -1501,7 +1502,7 @@
       <div style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
           
           <div style="font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem; color: var(--md-default-fg-color);">
-              <ion-icon name="videocam"></ion-icon> VibeNVR
+              <ion-icon name="videocam" aria-hidden="true"></ion-icon> VibeNVR
           </div>
           
           <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
@@ -1527,6 +1528,19 @@
   <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@7.4.0/dist/ionicons/ionicons.js" integrity="sha384-I7UNMgUrv6nA6xNHRbytUMytFlugSJWu/Il4VAV+Rhv73j9qaQqjf5IS1w9vHGsD" crossorigin="anonymous"></script>
   <script>
       (async function fetchVersions() {
+          let cachedVersion = null;
+          try {
+              cachedVersion = sessionStorage.getItem('vibe_site_version');
+          } catch (e) {
+              // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+          }
+          const siteEl = document.getElementById('site-version');
+
+          if (cachedVersion) {
+              if (siteEl) siteEl.textContent = cachedVersion;
+              return;
+          }
+
           // 🛡️ Sentinel: Add AbortController for timeout to prevent hanging on external requests
           const controller = new AbortController();
           const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -1536,8 +1550,12 @@
               clearTimeout(timeoutId);
               if (siteRes.ok) {
                   const siteData = await siteRes.json();
-                  const siteEl = document.getElementById('site-version');
                   if (siteEl) siteEl.textContent = siteData.tag_name;
+                  try {
+                      sessionStorage.setItem('vibe_site_version', siteData.tag_name);
+                  } catch (e) {
+                      // 🛡️ Sentinel: Ignore SecurityError in restricted contexts
+                  }
               }
           } catch (err) {
               console.error('Failed to fetch versions', err);
