@@ -263,8 +263,9 @@ a:active {
     white-space: normal;
 }
 
-main:focus {
-    outline: none;
+main:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .container {
