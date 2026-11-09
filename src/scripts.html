@@ -146,9 +146,11 @@
 
                             // Use a small buffer (10px) to account for floating point inaccuracies
                             if (galleryScroll.scrollLeft + cachedClientWidth >= cachedScrollWidth - 10) {
-                                galleryScroll.scrollTo({ left: 0, behavior: 'smooth' });
+                                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                                galleryScroll.scrollTo({ left: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
                             } else {
-                                galleryScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                                const reduceMotion2 = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                                galleryScroll.scrollBy({ left: scrollAmount, behavior: reduceMotion2 ? 'auto' : 'smooth' });
                             }
                         }
                     }

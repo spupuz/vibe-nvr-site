@@ -183,7 +183,8 @@
                 }
                 const container = cachedGalleryScrollContainer;
                 const scrollAmount = 350 + 32; // item width + gap
-                container.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                container.scrollBy({ left: direction * scrollAmount, behavior: reduceMotion ? 'auto' : 'smooth' });
             }
         </script>
     </section>
