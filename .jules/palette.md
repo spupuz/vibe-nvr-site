@@ -40,3 +40,7 @@
 ## 2024-10-23 - Interactive States for Reused Components
 **Learning:** Scoping interactive pseudo-classes (like `:hover`, `:active`) to specific sections (e.g., `#support .support-btn`) prevents components from receiving essential tactile visual feedback when reused elsewhere (like in a `.hero` section).
 **Action:** Always declare interactive states for reusable UI elements (like `.support-btn` or `.badge-link`) globally rather than scoping them tightly to specific layout containers.
+
+## 2026-11-09 - Respecting User Preferences for Motion
+**Learning:** Decorative animations (like scroll reveals, zooming lightboxes, and shimmer loaders) can cause discomfort or nausea for users with vestibular disorders. The site lacked support for the OS-level `prefers-reduced-motion` setting, meaning these users were subjected to potentially harmful animations.
+**Action:** Always include a global `@media (prefers-reduced-motion: reduce)` CSS block that nullifies `animation-duration`, `transition-duration`, and enforces `scroll-behavior: auto` to respect users' accessibility preferences regarding motion.
