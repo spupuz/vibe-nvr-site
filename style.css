@@ -975,6 +975,20 @@ footer {
 .reveal-delay-2 { transition-delay: 0.3s; }
 .reveal-delay-3 { transition-delay: 0.45s; }
 
+/* ⚡ Palette: Respect prefers-reduced-motion — disable reveal animations */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        will-change: auto !important;
+    }
+    .reveal.active {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
 /* Smart Footer */
 .smart-footer {
     position: fixed;
