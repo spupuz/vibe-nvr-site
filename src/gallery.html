@@ -177,13 +177,17 @@
         <script>
             // ⚡ Bolt: Cache DOM elements in interactive functions to avoid repeated traversals
             let cachedGalleryScrollContainer = null;
+            let reduceMotionMedia = null;
             function scrollGallery(direction) {
                 if (!cachedGalleryScrollContainer) {
                     cachedGalleryScrollContainer = document.querySelector('.gallery-scroll');
                 }
+                if (!reduceMotionMedia) {
+                    reduceMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
+                }
                 const container = cachedGalleryScrollContainer;
                 const scrollAmount = 350 + 32; // item width + gap
-                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                const reduceMotion = reduceMotionMedia.matches;
                 container.scrollBy({ left: direction * scrollAmount, behavior: reduceMotion ? 'auto' : 'smooth' });
             }
         </script>

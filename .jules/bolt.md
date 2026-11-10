@@ -106,3 +106,6 @@
 ## 2026-11-04 - Cache MediaQueryList in Theme Controller
 **Learning:** Calling \`window.matchMedia('(prefers-color-scheme: dark)')\` repeatedly on every theme toggle creates a new \`MediaQueryList\` object each time, which incurs unnecessary overhead.
 **Action:** Cache the resulting \`MediaQueryList\` object within a closure upon its first use to prevent redundant queries and object creation on subsequent theme toggles.
+## 2026-11-10 - Cache MediaQueryList in animation loops and interactive functions
+**Learning:** Calling `window.matchMedia('(prefers-reduced-motion: reduce)')` repeatedly inside `requestAnimationFrame` loops or high-frequency interactive functions creates a new `MediaQueryList` object on every call. This causes unnecessary garbage collection pauses and CPU spikes.
+**Action:** Cache the resulting `MediaQueryList` object outside the loop or function closure upon its first use, and reference its `.matches` property directly to avoid redundant object creation.
