@@ -44,3 +44,6 @@
 ## 2026-11-09 - Respecting User Preferences for Motion
 **Learning:** Decorative animations (like scroll reveals, zooming lightboxes, and shimmer loaders) can cause discomfort or nausea for users with vestibular disorders. The site lacked support for the OS-level `prefers-reduced-motion` setting, meaning these users were subjected to potentially harmful animations.
 **Action:** Always include a global `@media (prefers-reduced-motion: reduce)` CSS block that nullifies `animation-duration`, `transition-duration`, and enforces `scroll-behavior: auto` to respect users' accessibility preferences regarding motion.
+## 2026-11-11 - Remove generic alt text from Lightbox
+**Learning:** Using generic alt text like "Enlarged view" on expanded images deprives screen reader users of context.
+**Action:** Dynamically updated the alt attribute of the expanded image element to match the specific context or description of the thumbnail that was activated, and defaulted to an empty string to avoid generic fallbacks.
