@@ -185,6 +185,7 @@
                 if (!reduceMotionMedia) {
                     reduceMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
                 }
+                if (!cachedGalleryScrollContainer) return;
                 const container = cachedGalleryScrollContainer;
                 const scrollAmount = 350 + 32; // item width + gap
                 const reduceMotion = reduceMotionMedia.matches;
