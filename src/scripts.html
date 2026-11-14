@@ -60,8 +60,11 @@
                 }
                 const closeBtn = cachedLightboxCloseBtn;
                 // Since closeBtn is the only focusable element in this modal, prevent default
-                event.preventDefault();
-                if (closeBtn) closeBtn.focus();
+                // and re-focus the close button if focus is leaving it
+                if (closeBtn) {
+                    event.preventDefault();
+                    closeBtn.focus();
+                }
             }
         });
 
