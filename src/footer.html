@@ -58,6 +58,10 @@
                     }
                 } catch (err) {
                     console.error('Failed to fetch versions', err);
+                    // 🛡️ Sentinel: Graceful fallback to static version when API fails
+                    if (siteEl && !siteEl.textContent) {
+                        siteEl.textContent = 'v1.36.11';
+                    }
                 }
             }
 
