@@ -17,7 +17,7 @@
                 <div class="footer-copy">
                     &copy; 2026 Alessandro Belloni.<br>
                     <div style="margin-top: 0.5rem; font-size: 0.8rem; font-family: var(--font-mono, monospace); color: var(--muted-foreground);">
-                        site version <span id="site-version">v1.36.11</span>
+                        site version <span id="site-version">v1.36.12</span>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     console.error('Failed to fetch versions', err);
                     // 🛡️ Sentinel: Graceful fallback to static version when API fails
                     if (siteEl && !siteEl.textContent) {
-                        siteEl.textContent = 'v1.36.11';
+                        siteEl.textContent = 'v1.36.12';
                     }
                 }
             }
