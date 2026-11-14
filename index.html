@@ -57,7 +57,9 @@
             // ⚡ Bolt: Fetch all components concurrently to prevent network waterfall
             const fetchPromises = components.map(async (c) => {
                 try {
-                    const resp = await fetch(`src/${c}.html?v=${cacheBuster}`);
+                    const resp = await fetch(`src/${c}.html?v=${cacheBuster}`, {
+                        signal: AbortSignal.timeout(3000)
+                    });
                     const html = await resp.text();
                     return { c, html, error: null };
                 } catch (e) {
