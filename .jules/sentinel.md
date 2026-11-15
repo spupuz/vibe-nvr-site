@@ -62,3 +62,7 @@
 **Vulnerability:** The Content Security Policy (CSP) lacked `form-action` and `upgrade-insecure-requests` directives. Without `form-action`, an attacker who achieves DOM XSS could inject a malicious `<form>` to exfiltrate user data. Without `upgrade-insecure-requests`, passive or active mixed content might occur if resources are requested over HTTP.
 **Learning:** A robust CSP must protect against data exfiltration vectors, not just script execution. Even static sites without backend forms should implement `form-action 'none'` (or `'self'` if local forms exist, e.g., MkDocs search).
 **Prevention:** Always include `form-action` and `upgrade-insecure-requests` in CSP declarations to ensure comprehensive defense-in-depth against data exfiltration and mixed content.
+## 2026-11-15 - [Missing Permissions-Policy for Feature Restriction]
+**Vulnerability:** Site lacked a Permissions-Policy header/meta, leaving powerful browser features (camera, microphone, geolocation, etc.) unexplicitly restricted at the document level.
+**Learning:** Even static marketing/docs sites benefit from defense-in-depth by disabling unused sensitive APIs; this limits impact if DOM XSS is introduced or if third-party scripts are compromised.
+**Prevention:** Add a restrictive `Permissions-Policy` (meta on static sites or HTTP header where configurable) denying unused powerful features across the main site and documentation overrides.

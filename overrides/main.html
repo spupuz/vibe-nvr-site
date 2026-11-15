@@ -5,6 +5,8 @@
   <!-- 🛡️ Sentinel: Added form-action and upgrade-insecure-requests to CSP for defense-in-depth against data exfiltration and mixed content -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://api.github.com; connect-src 'self' https://api.github.com https://cdn.jsdelivr.net; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
+  <!-- 🛡️ Sentinel: Added Permissions-Policy to disable unused powerful browser features -->
+  <meta http-equiv="Permissions-Policy" content="accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()">
 {% endblock %}
 
 {% block footer %}
