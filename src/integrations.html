@@ -22,7 +22,7 @@
                     </p>
                 </div>
                 <div style="position: relative; max-width: 100%;">
-                    <button class="btn code-copy-btn" aria-label="Copy Homepage config" title="Copy to clipboard"
+                    <button type="button" class="btn code-copy-btn" aria-label="Copy Homepage config" title="Copy to clipboard"
                             onclick="
                                 const commands = `- VibeNVR:\n  icon: mdi-cctv\n  href: http://your-vibenvr-ip:8080/\n  description: Video Surveillance\n  widget:\n    type: customapi\n    url: http://your-vibenvr-ip:8080/api/v1/homepage/stats\n    headers:\n      X-API-Key: &quot;your-api-token-here&quot;\n    method: GET\n    mappings:\n      - { field: cameras_online, label: Online }\n      - { field: events_today, label: Events (24h) }\n      - { field: storage_used_gb, label: Storage (GB) }\n      - { field: storage_total_gb, label: Total Disk (GB) }`;
                                 navigator.clipboard.writeText(commands);
@@ -117,7 +117,7 @@
                     </p>
                 </div>
                 <div style="position: relative; max-width: 100%;">
-                    <button class="btn code-copy-btn" aria-label="Copy REST API response" title="Copy to clipboard"
+                    <button type="button" class="btn code-copy-btn" aria-label="Copy REST API response" title="Copy to clipboard"
                             onclick="
                                 const commands = `[\n  {\n    &quot;id&quot;: 1,\n    &quot;name&quot;: &quot;Front Door&quot;,\n    &quot;status&quot;: &quot;online&quot;\n  }\n]`;
                                 navigator.clipboard.writeText(commands);
