@@ -6,7 +6,7 @@
         </div>
 
         <div style="position: relative; max-width: 100%;">
-            <button class="btn code-copy-btn" aria-label="Copy installation commands" title="Copy to clipboard"
+            <button type="button" class="btn code-copy-btn" aria-label="Copy installation commands" title="Copy to clipboard"
                     onclick="
                         const commands = `curl -O https://raw.githubusercontent.com/spupuz/VibeNVR/main/docker-compose.prod.yml\ntouch .env\ndocker compose -f docker-compose.prod.yml up -d`;
                         const icon = this.querySelector('ion-icon');
