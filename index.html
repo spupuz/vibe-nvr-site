@@ -60,6 +60,9 @@
                     const resp = await fetch(`src/${c}.html?v=${cacheBuster}`, {
                         signal: AbortSignal.timeout(3000)
                     });
+                    if (!resp.ok) {
+                        return { c, html: null, error: new Error(`HTTP ${resp.status}`) };
+                    }
                     const html = await resp.text();
                     return { c, html, error: null };
                 } catch (e) {
