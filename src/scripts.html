@@ -216,7 +216,7 @@
             }
         })();
     </script>
-    <div class="nav-overlay" onclick="toggleMenu()"></div>
+    <div class="nav-overlay" role="button" tabindex="0" aria-label="Close navigation menu" onclick="toggleMenu()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleMenu();}"></div>
 
     <script>
         let mobileMenuLastFocusedElement = null;
