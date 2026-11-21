@@ -36,6 +36,7 @@
                                         this.setAttribute('title', 'Copy to clipboard');
                                     }, 2000);
                                 }).catch(() => {
+                                    this.setAttribute('aria-label', 'Copy failed');
                                     this.setAttribute('title', 'Copy failed');
                                 });
                             ">
@@ -134,6 +135,7 @@
                                         this.setAttribute('title', 'Copy to clipboard');
                                     }, 2000);
                                 }).catch(() => {
+                                    this.setAttribute('aria-label', 'Copy failed');
                                     this.setAttribute('title', 'Copy failed');
                                 });
                             ">
