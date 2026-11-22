@@ -913,6 +913,65 @@ footer {
     transform: scale(0.9);
 }
 
+/* Lightbox prev/next navigation */
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f1f1f1;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    line-height: 1;
+    transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible {
+    background: rgba(255, 255, 255, 0.24);
+    color: var(--accent, #2997ff);
+}
+
+.lightbox-nav:active {
+    transform: translateY(-50%) scale(0.9);
+}
+
+.lightbox-nav ion-icon {
+    pointer-events: none;
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
+@media (max-width: 600px) {
+    .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+}
+
 /* Interactive Badges & Support Buttons */
 .support-btn, .badge-link {
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
