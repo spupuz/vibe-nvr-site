@@ -36,7 +36,9 @@
                                         this.setAttribute('title', 'Copy to clipboard');
                                     }, 2000);
                                 }).catch(() => {
+                                    this.setAttribute('aria-label', 'Copy failed');
                                     this.setAttribute('title', 'Copy failed');
+                                    this.setAttribute('aria-label', 'Copy failed');
                                 });
                             ">
                         <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
@@ -134,7 +136,9 @@
                                         this.setAttribute('title', 'Copy to clipboard');
                                     }, 2000);
                                 }).catch(() => {
+                                    this.setAttribute('aria-label', 'Copy failed');
                                     this.setAttribute('title', 'Copy failed');
+                                    this.setAttribute('aria-label', 'Copy failed');
                                 });
                             ">
                         <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
