@@ -988,20 +988,6 @@ footer {
     }
 }
 
-/* ⚡ Palette: Respect prefers-reduced-motion — disable reveal animations */
-@media (prefers-reduced-motion: reduce) {
-    .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-        will-change: auto !important;
-    }
-    .reveal.active {
-        opacity: 1 !important;
-        transform: none !important;
-    }
-}
-
 /* Smart Footer */
 .smart-footer {
     position: fixed;
