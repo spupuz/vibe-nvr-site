@@ -14,14 +14,19 @@
                             icon.setAttribute('name', 'checkmark-outline');
                             this.setAttribute('aria-label', 'Commands copied');
                             this.setAttribute('title', 'Copied!');
+                            const status = document.getElementById('copy-status-install');
+                            if (status) status.textContent = 'Installation commands copied to clipboard';
                             setTimeout(() => {
                                 icon.setAttribute('name', 'copy-outline');
                                 this.setAttribute('aria-label', 'Copy installation commands');
                                 this.setAttribute('title', 'Copy to clipboard');
+                                if (status) status.textContent = '';
                             }, 2000);
                         }).catch(() => {
                             this.setAttribute('aria-label', 'Copy failed');
                             this.setAttribute('title', 'Copy failed');
+                            const status = document.getElementById('copy-status-install');
+                            if (status) status.textContent = 'Copy failed';
                             setTimeout(() => {
                                 this.setAttribute('aria-label', 'Copy installation commands');
                                 this.setAttribute('title', 'Copy to clipboard');
@@ -30,6 +35,7 @@
                     ">
                 <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
             </button>
+            <span id="copy-status-install" class="sr-only" aria-live="polite"></span>
             <div class="code-window" tabindex="0" role="region" aria-label="Installation code snippet">
                 <div class="line comment"># 1. Download the compose file</div>
                 <div class="line">
