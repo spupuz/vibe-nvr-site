@@ -30,19 +30,24 @@
                                     icon.setAttribute('name', 'checkmark-outline');
                                     this.setAttribute('aria-label', 'Config copied');
                                     this.setAttribute('title', 'Copied!');
+                                    const status = document.getElementById('copy-status-homepage');
+                                    if (status) status.textContent = 'Config copied to clipboard';
                                     setTimeout(() => {
                                         icon.setAttribute('name', 'copy-outline');
                                         this.setAttribute('aria-label', 'Copy Homepage config');
                                         this.setAttribute('title', 'Copy to clipboard');
+                                        if (status) status.textContent = '';
                                     }, 2000);
                                 }).catch(() => {
                                     this.setAttribute('aria-label', 'Copy failed');
                                     this.setAttribute('title', 'Copy failed');
-                                    this.setAttribute('aria-label', 'Copy failed');
+                                    const status = document.getElementById('copy-status-homepage');
+                                    if (status) status.textContent = 'Copy failed';
                                 });
                             ">
                         <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
                     </button>
+                    <span id="copy-status-homepage" class="sr-only" aria-live="polite"></span>
                     <div class="code-window" style="font-size: 0.85rem;" tabindex="0" role="region" aria-label="Code snippet">
                         <div class="line comment"># services.yaml (Homepage)</div>
                     <div class="line"><span class="cmd">- VibeNVR:</span></div>
@@ -130,19 +135,24 @@
                                     icon.setAttribute('name', 'checkmark-outline');
                                     this.setAttribute('aria-label', 'Response copied');
                                     this.setAttribute('title', 'Copied!');
+                                    const status = document.getElementById('copy-status-rest');
+                                    if (status) status.textContent = 'Response copied to clipboard';
                                     setTimeout(() => {
                                         icon.setAttribute('name', 'copy-outline');
                                         this.setAttribute('aria-label', 'Copy REST API response');
                                         this.setAttribute('title', 'Copy to clipboard');
+                                        if (status) status.textContent = '';
                                     }, 2000);
                                 }).catch(() => {
                                     this.setAttribute('aria-label', 'Copy failed');
                                     this.setAttribute('title', 'Copy failed');
-                                    this.setAttribute('aria-label', 'Copy failed');
+                                    const status = document.getElementById('copy-status-rest');
+                                    if (status) status.textContent = 'Copy failed';
                                 });
                             ">
                         <ion-icon name="copy-outline" aria-hidden="true"></ion-icon>
                     </button>
+                    <span id="copy-status-rest" class="sr-only" aria-live="polite"></span>
                     <div class="code-window" style="font-size: 0.85rem;" tabindex="0" role="region" aria-label="Code snippet">
                         <div class="line comment"># GET /api/v1/cameras</div>
                     <div class="line"><span class="cmd">[</span></div>
