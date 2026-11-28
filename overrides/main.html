@@ -3,7 +3,8 @@
 {% block extrahead %}
   {{ super() }}
   <!-- 🛡️ Sentinel: Added form-action and upgrade-insecure-requests to CSP for defense-in-depth against data exfiltration and mixed content -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://api.github.com; connect-src 'self' https://api.github.com https://cdn.jsdelivr.net; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
+  <!-- 🛡️ Sentinel: Added inline script hashes to allow specific inline scripts while blocking injected scripts -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-apoQPHefCNWjxbCm+HzVDOAW4CSVWhY7VylQjgOFyfk=' 'sha256-DrEMJJ29sL7vIloQzly+VUGMxKcBTMII+OfW7Y8AkG4=' 'sha256-/8wPdzX9q0NNJXyA5lzsLojXFpkeaXVxhbfkUOQaWy8=' 'sha256-lNTQv6b1qecZwrXd132NFe7o25YpdiQNeuHiY2ghR/E=' 'sha256-/K9p2JtEqCycL2fSbEonMakkteWpAHv57x2wndLqMNo=' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://api.github.com; connect-src 'self' https://api.github.com https://cdn.jsdelivr.net; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <!-- Sentinel: prevent clickjacking and MIME sniffing -->
   <meta http-equiv="X-Frame-Options" content="DENY">
